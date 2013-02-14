@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C624B972-4C6C-4DF4-82A2-15CE170781E1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Preventorium</RootNamespace>
+    <AssemblyName>Preventorium</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="add_book.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_book.Designer.cs">
+      <DependentUpon>add_book.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_cards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_cards.designer.cs">
+      <DependentUpon>add_cards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_diet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_diet.Designer.cs">
+      <DependentUpon>add_diet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_diet_in_food.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_diet_in_food.Designer.cs">
+      <DependentUpon>add_diet_in_food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_food.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_food.Designer.cs">
+      <DependentUpon>add_food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_ingr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_ingr.Designer.cs">
+      <DependentUpon>add_ingr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_ingr_in_food.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_ingr_in_food.designer.cs">
+      <DependentUpon>add_ingr_in_food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_queue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_queue.designer.cs">
+      <DependentUpon>add_queue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cards.Designer.cs">
+      <DependentUpon>Cards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cooking_book.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cooking_book.Designer.cs">
+      <DependentUpon>cooking_book.cs</DependentUpon>
+    </Compile>
+    <Compile Include="delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="delete.Designer.cs">
+      <DependentUpon>delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="del_diet_from_food.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="del_diet_from_food.Designer.cs">
+      <DependentUpon>del_diet_from_food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="del_ingr_from_food.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="del_ingr_from_food.Designer.cs">
+      <DependentUpon>del_ingr_from_food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="diets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="diets.Designer.cs">
+      <DependentUpon>diets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cards-layout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cards-layout.Designer.cs">
+      <DependentUpon>Cards-layout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="diet_in_food.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="diet_in_food.Designer.cs">
+      <DependentUpon>diet_in_food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="get_table.cs" />
+    <Compile Include="db_connect.cs" />
+    <Compile Include="db_elements.cs" />
+    <Compile Include="db_settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="db_settings.Designer.cs">
+      <DependentUpon>db_settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="food.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="food.Designer.cs">
+      <DependentUpon>food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ingr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ingr.Designer.cs">
+      <DependentUpon>ingr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMDI.Designer.cs">
+      <DependentUpon>FormMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="queue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="queue.designer.cs">
+      <DependentUpon>queue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user_settings.cs" />
+    <EmbeddedResource Include="add_book.resx">
+      <DependentUpon>add_book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_cards.resx">
+      <DependentUpon>add_cards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_diet.resx">
+      <DependentUpon>add_diet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_diet_in_food.resx">
+      <DependentUpon>add_diet_in_food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_food.resx">
+      <DependentUpon>add_food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_ingr.resx">
+      <DependentUpon>add_ingr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_ingr_in_food.resx">
+      <DependentUpon>add_ingr_in_food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_queue.resx">
+      <DependentUpon>add_queue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cards.resx">
+      <DependentUpon>Cards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cooking_book.resx">
+      <DependentUpon>cooking_book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db_settings.resx">
+      <DependentUpon>db_settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="delete.resx">
+      <DependentUpon>delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="del_diet_from_food.resx">
+      <DependentUpon>del_diet_from_food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="del_ingr_from_food.resx">
+      <DependentUpon>del_ingr_from_food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="diets.resx">
+      <DependentUpon>diets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="food.resx">
+      <DependentUpon>food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cards-layout.resx">
+      <DependentUpon>Cards-layout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="diet_in_food.resx">
+      <DependentUpon>diet_in_food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ingr.resx">
+      <DependentUpon>ingr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMDI.resx">
+      <DependentUpon>FormMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="queue.resx">
+      <DependentUpon>queue.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Image\add_button.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Image\50px-Exquisite-kwrite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Image\1305828351_psd-delete-icon800215600-px.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

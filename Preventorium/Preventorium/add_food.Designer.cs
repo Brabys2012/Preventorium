@@ -1,0 +1,387 @@
+﻿namespace Preventorium
+{
+    partial class add_food
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(add_food));
+            this.gb_food_data = new System.Windows.Forms.GroupBox();
+            this.tb_weight = new System.Windows.Forms.TextBox();
+            this.l_weight = new System.Windows.Forms.Label();
+            this.gb_chem_contain = new System.Windows.Forms.GroupBox();
+            this.tb_calories = new System.Windows.Forms.TextBox();
+            this.tb_carbo = new System.Windows.Forms.TextBox();
+            this.l_carbo = new System.Windows.Forms.Label();
+            this.l_calories = new System.Windows.Forms.Label();
+            this.tb_fats = new System.Windows.Forms.TextBox();
+            this.l_fats = new System.Windows.Forms.Label();
+            this.l_proteins = new System.Windows.Forms.Label();
+            this.tb_proteins = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
+            this.l_nameFood = new System.Windows.Forms.Label();
+            this.b_save = new System.Windows.Forms.Button();
+            this.b_abolition = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gw = new System.Windows.Forms.DataGridView();
+            this.menu_ingr_food = new System.Windows.Forms.ToolStrip();
+            this.bAdd = new System.Windows.Forms.ToolStripButton();
+            this.bEdit = new System.Windows.Forms.ToolStripButton();
+            this.bDelete = new System.Windows.Forms.ToolStripButton();
+            this.bs = new System.Windows.Forms.BindingSource(this.components);
+            this.gb_food_data.SuspendLayout();
+            this.gb_chem_contain.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
+            this.menu_ingr_food.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // gb_food_data
+            // 
+            this.gb_food_data.Controls.Add(this.tb_weight);
+            this.gb_food_data.Controls.Add(this.l_weight);
+            this.gb_food_data.Controls.Add(this.gb_chem_contain);
+            this.gb_food_data.Controls.Add(this.tb_name);
+            this.gb_food_data.Controls.Add(this.l_nameFood);
+            this.gb_food_data.Location = new System.Drawing.Point(12, 12);
+            this.gb_food_data.Name = "gb_food_data";
+            this.gb_food_data.Size = new System.Drawing.Size(210, 290);
+            this.gb_food_data.TabIndex = 0;
+            this.gb_food_data.TabStop = false;
+            this.gb_food_data.Text = "Введите сведения о блюде:";
+            // 
+            // tb_weight
+            // 
+            this.tb_weight.Location = new System.Drawing.Point(10, 77);
+            this.tb_weight.Name = "tb_weight";
+            this.tb_weight.Size = new System.Drawing.Size(184, 20);
+            this.tb_weight.TabIndex = 3;
+            this.tb_weight.TextChanged += new System.EventHandler(this.enabled_b_save);
+            // 
+            // l_weight
+            // 
+            this.l_weight.AutoSize = true;
+            this.l_weight.Location = new System.Drawing.Point(7, 60);
+            this.l_weight.Name = "l_weight";
+            this.l_weight.Size = new System.Drawing.Size(112, 13);
+            this.l_weight.TabIndex = 2;
+            this.l_weight.Text = "Вес готового блюда:";
+            // 
+            // gb_chem_contain
+            // 
+            this.gb_chem_contain.Controls.Add(this.tb_calories);
+            this.gb_chem_contain.Controls.Add(this.tb_carbo);
+            this.gb_chem_contain.Controls.Add(this.l_carbo);
+            this.gb_chem_contain.Controls.Add(this.l_calories);
+            this.gb_chem_contain.Controls.Add(this.tb_fats);
+            this.gb_chem_contain.Controls.Add(this.l_fats);
+            this.gb_chem_contain.Controls.Add(this.l_proteins);
+            this.gb_chem_contain.Controls.Add(this.tb_proteins);
+            this.gb_chem_contain.Location = new System.Drawing.Point(10, 103);
+            this.gb_chem_contain.Name = "gb_chem_contain";
+            this.gb_chem_contain.Size = new System.Drawing.Size(191, 181);
+            this.gb_chem_contain.TabIndex = 4;
+            this.gb_chem_contain.TabStop = false;
+            this.gb_chem_contain.Text = "Химический состав:";
+            // 
+            // tb_calories
+            // 
+            this.tb_calories.Location = new System.Drawing.Point(9, 35);
+            this.tb_calories.Name = "tb_calories";
+            this.tb_calories.Size = new System.Drawing.Size(175, 20);
+            this.tb_calories.TabIndex = 9;
+            this.tb_calories.TextChanged += new System.EventHandler(this.enabled_b_save);
+            // 
+            // tb_carbo
+            // 
+            this.tb_carbo.Location = new System.Drawing.Point(9, 154);
+            this.tb_carbo.Name = "tb_carbo";
+            this.tb_carbo.Size = new System.Drawing.Size(175, 20);
+            this.tb_carbo.TabIndex = 7;
+            this.tb_carbo.TextChanged += new System.EventHandler(this.enabled_b_save);
+            // 
+            // l_carbo
+            // 
+            this.l_carbo.AutoSize = true;
+            this.l_carbo.Location = new System.Drawing.Point(6, 138);
+            this.l_carbo.Name = "l_carbo";
+            this.l_carbo.Size = new System.Drawing.Size(65, 13);
+            this.l_carbo.TabIndex = 6;
+            this.l_carbo.Text = "Углеводов:";
+            // 
+            // l_calories
+            // 
+            this.l_calories.AutoSize = true;
+            this.l_calories.Location = new System.Drawing.Point(6, 19);
+            this.l_calories.Name = "l_calories";
+            this.l_calories.Size = new System.Drawing.Size(97, 13);
+            this.l_calories.TabIndex = 0;
+            this.l_calories.Text = "Калорий в блюде:";
+            // 
+            // tb_fats
+            // 
+            this.tb_fats.Location = new System.Drawing.Point(9, 115);
+            this.tb_fats.Name = "tb_fats";
+            this.tb_fats.Size = new System.Drawing.Size(175, 20);
+            this.tb_fats.TabIndex = 5;
+            this.tb_fats.TextChanged += new System.EventHandler(this.enabled_b_save);
+            // 
+            // l_fats
+            // 
+            this.l_fats.AutoSize = true;
+            this.l_fats.Location = new System.Drawing.Point(6, 99);
+            this.l_fats.Name = "l_fats";
+            this.l_fats.Size = new System.Drawing.Size(45, 13);
+            this.l_fats.TabIndex = 4;
+            this.l_fats.Text = "Жиров:";
+            // 
+            // l_proteins
+            // 
+            this.l_proteins.AutoSize = true;
+            this.l_proteins.Location = new System.Drawing.Point(6, 58);
+            this.l_proteins.Name = "l_proteins";
+            this.l_proteins.Size = new System.Drawing.Size(47, 13);
+            this.l_proteins.TabIndex = 2;
+            this.l_proteins.Text = "Белков:";
+            // 
+            // tb_proteins
+            // 
+            this.tb_proteins.Location = new System.Drawing.Point(9, 76);
+            this.tb_proteins.Name = "tb_proteins";
+            this.tb_proteins.Size = new System.Drawing.Size(175, 20);
+            this.tb_proteins.TabIndex = 3;
+            this.tb_proteins.TextChanged += new System.EventHandler(this.enabled_b_save);
+            // 
+            // tb_name
+            // 
+            this.tb_name.Location = new System.Drawing.Point(10, 37);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(184, 20);
+            this.tb_name.TabIndex = 1;
+            this.tb_name.TextChanged += new System.EventHandler(this.enabled_b_save);
+            // 
+            // l_nameFood
+            // 
+            this.l_nameFood.AutoSize = true;
+            this.l_nameFood.Location = new System.Drawing.Point(7, 20);
+            this.l_nameFood.Name = "l_nameFood";
+            this.l_nameFood.Size = new System.Drawing.Size(95, 13);
+            this.l_nameFood.TabIndex = 0;
+            this.l_nameFood.Text = "Название блюда:";
+            // 
+            // b_save
+            // 
+            this.b_save.Location = new System.Drawing.Point(12, 308);
+            this.b_save.Name = "b_save";
+            this.b_save.Size = new System.Drawing.Size(75, 23);
+            this.b_save.TabIndex = 1;
+            this.b_save.Text = "Сохранить";
+            this.b_save.UseVisualStyleBackColor = true;
+            this.b_save.Click += new System.EventHandler(this.b_save_Click);
+            // 
+            // b_abolition
+            // 
+            this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.b_abolition.Location = new System.Drawing.Point(147, 308);
+            this.b_abolition.Name = "b_abolition";
+            this.b_abolition.Size = new System.Drawing.Size(75, 23);
+            this.b_abolition.TabIndex = 2;
+            this.b_abolition.Text = "Отмена";
+            this.b_abolition.UseVisualStyleBackColor = true;
+            this.b_abolition.Click += new System.EventHandler(this.b_abolition_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.gw);
+            this.groupBox1.Controls.Add(this.menu_ingr_food);
+            this.groupBox1.Location = new System.Drawing.Point(228, -7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(673, 338);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            // 
+            // gw
+            // 
+            this.gw.AllowUserToAddRows = false;
+            this.gw.AllowUserToDeleteRows = false;
+            this.gw.AllowUserToResizeColumns = false;
+            this.gw.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gw.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gw.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gw.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gw.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gw.Location = new System.Drawing.Point(3, 41);
+            this.gw.MultiSelect = false;
+            this.gw.Name = "gw";
+            this.gw.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gw.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.gw.RowHeadersVisible = false;
+            this.gw.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.gw.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gw.ShowCellErrors = false;
+            this.gw.ShowEditingIcon = false;
+            this.gw.ShowRowErrors = false;
+            this.gw.Size = new System.Drawing.Size(667, 294);
+            this.gw.TabIndex = 5;
+            this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
+            // 
+            // menu_ingr_food
+            // 
+            this.menu_ingr_food.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.menu_ingr_food.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bAdd,
+            this.bEdit,
+            this.bDelete});
+            this.menu_ingr_food.Location = new System.Drawing.Point(3, 16);
+            this.menu_ingr_food.Name = "menu_ingr_food";
+            this.menu_ingr_food.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menu_ingr_food.Size = new System.Drawing.Size(667, 25);
+            this.menu_ingr_food.TabIndex = 4;
+            this.menu_ingr_food.Text = "toolStrip1";
+            // 
+            // bAdd
+            // 
+            this.bAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bAdd.Image = ((System.Drawing.Image)(resources.GetObject("bAdd.Image")));
+            this.bAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(23, 22);
+            this.bAdd.Text = "Добавить ингридиенты в блюдо";
+            this.bAdd.Click += new System.EventHandler(this.bAddIngr_Click);
+            // 
+            // bEdit
+            // 
+            this.bEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bEdit.Image = ((System.Drawing.Image)(resources.GetObject("bEdit.Image")));
+            this.bEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bEdit.Name = "bEdit";
+            this.bEdit.Size = new System.Drawing.Size(23, 22);
+            this.bEdit.Text = "Редактировать_состав_блюда";
+            this.bEdit.Click += new System.EventHandler(this.bEditIngr_Click);
+            // 
+            // bDelete
+            // 
+            this.bDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bDelete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.bDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(23, 22);
+            this.bDelete.Text = "Удалить";
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
+            // add_food
+            // 
+            this.AcceptButton = this.b_save;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.b_abolition;
+            this.ClientSize = new System.Drawing.Size(900, 336);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.b_abolition);
+            this.Controls.Add(this.b_save);
+            this.Controls.Add(this.gb_food_data);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.Name = "add_food";
+            this.Text = "Сведения о блюде";
+            this.Load += new System.EventHandler(this.add_food_Load);
+            this.gb_food_data.ResumeLayout(false);
+            this.gb_food_data.PerformLayout();
+            this.gb_chem_contain.ResumeLayout(false);
+            this.gb_chem_contain.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gw)).EndInit();
+            this.menu_ingr_food.ResumeLayout(false);
+            this.menu_ingr_food.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.GroupBox gb_food_data;
+        private System.Windows.Forms.Label l_nameFood;
+        private System.Windows.Forms.TextBox tb_name;
+        private System.Windows.Forms.GroupBox gb_chem_contain;
+        private System.Windows.Forms.TextBox tb_fats;
+        private System.Windows.Forms.Label l_fats;
+        private System.Windows.Forms.TextBox tb_proteins;
+        private System.Windows.Forms.Label l_proteins;
+        private System.Windows.Forms.Label l_calories;
+        private System.Windows.Forms.TextBox tb_weight;
+        private System.Windows.Forms.Label l_weight;
+        private System.Windows.Forms.TextBox tb_carbo;
+        private System.Windows.Forms.Label l_carbo;
+        private System.Windows.Forms.Button b_save;
+        private System.Windows.Forms.Button b_abolition;
+        private System.Windows.Forms.TextBox tb_calories;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.BindingSource bs;
+        private System.Windows.Forms.ToolStrip menu_ingr_food;
+        private System.Windows.Forms.ToolStripButton bAdd;
+        private System.Windows.Forms.ToolStripButton bEdit;
+        private System.Windows.Forms.ToolStripButton bDelete;
+        public System.Windows.Forms.DataGridView gw;
+
+
+    }
+}

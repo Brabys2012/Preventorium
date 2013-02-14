@@ -1,0 +1,282 @@
+
+/*Триггер, который считает калорийность, белки,жиры углеводы и вес блюда*/ 
+create trigger CountCalloriesFood on Ingridients_in_food after insert
+as
+Declare
+          @cal_ingr as float,
+          @net_weight as float,
+          @cal_food as float,
+          @ID_food as int,
+          @ID_ingr as int,
+          @prodactWeight as float,
+          @proteins as float,
+          @totalProteins as float,
+          @Fat as float,
+          @TotalFat as float,
+          @Carbo as float,
+	  @totalcarbo as float
+
+select @ID_food=ID_food, @net_weight=Net_weight, @ID_ingr=ID_ingridients
+from inserted
+
+select @cal_ingr=calories, @Carbo=Carbohydrates, @Fat=fats, @proteins=proteins
+from Ingridients
+where Id_ingridients=@ID_ingr
+
+select @cal_food=Full_calories, @totalProteins=totalProteins, @totalFat=totalFats, @totalCarbo=TotalCarbohydrates, @prodactWeight=Finish_weight_of_food
+from Foods
+where ID_food=@ID_food
+
+  begin
+     if (@prodactWeight is null) 
+       set @prodactWeight=@net_weight
+     else
+       set @prodactWeight=@prodactWeight+@net_weight
+
+
+
+     if (@cal_food is null) 
+        set @cal_food=@net_weight/100*@cal_ingr
+     else
+       set @cal_food=@cal_food+@net_weight/100*@cal_ingr
+
+
+
+     if (@totalProteins is null) 
+         set @totalProteins = @net_weight/100*@proteins
+     else
+       set @totalProteins = @totalProteins+@net_weight/100*@proteins
+
+
+     if (@totalFat is  null) 
+         set @totalFat = @net_weight/100*@Fat
+     else
+       set @totalFat = @totalFat + @net_weight/100*@Fat
+   
+
+     if (@totalCarbo is null) 
+         set @totalCarbo = @net_weight/100*@Carbo
+     else
+       set @totalCarbo = @totalCarbo + @net_weight/100*@Carbo
+
+       
+  end
+
+update Foods
+set Full_calories=@cal_food, Finish_weight_of_food=@prodactWeight, TotalProteins = @totalProteins, TotalCarbohydrates = @totalCarbo, TotalFats = @totalFat 
+where ID_food=@ID_food
+
+
+
+
+
+
+
+/*Триггер, который считает калорийность, белки,жиры углеводы и вес блюда*/ 
+create trigger CountCalloriesFood on Ingridients_in_food after update
+as
+Declare
+          @cal_ingr as float,
+          @net_weight as float,
+          @cal_food as float,
+          @ID_food as int,
+          @ID_ingr as int,
+          @prodactWeight as float,
+          @proteins as float,
+          @totalProteins as float,
+          @Fat as float,
+          @TotalFat as float,
+          @Carbo as float,
+	  @totalcarbo as float
+
+select @ID_food=ID_food, @net_weight=Net_weight, @ID_ingr=ID_ingridients
+from inserted
+
+select @cal_ingr=calories, @Carbo=Carbohydrates, @Fat=fats, @proteins=proteins
+from Ingridients
+where Id_ingridients=@ID_ingr
+
+select @cal_food=Full_calories, @totalProteins=totalProteins, @totalFat=totalFats, @totalCarbo=TotalCarbohydrates, @prodactWeight=Finish_weight_of_food
+from Foods
+where ID_food=@ID_food
+
+  begin
+     if (@prodactWeight is null) 
+       set @prodactWeight=@net_weight
+     else
+       set @prodactWeight=@prodactWeight+@net_weight
+
+
+
+     if (@cal_food is null) 
+        set @cal_food=@net_weight/100*@cal_ingr
+     else
+       set @cal_food=@cal_food+@net_weight/100*@cal_ingr
+
+
+
+     if (@totalProteins is null) 
+         set @totalProteins = @net_weight/100*@proteins
+     else
+       set @totalProteins = @totalProteins+@net_weight/100*@proteins
+
+
+     if (@totalFat is  null) 
+         set @totalFat = @net_weight/100*@Fat
+     else
+       set @totalFat = @totalFat + @net_weight/100*@Fat
+   
+
+     if (@totalCarbo is null) 
+         set @totalCarbo = @net_weight/100*@Carbo
+     else
+       set @totalCarbo = @totalCarbo + @net_weight/100*@Carbo
+
+       
+  end
+
+update Foods
+set Full_calories=@cal_food, Finish_weight_of_food=@prodactWeight, TotalProteins = @totalProteins, TotalCarbohydrates = @totalCarbo, TotalFats = @totalFat 
+where ID_food=@ID_food
+
+
+
+/*Считает калории в ингридиенте*/
+
+Create trigger CountCaloriesIngr on Ingridients after insert
+ as Declare
+    @Belki as float,
+    @Fat as float,
+    @Ugle as float,
+    @Callor as float,
+    @ID as integer
+         
+         select @Belki=proteins, @Fat=fats,@Ugle=carbohydrates, @ID=ID_ingridients
+         from inserted
+         
+           begin
+              set @Callor=9*@Fat+4*@Ugle+4*@Belki
+           end
+         
+         update Ingridients
+         set calories=@Callor
+         where @ID=ID_ingridients
+
+
+/* Триггер считает продолжительность очереди*/
+Create trigger LengthQueue on Queue after insert
+as Declare
+    @StartDay as datetime,
+    @EndDay as datetime,
+    @LengthDays as integer,
+    @ID as integer
+    
+      select @StartDay =  Starting_date, @EndDay = Ending_date, @ID = ID_queue
+      from inserted
+      
+        begin
+          set @LengthDays = DATEDIFF(Day,@StartDay,@EndDay)
+        end
+        
+        update Queue
+        set Length_of_days = @Lengthdays
+        where @ID = ID_queue
+
+
+*/update new
+
+/*Триггер, который считает калорийность, белки,жиры углеводы и вес блюда*/ 
+create trigger CountCalloriesFood on Ingridients_in_food after update
+as
+Declare
+          @cal_ingr as float,
+          @net_weight as float,
+          @cal_food as float,
+          @ID_food as int,
+          @ID_ingr as int,
+          @prodactWeight as float,
+          @proteins as float,
+          @totalProteins as float,
+          @Fat as float,
+          @TotalFat as float,
+          @Carbo as float,
+	      @totalcarbo as float
+		  
+/*Разбиваем триггер на две части в первой части мы*/
+/*удаляем, во второй добавляем*/
+
+select @ID_food=ID_food, @net_weight=Net_weight, @ID_ingr=ID_ingridients
+from deleted
+
+select @cal_ingr=calories, @Carbo=Carbohydrates, @Fat=fats, @proteins=proteins
+from Ingridients
+where Id_ingridients=@ID_ingr
+
+select @cal_food=Full_calories, @totalProteins=totalProteins, @totalFat=totalFats, @totalCarbo=TotalCarbohydrates, @prodactWeight=Finish_weight_of_food
+from Foods
+where ID_food=@ID_food
+
+  begin
+    set @prodactWeight=@prodactWeight - @net_weight
+
+    set @cal_food=@cal_food - @net_weight/100*@cal_ingr
+
+    set @totalProteins = @totalProteins - @net_weight/100*@proteins
+	 
+    set @totalFat = @totalFat - @net_weight/100*@Fat
+    
+    set @totalCarbo = @totalCarbo - @net_weight/100*@Carbo
+
+	/*Вторая часть марлезонского балета - добавление*/
+    update Foods
+    set Full_calories=@cal_food, Finish_weight_of_food=@prodactWeight, TotalProteins = @totalProteins, TotalCarbohydrates = @totalCarbo, TotalFats = @totalFat 
+    where ID_food=@ID_food
+	
+	select @ID_food=ID_food, @net_weight=Net_weight, @ID_ingr=ID_ingridients
+    from inserted
+
+    select @cal_ingr=calories, @Carbo=Carbohydrates, @Fat=fats, @proteins=proteins
+    from Ingridients
+    where Id_ingridients=@ID_ingr
+
+    select @cal_food=Full_calories, @totalProteins=totalProteins, @totalFat=totalFats, @totalCarbo=TotalCarbohydrates, @prodactWeight=Finish_weight_of_food
+    from Foods
+    where ID_food=@ID_food
+	
+	if (@prodactWeight is null) 
+       set @prodactWeight=@net_weight
+     else
+       set @prodactWeight=@prodactWeight+@net_weight
+
+
+
+     if (@cal_food is null) 
+        set @cal_food=@net_weight/100*@cal_ingr
+     else
+       set @cal_food=@cal_food+@net_weight/100*@cal_ingr
+
+
+
+     if (@totalProteins is null) 
+         set @totalProteins = @net_weight/100*@proteins
+     else
+       set @totalProteins = @totalProteins+@net_weight/100*@proteins
+
+
+     if (@totalFat is  null) 
+         set @totalFat = @net_weight/100*@Fat
+     else
+       set @totalFat = @totalFat + @net_weight/100*@Fat
+   
+
+     if (@totalCarbo is null) 
+         set @totalCarbo = @net_weight/100*@Carbo
+     else
+       set @totalCarbo = @totalCarbo + @net_weight/100*@Carbo
+	   
+	update Foods
+    set Full_calories=@cal_food, Finish_weight_of_food=@prodactWeight, TotalProteins = @totalProteins, TotalCarbohydrates = @totalCarbo, TotalFats = @totalFat 
+    where ID_food=@ID_food
+  end
+
+
