@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -83,7 +84,7 @@ namespace Preventorium
             return "OK";
 
         }
-    /// <summary>
+        /// <summary>
         /// Метод содержит sql запрос на обновление значений в таблицу Ingridients
     /// </summary>
     /// <param name="id"></param>
@@ -161,7 +162,7 @@ namespace Preventorium
 
             return "OK";
         }
-    /// <summary>
+        /// <summary>
     /// Метод ,возвращает значения о ингридиенте при редактировании на форму
     /// </summary>
     /// <param name="id"></param>
@@ -231,14 +232,18 @@ namespace Preventorium
             return ingrid;
         }
 
-
+        /// <summary>
+    /// Принять изменения
+    /// </summary>
+    /// <param name="table_name"></param>
         public void apply_changes(string table_name)
         {
             Program.data_module._da.Update(Program.data_module._ds, table_name);
         }
 
-        //------------------------------------------------------------------------------------
-        //удаляет запись из таблицы по указанному ИД ингридиента и блюда
+        /// <summary>
+        ///  удаляет запись из таблицы по указанному ИД ингридиента и блюда
+        /// </summary>
         public string del_record_by_ingr_id(string table_name, string id_name, int ingr_id, int food_id)
         {
             string query = "delete from ";
@@ -264,7 +269,6 @@ namespace Preventorium
 
             return "OK";
         }
-        //------------------------------------------------------------------------------------
 
         public string del_record_by_diet_id(string table_name, string id_name, int food_id, int diet_id, int card_id)
         {
@@ -292,7 +296,44 @@ namespace Preventorium
             return "OK";
         }
 
-        //удаляет запись из таблицы в базе данных, по указанному имена таблицы и идентификатору записи
+        /// <summary>
+    /// Удаляет блюдо из кулинарного справочника
+    /// </summary>
+    /// <param name="table_name"></param>
+    /// <param name="id_name"></param>
+    /// <param name="card_id"></param>
+    /// <param name="food_id"></param>
+    /// <param name="book_id"></param>
+    /// <returns></returns>
+        public string del_record_by_food_id(string table_name, string id_name, int card_id, int food_id, int book_id)
+        {
+            string query = "delete from ";
+            query += table_name;
+            query += " where (";
+            query += id_name;
+            query += " = '";
+            query += book_id.ToString();
+            query += "') and (ID_Cards = '" + card_id + "') and ( ID_Food = '" + food_id + "' )";
+
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                return ("ERROR" + " " + ex.Message + " " + ex.Data);
+            }
+
+            return "OK";
+        }
+
+        /// <summary>
+       ///  удаляет запись из таблицы в базе данных, по указанному имена таблицы и идентификатору записи
+    /// </summary>
         public string del_record_by_id(string table_name, string id_name, int id)
         {
             string query = "";
@@ -319,7 +360,14 @@ namespace Preventorium
             return "OK";
         }
 
-        //добавляет карту
+        /// <summary>
+        /// добавляет карту
+       /// </summary>
+       /// <param name="food_name"></param>
+       /// <param name="cost"></param>
+       /// <param name="method"></param>
+       /// <param name="card_numb"></param>
+       /// <returns></returns>
         public string add_card(string food_name, string cost, string method, string card_numb)
         {
             this._command_text = "insert into Cards";
@@ -378,7 +426,16 @@ namespace Preventorium
             return "OK";
         }
 
-        //модифицирует запись о карте
+        /// <summary>
+        /// модифицирует запись о карте
+        /// </summary>
+        /// <param name="card_id"></param>
+        /// <param name="food_id"></param>
+        /// <param name="food_name"></param>
+        /// <param name="cost"></param>
+        /// <param name="method"></param>
+        /// <param name="card_numb"></param>
+        /// <returns></returns>
         public string upd_card(int card_id, int food_id, string food_name, string cost, string method, string card_numb)
         {
             string query = "update Cards set ";
@@ -491,7 +548,10 @@ namespace Preventorium
             return card;
         }
 
-        //возвращает блюдо по указанному в параметрах идентификатору (коду)
+        /// <summary>
+        /// возвращает блюдо по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <returns></returns>
         public class_card[] get_list_food_name_in_card()
         {
             class_card[] food = new class_card[512];
@@ -523,7 +583,16 @@ namespace Preventorium
             return food;
         }
 
-        //добавляет запись о блюде в базу данных
+        /// <summary>
+        /// добавляет запись о блюде в базу данных
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="calories"></param>
+        /// <param name="proteins"></param>
+        /// <param name="fats"></param>
+        /// <param name="carbo"></param>
+        /// <param name="weight"></param>
+        /// <returns></returns>
         public string add_food(string name, string calories, string proteins, string fats, string carbo, string weight)
         {
             this._command_text = "insert into Foods";
@@ -602,7 +671,17 @@ namespace Preventorium
             return "OK";
         }
 
-        //модифицирует запись (данные) о блюде в базе данных
+        /// <summary>
+        /// модифицирует запись (данные) о блюде в базе данных
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="calories"></param>
+        /// <param name="proteins"></param>
+        /// <param name="fats"></param>
+        /// <param name="carbo"></param>
+        /// <param name="weight"></param>
+        /// <returns></returns>
         public string upd_food(int id, string name, string calories, string proteins, string fats, string carbo, string weight)
         {
             string query = "update Foods set ";
@@ -679,7 +758,11 @@ namespace Preventorium
             return "OK";
         }
 
-        //возвращает блюдо по указанному в параметрах идентификатору (коду)
+        /// <summary>
+        /// возвращает блюдо по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public class_food get_food(int id)
         {
             class_food food = new class_food();
@@ -750,7 +833,12 @@ namespace Preventorium
         }
 
 
-        //добавляет запись о диете в базу данных
+        /// <summary>
+        /// добавляет запись о диете в базу данных
+        /// </summary>
+        /// <param name="numbDiet"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
         public string add_diet(string numbDiet, string description)
         {
             this._command_text = "insert into Diets";
@@ -792,7 +880,13 @@ namespace Preventorium
             return "OK";
         }
 
-        //модифицирует запись (данные) о диете в базе данных
+        /// <summary>
+        /// модифицирует запись (данные) о диете в базе данных
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="numbDiet"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
         public string upd_diet(int id, string numbDiet, string description)
         {
             string query = "update Diets set ";
@@ -833,7 +927,11 @@ namespace Preventorium
             return "OK";
         }
 
-        //возвращает диету по указанному в параметрах идентификатору (коду)
+        /// <summary>
+        /// возвращает диету по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public class_diet get_diet(int id)
         {
             class_diet diet = new class_diet();
@@ -871,7 +969,13 @@ namespace Preventorium
             return diet;
         }
 
-        //добавляет запись о справочнике в базу данных
+        /// <summary>
+        /// добавляет запись о справочнике в базу данных
+        /// </summary>
+        /// <param name="author"></param>
+        /// <param name="year"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public string add_book(string author, string year, string name)
         {
             this._command_text = "insert into Book";
@@ -921,7 +1025,14 @@ namespace Preventorium
             return "OK";
         }
 
-        //модифицирует запись (данные) о справочнике в базе данных
+        /// <summary>
+        /// модифицирует запись (данные) о справочнике в базе данных
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="author"></param>
+        /// <param name="year"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public string upd_book(int id, string author, string year, string name)
         {
             string query = "update Book set ";
@@ -971,7 +1082,11 @@ namespace Preventorium
             return "OK";
         }
 
-        //возвращает справочник по указанному в параметрах идентификатору (коду)
+        /// <summary>
+        /// возвращает справочник по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public class_book get_book(int id)
         {
             class_book book = new class_book();
@@ -1017,7 +1132,14 @@ namespace Preventorium
             return book;
         }
 
-        //добавляет ингридиент в блюдо
+        /// <summary>
+        /// добавляет ингридиент в блюдо
+        /// </summary>
+        /// <param name="food_name"></param>
+        /// <param name="gross"></param>
+        /// <param name="net"></param>
+        /// <param name="name_ingr"></param>
+        /// <returns></returns>
         public string add_ingr_in_food(string food_name, string gross, string net, string name_ingr)
         {
             this._command_text = "insert into Ingridients_in_food";
@@ -1074,7 +1196,16 @@ namespace Preventorium
             return "OK";
         }
 
-        //модифицирует запись о ингридиенте в блюде
+        /// <summary>
+        /// модифицирует запись о ингридиенте в блюде
+        /// </summary>
+        /// <param name="ingr_id"></param>
+        /// <param name="food_name"></param>
+        /// <param name="gross"></param>
+        /// <param name="net"></param>
+        /// <param name="name_ingr"></param>
+        /// <param name="ingr_old"></param>
+        /// <returns></returns>
         public string upd_ingr_in_food(int ingr_id, string food_name, string gross, string net, string name_ingr, string ingr_old)
         {
             string query = "update Ingridients_in_food set ";
@@ -1121,8 +1252,13 @@ namespace Preventorium
             return "OK";
         }
 
-        // возвращает ингридиент в блюде по указанному в параметрах идентификатору (коду)
-        public class_ingr_in_food get_ingr_in_food(string ingr_name,string food_name)
+        /// <summary>
+        /// возвращает ингридиент в блюде по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <param name="ingr_name"></param>
+        /// <param name="food_name"></param>
+        /// <returns></returns>
+         public class_ingr_in_food get_ingr_in_food(string ingr_name,string food_name)
         {
             class_ingr_in_food ingr_in_food = new class_ingr_in_food();
             string query = "Select  F.Name_food, I.ingridient_name, IIF.Gross_weight, IIF.Net_weight, IIF.Id_ingridients "
@@ -1179,7 +1315,11 @@ namespace Preventorium
 
             return ingr_in_food;
         }
-        // возвращает ингридиент по указанному в параметрах идентификатору (коду)
+    
+        /// <summary>
+         ///  возвращает ингридиент по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <returns></returns>
         public class_ingr_in_food[] get_list_ingr_id()
         {
             class_ingr_in_food[] ingr = new class_ingr_in_food[512];
@@ -1210,7 +1350,11 @@ namespace Preventorium
 
             return ingr;
         }
-        //возвращает блюдо по указанному в параметрах идентификатору (коду)
+      
+        /// <summary>
+    /// возвращает блюдо по указанному в параметрах идентификатору (коду)
+    /// </summary>
+    /// <returns></returns>
         public class_ingr_in_food[] get_list_food_id()
         {
             class_ingr_in_food[] id_food = new class_ingr_in_food[512];
@@ -1242,7 +1386,14 @@ namespace Preventorium
             return id_food;
         }
 
-        //добавляет запись о очереди в базу данных
+        /// <summary>
+        /// добавляет запись о очереди в базу данных
+        /// </summary>
+        /// <param name="season"></param>
+        /// <param name="numb_men"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public string add_queue(string season, string numb_men, string start, string end)
         {
             this._command_text = "insert into Queue";
@@ -1301,7 +1452,15 @@ namespace Preventorium
             return "OK";
         }
 
-        //модифицирует запись (данные) о очереди в базе данных
+        /// <summary>
+        /// модифицирует запись (данные) о очереди в базе данных
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="season"></param>
+        /// <param name="numb_men"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public string upd_queue(int id, string season, string numb_men, string start, string end)
         {
             string query = "update Queue set ";
@@ -1360,7 +1519,11 @@ namespace Preventorium
             return "OK";
         }
 
-        //возвращает очередь по указанному в параметрах идентификатору (коду)
+        /// <summary>
+        /// возвращает очередь по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public class_queue get_queue(int id)
         {
             class_queue queue = new class_queue();
@@ -1422,7 +1585,13 @@ namespace Preventorium
             return queue;
         }
 
-        //добавляет ингридиент в блюдо
+        /// <summary>
+        /// добавляет ингридиент в блюдо
+        /// </summary>
+        /// <param name="card_numb"></param>
+        /// <param name="food_name"></param>
+        /// <param name="diet_numb"></param>
+        /// <returns></returns>
         public string add_diet_in_food(string card_numb, string food_name, string diet_numb)
         {
             this._command_text = "insert into Food_In_Diets";
@@ -1470,7 +1639,19 @@ namespace Preventorium
             return "OK";
         }
 
-        //модифицирует запись о диете в блюде
+        /// <summary>
+        /// модифицирует запись о диете в блюде
+        /// </summary>
+        /// <param name="food_id"></param>
+        /// <param name="diet_id"></param>
+        /// <param name="card_id"></param>
+        /// <param name="food_name"></param>
+        /// <param name="diet_numb"></param>
+        /// <param name="card_numb"></param>
+        /// <param name="food_old"></param>
+        /// <param name="diet_old"></param>
+        /// <param name="card_old"></param>
+        /// <returns></returns>
         public string upd_diet_in_food(int food_id, int diet_id, int card_id, string food_name, string diet_numb, string card_numb, string food_old, string diet_old, string card_old)
         {
             string query = "update Food_In_Diets set ";
@@ -1514,8 +1695,14 @@ namespace Preventorium
             return "OK";
         }
 
-        // возвращает диету в блюде по указанному в параметрах идентификатору (коду)
-        public class_diet_in_food get_diet_in_food(string food_name, string diet_numb, string card_numb)
+        /// <summary>
+        /// возвращает диету в блюде по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <param name="food_name"></param>
+        /// <param name="diet_numb"></param>
+        /// <param name="card_numb"></param>
+        /// <returns></returns>
+         public class_diet_in_food get_diet_in_food(string food_name, string diet_numb, string card_numb)
         {
             class_diet_in_food diet_in_food = new class_diet_in_food();
             string query = "Select F.Name_food, D.NumOfDiet, C.Number_Card, FID.ID_food "
@@ -1565,7 +1752,10 @@ namespace Preventorium
 
             return diet_in_food;
         }
-
+        /// <summary>
+    /// Возвращает помер диеты и id
+    /// </summary>
+    /// <returns></returns>
         public class_diet_in_food[] get_list_diet_id()
         {
             class_diet_in_food[] diet = new class_diet_in_food[512];
@@ -1597,7 +1787,10 @@ namespace Preventorium
             return diet;
         }
 
-        //возвращает блюдо по указанному в параметрах идентификатору (коду)
+        /// <summary>
+        /// возвращает блюдо по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <returns></returns>
         public class_diet_in_food[] get_list_food_name()
         {
             class_diet_in_food[] food = new class_diet_in_food[512];
@@ -1629,7 +1822,10 @@ namespace Preventorium
             return food;
         }
 
-        //возвращает карту по указанному в параметрах идентификатору (коду)
+        /// <summary>
+        /// возвращает карту по указанному в параметрах идентификатору (коду)
+        /// </summary>
+        /// <returns></returns>
         public class_diet_in_food[] get_list_card_id()
         {
             class_diet_in_food[] card = new class_diet_in_food[512];
@@ -1656,6 +1852,282 @@ namespace Preventorium
             catch (Exception ex)
             {
                 card[1].result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            return card;
+        }
+
+        //добавляет сотрудника
+        public string add_person(string surname, string name, string secname)
+        {
+            this._command_text = "insert into Person";
+            this._command_text += "(Surname, Name, Secondname) ";
+            this._command_text += "values(";
+
+            if (surname == "")
+            { this._command_text += "null"; this._command_text += ", "; }
+            else
+            {
+                this._command_text += "'" + surname + "', ";
+            }
+
+            if (name == "")
+            { this._command_text += "null"; this._command_text += ", "; }
+            else
+            {
+                this._command_text += "'" + name + "', ";
+            }
+
+            if (secname == "")
+            { this._command_text += "null"; this._command_text += ") "; }
+            else
+            {
+                this._command_text += "'" + secname + "') ";
+            }
+
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = this._command_text;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                return (ex.Message + " " + ex.Data);
+            }
+
+            return "OK";
+        }
+
+        //модифицирует сотрудника
+        public string upd_person(int post_id, string surname, string name, string secname)
+        {
+            string query = "update Person set ";
+            query += "Surname=";
+            if (surname == "") { query += "null, "; }
+            else
+            {
+                query += "'" + surname + "', ";
+            }
+
+            query += "Name =";
+            if (name == "") { query += "null, "; }
+            else
+            {
+                query += "'" + name + "', ";
+            }
+
+            query += "Secondname =";
+            if (secname == "") { query += "null "; }
+            else
+            {
+                query += "'" + secname + "' ";
+            }
+
+            query += "where IDPost = '" + post_id + "'";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                return ("ERROR_" + ex.Message + " " + ex.Data);
+            }
+
+            return "OK";
+        }
+
+        // возвращает сотрудника по указанному в параметрах идентификатору (коду)
+        public class_person get_person(int post_id)
+        {
+            class_person person = new class_person();
+            string query = "select Surname, Name, Secondname, IDPost "
+                            + "from Person ";
+            query += "where IDPost = '" + post_id + "'";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                if (rd.Read())
+                {
+                    person.result = "OK";
+                    person.post_id = post_id.ToString();
+                    person.surname = rd.GetString(0);
+
+                    if (rd.IsDBNull(1))
+                    {
+                        person.name = "";
+                    }
+                    else
+                    {
+                        person.name = rd.GetString(1);
+                    }
+                    if (rd.IsDBNull(2))
+                    {
+                        person.secondname = "";
+                    }
+                    else
+                    {
+                        person.secondname = rd.GetString(2);
+                    }
+
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                person.result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            return person;
+        }
+
+        //добавляет блюдо в справочник
+        public string add_food_in_book(string card_numb, string food, string book)
+        {
+            this._command_text = "insert into FoodInBook";
+            this._command_text += "(Id_Cards, ID_food, IDBook) ";
+            this._command_text += "values(";
+
+            if (card_numb == "")
+            { this._command_text += "null"; this._command_text += ", "; }
+            else
+            {
+                this._command_text += "(select Id_Cards from Cards where Number_Card ='" + card_numb;
+                this._command_text += "'),";
+            }
+
+            if (food == "")
+            { this._command_text += "null"; this._command_text += ", "; }
+            else
+            {
+                this._command_text += "(select ID_Food from Foods where Name_Food ='" + food;
+                this._command_text += "'),";
+            }
+
+
+            if (book == "")
+            { this._command_text += "null"; this._command_text += ")"; }
+            else
+            {
+                this._command_text += "(select IDBook from Book where Name ='" + book;
+                this._command_text += "'))";
+            }
+
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = this._command_text;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Для этого блюда уже определен справочник!");
+            }
+
+            return "OK";
+        }
+
+        // возвращает рецепт для блюда по указанному в параметрах идентификатору (коду)
+        public food_in_book get_food_in_book(string food)
+        {
+            food_in_book food_in_book = new food_in_book();
+            string query = "select C.Number_Card, F.Name_food, B.Name, FIB.IDBook "
+                         + "from FoodInBook FIB "
+                         + "join Cards C on C.Id_Cards = FIB.Id_Cards "
+                         + "join Foods F on F.ID_food = FIB.ID_food "
+                         + "join Book B on B.IDBook = FIB.IDBook ";
+            query += "where F.Name_food = '" + food.ToString() + "'";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                if (rd.Read())
+                {
+                    food_in_book.result = "OK";
+                    //food_in_book.card = card.ToString();
+                    food_in_book.food = rd.GetString(1);
+
+                    if (rd.IsDBNull(0))
+                    {
+                        food_in_book.card = "";
+                    }
+                    else
+                    {
+                        food_in_book.card = rd.GetString(0);
+                    }
+                    if (rd.IsDBNull(2))
+                    {
+                        food_in_book.book = "";
+                    }
+                    else
+                    {
+                        food_in_book.book = rd.GetString(2);
+                    }
+                    if (rd.IsDBNull(3))
+                    {
+                        food_in_book.book_id = "";
+                    }
+                    else
+                    {
+                        food_in_book.book_id = rd.GetInt32(3).ToString();
+                    }
+
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                food_in_book.result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            return food_in_book;
+        }
+        //возвращает карту по указанному в параметрах идентификатору (коду)
+        public food_in_book[] get_list_food_in_book_id()
+        {
+            food_in_book[] card = new food_in_book[512];
+            string query = "Select C.ID_food, F.Name_food "
+                         + "from Cards C "
+                         + "join Foods F on F.ID_food = C.ID_food";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                int i = 0;
+                while (rd.Read())
+                {
+                    i++;
+                    card[i] = new food_in_book();
+                    card[i].result = "OK";
+                    card[i].food_id = rd.GetInt32(0).ToString();
+                    card[i].food = rd.GetString(1);
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                card[0].result = "ERROR_" + ex.Data + " " + ex.Message;
             }
 
             return card;

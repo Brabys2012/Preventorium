@@ -79,7 +79,7 @@ namespace Preventorium
         /// <summary>
         /// Это поле список людей работающих  в данной предметной области
         /// </summary>
-        public person[] _person;
+        public class_person[] _person;
         /// <summary>
         /// СОдержит id книги по которому ,будем вытаскивать книги
         /// </summary>
@@ -96,6 +96,8 @@ namespace Preventorium
         public class_book[] _book2;
         public class_book[] _book3;
         public class_book[] _book4;
+
+       // public class_post[] _post;
 
 
         /// <summary>
@@ -157,9 +159,9 @@ namespace Preventorium
         /// Метод содержит sql запрос,который возвращает имена работающих в профике
         /// </summary>
         /// <returns>имена,фамилии и т.д</returns>
-        public person[] get_person_list()
+        public class_person[] get_person_list()
         {
-            person[] person = new person[512];
+            class_person[] person = new class_person[512];
             string query = "select *  from Person ";
 
 
@@ -175,11 +177,12 @@ namespace Preventorium
                 while (rd.Read())
                 {
                     i = i + 1;
-                    person[i] = new person();
+                    person[i] = new class_person();
                     person[i].result = "OK";
                     person[i].name = rd.GetString(1).ToString();
                     person[i].surname = rd.GetString(2).ToString();
                     person[i].secondname = rd.GetString(3).ToString();
+                    person[i].id = rd.GetInt32(0).ToString();
 
 
                 }
@@ -293,10 +296,6 @@ namespace Preventorium
             }
 
             return foods_list1;
-
-
-
-
 
         }
 
@@ -1155,7 +1154,6 @@ namespace Preventorium
 
             return ves_list;
 
-
         }
         public class_ingr_food[] ves_list1()
         {
@@ -1224,7 +1222,6 @@ namespace Preventorium
 
             return ves_list2;
 
-
         }
         public class_ingr_food[] ves_list2()
         {
@@ -1246,7 +1243,6 @@ namespace Preventorium
 
                     if (this._ingr_list3[k] != null)
                     {
-
                         string g = this._ingr_list3[k].ingr_id;
 
                         string query1 = g + "'";
@@ -1302,14 +1298,11 @@ namespace Preventorium
             }
             return ves_list2;
 
-
         }
         public class_ingr_food[] ves_list3()
         {
 
             class_ingr_food[] ves_list3 = new class_ingr_food[512];
-
-
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
 
             if (_ingr_list4 == null)
@@ -1330,7 +1323,6 @@ namespace Preventorium
                         string query1 = g + "'";
 
                         string query3 = "and ID_food='";
-
 
                         for (int t = 1; t < this._food_list1.Count(); t++)
 
@@ -1377,15 +1369,11 @@ namespace Preventorium
                     }
             }
             return ves_list3;
-
-
         }
+        
         public class_ingr_food[] ves_list4()
         {
-
             class_ingr_food[] ves_list4 = new class_ingr_food[512];
-
-
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
 
             if (_ingr_list5 == null)
@@ -1454,10 +1442,6 @@ namespace Preventorium
             }
             return ves_list4;
 
-
-
-
-
         }
         public class_ingr_food[] ves_list5()
         {
@@ -1466,8 +1450,6 @@ namespace Preventorium
 
 
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
-
-
 
             for (int k = 1; k < this._ingr_list6.Count(); k++)
 
@@ -1527,10 +1509,6 @@ namespace Preventorium
 
             return ves_list5;
 
-
-
-
-
         }
         public class_ingr_food[] ves_list6()
         {
@@ -1539,8 +1517,6 @@ namespace Preventorium
 
 
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
-
-
 
             for (int k = 1; k < this._ingr_list7.Count(); k++)
 
@@ -1552,7 +1528,6 @@ namespace Preventorium
                     string query1 = g + "'";
 
                     string query3 = "and ID_food='";
-
 
                     for (int t = 1; t < this._food_list1.Count(); t++)
 
@@ -1600,10 +1575,6 @@ namespace Preventorium
 
             return ves_list6;
 
-
-
-
-
         }
         public class_ingr_food[] ves_list7()
         {
@@ -1612,8 +1583,6 @@ namespace Preventorium
 
 
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
-
-
 
             for (int k = 1; k < this._ingr_list8.Count(); k++)
 
@@ -1673,10 +1642,6 @@ namespace Preventorium
 
             return ves_list7;
 
-
-
-
-
         }
         public class_ingr_food[] ves_list8()
         {
@@ -1685,8 +1650,6 @@ namespace Preventorium
 
 
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
-
-
 
             for (int k = 1; k < this._ingr_list9.Count(); k++)
 
@@ -1746,10 +1709,6 @@ namespace Preventorium
 
             return ves_list8;
 
-
-
-
-
         }
         public class_ingr_food[] ves_list9()
         {
@@ -1758,8 +1717,6 @@ namespace Preventorium
 
 
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
-
-
 
             for (int k = 1; k < this._ingr_list10.Count(); k++)
 
@@ -1818,12 +1775,7 @@ namespace Preventorium
                 }
 
             return ves_list9;
-
-
-
-
-
-        }
+          }
         public class_ingr_food[] ves_list10()
         {
 
@@ -1892,11 +1844,8 @@ namespace Preventorium
 
             return ves_list10;
 
+       }
 
-
-
-
-        }
         public class_ingr_food[] ves_list11()
         {
 
@@ -1904,8 +1853,6 @@ namespace Preventorium
 
 
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
-
-
 
             for (int k = 1; k < this._ingr_list12.Count(); k++)
 
@@ -1964,12 +1911,8 @@ namespace Preventorium
                 }
 
             return ves_list11;
-
-
-
-
-
         }
+        
         public class_ingr_food[] ves_list12()
         {
 
@@ -2036,10 +1979,6 @@ namespace Preventorium
                 }
 
             return ves_list13;
-
-
-
-
 
         }
         public class_ingr_food[] ves_list13()
@@ -2108,11 +2047,7 @@ namespace Preventorium
                 }
 
             return ves_list14;
-
-
-
-
-
+            
         }
 
         /*private void fill_ingr_list()
@@ -2180,11 +2115,20 @@ namespace Preventorium
                 {
                     break;
                 }
+                
             }
+           
         }
 
-        private void bt_ok_Click(object sender, EventArgs e)
-        {   
+   
+        public void bt_ok_Click(object sender, EventArgs e)
+        {
+            if ((cb_food.Text == "") || (cb_diets_vrach.Text == "") || (Cb_diet_vrach2.Text == ""))
+            {
+                MessageBox.Show("Вы не выбрали блюдо или ответсвенного за диеты   ");
+                return;
+            }
+            
             var namevr2 = cb_diets_vrach.Text;
             var namevr3 = this.Cb_diet_vrach2.Text;
             var namevr1 = this.cb_ok.Text;
@@ -2203,12 +2147,7 @@ namespace Preventorium
             word1("[doctor]", namevr3, word);
 
 
-            if ((cb_food.Text == "") || (cb_diets_vrach.Text == "") || (Cb_diet_vrach2.Text == ""))
-            {
-                MessageBox.Show("Вы не выбрали значения ");
-                return;
-            }
-
+          
 
             if (_book[1] == null)
             {
@@ -3890,9 +3829,7 @@ namespace Preventorium
                 }
             }
 
-
-
-            if (this._ves_list13[1] == null)
+               if (this._ves_list13[1] == null)
             {
                 var net13 = "";
                 var br13 = "";
@@ -3920,10 +3857,6 @@ namespace Preventorium
                     }
                 }
             }
-
-
-
-
 
 
             if (this._food_list2 == null)
@@ -4022,9 +3955,9 @@ namespace Preventorium
 
             App.Visible = true;
 
-            string fileName = String.Empty;
+            //string fileName = String.Empty;
 
-            SaveFileDialog saveFileExcel = new SaveFileDialog();
+         /*   SaveFileDialog saveFileExcel = new SaveFileDialog();
             saveFileExcel.Filter = "Excel files |*.docx|All files (*.*)|*.*";
             saveFileExcel.FilterIndex = 2;
             saveFileExcel.RestoreDirectory = true;
@@ -4038,7 +3971,7 @@ namespace Preventorium
 
             }
             else
-                return;
+                return;*/
             //word.SaveAs(@"D:\1-86.docx");
             GC.Collect();
             GC.Collect();
@@ -4052,13 +3985,11 @@ namespace Preventorium
         /// <param name="word"></param>
         private void word1(string stubToReplace, string text, word.Document word)
         {
-
             var range = word.Content;
 
             range.Find.ClearFormatting();
 
             range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
-
 
         }
 
@@ -4164,6 +4095,8 @@ namespace Preventorium
 
             this._person = this.get_person_list();
             fill_person_list();
+           // this._post = this.get_post_list();
+
             this.cb_diets_vrach.Visible = true;
             this.cb_ok.Visible = true;
             this.cb_diets_vrach.Visible = true;
@@ -4171,12 +4104,40 @@ namespace Preventorium
             this.Cb_diet_vrach2.Visible = true;
             gbcards.Visible = true;
             gbdiets.Visible = true;
-
-
-
         }
 
+    /*    public class_post[] get_post_list()
+        {
+            class_post[] post = new class_post[512];
+            string query = "select *  from Post where IDPost='" + this._person[1].id + "'";
+            
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                        com.CommandText = query;
 
+                        SqlDataReader rd = com.ExecuteReader();
+                        int i = 0;
+                        while (rd.Read())
+                        {
+                            i = i + 1;
+                            post[i] = new class_post();
+                            post[i].result = "OK";
+                            post[i].position = rd.GetString(3).ToString();
+
+                        }
+                        rd.Close();
+                        rd.Dispose();
+                        com.Dispose();
+        }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + " " + ex.Data);
+                        return null;
+                    }
+                 return post;
+        }*/
         public class_book[] get_id_book_list()
         {
 
@@ -4385,7 +4346,7 @@ namespace Preventorium
             class_book[] book = new class_book[512];
             string query = "select *  from Book where IDBook='";
 
-            //  for (int t = 1; t < this._id_book.Count(); t++)
+           
 
             if (this._id_book[4] != null)
             {
@@ -4436,7 +4397,7 @@ namespace Preventorium
             class_book[] book = new class_book[512];
             string query = "select *  from Book where IDBook='";
 
-            //  for (int t = 1; t < this._id_book.Count(); t++)
+         
 
             if (this._id_book[5] != null)
             {
@@ -4481,6 +4442,9 @@ namespace Preventorium
 
 
         }
+
+        
+        
     }
 }
       /*  public class_book[] get_book_year()

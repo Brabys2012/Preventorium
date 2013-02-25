@@ -1,20 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Preventorium
 {
-    public partial class add_cards : Form
+    public partial class add_person : Form
     {
-
         //модуль, через который работать с базой
         private db_connect _data_module;
         //Состояние (new/old/mod)
         private string _state;
         //ID для загрузки данных (в режиме OLD)
-        private string card_id;
-        private string food_name;
-        private string food_id;
+        private string post_id;
 
         private void enabled_b_save(object sender, EventArgs e)
         {
@@ -23,92 +25,51 @@ namespace Preventorium
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
-        public add_cards(db_connect data_module)
+        public add_person(db_connect data_module)
         {
             InitializeComponent();
-            
-            class_card[] card = new class_card[512];
-            card = Program.add_read_module.get_list_food_name_in_card();
-            if (card != null)
-            {
-                this.cb_food.Items.Clear();
-                for (int i = 1; i < card.Count(); i++)
-                {
-                    if (card[i] != null)
-                    {
-                        this.cb_food.Items.Add(card[i].food_name);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-           
-            this._data_module = data_module;
             this.set_state("NEW");
-
         }
 
-        //Добавление карты
-        private void add_new_cards()
+        //Добавление сотрудника
+        private void add_new_person()
         {
-            add_cards card = new add_cards(Program.data_module);
-            card.ShowDialog();
+            add_person add_person = new add_person(Program.data_module);
+            add_person.ShowDialog();
         }
+
 
         //Конструктор, вызываемый для редактирования
-        public add_cards(db_connect data_module, int card_id, string food_name, int food_id)
+        public add_person(db_connect data_module, int post_id)
         {
             InitializeComponent();
-            
-            class_card[] card = new class_card[512];
-            card = Program.add_read_module.get_list_food_name_in_card();
-            if (card != null)
-            {
-                this.cb_food.Items.Clear();
-                for (int i = 1; i < card.Count(); i++)
-                {
-                    if (card[i] != null)
-                    {
-                        this.cb_food.Items.Add(card[i].food_name);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
-            this.card_id = card_id.ToString();
-            this.food_id = food_id.ToString();  
-            this.set_state("OLD");
-            this.food_name = food_name.ToString();
-            this.fill_card_data();
+            this.post_id = post_id.ToString();
             this._data_module = data_module;
-           
+            this.fill_person_data();
+            this.set_state("OLD");
         }
 
         //заполняет форму данными, полученными из базы данных при просмотре существующей в БД записи
-        public void fill_card_data()
-        {     
-            class_card card;
-            card = Program.add_read_module.get_card(Convert.ToInt32(this.card_id), food_name);
-            if (card.result == "OK")
+        public void fill_person_data()
+        {
+
+            class_person person;
+            person = Program.add_read_module.get_person(Convert.ToInt32(this.post_id));
+            if (person.result == "OK")
             {
-               
-                this.cb_food.Text = card.food_name;
-                this.tb_cost.Text = card.cost;
-                this.tb_method.Text = card.method;
-                this.tb_card_numb.Text = card.card_numb;
+                this.tb_surname.Text = person.surname;
+                this.tb_name.Text = person.name;
+                this.tb_sec_name.Text = person.secondname;
+
             }
             else
             {
                 //Не удалось получить сведений
-                MessageBox.Show(card.result);
+                MessageBox.Show(person.result);
                 this.Dispose();
             }
         }
+
 
         public void set_state(string state)
         {
@@ -142,23 +103,23 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
-
-                    result = Program.add_read_module.add_card(this.cb_food.Text,
-                        this.tb_cost.Text,
-                        this.tb_method.Text,
-                        this.tb_card_numb.Text);
+                    result = Program.add_read_module.add_person(
+                        this.tb_surname.Text,
+                        this.tb_name.Text,
+                        this.tb_sec_name.Text);
                     this.Close();
                     break;
-
 
                 //Если модифицируется существующая...
                 case "MOD":
 
-                result = Program.add_read_module.upd_card(Convert.ToInt32(this.card_id),
-                Convert.ToInt32(this.food_id),
-                this.cb_food.Text, this.tb_cost.Text,
-                     this.tb_method.Text,
-                     this.tb_card_numb.Text);
+                    class_person person;
+                    person = Program.add_read_module.get_person(Convert.ToInt32(this.post_id));
+
+                result = Program.add_read_module.upd_person(Convert.ToInt32(this.post_id),
+                    this.tb_surname.Text,
+                     this.tb_name.Text,
+                     this.tb_sec_name.Text);
                     this.Close();
                     break;
 
@@ -188,16 +149,13 @@ namespace Preventorium
                 MessageBox.Show(result);
             }
 
-            this.Dispose();
-
+            this.Update();
         }
 
         private void b_abolition_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        
 
     }
 }

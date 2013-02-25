@@ -41,17 +41,18 @@
             this.add_butt = new System.Windows.Forms.ToolStripButton();
             this.read_but = new System.Windows.Forms.ToolStripButton();
             this.bDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.Report_Excel = new System.Windows.Forms.ToolStripDropDownButton();
             this.Excel_Exp = new System.Windows.Forms.ToolStripMenuItem();
             this.gw = new System.Windows.Forms.DataGridView();
-            this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.Menu_ingr_strip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.read_butt = new System.Windows.Forms.ToolStripMenuItem();
             this.delete_butt = new System.Windows.Forms.ToolStripMenuItem();
+            this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.Menu_ingr.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.Menu_ingr_strip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripSeparator2
@@ -80,6 +81,7 @@
             this.read_but,
             this.toolStripSeparator1,
             this.bDelete,
+            this.toolStripSeparator4,
             this.Report_Excel});
             this.Menu_ingr.Location = new System.Drawing.Point(0, 0);
             this.Menu_ingr.Name = "Menu_ingr";
@@ -118,6 +120,11 @@
             this.bDelete.Text = "Удалить";
             this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // Report_Excel
             // 
             this.Report_Excel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -135,7 +142,7 @@
             this.Excel_Exp.Name = "Excel_Exp";
             this.Excel_Exp.Size = new System.Drawing.Size(157, 22);
             this.Excel_Exp.Text = "Экспорт в Excel";
-            this.Excel_Exp.Click += new System.EventHandler(this.экспортВExcelToolStripMenuItem1_Click);
+            this.Excel_Exp.Click += new System.EventHandler(this.Export_Excel_Click);
             // 
             // gw
             // 
@@ -231,8 +238,8 @@
             this.Menu_ingr.ResumeLayout(false);
             this.Menu_ingr.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.Menu_ingr_strip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +261,6 @@
         private System.Windows.Forms.ContextMenuStrip Menu_ingr_strip;
         private System.Windows.Forms.ToolStripMenuItem read_butt;
         private System.Windows.Forms.ToolStripMenuItem delete_butt;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Preventorium
 {
     public partial class add_book : Form
     {
+        private string _current_state;
+
         //модуль, через который работать с базой
         private db_connect _data_module;
         //Состояние (new/old/mod)
@@ -14,7 +17,6 @@ namespace Preventorium
 
           private void enabled_b_save(object sender, EventArgs e)
           {
-              this.l_status.Text = "Запись изменена";
               this.b_save.Enabled = true;
               if (this._state == "OLD") { this.set_state("MOD"); };
           }
@@ -66,7 +68,6 @@ namespace Preventorium
                    case "OLD":
                        this._state = "OLD";
                        this.Text = "Справочники - Просмотр";
-                       this.status.Text = "";
                        this.b_save.Enabled = false;
                        break;
 
@@ -92,7 +93,6 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
-                    this.l_status.Text = "Добавление нового справочника...";
 
                     result = Program.add_read_module.add_book(this.tb_author.Text,
                         this.tb_year.Text,
@@ -103,7 +103,6 @@ namespace Preventorium
 
                 //Если модифицируется существующая...
               case "MOD":
-                    this.l_status.Text = "Модификация данных о справочнике.. ";
                  result = Program.add_read_module.upd_book(Convert.ToInt32(this._id), 
                      this.tb_author.Text,
                      this.tb_year.Text, 
@@ -112,7 +111,6 @@ namespace Preventorium
                     break;
 
                 default:
-                    this.l_status.Text = "Ошибка";
                     result = "NDF";
                     // не используется, однако mvs не позволяет 
                     // дальше работать переменной, которой в одной
@@ -131,12 +129,10 @@ namespace Preventorium
                     if (this._state == "MOD")
                     {
                         this.set_state("OLD");
-                        this.status.Text = "Изменение записи успешно завершено";
                     }
             }
             else
             {
-                this.status.Text = "Ошибка";
                 MessageBox.Show(result);
             }
 
@@ -146,6 +142,84 @@ namespace Preventorium
            private void b_abolition_Click(object sender, EventArgs e)
            {
                this.Close();
+           }
+
+           public void load_data_table(string state)
+           {
+               bs.DataSource = Program.data_module.get_food_in_book("FoodInBook", Convert.ToInt32(this._id)).Tables[state];
+               gw.DataSource = bs;
+               gw.Columns[0].Visible = false;
+               gw.Columns[1].Visible = false;
+               gw.Columns[2].Visible = false;
+               gw.Columns[5].Visible = false;
+               gw.Update();
+               gw.Show();
+               this._current_state = state;
+           }
+
+           private void add_food_Load(object sender, EventArgs e)
+           {
+               this.load_data_table("FoodInBook");
+               gw.Columns[4].HeaderText = "Блюдо";
+               gw.Columns[3].HeaderText = "Номер карты";
+           }
+
+           //Удаление ингредиента из блюда
+           private void b_delete_Click(object sender, EventArgs e)
+           {
+               switch (this._current_state)
+               {
+                   case "FoodInBook":
+                       del_food_from_book del = null;
+                       try
+                       {
+                           del = new del_food_from_book(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString()));
+                           del.ShowDialog();
+                       }
+                       catch (Exception ex)
+                       {
+                           MessageBox.Show("Выберите блюдо!");
+                       }
+                       break;
+               }
+               this.load_data_table(this._current_state);
+           }
+
+           /// <summary>
+           /// Добавление нового ингридиента в блюдо.
+           /// </summary>
+           private void add_new_food_in_book()
+           {
+               add_food_in_book food_in_book = new add_food_in_book(Program.data_module);
+               food_in_book.book = this.tb_name.Text;
+               food_in_book.ShowDialog();
+           }
+
+           private void b_add_Click(object sender, EventArgs e)
+           {
+               switch (this._current_state)
+               {
+                   case "FoodInBook":
+                       this.add_new_food_in_book();
+
+                       break;
+               }
+
+               this.load_data_table(this._current_state);
+           }
+
+           private void bDelete_Click(object sender, EventArgs e)
+           {
+               this.b_delete_Click(sender, e);
+           }
+
+           private void gw_MouseDown(object sender, MouseEventArgs e)
+           {
+               int rowIndex = gw.HitTest(e.X, e.Y).RowIndex;
+               if (rowIndex == -1) return;
+               gw.ClearSelection();
+               gw.Rows[rowIndex].Selected = true;
+               gw.CurrentCell = gw[3, rowIndex];
            }
 
     }

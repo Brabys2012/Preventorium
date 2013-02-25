@@ -1,20 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Preventorium
 {
-    public partial class add_cards : Form
+    public partial class add_food_in_book : Form
     {
-
         //модуль, через который работать с базой
         private db_connect _data_module;
         //Состояние (new/old/mod)
         private string _state;
         //ID для загрузки данных (в режиме OLD)
+        private string food;
+        //public string result;
+        public string card_numb;
+        public string book;
+        public string food_id;
         private string card_id;
-        private string food_name;
-        private string food_id;
+        private string book_id;
 
         private void enabled_b_save(object sender, EventArgs e)
         {
@@ -23,20 +32,20 @@ namespace Preventorium
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
-        public add_cards(db_connect data_module)
+        public add_food_in_book(db_connect data_module)
         {
             InitializeComponent();
             
-            class_card[] card = new class_card[512];
-            card = Program.add_read_module.get_list_food_name_in_card();
-            if (card != null)
+            food_in_book[] food_in_book = new food_in_book[512];
+            food_in_book = Program.add_read_module.get_list_food_in_book_id();
+            if (food_in_book != null)
             {
                 this.cb_food.Items.Clear();
-                for (int i = 1; i < card.Count(); i++)
+                for (int i = 1; i < food_in_book.Count(); i++)
                 {
-                    if (card[i] != null)
+                    if (food_in_book[i] != null)
                     {
-                        this.cb_food.Items.Add(card[i].food_name);
+                        this.cb_food.Items.Add(food_in_book[i].food);
                     }
                     else
                     {
@@ -44,34 +53,35 @@ namespace Preventorium
                     }
                 }
             }
-           
+   
             this._data_module = data_module;
             this.set_state("NEW");
 
         }
 
-        //Добавление карты
-        private void add_new_cards()
+        //Добавление блюда
+        private void add_new_food_in_book()
         {
-            add_cards card = new add_cards(Program.data_module);
-            card.ShowDialog();
+            add_food_in_book add_food = new add_food_in_book(Program.data_module);
+            add_food.ShowDialog();
         }
 
+
         //Конструктор, вызываемый для редактирования
-        public add_cards(db_connect data_module, int card_id, string food_name, int food_id)
+        public add_food_in_book(db_connect data_module, string food_in_book_card, string food_in_book_food, string food_in_book_book, int card_id, int food_id, int book_id)
         {
             InitializeComponent();
-            
-            class_card[] card = new class_card[512];
-            card = Program.add_read_module.get_list_food_name_in_card();
-            if (card != null)
+
+            food_in_book[] food_in_book = new food_in_book[512];
+            food_in_book = Program.add_read_module.get_list_food_in_book_id();
+            if (food_in_book != null)
             {
                 this.cb_food.Items.Clear();
-                for (int i = 1; i < card.Count(); i++)
+                for (int i = 1; i < food_in_book.Count(); i++)
                 {
-                    if (card[i] != null)
+                    if (food_in_book[i] != null)
                     {
-                        this.cb_food.Items.Add(card[i].food_name);
+                        this.cb_food.Items.Add(food_in_book[i].food);
                     }
                     else
                     {
@@ -79,36 +89,36 @@ namespace Preventorium
                     }
                 }
             }
-
-            this.card_id = card_id.ToString();
-            this.food_id = food_id.ToString();  
+            
+            this.food_id = food_id.ToString();
+          
             this.set_state("OLD");
-            this.food_name = food_name.ToString();
-            this.fill_card_data();
+
+            this.food = food_in_book_food.ToString();
+
+            this.fill_food_in_book_data();
             this._data_module = data_module;
            
         }
 
         //заполняет форму данными, полученными из базы данных при просмотре существующей в БД записи
-        public void fill_card_data()
-        {     
-            class_card card;
-            card = Program.add_read_module.get_card(Convert.ToInt32(this.card_id), food_name);
-            if (card.result == "OK")
+        public void fill_food_in_book_data()
+        {
+
+            food_in_book food_in_book;
+            food_in_book = Program.add_read_module.get_food_in_book(food);
+            if (food_in_book.result == "OK")
             {
-               
-                this.cb_food.Text = card.food_name;
-                this.tb_cost.Text = card.cost;
-                this.tb_method.Text = card.method;
-                this.tb_card_numb.Text = card.card_numb;
+                this.cb_food.Text = food_in_book.food;
             }
             else
             {
                 //Не удалось получить сведений
-                MessageBox.Show(card.result);
+                MessageBox.Show(food_in_book.result);
                 this.Dispose();
             }
         }
+
 
         public void set_state(string state)
         {
@@ -142,23 +152,37 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
+                    string query = "Select Id_Cards, Number_Card, F.ID_food from Cards "
+                            + "join Foods F on F.ID_food = Cards.ID_food "
+                            + "where F.Name_food = '" + cb_food.Text + "'";
+                      try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                if (rd.Read())
+                {
+                    if (rd.IsDBNull(1))
+                    {
+                        card_numb = "";
+                    }
+                    else
+                    {
+                        card_numb = rd.GetString(1);
+                    }
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
 
-                    result = Program.add_read_module.add_card(this.cb_food.Text,
-                        this.tb_cost.Text,
-                        this.tb_method.Text,
-                        this.tb_card_numb.Text);
-                    this.Close();
-                    break;
-
-
-                //Если модифицируется существующая...
-                case "MOD":
-
-                result = Program.add_read_module.upd_card(Convert.ToInt32(this.card_id),
-                Convert.ToInt32(this.food_id),
-                this.cb_food.Text, this.tb_cost.Text,
-                     this.tb_method.Text,
-                     this.tb_card_numb.Text);
+               catch (Exception ex)
+               {
+                   result = "ERROR_" + ex.Data + " " + ex.Message;
+               }
+                    result = Program.add_read_module.add_food_in_book(card_numb,
+                        this.cb_food.Text,
+                        book);
                     this.Close();
                     break;
 
@@ -188,16 +212,12 @@ namespace Preventorium
                 MessageBox.Show(result);
             }
 
-            this.Dispose();
-
+            this.Update();
         }
 
         private void b_abolition_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        
-
     }
 }

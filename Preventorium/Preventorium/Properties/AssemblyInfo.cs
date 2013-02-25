@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Preventorium")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Санаторий-профилакторий ИГХТУ")]
+[assembly: AssemblyDescription("Система предназначена для автоматизации деятельности организаций санаторно-профилакторного типа. Разработана по заказу санатория-профилактория ИГХТУ.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Preventorium")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCompany("Каф.ИТ при ИГХТУ")]
+[assembly: AssemblyProduct("Санаторий-профилакторий ИГХТУ")]
+[assembly: AssemblyCopyright("Copyright © Каф.ИТ при ИГХТУ, 2013\nCopyright © RUS_Project, 2011-13")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер построения и номер редакции по умолчанию, 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.30")]
+[assembly: AssemblyFileVersion("1.0.1.30")]

@@ -132,7 +132,7 @@
             this.b_cancel.UseVisualStyleBackColor = true;
             this.b_cancel.Click += new System.EventHandler(this.b_abolition_Click);
             // 
-            // add_card
+            // add_cards
             // 
             this.AcceptButton = this.b_save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,7 +151,8 @@
             this.Controls.Add(this.cb_food);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "add_card";
+            this.Name = "add_cards";
+           // this.Load += new System.EventHandler(this.add_cards_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

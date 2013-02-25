@@ -30,10 +30,10 @@
         {
             this.b_save = new System.Windows.Forms.Button();
             this.b_abolition = new System.Windows.Forms.Button();
-            this.tb_2 = new System.Windows.Forms.TextBox();
-            this.tb_1 = new System.Windows.Forms.TextBox();
-            this.tb_3 = new System.Windows.Forms.TextBox();
-            this.tb_4 = new System.Windows.Forms.TextBox();
+            this.tb_zhiri = new System.Windows.Forms.TextBox();
+            this.tb_uglevod = new System.Windows.Forms.TextBox();
+            this.tb_belki = new System.Windows.Forms.TextBox();
+            this.tb_calories = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,37 +63,37 @@
             this.b_abolition.UseVisualStyleBackColor = true;
             this.b_abolition.Click += new System.EventHandler(this.b_abolition_Click);
             // 
-            // tb_2
+            // tb_zhiri
             // 
-            this.tb_2.Location = new System.Drawing.Point(11, 103);
-            this.tb_2.Name = "tb_2";
-            this.tb_2.Size = new System.Drawing.Size(194, 20);
-            this.tb_2.TabIndex = 5;
-            this.tb_2.TextChanged += new System.EventHandler(this.enabled_b_save);
+            this.tb_zhiri.Location = new System.Drawing.Point(11, 103);
+            this.tb_zhiri.Name = "tb_zhiri";
+            this.tb_zhiri.Size = new System.Drawing.Size(194, 20);
+            this.tb_zhiri.TabIndex = 5;
+            this.tb_zhiri.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
-            // tb_1
+            // tb_uglevod
             // 
-            this.tb_1.Location = new System.Drawing.Point(11, 64);
-            this.tb_1.Name = "tb_1";
-            this.tb_1.Size = new System.Drawing.Size(194, 20);
-            this.tb_1.TabIndex = 3;
-            this.tb_1.TextChanged += new System.EventHandler(this.enabled_b_save);
+            this.tb_uglevod.Location = new System.Drawing.Point(11, 64);
+            this.tb_uglevod.Name = "tb_uglevod";
+            this.tb_uglevod.Size = new System.Drawing.Size(194, 20);
+            this.tb_uglevod.TabIndex = 3;
+            this.tb_uglevod.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
-            // tb_3
+            // tb_belki
             // 
-            this.tb_3.Location = new System.Drawing.Point(11, 142);
-            this.tb_3.Name = "tb_3";
-            this.tb_3.Size = new System.Drawing.Size(194, 20);
-            this.tb_3.TabIndex = 7;
-            this.tb_3.TextChanged += new System.EventHandler(this.enabled_b_save);
+            this.tb_belki.Location = new System.Drawing.Point(11, 142);
+            this.tb_belki.Name = "tb_belki";
+            this.tb_belki.Size = new System.Drawing.Size(194, 20);
+            this.tb_belki.TabIndex = 7;
+            this.tb_belki.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
-            // tb_4
+            // tb_calories
             // 
-            this.tb_4.Location = new System.Drawing.Point(11, 181);
-            this.tb_4.Name = "tb_4";
-            this.tb_4.Size = new System.Drawing.Size(194, 20);
-            this.tb_4.TabIndex = 9;
-            this.tb_4.TextChanged += new System.EventHandler(this.enabled_b_save);
+            this.tb_calories.Location = new System.Drawing.Point(11, 181);
+            this.tb_calories.Name = "tb_calories";
+            this.tb_calories.Size = new System.Drawing.Size(194, 20);
+            this.tb_calories.TabIndex = 9;
+            this.tb_calories.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // label1
             // 
@@ -163,10 +163,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_name);
-            this.Controls.Add(this.tb_2);
-            this.Controls.Add(this.tb_1);
-            this.Controls.Add(this.tb_4);
-            this.Controls.Add(this.tb_3);
+            this.Controls.Add(this.tb_zhiri);
+            this.Controls.Add(this.tb_uglevod);
+            this.Controls.Add(this.tb_calories);
+            this.Controls.Add(this.tb_belki);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -181,10 +181,10 @@
 
         private System.Windows.Forms.Button b_save;
         private System.Windows.Forms.Button b_abolition;
-        private System.Windows.Forms.TextBox tb_2;
-        private System.Windows.Forms.TextBox tb_1;
-        private System.Windows.Forms.TextBox tb_3;
-        private System.Windows.Forms.TextBox tb_4;
+        private System.Windows.Forms.TextBox tb_zhiri;
+        private System.Windows.Forms.TextBox tb_uglevod;
+        private System.Windows.Forms.TextBox tb_belki;
+        private System.Windows.Forms.TextBox tb_calories;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.Label label2;

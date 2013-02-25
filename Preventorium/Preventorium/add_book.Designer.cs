@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.l_author = new System.Windows.Forms.Label();
             this.gb_book = new System.Windows.Forms.GroupBox();
             this.tb_name = new System.Windows.Forms.TextBox();
@@ -37,10 +42,20 @@
             this.tb_author = new System.Windows.Forms.TextBox();
             this.b_save = new System.Windows.Forms.Button();
             this.b_abolition = new System.Windows.Forms.Button();
-            this.status = new System.Windows.Forms.StatusStrip();
-            this.l_status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gw = new System.Windows.Forms.DataGridView();
+            this.context = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.bDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.b_add = new System.Windows.Forms.ToolStripButton();
+            this.b_delete = new System.Windows.Forms.ToolStripButton();
+            this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.gb_book.SuspendLayout();
-            this.status.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
+            this.context.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.SuspendLayout();
             // 
             // l_author
@@ -130,20 +145,116 @@
             this.b_abolition.UseVisualStyleBackColor = true;
             this.b_abolition.Click += new System.EventHandler(this.b_abolition_Click);
             // 
-            // status
+            // groupBox1
             // 
-            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.l_status});
-            this.status.Location = new System.Drawing.Point(0, 205);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(284, 22);
-            this.status.TabIndex = 5;
-            this.status.Text = "statusStrip1";
+            this.groupBox1.Controls.Add(this.gw);
+            this.groupBox1.Controls.Add(this.toolStrip1);
+            this.groupBox1.Location = new System.Drawing.Point(279, -13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(374, 214);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
             // 
-            // l_status
+            // gw
             // 
-            this.l_status.Name = "l_status";
-            this.l_status.Size = new System.Drawing.Size(0, 17);
+            this.gw.AllowUserToAddRows = false;
+            this.gw.AllowUserToDeleteRows = false;
+            this.gw.AllowUserToResizeColumns = false;
+            this.gw.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gw.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gw.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gw.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gw.ContextMenuStrip = this.context;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gw.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gw.Location = new System.Drawing.Point(3, 41);
+            this.gw.MultiSelect = false;
+            this.gw.Name = "gw";
+            this.gw.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gw.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.gw.RowHeadersVisible = false;
+            this.gw.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.gw.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gw.ShowCellErrors = false;
+            this.gw.ShowEditingIcon = false;
+            this.gw.ShowRowErrors = false;
+            this.gw.Size = new System.Drawing.Size(368, 170);
+            this.gw.TabIndex = 1;
+            this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
+            // 
+            // context
+            // 
+            this.context.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bDelete});
+            this.context.Name = "contextMenuStrip1";
+            this.context.Size = new System.Drawing.Size(119, 26);
+            // 
+            // bDelete
+            // 
+            this.bDelete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(118, 22);
+            this.bDelete.Text = "Удалить";
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.b_add,
+            this.b_delete});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 16);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(368, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // b_add
+            // 
+            this.b_add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.b_add.Image = global::Preventorium.Properties.Resources.add_button;
+            this.b_add.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.b_add.Name = "b_add";
+            this.b_add.Size = new System.Drawing.Size(23, 22);
+            this.b_add.Text = "Добавить";
+            this.b_add.Click += new System.EventHandler(this.b_add_Click);
+            // 
+            // b_delete
+            // 
+            this.b_delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.b_delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.b_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.b_delete.Name = "b_delete";
+            this.b_delete.Size = new System.Drawing.Size(23, 22);
+            this.b_delete.Text = "Удалить";
+            this.b_delete.Click += new System.EventHandler(this.b_delete_Click);
             // 
             // add_book
             // 
@@ -151,8 +262,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_abolition;
-            this.ClientSize = new System.Drawing.Size(284, 227);
-            this.Controls.Add(this.status);
+            this.ClientSize = new System.Drawing.Size(653, 200);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.b_abolition);
             this.Controls.Add(this.b_save);
             this.Controls.Add(this.gb_book);
@@ -160,12 +271,17 @@
             this.MaximizeBox = false;
             this.Name = "add_book";
             this.Text = "Сведения о справочнике";
+            this.Load += new System.EventHandler(this.add_food_Load);
             this.gb_book.ResumeLayout(false);
             this.gb_book.PerformLayout();
-            this.status.ResumeLayout(false);
-            this.status.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gw)).EndInit();
+            this.context.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -180,7 +296,13 @@
         private System.Windows.Forms.TextBox tb_author;
         private System.Windows.Forms.Button b_save;
         private System.Windows.Forms.Button b_abolition;
-        private System.Windows.Forms.StatusStrip status;
-        private System.Windows.Forms.ToolStripStatusLabel l_status;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton b_add;
+        private System.Windows.Forms.ToolStripButton b_delete;
+        private System.Windows.Forms.BindingSource bs;
+        private System.Windows.Forms.ContextMenuStrip context;
+        private System.Windows.Forms.ToolStripMenuItem bDelete;
+        public System.Windows.Forms.DataGridView gw;
     }
 }

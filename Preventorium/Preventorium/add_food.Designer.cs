@@ -52,15 +52,20 @@
             this.b_abolition = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gw = new System.Windows.Forms.DataGridView();
+            this.Menu_food = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.read_menu_food = new System.Windows.Forms.ToolStripMenuItem();
+            this.b_del_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_ingr_food = new System.Windows.Forms.ToolStrip();
             this.bAdd = new System.Windows.Forms.ToolStripButton();
             this.bEdit = new System.Windows.Forms.ToolStripButton();
             this.bDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.gb_food_data.SuspendLayout();
             this.gb_chem_contain.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
+            this.Menu_food.SuspendLayout();
             this.menu_ingr_food.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.SuspendLayout();
@@ -251,6 +256,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gw.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gw.ContextMenuStrip = this.Menu_food;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -281,6 +287,31 @@
             this.gw.Size = new System.Drawing.Size(667, 294);
             this.gw.TabIndex = 5;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
+            this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
+            // 
+            // Menu_food
+            // 
+            this.Menu_food.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.read_menu_food,
+            this.b_del_menu});
+            this.Menu_food.Name = "Menu_food";
+            this.Menu_food.Size = new System.Drawing.Size(155, 70);
+            // 
+            // read_menu_food
+            // 
+            this.read_menu_food.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.read_menu_food.Name = "read_menu_food";
+            this.read_menu_food.Size = new System.Drawing.Size(154, 22);
+            this.read_menu_food.Text = "Редактировать";
+            this.read_menu_food.Click += new System.EventHandler(this.read_menu_food_Click);
+            // 
+            // b_del_menu
+            // 
+            this.b_del_menu.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.b_del_menu.Name = "b_del_menu";
+            this.b_del_menu.Size = new System.Drawing.Size(154, 22);
+            this.b_del_menu.Text = "Удалить";
+            this.b_del_menu.Click += new System.EventHandler(this.b_del_menu_Click);
             // 
             // menu_ingr_food
             // 
@@ -288,7 +319,8 @@
             this.menu_ingr_food.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bAdd,
             this.bEdit,
-            this.bDelete});
+            this.bDelete,
+            this.toolStripButton1});
             this.menu_ingr_food.Location = new System.Drawing.Point(3, 16);
             this.menu_ingr_food.Name = "menu_ingr_food";
             this.menu_ingr_food.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -326,6 +358,11 @@
             this.bDelete.Text = "Удалить";
             this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            // 
             // add_food
             // 
             this.AcceptButton = this.b_save;
@@ -349,6 +386,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).EndInit();
+            this.Menu_food.ResumeLayout(false);
             this.menu_ingr_food.ResumeLayout(false);
             this.menu_ingr_food.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
@@ -381,6 +419,10 @@
         private System.Windows.Forms.ToolStripButton bEdit;
         private System.Windows.Forms.ToolStripButton bDelete;
         public System.Windows.Forms.DataGridView gw;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ContextMenuStrip Menu_food;
+        private System.Windows.Forms.ToolStripMenuItem read_menu_food;
+        private System.Windows.Forms.ToolStripMenuItem b_del_menu;
 
 
     }

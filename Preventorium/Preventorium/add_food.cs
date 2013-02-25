@@ -48,18 +48,17 @@ namespace Preventorium
         //Сохраняем/добавляем запись о блюде
         private void enabled_b_save(object sender, EventArgs e)
         {
-            this.b_save.Enabled = true;
+            if (tb_name.Text != "")
+            {
+                this.b_save.Enabled = true;
+                return;
+            }
+         
             if (this._state == "OLD") { this.set_state("MOD"); };
         }
 
         private void b_save_Click(object sender, EventArgs e)
         {
-            if (tb_name.Text == "") 
-            {
-                MessageBox.Show("Не заполнены обязательные поля!");
-                return;
-            }
-
             string result; //Результат попытки сохранения/добавления блюда
             switch (this._state)
             {
@@ -110,6 +109,7 @@ namespace Preventorium
             {
                 MessageBox.Show(result);
             }
+            this.Dispose();
         }
 
 
@@ -279,6 +279,28 @@ namespace Preventorium
             }
 
             this.load_data_table(this._current_state);
+        }
+
+       
+
+        private void read_menu_food_Click(object sender, EventArgs e)
+        {
+            this.bEditIngr_Click(sender,e);
+        }
+
+        private void b_del_menu_Click(object sender, EventArgs e)
+        {
+            this.bDelete_Click(sender,e);
+        }
+
+        private void gw_MouseDown(object sender, MouseEventArgs e)
+        {
+            int rowIndex = gw.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndex == -1) return;
+
+            gw.ClearSelection();
+            gw.Rows[rowIndex].Selected = true;
+            gw.CurrentCell = gw[1, rowIndex];
         }
 
     }

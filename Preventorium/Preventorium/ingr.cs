@@ -14,29 +14,38 @@ namespace Preventorium
         }
 
         private string _current_state;
-        // загрузка таблицы в датагрид
+        
+        /// <summary>
+        ///  загрузка таблицы в датагрид
+        /// </summary>
+        /// <param name="state"></param>
         public void load_data_table(string state)
         {
             
             bs.DataSource = Program.data_module.get_data_table(state).Tables[state];
             gw.DataSource = bs;
             gw.Columns[5].Visible= false;// скрываем не нужный столбец
-
             gw.Update();
             gw.Show();
             this._current_state = state;
         }
 
-         //Добавление ингредиента
+        /// <summary>
+        /// Добавление ингредиента
+        /// </summary>
         private void add_new_ingr()
         {
             add_ingr ingr = new add_ingr(Program.data_module);
             ingr.ShowDialog();
         }
 
-        // экспорт в ексель
+        /// <summary>
+        ///  экспорт в ексель
+        /// </summary>
+        /// <param name="gw"></param>
+
            public void Excel(DataGridView gw)
-           {  //
+           {  // 
                Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
                // creating new WorkBook within Excel application
                app.Visible = false;
@@ -115,8 +124,8 @@ namespace Preventorium
                 GC.Collect();
                    
                    app.Quit();
-               // app.Workbooks.Close();
-               // this.Dispose();
+                app.Workbooks.Close();
+               
             }
             catch (System.Exception ex)
             {
@@ -125,7 +134,7 @@ namespace Preventorium
             finally
             {
                 GC.Collect();
-                //app.Workbooks.Close();
+                app.Workbooks.Close();
                 app.Quit();
             }
         }
@@ -141,7 +150,12 @@ namespace Preventorium
                gw.Columns[4].HeaderText = "Белки";
            }
 
-        // редактирование по двойному клику 
+        /// <summary>
+           ///  редактирование по двойному клику 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
            private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
            {
                switch (this._current_state)
@@ -161,7 +175,11 @@ namespace Preventorium
                }
                this.load_data_table(this._current_state);
            }
-       // добавление ингридиента
+       /// <summary>
+           ///  добавление ингридиента
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
            private void toolStripButton1_Click(object sender, EventArgs e)
            {
                switch (this._current_state)
@@ -173,7 +191,12 @@ namespace Preventorium
 
                this.load_data_table(this._current_state);
            }
-        // редактирование
+        
+        /// <summary>
+        ///  редактирование
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
            private void read_but_Click(object sender, EventArgs e)
            {
                switch (this._current_state)
@@ -195,12 +218,17 @@ namespace Preventorium
 
            }
 
-           private void экспортВExcelToolStripMenuItem1_Click(object sender, EventArgs e)
+           private void Export_Excel_Click(object sender, EventArgs e)
            {
                this.Excel(gw);
                GC.Collect();
            }
-        //удаление 
+        /// <summary>
+           /// удаление 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
            private void bDelete_Click(object sender, EventArgs e)
            {
                switch (this._current_state)
@@ -220,29 +248,43 @@ namespace Preventorium
                }
                this.load_data_table(this._current_state);
            }
-        // контексное меню в датагриде правой кнопкой , а также выделение строки правой кнопкой
+        /// <summary>
+           ///  выделение строки правой кнопкой
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
            private void gw_MouseDown(object sender, MouseEventArgs e)
            {
-
                int rowIndex = gw.HitTest(e.X, e.Y).RowIndex;
                if (rowIndex == -1) return;
 
                    gw.ClearSelection();
                    gw.Rows[rowIndex].Selected = true;
-                   gw.CurrentCell = gw[0, rowIndex];
-
+                   gw.CurrentCell = gw[0, rowIndex];// 0  - это номер столбца
            }
              
-          // редактирование ингридиента, событие для контекстного меню
+          /// <summary>
+           /// / редактирование ингридиента, событие для контекстного меню
+          /// </summary>
+          /// <param name="sender"></param>
+          /// <param name="e"></param>
            private void read_butt_Click(object sender, EventArgs e)
            {
                this.read_but_Click(sender,e);
            }
-           // удаление ингридиента, событие для контекстного меню
+           /// <summary>
+           ///  удаление ингридиента, событие для контекстного меню
+           /// </summary>
+           /// <param name="sender"></param>
+           /// <param name="e"></param>
+
            private void delete_butt_Click(object sender, EventArgs e)
            {
                this.bDelete_Click(sender,e);
            }
+
+          
 
     }
 }

@@ -57,6 +57,7 @@
             this.cb_food_name.Name = "cb_food_name";
             this.cb_food_name.Size = new System.Drawing.Size(171, 21);
             this.cb_food_name.TabIndex = 1;
+
             this.cb_food_name.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // label2

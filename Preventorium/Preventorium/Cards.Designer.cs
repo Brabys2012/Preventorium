@@ -33,30 +33,38 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tool_cards = new System.Windows.Forms.ToolStrip();
+            this.bs = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gw = new System.Windows.Forms.DataGridView();
+            this.Menu_Card = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Read_card = new System.Windows.Forms.ToolStripMenuItem();
+            this.Del_card = new System.Windows.Forms.ToolStripMenuItem();
+            this.tool_cards = new System.Windows.Forms.ToolStrip();
             this.b_add = new System.Windows.Forms.ToolStripButton();
             this.b_edit = new System.Windows.Forms.ToolStripButton();
             this.b_delete = new System.Windows.Forms.ToolStripButton();
-            this.bs = new System.Windows.Forms.BindingSource(this.components);
-            this.tool_cards.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lb_diet = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_method = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
+            this.Menu_Card.SuspendLayout();
+            this.tool_cards.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tool_cards
+            // groupBox1
             // 
-            this.tool_cards.GripMargin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.tool_cards.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tool_cards.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.b_add,
-            this.b_edit,
-            this.b_delete});
-            this.tool_cards.Location = new System.Drawing.Point(0, 0);
-            this.tool_cards.Name = "tool_cards";
-            this.tool_cards.Size = new System.Drawing.Size(489, 25);
-            this.tool_cards.TabIndex = 0;
-            this.tool_cards.Text = "toolStrip1";
+            this.groupBox1.Controls.Add(this.gw);
+            this.groupBox1.Controls.Add(this.tool_cards);
+            this.groupBox1.Location = new System.Drawing.Point(-1, -14);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(490, 344);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
             // 
             // gw
             // 
@@ -78,6 +86,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gw.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gw.ContextMenuStrip = this.Menu_Card;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -87,7 +96,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gw.DefaultCellStyle = dataGridViewCellStyle3;
             this.gw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gw.Location = new System.Drawing.Point(0, 25);
+            this.gw.Location = new System.Drawing.Point(3, 41);
             this.gw.MultiSelect = false;
             this.gw.Name = "gw";
             this.gw.ReadOnly = true;
@@ -105,9 +114,49 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(489, 237);
-            this.gw.TabIndex = 1;
-            this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
+            this.gw.Size = new System.Drawing.Size(484, 300);
+            this.gw.TabIndex = 2;
+            this.gw.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellClick);
+            this.gw.DoubleClick += new System.EventHandler(this.gw_DoubleClick);
+            this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
+            // 
+            // Menu_Card
+            // 
+            this.Menu_Card.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Read_card,
+            this.Del_card});
+            this.Menu_Card.Name = "Menu_Card";
+            this.Menu_Card.Size = new System.Drawing.Size(155, 48);
+            // 
+            // Read_card
+            // 
+            this.Read_card.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.Read_card.Name = "Read_card";
+            this.Read_card.Size = new System.Drawing.Size(154, 22);
+            this.Read_card.Text = "Редактировать";
+            this.Read_card.Click += new System.EventHandler(this.Read_card_Click);
+            // 
+            // Del_card
+            // 
+            this.Del_card.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.Del_card.Name = "Del_card";
+            this.Del_card.Size = new System.Drawing.Size(154, 22);
+            this.Del_card.Text = "Удалить";
+            this.Del_card.Click += new System.EventHandler(this.Del_card_Click);
+            // 
+            // tool_cards
+            // 
+            this.tool_cards.GripMargin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.tool_cards.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tool_cards.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.b_add,
+            this.b_edit,
+            this.b_delete});
+            this.tool_cards.Location = new System.Drawing.Point(3, 16);
+            this.tool_cards.Name = "tool_cards";
+            this.tool_cards.Size = new System.Drawing.Size(484, 25);
+            this.tool_cards.TabIndex = 1;
+            this.tool_cards.Text = "toolStrip1";
             // 
             // b_add
             // 
@@ -116,7 +165,7 @@
             this.b_add.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_add.Name = "b_add";
             this.b_add.Size = new System.Drawing.Size(23, 22);
-            this.b_add.Text = "toolStripButton1";
+            this.b_add.Text = "Добавить";
             this.b_add.Click += new System.EventHandler(this.b_add_Click);
             // 
             // b_edit
@@ -126,7 +175,7 @@
             this.b_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_edit.Name = "b_edit";
             this.b_edit.Size = new System.Drawing.Size(23, 22);
-            this.b_edit.Text = "toolStripButton2";
+            this.b_edit.Text = "Редактировать";
             this.b_edit.Click += new System.EventHandler(this.b_edit_Click);
             // 
             // b_delete
@@ -136,35 +185,98 @@
             this.b_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_delete.Name = "b_delete";
             this.b_delete.Size = new System.Drawing.Size(23, 22);
-            this.b_delete.Text = "toolStripButton3";
+            this.b_delete.Text = "Удалить";
             this.b_delete.Click += new System.EventHandler(this.b_delete_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lb_diet);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.tb_method);
+            this.groupBox2.Location = new System.Drawing.Point(495, 2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(327, 328);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            // 
+            // lb_diet
+            // 
+            this.lb_diet.FormattingEnabled = true;
+            this.lb_diet.Location = new System.Drawing.Point(6, 25);
+            this.lb_diet.Name = "lb_diet";
+            this.lb_diet.Size = new System.Drawing.Size(311, 121);
+            this.lb_diet.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 149);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 18);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Способ приготовления:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(156, 18);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Показано по диетам № :";
+            // 
+            // tb_method
+            // 
+            this.tb_method.Location = new System.Drawing.Point(6, 170);
+            this.tb_method.Multiline = true;
+            this.tb_method.Name = "tb_method";
+            this.tb_method.ReadOnly = true;
+            this.tb_method.Size = new System.Drawing.Size(315, 152);
+            this.tb_method.TabIndex = 1;
             // 
             // Cards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 262);
-            this.Controls.Add(this.gw);
-            this.Controls.Add(this.tool_cards);
+            this.ClientSize = new System.Drawing.Size(834, 331);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Cards";
             this.Text = "Карточки - раскладки";
             this.Load += new System.EventHandler(this.card_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gw)).EndInit();
+            this.Menu_Card.ResumeLayout(false);
             this.tool_cards.ResumeLayout(false);
             this.tool_cards.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gw)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.BindingSource bs;
+        private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.DataGridView gw;
         private System.Windows.Forms.ToolStrip tool_cards;
         private System.Windows.Forms.ToolStripButton b_add;
         private System.Windows.Forms.ToolStripButton b_edit;
         private System.Windows.Forms.ToolStripButton b_delete;
-        public System.Windows.Forms.DataGridView gw;
-        private System.Windows.Forms.BindingSource bs;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_method;
+        private System.Windows.Forms.ListBox lb_diet;
+        private System.Windows.Forms.ContextMenuStrip Menu_Card;
+        private System.Windows.Forms.ToolStripMenuItem Read_card;
+        private System.Windows.Forms.ToolStripMenuItem Del_card;
     }
 }

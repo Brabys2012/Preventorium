@@ -82,6 +82,17 @@
     <Compile Include="add_food.Designer.cs">
       <DependentUpon>add_food.cs</DependentUpon>
     </Compile>
+    <Compile Include="add_food_in_book.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_food_in_book.designer.cs">
+      <DependentUpon>add_food_in_book.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_form_ingr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>add_form_ingr.resx</DependentUpon>
+    </Compile>
     <Compile Include="add_ingr.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +104,12 @@
     </Compile>
     <Compile Include="add_ingr_in_food.designer.cs">
       <DependentUpon>add_ingr_in_food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_person.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_person.designer.cs">
+      <DependentUpon>add_person.cs</DependentUpon>
     </Compile>
     <Compile Include="add_queue.cs">
       <SubType>Form</SubType>
@@ -124,6 +141,12 @@
     <Compile Include="del_diet_from_food.Designer.cs">
       <DependentUpon>del_diet_from_food.cs</DependentUpon>
     </Compile>
+    <Compile Include="del_food_from_book.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="del_food_from_book.designer.cs">
+      <DependentUpon>del_food_from_book.cs</DependentUpon>
+    </Compile>
     <Compile Include="del_ingr_from_food.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +171,12 @@
     <Compile Include="diet_in_food.Designer.cs">
       <DependentUpon>diet_in_food.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="get_table.cs" />
     <Compile Include="db_connect.cs" />
     <Compile Include="db_elements.cs" />
@@ -163,17 +192,23 @@
     <Compile Include="food.Designer.cs">
       <DependentUpon>food.cs</DependentUpon>
     </Compile>
+    <Compile Include="human.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="human.designer.cs">
+      <DependentUpon>human.cs</DependentUpon>
+    </Compile>
     <Compile Include="ingr.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ingr.Designer.cs">
       <DependentUpon>ingr.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMDI.cs">
+    <Compile Include="frmMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMDI.Designer.cs">
-      <DependentUpon>FormMDI.cs</DependentUpon>
+    <Compile Include="frmMDI.Designer.cs">
+      <DependentUpon>frmMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -199,11 +234,21 @@
     <EmbeddedResource Include="add_food.resx">
       <DependentUpon>add_food.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="add_food_in_book.resx">
+      <DependentUpon>add_food_in_book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_form_ingr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>add_form_ingr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="add_ingr.resx">
       <DependentUpon>add_ingr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="add_ingr_in_food.resx">
       <DependentUpon>add_ingr_in_food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_person.resx">
+      <DependentUpon>add_person.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="add_queue.resx">
       <DependentUpon>add_queue.cs</DependentUpon>
@@ -223,6 +268,9 @@
     <EmbeddedResource Include="del_diet_from_food.resx">
       <DependentUpon>del_diet_from_food.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="del_food_from_book.resx">
+      <DependentUpon>del_food_from_book.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="del_ingr_from_food.resx">
       <DependentUpon>del_ingr_from_food.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,11 +286,17 @@
     <EmbeddedResource Include="diet_in_food.resx">
       <DependentUpon>diet_in_food.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="human.resx">
+      <DependentUpon>human.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ingr.resx">
       <DependentUpon>ingr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMDI.resx">
-      <DependentUpon>FormMDI.cs</DependentUpon>
+    <EmbeddedResource Include="frmMDI.resx">
+      <DependentUpon>frmMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

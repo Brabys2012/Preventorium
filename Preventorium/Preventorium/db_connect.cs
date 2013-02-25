@@ -2,35 +2,74 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Net.NetworkInformation;
 
 
 namespace Preventorium
 {
+    /// <summary>
+    /// Содержит возможные состояния подключения к БД.
+    /// </summary>
+    public enum ConnectionStatus
+    {
+        /// <summary>
+        /// Подключен к БД.
+        /// </summary>
+        CONNECTED,
+        /// <summary>
+        /// Отключен от БД.
+        /// </summary>
+        DISCONNECTED,
+        /// <summary>
+        /// В процессе подключения к БД.
+        /// </summary>
+        PROCESS_CONNECTING,
+        /// <summary>
+        /// Ошибка подключения.
+        /// </summary>
+        CONNECT_ERROR,
+       
+    }
+
+    /// <summary>
+    /// Класс для работы с БД.
+    /// </summary>
     public class db_connect
     {
+
+        /// <summary>
+        /// Возвращает результат выполнения последней операции с БД.
+        /// </summary>
+        public ConnectionStatus ConnStatus { private set; get; }
+
+        
+        
         public SqlConnection _conn;
-        public string _conn_status;
         public string _connection_string;
         public DataSet _ds;
         public SqlDataAdapter _da;
         public SqlCommandBuilder _cb;
         public string _active_table;
         public string _command_text;
+        public string text;
 
         public db_connect()
         {
             this._conn = new SqlConnection();
             this._ds = new System.Data.DataSet();
-            this._conn_status = "DISCONNECTED";
-            if (!(this.set_connection_settings("Initial Catalog=preventorium;Server=XTREME-O1P7TPFI")))
+            this.ConnStatus = ConnectionStatus.DISCONNECTED;
+
+                if (!(this.set_connection_settings("Integrated Security=true;Initial Catalog=DB1;Server=BABUR-PC")))
                 MessageBox.Show("Неверная строка подключения!");
         }
 
         public bool set_connection_settings(string conn_string)
         {
+         
+                      
             this._connection_string = conn_string;
             try
-            {
+            {               
                 this._conn.ConnectionString = this._connection_string;
             }
             catch (Exception ex)
@@ -39,6 +78,7 @@ namespace Preventorium
             }
             return true;
         }
+
 
         // ------------------------------------------------------------------
         public DataSet get_data_table_diet_in_food(string table_name)
@@ -118,6 +158,38 @@ namespace Preventorium
                 return null;
             }
         }
+        
+        /// <summary>
+        /// Получаем список блюд и номера карточек
+        /// </summary>
+        /// <param name="table_name"></param>
+        /// <param name="book_id"></param>
+        /// <returns></returns>
+        public DataSet get_food_in_book(string table_name, int book_id)
+        {
+            string query = "select FIB.Id_Cards, FIB.ID_food, FIB.IDBook, C.Number_Card, F.Name_food, B.Name "
+                            + "from FoodInBook FIB "
+                            + "join Cards C on C.Id_Cards = FIB.Id_Cards "
+                            + "join Foods F on F.ID_Food = C.ID_Food "
+                            + "join Book B on B.IDBook = FIB.IDBook "
+                            + "where B.IDBook = '" + book_id + "'";
+            try
+            {
+                this._ds = new DataSet();
+                this._da = new SqlDataAdapter(query, this._conn);
+                this._cb = new SqlCommandBuilder(this._da);
+
+                this._da.Fill(this._ds, table_name);
+                this._active_table = table_name;
+                return this._ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Data + " " + ex.Message);
+                return null;
+            }
+        }
+
 
         // ------------------------------------------------------------------
         public DataSet get_data_table_cards(string table_name)
@@ -146,42 +218,57 @@ namespace Preventorium
 
 
 
-        public string connect_to_db()
+        /// <summary>
+        /// Подключиться к базе данных.
+        /// </summary>
+        /// <returns>Результат выполнения операции</returns>
+        public ConnectionStatus connect_to_db()
         {
-            this._conn_status = "PROCESS_CONNECTING";
+            this.ConnStatus = ConnectionStatus.PROCESS_CONNECTING;
             try
             {
+                // Инициализируем Пинг для проверки доступности сервера
+                Ping ping = new Ping();
+                // Пингуем сервер. Максимальное время ожидания ответа от сервера (500 мсек)
+                PingReply pingReply = ping.Send(Program.user_set._server, 500);
+                // Если пинг завершился неудачно, то сообщаем об этом пользователю и завершаем метод
+                if (pingReply.Status != IPStatus.Success)
+                {
+                    MessageBox.Show("Не удалось проверить доступность сервера баз данных, проверьте корректность настроек подключения, или обратитесь к системному администратору сервера.", "Сервер БД недоступен", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // Устанавливаем статус и возвращаем результат
+                    this.ConnStatus = ConnectionStatus.CONNECT_ERROR;
+                    return ConnectionStatus.CONNECT_ERROR;
+                }
+                // Открываем соединение с БД
+
                 this._conn.Open();
             }
-            catch (Exception ex)
+            catch (Exception exc)
             {
-                this._conn_status = "DISCONNECTED";
-                return ex.Data + " " + ex.Message;
+                MessageBox.Show(string.Format("Не удалось подключиться к базе данных по причине {0}.", "\n\nПроверьте настройки подключения или обратитесь к системному администратору.", exc), "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Устанавливаем статус и возвращаем результат
+                this.ConnStatus = ConnectionStatus.CONNECT_ERROR;
+                return ConnectionStatus.CONNECT_ERROR;
             }
-            this._conn_status = "CONNECTED";
-            return "OK";
+            // Устанавливаем статус и возвращаем результат
+            this.ConnStatus = ConnectionStatus.CONNECTED;
+            return ConnectionStatus.CONNECTED;
         }
 
         public string disconnect_db()
         {
-            this._conn_status = "PROCESS_DISCONNECTING";
+            this.ConnStatus = ConnectionStatus.PROCESS_CONNECTING;
             try
             {
                 this._conn.Close();
             }
             catch (Exception ex)
             {
-                this._conn_status = "CONNECTED";
+                this.ConnStatus = ConnectionStatus.CONNECTED;
                 return ex.Data + " " + ex.Message;
             }
-            this._conn_status = "DISCONNECTED";
+            this.ConnStatus = ConnectionStatus.DISCONNECTED;
             return "OK";
-        }
-
-     
-        public string get_connect_status()
-        {
-            return this._conn_status;
         }
     }
 }

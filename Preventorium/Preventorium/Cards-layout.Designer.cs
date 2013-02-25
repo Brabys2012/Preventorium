@@ -79,6 +79,7 @@
             this.cb_ok.Size = new System.Drawing.Size(196, 21);
             this.cb_ok.TabIndex = 0;
             this.cb_ok.Visible = false;
+            //this.cb_ok.SelectedIndexChanged += new System.EventHandler(this.cb_ok_SelectedIndexChanged);
             // 
             // gbdiets
             // 
@@ -121,7 +122,7 @@
             this.gbcards.Text = "Кем утверждена карточка-раскладка:";
             this.gbcards.Visible = false;
             // 
-            // Cards
+            // Cards_layout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +132,7 @@
             this.Controls.Add(this.gbfood);
             this.Controls.Add(this.bt_ok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Name = "Cards";
+            this.Name = "Cards_layout";
             this.Text = "Карточка - раскладка";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbfood.ResumeLayout(false);
@@ -143,7 +144,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button bt_ok;
         private System.Windows.Forms.GroupBox gbfood;
         private System.Windows.Forms.ComboBox cb_ok;
         private System.Windows.Forms.GroupBox gbdiets;
@@ -151,5 +151,6 @@
         private System.Windows.Forms.ComboBox cb_diets_vrach;
         private System.Windows.Forms.GroupBox gbcards;
         private System.Windows.Forms.ComboBox cb_food;
+        public System.Windows.Forms.Button bt_ok;
     }
 }

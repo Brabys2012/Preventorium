@@ -111,6 +111,17 @@ namespace Preventorium
                         MessageBox.Show(result5);
                     }
                     break;
+                case "Person":
+                    string result6 = Program.add_read_module.del_record_by_id("Person", "IDPost", Convert.ToInt32(this._id));
+                    if (result6 == "OK")
+                    {
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result6);
+                    }
+                    break;
 
             }
         }

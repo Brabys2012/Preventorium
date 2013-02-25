@@ -114,5 +114,15 @@ namespace Preventorium
             this.load_data_table(this._current_state);
         }
 
+        private void Read_queue_Click(object sender, EventArgs e)
+        {
+            this.bEdit_Click(sender,e);
+        }
+
+        private void delete_queue_Click(object sender, EventArgs e)
+        {
+            this.bDelete_Click(sender,e);
+        }
+
     }
 }

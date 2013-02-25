@@ -44,9 +44,9 @@
             // b_abolition
             // 
             this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.b_abolition.Location = new System.Drawing.Point(181, 144);
+            this.b_abolition.Location = new System.Drawing.Point(176, 144);
             this.b_abolition.Name = "b_abolition";
-            this.b_abolition.Size = new System.Drawing.Size(75, 23);
+            this.b_abolition.Size = new System.Drawing.Size(80, 23);
             this.b_abolition.TabIndex = 10;
             this.b_abolition.Text = "Отмена";
             this.b_abolition.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@
             // 
             this.b_apply.Location = new System.Drawing.Point(12, 144);
             this.b_apply.Name = "b_apply";
-            this.b_apply.Size = new System.Drawing.Size(75, 23);
+            this.b_apply.Size = new System.Drawing.Size(80, 23);
             this.b_apply.TabIndex = 9;
             this.b_apply.Text = "Применить";
             this.b_apply.UseVisualStyleBackColor = true;
@@ -79,6 +79,7 @@
             this.t_pass.Name = "t_pass";
             this.t_pass.Size = new System.Drawing.Size(133, 20);
             this.t_pass.TabIndex = 8;
+            this.t_pass.TextChanged += new System.EventHandler(this.off_connect);
             // 
             // t_user
             // 
@@ -86,6 +87,7 @@
             this.t_user.Name = "t_user";
             this.t_user.Size = new System.Drawing.Size(133, 20);
             this.t_user.TabIndex = 6;
+            this.t_user.TextChanged += new System.EventHandler(this.off_connect);
             // 
             // t_schema
             // 
@@ -93,6 +95,7 @@
             this.t_schema.Name = "t_schema";
             this.t_schema.Size = new System.Drawing.Size(133, 20);
             this.t_schema.TabIndex = 3;
+            this.t_schema.TextChanged += new System.EventHandler(this.off_connect);
             // 
             // t_server
             // 
@@ -100,42 +103,43 @@
             this.t_server.Name = "t_server";
             this.t_server.Size = new System.Drawing.Size(133, 20);
             this.t_server.TabIndex = 1;
+            this.t_server.TextChanged += new System.EventHandler(this.off_connect);
             // 
             // lPass
             // 
             this.lPass.AutoSize = true;
             this.lPass.Location = new System.Drawing.Point(12, 110);
             this.lPass.Name = "lPass";
-            this.lPass.Size = new System.Drawing.Size(52, 13);
+            this.lPass.Size = new System.Drawing.Size(45, 13);
             this.lPass.TabIndex = 7;
-            this.lPass.Text = "* Пароль";
+            this.lPass.Text = "Пароль";
             // 
             // tSchema
             // 
             this.tSchema.AutoSize = true;
             this.tSchema.Location = new System.Drawing.Point(12, 35);
             this.tSchema.Name = "tSchema";
-            this.tSchema.Size = new System.Drawing.Size(105, 13);
+            this.tSchema.Size = new System.Drawing.Size(98, 13);
             this.tSchema.TabIndex = 2;
-            this.tSchema.Text = "* Имя базы данных";
+            this.tSchema.Text = "Имя базы данных";
             // 
             // lUser
             // 
             this.lUser.AutoSize = true;
             this.lUser.Location = new System.Drawing.Point(12, 84);
             this.lUser.Name = "lUser";
-            this.lUser.Size = new System.Drawing.Size(87, 13);
+            this.lUser.Size = new System.Drawing.Size(80, 13);
             this.lUser.TabIndex = 5;
-            this.lUser.Text = "* Пользователь";
+            this.lUser.Text = "Пользователь";
             // 
             // lServer
             // 
             this.lServer.AutoSize = true;
             this.lServer.Location = new System.Drawing.Point(12, 9);
             this.lServer.Name = "lServer";
-            this.lServer.Size = new System.Drawing.Size(51, 13);
+            this.lServer.Size = new System.Drawing.Size(44, 13);
             this.lServer.TabIndex = 0;
-            this.lServer.Text = "* Cервер";
+            this.lServer.Text = "Cервер";
             // 
             // db_settings
             // 
@@ -155,13 +159,12 @@
             this.Controls.Add(this.b_abolition);
             this.Controls.Add(this.b_apply);
             this.Controls.Add(this.cb_win_auth);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "db_settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Параметры подключения";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.db_settings_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 /// <summary>
-/// Класс ингридиенты: Содержит переменные которым передаются значения по sql запросу
+/// Класс ингредиенты: Содержит переменные которым передаются значения по sql запросу,возвращает сведения о ингредиентах
 /// </summary>
 public class class_ingridients
 {
@@ -14,7 +14,7 @@ public class class_ingridients
 }
 
 /// <summary>
-/// Класс блюда: Содержит переменные которым передаются значения по sql запросу
+/// Класс блюда: Содержит переменные которым передаются значения по sql запросу,возвращает сведения о блюде
 /// </summary>
 public class class_food
 {
@@ -28,7 +28,7 @@ public class class_food
     public string weight;
 }
 /// <summary>
-/// Класс диеты: Содержит переменные которым передаются значения по sql запросу.
+/// Класс диеты: Содержит переменные которым передаются значения по sql запросу,возвращает данные о диетах
 /// /// </summary>
 public class class_diet
 {
@@ -39,7 +39,7 @@ public class class_diet
 }
 
 /// <summary>
-/// Класс книги: Содержит переменные которым передаются значения по sql запросу
+/// Класс книги: Содержит переменные которым передаются значения по sql запросу, возвращает сведения о справочниках
 /// </summary>
 
 public class class_book
@@ -52,7 +52,7 @@ public class class_book
 }
 
 /// <summary>
-/// Класс игридиенты в блюде: Содержит переменные которым передаются значения по sql запросу
+/// Класс игридиенты в блюде: Содержит переменные которым передаются значения по sql запросу,возвращает сведения в карточку-раскладку: вес брутто и нетто блюда
 /// </summary>
 public class class_ingr_food
 {
@@ -62,7 +62,7 @@ public class class_ingr_food
 }
 
 /// <summary>
-/// Класс карта-ракскладка: Содержит переменные которым передаются значения по sql запросу.
+/// Класс карта-ракскладка: Содержит переменные которым передаются значения по sql запросу,возвращает сведения в карточку-раскладку: цену блюда, номер карточки раскладки,  метод приготовления блюда
 /// /// </summary>
 public class class_cards
 {
@@ -72,29 +72,37 @@ public class class_cards
     public string cost;
     public string nam_card;
 }
+
 /// <summary>
-/// Класс должность: Содержит переменные которым передаются значения по sql запросу
+/// Класс должность: Содержит переменные которым передаются значения по sql запросу,возвращает сведения о должности  в карточку-раскладку 
 /// </summary>
 public class class_post
 {
     public string id;
     public string result;
+    public string position;
 }
 
+
 /// <summary>
-/// Класс персона: Содержит переменные которым передаются значения по sql запросу
+/// Класс персона: Содержит переменные которым передаются значения по sql запросу,возвращает сведения в карточку-раскладку, о работающих в профилактории
 /// </summary>
 
-public class person
+public class class_person
 {
+    public string post_id;
     public string result;
     public string name;
     public string surname;
     public string secondname;
+    public string post;
+    public string login;
+    public string pass;
+    public string id;
 }
 
 /// <summary>
-/// Класс ингридиенты в блюде: Содержит переменные которым передаются значения по sql запросу
+/// Класс ингридиенты в блюде: Содержит переменные которым передаются значения по sql запросу,возвращает сведения о ингридиентах в блюдах
 /// </summary>
 public class class_ingr_in_food
 {
@@ -108,7 +116,7 @@ public class class_ingr_in_food
     public string ingr_name;
 }
 /// <summary>
-/// Класс очередь: Содержит переменные которым передаются значения по sql запросу
+/// Класс очередь: Содержит переменные которым передаются значения по sql запросу,возвращает сведения о очереди
 /// </summary>
 public class class_queue
 {
@@ -122,7 +130,7 @@ public class class_queue
 }
 
 /// <summary>
-/// Класс блюда в диетах: Содержит переменные которым передаются значения по sql запросу
+/// Класс блюда в диетах: Содержит переменные которым передаются значения по sql запросу,возвращает сведения о диетах в блюде
 /// </summary>
 public class class_diet_in_food
 {
@@ -136,7 +144,7 @@ public class class_diet_in_food
 }
 
 /// <summary>
-/// Класс карточки - раскладки: Содержит переменные которым передаются значения по sql запросу
+/// Класс карточки - раскладки: Содержит переменные которым передаются значения по sql запросу,возвращает сведения о карточке-раскладке
 /// </summary>
 public class class_card
 {
@@ -145,6 +153,21 @@ public class class_card
     public string food_id;
     public string food_name;
     public string card_numb;
+    public string diet_numb;
     public string cost;
     public string method;
+}
+
+/// <summary>
+/// Класс рецептов используемых для блюд
+/// </summary>
+public class food_in_book
+{
+    public string result;
+    public string book_id;
+    public string food_id;
+    public string card_id;
+    public string book;
+    public string food;
+    public string card;
 }

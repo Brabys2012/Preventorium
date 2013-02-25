@@ -93,7 +93,7 @@ namespace Preventorium
                 this.l_status.Text = "Ошибка";
                 MessageBox.Show(result);
             }
-
+            this.Dispose();
         }
 
 

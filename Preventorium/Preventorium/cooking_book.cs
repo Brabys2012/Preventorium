@@ -116,5 +116,24 @@ namespace Preventorium
             }
             this.load_data_table(this._current_state);
         }
+
+        private void gw_MouseDown(object sender, MouseEventArgs e)
+        {
+            int rowIndex = gw.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndex == -1) return;
+            gw.ClearSelection();
+            gw.Rows[rowIndex].Selected = true;
+            gw.CurrentCell = gw[1, rowIndex];
+        }
+
+        private void Read_menu_book_Click(object sender, EventArgs e)
+        {
+            this.bEditBook_Click(sender,e);
+        }
+
+        private void delete_menu_book_Click(object sender, EventArgs e)
+        {
+            this.bDelete_Click(sender, e);
+        }
     }
 }
