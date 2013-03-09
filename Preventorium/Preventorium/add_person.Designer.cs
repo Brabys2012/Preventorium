@@ -137,7 +137,11 @@
             this.Controls.Add(this.b_cancel);
             this.Controls.Add(this.b_save);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "add_person";
+            this.Text = "Добавить сотрудника";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

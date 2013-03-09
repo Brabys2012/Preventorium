@@ -25,9 +25,8 @@ namespace Preventorium
 
         private void enabled_b_save(object sender, EventArgs e)
         {
-            this.l_status.Text = "Запись изменена";
-            this.b_save.Enabled = true;
-            if (this._state == "OLD") { this.set_state("MOD"); };
+            if (this._state == "OLD") { this.set_state("MOD"); }
+            if ((cb_card_numb.Text != "") && (cb_diet_numb.Text != "") && (cb_food_name.Text != "")) { b_save.Enabled = true; }
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
@@ -209,7 +208,6 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Просмотр";
-                    this.p_status.Text = "";
                     this.b_save.Enabled = false;
                     break;
 
@@ -237,7 +235,6 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
-                    this.l_status.Text = "Добавление...";
 
                     result = Program.add_read_module.add_diet_in_food(this.cb_card_numb.Text,
                         this.cb_food_name.Text,
@@ -256,7 +253,6 @@ namespace Preventorium
                 string diet_old = diet_in_food.diet_numb;
                 string card_old = diet_in_food.card_numb;
                
-                this.l_status.Text = "Модификация данных... ";
                 result = Program.add_read_module.upd_diet_in_food(Convert.ToInt32(this.food_id),
                  Convert.ToInt32(this.diet_id), Convert.ToInt32(this.card_id), this.cb_food_name.Text, this.cb_diet_numb.Text,
                      this.cb_card_numb.Text, food_old, diet_old, card_old);
@@ -264,7 +260,6 @@ namespace Preventorium
                     break;
 
                 default:
-                    this.l_status.Text = "Ошибка";
                     result = "NDF";
                     // не используется, однако mvs не позволяет 
                     // дальше работать переменной, которой в одной
@@ -283,15 +278,13 @@ namespace Preventorium
                     if (this._state == "MOD")
                     {
                         this.set_state("OLD");
-                        this.p_status.Text = "Изменение записи успешно завершено";
                     }
             }
             else
             {
-                this.p_status.Text = "Ошибка";
                 MessageBox.Show(result);
             }
-
+            this.Dispose();
         }
 
         private void b_cancel_Click(object sender, EventArgs e)

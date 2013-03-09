@@ -122,7 +122,39 @@ namespace Preventorium
                         MessageBox.Show(result6);
                     }
                     break;
-
+                case "Menu":
+                    string result7 = Program.add_read_module.del_record_by_id("Menu", "ID_menu", Convert.ToInt32(this._id));
+                    if (result7 == "OK")
+                    {
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result7);
+                    }
+                    break;
+                case "Menu_in_day":
+                    string result8 = Program.add_read_module.del_record_by_id("Menu_in_day", "day_id", Convert.ToInt32(this._id));
+                    if (result8 == "OK")
+                    {
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result8);
+                    }
+                    break;
+                case "Food_in_menu":
+                    string result9 = Program.add_read_module.del_record_by_id("Food_in_menu", "ID_food", Convert.ToInt32(this._id));
+                    if (result9 == "OK")
+                    {
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result9);
+                    }
+                    break;
             }
         }
 

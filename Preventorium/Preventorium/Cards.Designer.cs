@@ -40,10 +40,15 @@
             this.Read_card = new System.Windows.Forms.ToolStripMenuItem();
             this.Del_card = new System.Windows.Forms.ToolStripMenuItem();
             this.tool_cards = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.b_add = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.b_edit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.b_delete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tb_desc = new System.Windows.Forms.TextBox();
             this.lb_diet = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -69,7 +74,6 @@
             // gw
             // 
             this.gw.AllowUserToAddRows = false;
-            this.gw.AllowUserToResizeColumns = false;
             this.gw.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
@@ -91,6 +95,8 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = "0";
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -149,14 +155,23 @@
             this.tool_cards.GripMargin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.tool_cards.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tool_cards.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
             this.b_add,
+            this.toolStripSeparator2,
             this.b_edit,
-            this.b_delete});
+            this.toolStripSeparator3,
+            this.b_delete,
+            this.toolStripSeparator4});
             this.tool_cards.Location = new System.Drawing.Point(3, 16);
             this.tool_cards.Name = "tool_cards";
             this.tool_cards.Size = new System.Drawing.Size(484, 25);
             this.tool_cards.TabIndex = 1;
             this.tool_cards.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // b_add
             // 
@@ -168,6 +183,11 @@
             this.b_add.Text = "Добавить";
             this.b_add.Click += new System.EventHandler(this.b_add_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // b_edit
             // 
             this.b_edit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -177,6 +197,11 @@
             this.b_edit.Size = new System.Drawing.Size(23, 22);
             this.b_edit.Text = "Редактировать";
             this.b_edit.Click += new System.EventHandler(this.b_edit_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // b_delete
             // 
@@ -188,8 +213,14 @@
             this.b_delete.Text = "Удалить";
             this.b_delete.Click += new System.EventHandler(this.b_delete_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.tb_desc);
             this.groupBox2.Controls.Add(this.lb_diet);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
@@ -200,13 +231,26 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             // 
+            // tb_desc
+            // 
+            this.tb_desc.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_desc.Location = new System.Drawing.Point(60, 25);
+            this.tb_desc.Multiline = true;
+            this.tb_desc.Name = "tb_desc";
+            this.tb_desc.ReadOnly = true;
+            this.tb_desc.Size = new System.Drawing.Size(261, 121);
+            this.tb_desc.TabIndex = 6;
+            // 
             // lb_diet
             // 
+            this.lb_diet.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lb_diet.FormattingEnabled = true;
+            this.lb_diet.ItemHeight = 18;
             this.lb_diet.Location = new System.Drawing.Point(6, 25);
             this.lb_diet.Name = "lb_diet";
-            this.lb_diet.Size = new System.Drawing.Size(311, 121);
+            this.lb_diet.Size = new System.Drawing.Size(48, 112);
             this.lb_diet.TabIndex = 5;
+            this.lb_diet.SelectedIndexChanged += new System.EventHandler(this.lb_diet_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -222,7 +266,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(6, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 18);
             this.label1.TabIndex = 2;
@@ -230,6 +274,7 @@
             // 
             // tb_method
             // 
+            this.tb_method.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tb_method.Location = new System.Drawing.Point(6, 170);
             this.tb_method.Multiline = true;
             this.tb_method.Name = "tb_method";
@@ -278,5 +323,10 @@
         private System.Windows.Forms.ContextMenuStrip Menu_Card;
         private System.Windows.Forms.ToolStripMenuItem Read_card;
         private System.Windows.Forms.ToolStripMenuItem Del_card;
+        private System.Windows.Forms.TextBox tb_desc;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

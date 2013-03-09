@@ -33,12 +33,12 @@
             this.cb_win_auth = new System.Windows.Forms.CheckBox();
             this.t_pass = new System.Windows.Forms.TextBox();
             this.t_user = new System.Windows.Forms.TextBox();
-            this.t_schema = new System.Windows.Forms.TextBox();
             this.t_server = new System.Windows.Forms.TextBox();
             this.lPass = new System.Windows.Forms.Label();
             this.tSchema = new System.Windows.Forms.Label();
             this.lUser = new System.Windows.Forms.Label();
             this.lServer = new System.Windows.Forms.Label();
+            this.t_schema = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // b_abolition
@@ -76,9 +76,10 @@
             // t_pass
             // 
             this.t_pass.Location = new System.Drawing.Point(123, 107);
+            this.t_pass.Multiline = true;
             this.t_pass.Name = "t_pass";
             this.t_pass.Size = new System.Drawing.Size(133, 20);
-            this.t_pass.TabIndex = 8;
+            this.t_pass.TabIndex = 1;
             this.t_pass.TextChanged += new System.EventHandler(this.off_connect);
             // 
             // t_user
@@ -86,23 +87,16 @@
             this.t_user.Location = new System.Drawing.Point(123, 81);
             this.t_user.Name = "t_user";
             this.t_user.Size = new System.Drawing.Size(133, 20);
-            this.t_user.TabIndex = 6;
+            this.t_user.TabIndex = 1;
             this.t_user.TextChanged += new System.EventHandler(this.off_connect);
-            // 
-            // t_schema
-            // 
-            this.t_schema.Location = new System.Drawing.Point(123, 32);
-            this.t_schema.Name = "t_schema";
-            this.t_schema.Size = new System.Drawing.Size(133, 20);
-            this.t_schema.TabIndex = 3;
-            this.t_schema.TextChanged += new System.EventHandler(this.off_connect);
             // 
             // t_server
             // 
             this.t_server.Location = new System.Drawing.Point(123, 6);
+            this.t_server.Multiline = true;
             this.t_server.Name = "t_server";
             this.t_server.Size = new System.Drawing.Size(133, 20);
-            this.t_server.TabIndex = 1;
+            this.t_server.TabIndex = 2;
             this.t_server.TextChanged += new System.EventHandler(this.off_connect);
             // 
             // lPass
@@ -141,6 +135,15 @@
             this.lServer.TabIndex = 0;
             this.lServer.Text = "Cервер";
             // 
+            // t_schema
+            // 
+            this.t_schema.Location = new System.Drawing.Point(123, 32);
+            this.t_schema.Multiline = true;
+            this.t_schema.Name = "t_schema";
+            this.t_schema.Size = new System.Drawing.Size(133, 20);
+            this.t_schema.TabIndex = 1;
+            this.t_schema.TextChanged += new System.EventHandler(this.off_connect);
+            // 
             // db_settings
             // 
             this.AcceptButton = this.b_apply;
@@ -148,9 +151,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_abolition;
             this.ClientSize = new System.Drawing.Size(270, 176);
+            this.Controls.Add(this.t_schema);
             this.Controls.Add(this.t_pass);
             this.Controls.Add(this.t_user);
-            this.Controls.Add(this.t_schema);
             this.Controls.Add(this.t_server);
             this.Controls.Add(this.lPass);
             this.Controls.Add(this.tSchema);
@@ -165,6 +168,7 @@
             this.Name = "db_settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Параметры подключения";
+            this.Load += new System.EventHandler(this.db_settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,11 +181,11 @@
         private System.Windows.Forms.CheckBox cb_win_auth;
         private System.Windows.Forms.TextBox t_pass;
         private System.Windows.Forms.TextBox t_user;
-        private System.Windows.Forms.TextBox t_schema;
         private System.Windows.Forms.TextBox t_server;
         private System.Windows.Forms.Label lPass;
         private System.Windows.Forms.Label tSchema;
         private System.Windows.Forms.Label lUser;
         private System.Windows.Forms.Label lServer;
+        private System.Windows.Forms.TextBox t_schema;
     }
 }

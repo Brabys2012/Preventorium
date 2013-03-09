@@ -39,6 +39,10 @@
             this.bEdit = new System.Windows.Forms.ToolStripButton();
             this.bDelete = new System.Windows.Forms.ToolStripButton();
             this.Menu_book = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.gw = new System.Windows.Forms.DataGridView();
             this.Menu_Strip_book = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Read_menu_book = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,20 +87,43 @@
             // 
             this.Menu_book.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.Menu_book.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
             this.bAdd,
+            this.toolStripSeparator3,
             this.bEdit,
-            this.bDelete});
+            this.toolStripSeparator2,
+            this.bDelete,
+            this.toolStripSeparator4});
             this.Menu_book.Location = new System.Drawing.Point(0, 0);
             this.Menu_book.Name = "Menu_book";
             this.Menu_book.Size = new System.Drawing.Size(341, 25);
             this.Menu_book.TabIndex = 3;
             this.Menu_book.Text = "toolStrip1";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // gw
             // 
             this.gw.AllowUserToAddRows = false;
             this.gw.AllowUserToDeleteRows = false;
-            this.gw.AllowUserToResizeColumns = false;
             this.gw.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -202,5 +229,9 @@
         private System.Windows.Forms.ContextMenuStrip Menu_Strip_book;
         private System.Windows.Forms.ToolStripMenuItem Read_menu_book;
         private System.Windows.Forms.ToolStripMenuItem delete_menu_book;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

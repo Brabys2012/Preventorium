@@ -18,8 +18,8 @@ namespace Preventorium
 
         private void enabled_b_save(object sender, EventArgs e)
         {
-            this.b_save.Enabled = true;
-            if (this._state == "OLD") { this.set_state("MOD"); };
+            if (this._state == "OLD") { this.set_state("MOD"); }
+            if ((cb_food.Text != "") && (tb_card_numb.Text != "")) { b_save.Enabled = true; }
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"

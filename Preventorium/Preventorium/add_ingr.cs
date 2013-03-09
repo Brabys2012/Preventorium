@@ -152,7 +152,7 @@ namespace Preventorium
             else
             {
                // MessageBox.Show(result);
-                MessageBox.Show("Вы не можете в поля: Жиры,Белки,Углеводы,вводить текст");
+                MessageBox.Show("Вы не можете в поля: Жиры,Белки,Углеводы, вводить текст");
             }
 
             this.Dispose();
@@ -166,8 +166,6 @@ namespace Preventorium
            {
                this.Close();
            }
-
-          
 
     }
 }

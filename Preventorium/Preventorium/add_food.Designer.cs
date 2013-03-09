@@ -56,10 +56,15 @@
             this.read_menu_food = new System.Windows.Forms.ToolStripMenuItem();
             this.b_del_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_ingr_food = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bAdd = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.bEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.bDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.b_card = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.gb_food_data.SuspendLayout();
             this.gb_chem_contain.SuspendLayout();
@@ -238,7 +243,6 @@
             // 
             this.gw.AllowUserToAddRows = false;
             this.gw.AllowUserToDeleteRows = false;
-            this.gw.AllowUserToResizeColumns = false;
             this.gw.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -295,7 +299,7 @@
             this.read_menu_food,
             this.b_del_menu});
             this.Menu_food.Name = "Menu_food";
-            this.Menu_food.Size = new System.Drawing.Size(155, 70);
+            this.Menu_food.Size = new System.Drawing.Size(155, 48);
             // 
             // read_menu_food
             // 
@@ -317,16 +321,26 @@
             // 
             this.menu_ingr_food.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.menu_ingr_food.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
             this.bAdd,
+            this.toolStripSeparator3,
             this.bEdit,
+            this.toolStripSeparator4,
             this.bDelete,
-            this.toolStripButton1});
+            this.toolStripSeparator5,
+            this.b_card,
+            this.toolStripSeparator2});
             this.menu_ingr_food.Location = new System.Drawing.Point(3, 16);
             this.menu_ingr_food.Name = "menu_ingr_food";
             this.menu_ingr_food.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menu_ingr_food.Size = new System.Drawing.Size(667, 25);
             this.menu_ingr_food.TabIndex = 4;
             this.menu_ingr_food.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bAdd
             // 
@@ -338,6 +352,11 @@
             this.bAdd.Text = "Добавить ингридиенты в блюдо";
             this.bAdd.Click += new System.EventHandler(this.bAddIngr_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // bEdit
             // 
             this.bEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -347,6 +366,11 @@
             this.bEdit.Size = new System.Drawing.Size(23, 22);
             this.bEdit.Text = "Редактировать_состав_блюда";
             this.bEdit.Click += new System.EventHandler(this.bEditIngr_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // bDelete
             // 
@@ -358,10 +382,23 @@
             this.bDelete.Text = "Удалить";
             this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
             // 
-            // toolStripButton1
+            // toolStripSeparator5
             // 
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // b_card
+            // 
+            this.b_card.Image = ((System.Drawing.Image)(resources.GetObject("b_card.Image")));
+            this.b_card.Name = "b_card";
+            this.b_card.Size = new System.Drawing.Size(184, 22);
+            this.b_card.Text = "Создать карточку-раскладку";
+            this.b_card.Click += new System.EventHandler(this.b_card_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // add_food
             // 
@@ -376,6 +413,7 @@
             this.Controls.Add(this.gb_food_data);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "add_food";
             this.Text = "Сведения о блюде";
             this.Load += new System.EventHandler(this.add_food_Load);
@@ -398,7 +436,6 @@
 
         private System.Windows.Forms.GroupBox gb_food_data;
         private System.Windows.Forms.Label l_nameFood;
-        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.GroupBox gb_chem_contain;
         private System.Windows.Forms.TextBox tb_fats;
         private System.Windows.Forms.Label l_fats;
@@ -419,10 +456,16 @@
         private System.Windows.Forms.ToolStripButton bEdit;
         private System.Windows.Forms.ToolStripButton bDelete;
         public System.Windows.Forms.DataGridView gw;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton b_card;
         private System.Windows.Forms.ContextMenuStrip Menu_food;
         private System.Windows.Forms.ToolStripMenuItem read_menu_food;
         private System.Windows.Forms.ToolStripMenuItem b_del_menu;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.TextBox tb_name;
 
 
     }

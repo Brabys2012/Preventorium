@@ -17,7 +17,6 @@ namespace Preventorium
             bs.DataSource = Program.data_module.get_data_table(state).Tables[state];
             gw.DataSource = bs;
             gw.Columns[0].Visible = false;
-
             gw.Update();
             gw.Show();
             this._current_state = state;
@@ -65,11 +64,11 @@ namespace Preventorium
         public void queue_Load(object sender, EventArgs e)
         {
             this.load_data_table("Queue");
-            gw.Columns[1].HeaderText = "Сезон";
-            gw.Columns[2].HeaderText = "Количество человек";
-            gw.Columns[3].HeaderText = "Дата начала очереди";
-            gw.Columns[4].HeaderText = "Дата окончания очереди";
-            gw.Columns[5].HeaderText = "Продолжительность";
+            gw.Columns[1].HeaderText = "Количество человек";
+            gw.Columns[2].HeaderText = "Дата начала очереди";
+            gw.Columns[3].HeaderText = "Дата окончания очереди";
+            gw.Columns[4].HeaderText = "Продолжительность";
+            gw.Columns[5].HeaderText = "Номер очереди";
         }
 
         private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

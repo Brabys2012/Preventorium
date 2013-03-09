@@ -44,6 +44,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.Report_Excel = new System.Windows.Forms.ToolStripDropDownButton();
             this.Excel_Exp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.gw = new System.Windows.Forms.DataGridView();
             this.Menu_ingr_strip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.read_butt = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +83,8 @@
             this.toolStripSeparator1,
             this.bDelete,
             this.toolStripSeparator4,
-            this.Report_Excel});
+            this.Report_Excel,
+            this.toolStripSeparator5});
             this.Menu_ingr.Location = new System.Drawing.Point(0, 0);
             this.Menu_ingr.Name = "Menu_ingr";
             this.Menu_ingr.Size = new System.Drawing.Size(643, 25);
@@ -144,11 +146,15 @@
             this.Excel_Exp.Text = "Экспорт в Excel";
             this.Excel_Exp.Click += new System.EventHandler(this.Export_Excel_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
             // gw
             // 
             this.gw.AllowUserToAddRows = false;
             this.gw.AllowUserToDeleteRows = false;
-            this.gw.AllowUserToResizeColumns = false;
             this.gw.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -262,5 +268,6 @@
         private System.Windows.Forms.ToolStripMenuItem read_butt;
         private System.Windows.Forms.ToolStripMenuItem delete_butt;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

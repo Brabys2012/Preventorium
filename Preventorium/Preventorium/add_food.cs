@@ -9,6 +9,8 @@ namespace Preventorium
     /// </summary>
     public partial class add_food : Form
     {
+        public string name_old;
+        
         private string _current_state;
 
         /// <summary>
@@ -21,17 +23,28 @@ namespace Preventorium
         private string _state;
         //ID блюда для загрузки данных (в режиме OLD)
         private string _id;
-
+        
         // Конструктор, вызываемый при нажатии "Добавить" 
         public add_food(db_connect data_module)
         {
             InitializeComponent();
             groupBox1.Visible = false;
             groupBox1.Enabled = false;
-            this.Size = new Size(245, 368);
+            this.Size = new Size(240, 150);
             this._data_module = data_module;
-            this.set_state("NEW");      
-        }
+            this.b_save.Location = new Point(22,85);
+            this.b_abolition.Location = new Point(132, 85);
+            l_weight.Visible = false;
+            gb_food_data.Size = new Size(205, 65);
+            gb_chem_contain.Visible = false;
+            tb_calories.Enabled = false;
+            tb_carbo.Enabled = false;
+            tb_fats.Enabled = false;
+            tb_proteins.Enabled = false;
+            tb_weight.Enabled = false;
+           
+            this.set_state("NEW");
+            }
 
         //Конструктор, вызываемый
         //для редактирования существующего блюда
@@ -40,21 +53,34 @@ namespace Preventorium
             InitializeComponent();
             this._id = food_id.ToString();
             this._data_module = data_module;
+            tb_calories.Enabled = false;
+            tb_carbo.Enabled = false;
+            tb_fats.Enabled = false;
+            tb_proteins.Enabled = false;
+            tb_weight.Enabled = false;
             this.fill_food_data();
+
+
             this.set_state("OLD");
+                           
+            
         }
 
 
         //Сохраняем/добавляем запись о блюде
         private void enabled_b_save(object sender, EventArgs e)
         {
+                               
+            Program.add_read_module.upd_food_(tb_name.Text, _id);
+            
+            if (this._state == "OLD") { this.set_state("MOD"); };
+          
             if (tb_name.Text != "")
             {
                 this.b_save.Enabled = true;
                 return;
             }
-         
-            if (this._state == "OLD") { this.set_state("MOD"); };
+             
         }
 
         private void b_save_Click(object sender, EventArgs e)
@@ -85,11 +111,13 @@ namespace Preventorium
                     break;
 
                 default:
-                    result = "NDF";
+                    result = "Ошибка ";
                     // не используется, однако mvs не позволяет 
                     // дальше работать переменной, которой в одной
                     // из веток кода не присваивается значение
                     break;
+                    
+                   
             }
 
             if (result == "OK")
@@ -105,10 +133,7 @@ namespace Preventorium
                         this.set_state("OLD");
                     }
             }
-            else
-            {
-                MessageBox.Show(result);
-            }
+
             this.Dispose();
         }
 
@@ -122,19 +147,22 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Блюдо - Просмотр";
-                    this.b_save.Enabled = false;
+                    this.b_save.Enabled = true;
+                 
                     break;
 
                 case "NEW":
                     this._state = "NEW";
                     this.Text = "Блюдо - Добавление";
+                    if (tb_name.Text !="")
+            
                     this.b_save.Enabled = false;
                     break;
 
                 case "MOD":
+              
                     this._state = "MOD";
-                    this.Text = "Блюдо - Редактирование";
-                    this.b_save.Enabled = true;
+                   this.b_save.Enabled = true;
                     break;
             }
         }
@@ -164,6 +192,7 @@ namespace Preventorium
 
         private void b_abolition_Click(object sender, EventArgs e)
         {
+            tb_name.Text = name_old; 
             this.Dispose();
         }
 
@@ -177,14 +206,19 @@ namespace Preventorium
             gw.Update();
             gw.Show();
             this._current_state = state;
+           
         }
 
         private void add_food_Load(object sender, EventArgs e)
         {
             this.load_data_table("Ingridients_in_food");
             gw.Columns[1].HeaderText = "Ингредиенты";
+            gw.Columns[2].DefaultCellStyle.Format = "##.00 г.";
             gw.Columns[2].HeaderText = "Брутто вес";
+            gw.Columns[3].DefaultCellStyle.Format = "##.00 г.";
             gw.Columns[3].HeaderText = "Нетто вес";
+            name_old = tb_name.Text;
+                      
         }
 
         private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -195,6 +229,7 @@ namespace Preventorium
                     add_ingr_in_food ingr_in_food = null;
                     try
                     {
+                      
                         ingr_in_food = new add_ingr_in_food(Program.data_module, gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString(),
                                                                                  gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString(),
                                                                                  Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()),
@@ -221,6 +256,7 @@ namespace Preventorium
                     del_ingr_from_food del = null;
                     try
                     {
+                        this.load_data_table(this._current_state);
                         del = new del_ingr_from_food(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
                         del.ShowDialog();
                     }
@@ -231,6 +267,8 @@ namespace Preventorium
                     break;
             }
             this.load_data_table(this._current_state);
+            this.fill_food_data();
+            this.Update();
         }
 
         //Редактирование ингредиента в блюде
@@ -243,6 +281,10 @@ namespace Preventorium
                     add_ingr_in_food ingr_in_food = null;
                     try
                     {
+                        this.load_data_table(this._current_state);
+
+                        
+                        
                         ingr_in_food = new add_ingr_in_food(Program.data_module, gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString(),
                                                                                  gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString(),
                                                                                  Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()),
@@ -256,6 +298,8 @@ namespace Preventorium
                     break;
             }
             this.load_data_table(this._current_state);
+            this.fill_food_data();
+            this.Update();
         }
 
         /// <summary>
@@ -279,6 +323,8 @@ namespace Preventorium
             }
 
             this.load_data_table(this._current_state);
+            this.fill_food_data();
+            this.Update();
         }
 
        
@@ -301,6 +347,12 @@ namespace Preventorium
             gw.ClearSelection();
             gw.Rows[rowIndex].Selected = true;
             gw.CurrentCell = gw[1, rowIndex];
+        }
+
+        private void b_card_Click(object sender, EventArgs e)
+        {
+            Cards_layout form = new Cards_layout(tb_name.Text);
+            form.ShowDialog();
         }
 
     }

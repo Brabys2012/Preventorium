@@ -69,10 +69,15 @@ namespace Preventorium
 
                this.load_data_table("Foods");
                gw.Columns[1].HeaderText = "Название блюда";
+               gw.Columns[2].DefaultCellStyle.Format = "##.000";
                gw.Columns[2].HeaderText = "Калории";
+               gw.Columns[3].DefaultCellStyle.Format = "##.00";
                gw.Columns[3].HeaderText = "Белки";
+               gw.Columns[4].DefaultCellStyle.Format = "##.00";
                gw.Columns[4].HeaderText = "Жиры";
+               gw.Columns[5].DefaultCellStyle.Format = "##.00";
                gw.Columns[5].HeaderText = "Углеводы";
+               gw.Columns[6].DefaultCellStyle.Format = "##.00 г.";
                gw.Columns[6].HeaderText = "Вес готового блюда";
               
            }

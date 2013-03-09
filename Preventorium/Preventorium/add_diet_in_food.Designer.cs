@@ -36,15 +36,12 @@
             this.cb_card_numb = new System.Windows.Forms.ComboBox();
             this.b_save = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
-            this.p_status = new System.Windows.Forms.StatusStrip();
-            this.l_status = new System.Windows.Forms.ToolStripStatusLabel();
-            this.p_status.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 9);
+            this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 0;
@@ -53,17 +50,16 @@
             // cb_food_name
             // 
             this.cb_food_name.FormattingEnabled = true;
-            this.cb_food_name.Location = new System.Drawing.Point(31, 26);
+            this.cb_food_name.Location = new System.Drawing.Point(12, 26);
             this.cb_food_name.Name = "cb_food_name";
             this.cb_food_name.Size = new System.Drawing.Size(171, 21);
             this.cb_food_name.TabIndex = 1;
-
             this.cb_food_name.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 50);
+            this.label2.Location = new System.Drawing.Point(9, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 2;
@@ -72,7 +68,7 @@
             // cb_diet_numb
             // 
             this.cb_diet_numb.FormattingEnabled = true;
-            this.cb_diet_numb.Location = new System.Drawing.Point(31, 66);
+            this.cb_diet_numb.Location = new System.Drawing.Point(12, 66);
             this.cb_diet_numb.Name = "cb_diet_numb";
             this.cb_diet_numb.Size = new System.Drawing.Size(171, 21);
             this.cb_diet_numb.TabIndex = 3;
@@ -81,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 90);
+            this.label3.Location = new System.Drawing.Point(9, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 4;
@@ -90,7 +86,7 @@
             // cb_card_numb
             // 
             this.cb_card_numb.FormattingEnabled = true;
-            this.cb_card_numb.Location = new System.Drawing.Point(31, 106);
+            this.cb_card_numb.Location = new System.Drawing.Point(12, 106);
             this.cb_card_numb.Name = "cb_card_numb";
             this.cb_card_numb.Size = new System.Drawing.Size(171, 21);
             this.cb_card_numb.TabIndex = 5;
@@ -98,7 +94,7 @@
             // 
             // b_save
             // 
-            this.b_save.Location = new System.Drawing.Point(31, 133);
+            this.b_save.Location = new System.Drawing.Point(12, 133);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
             this.b_save.TabIndex = 6;
@@ -109,7 +105,7 @@
             // b_cancel
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.b_cancel.Location = new System.Drawing.Point(127, 133);
+            this.b_cancel.Location = new System.Drawing.Point(108, 133);
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Size = new System.Drawing.Size(75, 23);
             this.b_cancel.TabIndex = 7;
@@ -117,29 +113,13 @@
             this.b_cancel.UseVisualStyleBackColor = true;
             this.b_cancel.Click += new System.EventHandler(this.b_cancel_Click);
             // 
-            // p_status
-            // 
-            this.p_status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.l_status});
-            this.p_status.Location = new System.Drawing.Point(0, 169);
-            this.p_status.Name = "p_status";
-            this.p_status.Size = new System.Drawing.Size(224, 22);
-            this.p_status.TabIndex = 8;
-            this.p_status.Text = "statusStrip1";
-            // 
-            // l_status
-            // 
-            this.l_status.Name = "l_status";
-            this.l_status.Size = new System.Drawing.Size(0, 17);
-            // 
             // add_diet_in_food
             // 
             this.AcceptButton = this.b_save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_cancel;
-            this.ClientSize = new System.Drawing.Size(224, 191);
-            this.Controls.Add(this.p_status);
+            this.ClientSize = new System.Drawing.Size(190, 164);
             this.Controls.Add(this.b_cancel);
             this.Controls.Add(this.b_save);
             this.Controls.Add(this.cb_card_numb);
@@ -149,10 +129,10 @@
             this.Controls.Add(this.cb_food_name);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "add_diet_in_food";
             this.Text = "Диеты для блюда";
-            this.p_status.ResumeLayout(false);
-            this.p_status.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,7 +148,5 @@
         private System.Windows.Forms.ComboBox cb_card_numb;
         private System.Windows.Forms.Button b_save;
         private System.Windows.Forms.Button b_cancel;
-        private System.Windows.Forms.StatusStrip p_status;
-        private System.Windows.Forms.ToolStripStatusLabel l_status;
     }
 }

@@ -149,10 +149,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_food);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_cards";
-           // this.Load += new System.EventHandler(this.add_cards_Load);
+            this.Text = "Добавить карточку-раскладку";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -14,11 +14,15 @@ namespace Preventorium
         private string ingr_name;
         public string food_name;
         private string ingr_id;
+      
+       
 
         private void enabled_b_save(object sender, EventArgs e)
         {
             this.b_save.Enabled = true;
             if (this._state == "OLD") { this.set_state("MOD"); };
+          
+           
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
@@ -51,7 +55,8 @@ namespace Preventorium
 
         //Добавление ингридиента
         private void add_new_ingr_in_food()
-        {
+        {                        
+           
             add_ingr_in_food add_ingr = new add_ingr_in_food(Program.data_module);
             add_ingr.ShowDialog();
         }
@@ -61,7 +66,7 @@ namespace Preventorium
         public add_ingr_in_food(db_connect data_module, string ingr_in_food_name_food, string ingr_in_food_ingr_name, int ingr_id, int food_id)
         {
             InitializeComponent();
-            
+
             class_ingr_in_food[] ingr_in_food = new class_ingr_in_food[512];
             ingr_in_food = Program.add_read_module.get_list_ingr_id();
             if (ingr_in_food != null)
@@ -133,6 +138,7 @@ namespace Preventorium
                 case "MOD":
                     this._state = "MOD";
                     this.Text = "Редактирование";
+                   
                     this.b_save.Enabled = true;
                     break;
             }
@@ -146,7 +152,8 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
-                    result = Program.add_read_module.add_ingr_in_food(food_name, 
+
+                       result = Program.add_read_module.add_ingr_in_food(food_name, 
                         this.tb_gross.Text,
                         this.tb_net.Text,
                         this.cb_ingr.Text);
@@ -160,13 +167,18 @@ namespace Preventorium
                 ingr_in_food = Program.add_read_module.get_ingr_in_food(ingr_name, food_name);
 
                 string ingr_old = ingr_in_food.ingr_name;
+                string food_old = ingr_in_food.food_name;
+                string food_ID = ingr_in_food.id_food;
+      
+                add_ingr_in_food ingr_in_foods = new add_ingr_in_food(Program.data_module);
+
                
                 result = Program.add_read_module.upd_ingr_in_food(Convert.ToInt32(this.ingr_id),
-                    food_name,
+                  food_name,
                     this.tb_gross.Text,
                      this.tb_net.Text,
                      this.cb_ingr.Text,
-                     ingr_old);
+                     ingr_old, food_ID);
                     this.Close();
                     break;
 

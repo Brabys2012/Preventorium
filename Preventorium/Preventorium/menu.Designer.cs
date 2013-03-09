@@ -1,6 +1,6 @@
 ﻿namespace Preventorium
 {
-    partial class queue
+    partial class menu
     {
         /// <summary>
         /// Required designer variable.
@@ -29,96 +29,67 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(queue));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.menu_queue = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bAdd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.bDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.b_add = new System.Windows.Forms.ToolStripButton();
+            this.b_edit = new System.Windows.Forms.ToolStripButton();
+            this.b_delete = new System.Windows.Forms.ToolStripButton();
             this.gw = new System.Windows.Forms.DataGridView();
-            this.Menu_Strip_Queue = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Read_queue = new System.Windows.Forms.ToolStripMenuItem();
-            this.delete_queue = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.b_editMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.b_delMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
-            this.menu_queue.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
-            this.Menu_Strip_Queue.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.SuspendLayout();
             // 
-            // menu_queue
+            // toolStrip1
             // 
-            this.menu_queue.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.menu_queue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
-            this.bAdd,
-            this.toolStripSeparator2,
-            this.bEdit,
-            this.toolStripSeparator4,
-            this.bDelete,
-            this.toolStripSeparator3});
-            this.menu_queue.Location = new System.Drawing.Point(0, 0);
-            this.menu_queue.Name = "menu_queue";
-            this.menu_queue.Size = new System.Drawing.Size(707, 25);
-            this.menu_queue.TabIndex = 0;
-            this.menu_queue.Text = "toolStrip1";
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.b_add,
+            this.b_edit,
+            this.b_delete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(257, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSeparator1
+            // b_add
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.b_add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.b_add.Image = global::Preventorium.Properties.Resources.add_button;
+            this.b_add.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.b_add.Name = "b_add";
+            this.b_add.Size = new System.Drawing.Size(23, 22);
+            this.b_add.Text = "Добавить";
+            this.b_add.Click += new System.EventHandler(this.b_add_Click);
             // 
-            // bAdd
+            // b_edit
             // 
-            this.bAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bAdd.Image = global::Preventorium.Properties.Resources.add_button1;
-            this.bAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(23, 22);
-            this.bAdd.Text = "Добавить очередь";
-            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
+            this.b_edit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.b_edit.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.b_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.b_edit.Name = "b_edit";
+            this.b_edit.Size = new System.Drawing.Size(23, 22);
+            this.b_edit.Text = "Редактировать";
+            this.b_edit.Click += new System.EventHandler(this.b_edit_Click);
             // 
-            // toolStripSeparator2
+            // b_delete
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bEdit
-            // 
-            this.bEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bEdit.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
-            this.bEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bEdit.Name = "bEdit";
-            this.bEdit.Size = new System.Drawing.Size(23, 22);
-            this.bEdit.Text = "Редактировать";
-            this.bEdit.Click += new System.EventHandler(this.bEdit_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bDelete
-            // 
-            this.bDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bDelete.Image = ((System.Drawing.Image)(resources.GetObject("bDelete.Image")));
-            this.bDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bDelete.Name = "bDelete";
-            this.bDelete.Size = new System.Drawing.Size(23, 22);
-            this.bDelete.Text = "Удалить";
-            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.b_delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.b_delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.b_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.b_delete.Name = "b_delete";
+            this.b_delete.Size = new System.Drawing.Size(23, 22);
+            this.b_delete.Text = "Удалить";
+            this.b_delete.Click += new System.EventHandler(this.b_delete_Click);
             // 
             // gw
             // 
@@ -142,7 +113,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gw.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gw.ContextMenuStrip = this.Menu_Strip_Queue;
+            this.gw.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -170,48 +141,48 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(707, 237);
+            this.gw.Size = new System.Drawing.Size(257, 118);
             this.gw.TabIndex = 1;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             // 
-            // Menu_Strip_Queue
+            // contextMenuStrip1
             // 
-            this.Menu_Strip_Queue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Read_queue,
-            this.delete_queue});
-            this.Menu_Strip_Queue.Name = "Menu_Strip_Queue";
-            this.Menu_Strip_Queue.Size = new System.Drawing.Size(155, 48);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.b_editMenu,
+            this.b_delMenu});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 48);
             // 
-            // Read_queue
+            // b_editMenu
             // 
-            this.Read_queue.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
-            this.Read_queue.Name = "Read_queue";
-            this.Read_queue.Size = new System.Drawing.Size(154, 22);
-            this.Read_queue.Text = "Редактировать";
-            this.Read_queue.Click += new System.EventHandler(this.Read_queue_Click);
+            this.b_editMenu.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.b_editMenu.Name = "b_editMenu";
+            this.b_editMenu.Size = new System.Drawing.Size(154, 22);
+            this.b_editMenu.Text = "Редактировать";
+            this.b_editMenu.Click += new System.EventHandler(this.b_editMenu_Click);
             // 
-            // delete_queue
+            // b_delMenu
             // 
-            this.delete_queue.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
-            this.delete_queue.Name = "delete_queue";
-            this.delete_queue.Size = new System.Drawing.Size(154, 22);
-            this.delete_queue.Text = "Удалить";
-            this.delete_queue.Click += new System.EventHandler(this.delete_queue_Click);
+            this.b_delMenu.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.b_delMenu.Name = "b_delMenu";
+            this.b_delMenu.Size = new System.Drawing.Size(154, 22);
+            this.b_delMenu.Text = "Удалить";
+            this.b_delMenu.Click += new System.EventHandler(this.b_delMenu_Click);
             // 
-            // queue
+            // menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 262);
+            this.ClientSize = new System.Drawing.Size(257, 143);
             this.Controls.Add(this.gw);
-            this.Controls.Add(this.menu_queue);
-            this.Name = "queue";
-            this.Text = "Очередь";
-            this.Load += new System.EventHandler(this.queue_Load);
-            this.menu_queue.ResumeLayout(false);
-            this.menu_queue.PerformLayout();
+            this.Controls.Add(this.toolStrip1);
+            this.Name = "menu";
+            this.Text = "Меню для очереди";
+            this.Load += new System.EventHandler(this.menu_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).EndInit();
-            this.Menu_Strip_Queue.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -220,18 +191,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip menu_queue;
-        private System.Windows.Forms.ToolStripButton bAdd;
-        private System.Windows.Forms.ToolStripButton bEdit;
-        private System.Windows.Forms.ToolStripButton bDelete;
-        public System.Windows.Forms.DataGridView gw;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton b_add;
+        private System.Windows.Forms.ToolStripButton b_edit;
+        private System.Windows.Forms.ToolStripButton b_delete;
         private System.Windows.Forms.BindingSource bs;
-        private System.Windows.Forms.ContextMenuStrip Menu_Strip_Queue;
-        private System.Windows.Forms.ToolStripMenuItem Read_queue;
-        private System.Windows.Forms.ToolStripMenuItem delete_queue;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem b_editMenu;
+        private System.Windows.Forms.ToolStripMenuItem b_delMenu;
+        public System.Windows.Forms.DataGridView gw;
     }
 }

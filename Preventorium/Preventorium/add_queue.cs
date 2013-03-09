@@ -35,19 +35,12 @@ namespace Preventorium
         //Сохраняем/добавляем запись о очереди
         private void enabled_b_save(object sender, EventArgs e)
         {
-            this.l_status.Text = "Запись изменена";
-            this.b_save.Enabled = true;
-            if (this._state == "OLD") { this.set_state("MOD"); };
+            if (this._state == "OLD") { this.set_state("MOD"); }
+            if ((tb_mens.Text != "") && (tb_start.Text != "") && (tb_end.Text != "") && (tb_numb.Text != "")) { b_save.Enabled = true; }
         }
 
         private void b_save_Click(object sender, EventArgs e)
         {
-            if ((tb_season.Text == "")||(tb_mens.Text == "")||(tb_start.Text == "")||(tb_end.Text == ""))
-            {
-                MessageBox.Show("Не заполнены обязательные поля!");
-                return;
-            }
-
             string result ="";
             string start = tb_start.Value.ToString("dd.MM.yyyy");
             string end = tb_end.Value.ToString("dd.MM.yyyy");
@@ -56,26 +49,19 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
-                    this.l_status.Text = "Добавление новой очереди...";
-                    result = Program.add_read_module.add_queue(this.tb_season.Text,
-         this.tb_mens.Text,
-         start,
-         end);
+                    result = Program.add_read_module.add_queue(this.tb_mens.Text, this.tb_numb.Text, start,end);
                     this.Close();
                     break;
 
                 //Если модифицируется существующая...
                 case "MOD":
-                    this.l_status.Text = "Модификация данных о очереди.. ";
-                    result = Program.add_read_module.upd_queue(Convert.ToInt32(this._id),
-                    this.tb_season.Text,
-         this.tb_mens.Text,
-         start,
-         end);
+                    result = Program.add_read_module.upd_queue(Convert.ToInt32(this._id), this.tb_mens.Text,
+                                                               this.tb_numb.Text,
+                                                               start,
+                                                               end);
                     break;
 
                 default:
-                    this.l_status.Text = "Ошибка";
                     result = "NDF";
                     // не используется, однако mvs не позволяет 
                     // дальше работать переменной, которой в одной
@@ -94,14 +80,13 @@ namespace Preventorium
                     if (this._state == "MOD")
                     {
                         this.set_state("OLD");
-                        this.l_status.Text = "Изменение записи успешно завершено";
                     }
             }
             else
             {
-                this.l_status.Text = "Ошибка";
                 MessageBox.Show(result);
             }
+            this.Dispose();
         }
 
 
@@ -114,7 +99,6 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Очередь - Просмотр";
-                    this.l_status.Text = "";
                     this.b_save.Enabled = false;
                     break;
 
@@ -139,10 +123,10 @@ namespace Preventorium
             queue = Program.add_read_module.get_queue(Convert.ToInt32(this._id));
             if (queue.result == "OK")
             {
-                this.tb_season.Text = queue.season;
                 this.tb_mens.Text = queue.numb_men;
                 this.tb_start.Text = queue.start;
                 this.tb_end.Text = queue.end;
+                this.tb_numb.Text = queue.numb_queue;
             }
             else
             {

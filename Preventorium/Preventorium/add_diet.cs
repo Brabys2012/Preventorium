@@ -27,7 +27,6 @@ namespace Preventorium
 
         private void enabled_b_save(object sender, EventArgs e)
         {
-            this.l_status.Text = "Запись изменена";
             this.b_save.Enabled = true;
             if (this._state == "OLD") { this.set_state("MOD"); };
         }
@@ -51,7 +50,6 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
-                    this.l_status.Text = "Добавление новой диеты...";
                     result = Program.add_read_module.add_diet(this.tb_numbDiet.Text,
          this.tb_description.Text);
                     this.Close();
@@ -59,14 +57,12 @@ namespace Preventorium
 
                 //Если модифицируется существующая...
                 case "MOD":
-                    this.l_status.Text = "Модификация данных о диете.. ";
                     result = Program.add_read_module.upd_diet(Convert.ToInt32(this._id),
                     this.tb_numbDiet.Text,
          this.tb_description.Text);
                     break;
 
                 default:
-                    this.l_status.Text = "Ошибка";
                     result = "NDF";
                     // не используется, однако mvs не позволяет 
                     // дальше работать переменной, которой в одной
@@ -85,12 +81,10 @@ namespace Preventorium
                     if (this._state == "MOD")
                     {
                         this.set_state("OLD");
-                        this.l_status.Text = "Изменение записи успешно завершено";
                     }
             }
             else
             {
-                this.l_status.Text = "Ошибка";
                 MessageBox.Show(result);
             }
             this.Dispose();
@@ -106,7 +100,6 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Диеты - Просмотр";
-                    this.l_status.Text = "";
                     this.b_save.Enabled = false;
                     break;
 

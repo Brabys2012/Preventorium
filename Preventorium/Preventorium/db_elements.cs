@@ -122,9 +122,9 @@ public class class_queue
 {
     public string result;
     public string queue_id;
-    public string season;
     public string numb_men;
     public string start;
+    public string numb_queue;
     public string end;
     public string length;
 }
@@ -170,4 +170,42 @@ public class food_in_book
     public string book;
     public string food;
     public string card;
+}
+
+/// <summary>
+/// класс меню создаваемый для очереди
+/// </summary>
+public class class_menu
+{
+    public string result;
+    public string menu_id;
+    public string queue_id;
+    public string numb_queue;
+}
+
+public class class_menu_in_day
+{
+    public string result;
+    public string menu_id;
+    public string day_id;
+    public string day;
+}
+
+public class class_food_in_menu
+{
+    public string result;
+    public string menu_id;
+    public string day_id;
+    public string food_id;
+    public string serve_time;
+    public string food;
+}
+
+
+public class class_menu_in_food
+{
+    public string result;
+    public string service;
+    public string food_id;
+
 }

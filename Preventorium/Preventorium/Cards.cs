@@ -84,6 +84,7 @@ namespace Preventorium
             
             this.load_data_table("Cards");
             gw.Columns[1].HeaderText = "Блюдо";
+            gw.Columns[2].DefaultCellStyle.Format = "##.00 руб.";
             gw.Columns[2].HeaderText = "Ориентировочная стоимость";
             gw.Columns[3].HeaderText = "Метод приготовления";
             gw.Columns[4].HeaderText = "Номер карты";
@@ -190,8 +191,6 @@ namespace Preventorium
          if (this._card_list != null)
             {
                this.lb_diet.Items.Clear();
-
-
             }
             for (int i = 1; i < this._card_list.Count(); i++)
             {
@@ -273,11 +272,45 @@ namespace Preventorium
             gw.CurrentCell = gw[1, rowIndex];
         }
 
-        
+        /// <summary>
+        /// из выбранной в лист боксе диеты передаем в текст бокс расшифровку диеты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lb_diet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            class_diet diet = new class_diet();
+            string query = "select Description from Diets "
+                         + "where NumOfDiet = '" + lb_diet.Text + "'";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                if (rd.Read())
+                {
+                    if (rd.IsDBNull(0))
+                    {
+                        diet.description = "";
+                    }
+                    else
+                    {
+                        diet.description = rd.GetString(0);
+                        tb_desc.Text = diet.description;
+                    }
 
-              
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
 
-        
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR_" + ex.Data + " " + ex.Message);
+            }
+        }
+ 
     }
 }
 

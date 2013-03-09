@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Preventorium
 {
-    static class Program
+     static  class Program
     {
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Preventorium
             SW_FORCEMINIMIZE = 11,
         }
 
-
+       
         /// <summary>
         /// Клиент для работы с БД.
         /// </summary>

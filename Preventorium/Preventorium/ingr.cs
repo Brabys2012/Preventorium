@@ -10,7 +10,6 @@ namespace Preventorium
         public ingr()
         {
             InitializeComponent();
-
         }
 
         private string _current_state;

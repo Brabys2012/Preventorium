@@ -739,8 +739,7 @@ namespace Preventorium
                 query += "' ";
             }
 
-            query += "where ID_food=";
-            query += id.ToString();
+            query += "where ID_food= '" + id.ToString() + "'";
 
             try
             {
@@ -1108,7 +1107,7 @@ namespace Preventorium
                     }
                     else
                     {
-                        book.year = rd.GetString(2);
+                        book.year = rd.GetInt32(2).ToString();
                     }
                     if (rd.IsDBNull(3))
                     {
@@ -1206,9 +1205,10 @@ namespace Preventorium
         /// <param name="name_ingr"></param>
         /// <param name="ingr_old"></param>
         /// <returns></returns>
-        public string upd_ingr_in_food(int ingr_id, string food_name, string gross, string net, string name_ingr, string ingr_old)
+        public string upd_ingr_in_food(int ingr_id, string food_name, string gross, string net, string name_ingr, string ingr_old,string food_ID)
         {
-            string query = "update Ingridients_in_food set ";
+                       
+            string  query = "update Ingridients_in_food set ";
             query += "Gross_weight=";
             if (gross == "") { query += "null, "; }
             else
@@ -1252,6 +1252,28 @@ namespace Preventorium
             return "OK";
         }
 
+
+        public string upd_food_( string food_name, string food_ID)
+        {
+
+            string query = "update Foods set Name_food ='" + food_name + "'" + " from Foods where   ID_food ='" + food_ID + "'";
+            
+            
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                return ("ERROR_" + ex.Message + " " + ex.Data);
+            }
+
+            return "OK";
+        }
         /// <summary>
         /// возвращает ингридиент в блюде по указанному в параметрах идентификатору (коду)
         /// </summary>
@@ -1261,7 +1283,7 @@ namespace Preventorium
          public class_ingr_in_food get_ingr_in_food(string ingr_name,string food_name)
         {
             class_ingr_in_food ingr_in_food = new class_ingr_in_food();
-            string query = "Select  F.Name_food, I.ingridient_name, IIF.Gross_weight, IIF.Net_weight, IIF.Id_ingridients "
+            string query = "Select  F.Name_food, F.ID_food,I.ingridient_name, IIF.Gross_weight, IIF.Net_weight, IIF.Id_ingridients "
                             + "From Ingridients_in_food IIF join Ingridients I on "
                             + "IIF.Id_ingridients = I.Id_ingridients "
                             + "join Foods F on  F.ID_food = IIF.ID_food ";
@@ -1276,30 +1298,31 @@ namespace Preventorium
                     ingr_in_food.result = "OK";
                     ingr_in_food.ingr_name = ingr_name.ToString();
                     ingr_in_food.food_name = rd.GetString(0);
+                    ingr_in_food.id_food = rd.GetInt32(1).ToString();
 
-                    if (rd.IsDBNull(2))
+                    if (rd.IsDBNull(3))
                     {
                         ingr_in_food.gross = "";
                     }
                     else
                     {
-                        ingr_in_food.gross = rd.GetDouble(2).ToString();
+                        ingr_in_food.gross = rd.GetDouble(3).ToString();
                     }
-                    if (rd.IsDBNull(3))
+                    if (rd.IsDBNull(4))
                     {
                         ingr_in_food.net = "";
                     }
                     else
                     {
-                        ingr_in_food.net = rd.GetDouble(3).ToString();
+                        ingr_in_food.net = rd.GetDouble(4).ToString();
                     }
-                    if (rd.IsDBNull(4))
+                    if (rd.IsDBNull(5))
                     {
                         ingr_in_food.ingr_id = "";
                     }
                     else
                     {
-                        ingr_in_food.ingr_id = rd.GetInt32(4).ToString();
+                        ingr_in_food.ingr_id = rd.GetInt32(5).ToString();
                     }
 
                 }
@@ -1315,7 +1338,8 @@ namespace Preventorium
 
             return ingr_in_food;
         }
-    
+
+     
         /// <summary>
          ///  возвращает ингридиент по указанному в параметрах идентификатору (коду)
         /// </summary>
@@ -1394,20 +1418,11 @@ namespace Preventorium
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public string add_queue(string season, string numb_men, string start, string end)
+        public string add_queue(string numb_men, string numb_queue, string start, string end)
         {
             this._command_text = "insert into Queue";
-            this._command_text += "(Season, Number_of_mens, Starting_date, Ending_date) ";
+            this._command_text += "(Number_of_mens, Number_queue, Starting_date, Ending_date) ";
             this._command_text += "values(";
-
-            if (season == "")
-            { this._command_text += "null"; this._command_text += ", "; }
-            else
-            {
-                this._command_text += "'";
-                this._command_text += season;
-                this._command_text += "',";
-            }
 
             if (numb_men == "")
             { this._command_text += "null"; this._command_text += ", "; }
@@ -1415,6 +1430,15 @@ namespace Preventorium
             {
                 this._command_text += " '";
                 this._command_text += numb_men;
+                this._command_text += "',";
+            }
+
+            if (numb_queue == "")
+            { this._command_text += "null"; this._command_text += ", "; }
+            else
+            {
+                this._command_text += " '";
+                this._command_text += numb_queue;
                 this._command_text += "',";
             }
 
@@ -1461,24 +1485,24 @@ namespace Preventorium
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public string upd_queue(int id, string season, string numb_men, string start, string end)
+        public string upd_queue(int id, string numb_men, string numb_queue, string start, string end)
         {
             string query = "update Queue set ";
-            query += "Season=";
-            if (season == "") { query += "null, "; }
-            else
-            {
-                query += "'";
-                query += season;
-                query += "', ";
-            }
-
             query += "Number_of_mens=";
             if (numb_men == "") { query += "null, "; }
             else
             {
                 query += "'";
                 query += numb_men;
+                query += "', ";
+            }
+
+              query += "Number_queue=";
+            if (numb_queue == "") { query += "null, "; }
+            else
+            { 
+                query += "'";
+                query += numb_queue;
                 query += "', ";
             }
 
@@ -1538,38 +1562,45 @@ namespace Preventorium
                 {
                     queue.result = "OK";
                     queue.queue_id = id.ToString();
-                    queue.season = rd.GetString(1);
-                    if (rd.IsDBNull(2))
+                    if (rd.IsDBNull(1))
                     {
                         queue.numb_men = "";
                     }
                     else
                     {
-                        queue.numb_men = rd.GetInt32(2).ToString();
+                        queue.numb_men = rd.GetInt32(1).ToString();
                     }
-                    if (rd.IsDBNull(3))
+                    if (rd.IsDBNull(2))
                     {
                         queue.start = "";
                     }
                     else
                     {
-                        queue.start = rd.GetDateTime(3).ToString("dd.MM.yyyy");
+                        queue.start = rd.GetDateTime(2).ToString("dd.MM.yyyy");
                     }
-                    if (rd.IsDBNull(4))
+                    if (rd.IsDBNull(3))
                     {
                         queue.end = "";
                     }
                     else
                     {
-                        queue.end = rd.GetDateTime(4).ToString("dd.MM.yyyy");
+                        queue.end = rd.GetDateTime(3).ToString("dd.MM.yyyy");
                     }
-                    if (rd.IsDBNull(5))
+                    if (rd.IsDBNull(4))
                     {
                         queue.length = "";
                     }
                     else
                     {
-                        queue.length = rd.GetInt32(5).ToString();
+                        queue.length = rd.GetInt32(4).ToString();
+                    }
+                    if (rd.IsDBNull(5))
+                    {
+                        queue.numb_queue = "";
+                    }
+                    else
+                    {
+                        queue.numb_queue = rd.GetString(5);
                     }
                 }
                 rd.Close();
@@ -2058,7 +2089,6 @@ namespace Preventorium
                 if (rd.Read())
                 {
                     food_in_book.result = "OK";
-                    //food_in_book.card = card.ToString();
                     food_in_book.food = rd.GetString(1);
 
                     if (rd.IsDBNull(0))
@@ -2132,5 +2162,370 @@ namespace Preventorium
 
             return card;
         }
+
+    /// <summary>
+    /// Создает запись меню для очереди
+    /// </summary>
+    /// <param name="numb_men"></param>
+    /// <param name="numb_queue"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+        public string add_menu(string numb_queue)
+        {
+            this._command_text = "insert into Menu";
+            this._command_text += "(ID_queue) ";
+            this._command_text += "values(";
+
+            if (numb_queue == "")
+            { this._command_text += "null"; this._command_text += ")"; }
+            else
+            {
+                this._command_text += "(select ID_queue from Queue Q where Q.Number_queue ='" + numb_queue + "'))";
+            }
+
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = this._command_text;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Меню для этой очереди уже было создано!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return "OK";
+        }
+
+        /// <summary>
+        /// возвращает меню для очереди
+        /// </summary>
+        /// <param name="food"></param>
+        /// <returns></returns>
+        public class_menu get_menu(string numb_queue)
+        {
+            class_menu menu = new class_menu();
+            string query = "select Q.Number_queue, M.ID_queue, M.ID_menu "
+                           + "from Menu M "
+                           + "join Queue Q on Q.ID_queue = M.ID_queue "
+                           + "where Q.Number_queue = '" + numb_queue + "'";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                if (rd.Read())
+                {
+                    menu.result = "OK";
+                    menu.queue_id = rd.GetString(1);
+
+                    if (rd.IsDBNull(1))
+                    {
+                        menu.menu_id = "";
+                    }
+                    else
+                    {
+                        menu.menu_id = rd.GetInt32(2).ToString();
+                    }
+                    if (rd.IsDBNull(3))
+                    {
+                        menu.numb_queue = "";
+                    }
+                    else
+                    {
+                        menu.numb_queue = rd.GetString(3);
+                    }
+
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                menu.result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            return menu;
+        }
+
+        /// <summary>
+        /// возвращает список очередей
+        /// </summary>
+        /// <returns></returns>
+        public class_queue[] get_numb_queue()
+        {
+            class_queue[] menu = new class_queue[512];
+            string query = "Select ID_queue, Number_queue "
+                         + "from Queue";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                int i = 0;
+                while (rd.Read())
+                {
+                    i++;
+                    menu[i] = new class_queue();
+                    menu[i].result = "OK";
+                    menu[i].queue_id = rd.GetInt32(0).ToString();
+                    menu[i].numb_queue = rd.GetString(1);
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                menu[0].result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            return menu;
+        }
+
+        /// <summary>
+        /// Создает запись о меню на день
+        /// </summary>
+        /// <param name="numb_queue"></param>
+        /// <returns></returns>
+        public string add_menu_in_day(string day, int menu_id)
+        {
+            this._command_text = "insert into Menu_in_day";
+            this._command_text += "(date_menu, ID_menu) ";
+            this._command_text += "values(";
+
+            if (day == "")
+            { this._command_text += "null"; this._command_text += ","; }
+            else
+            {
+                this._command_text += "'" + day + "',";
+            }
+            if (menu_id.ToString() == "")
+            { this._command_text += "null"; this._command_text += ")"; }
+            else
+            {
+                this._command_text += "'" + menu_id + "')";
+            }
+
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = this._command_text;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Меню для этой очереди уже было создано!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return "OK";
+        }
+
+        /// <summary>
+        /// возвращает список меню-дней для очереди
+        /// </summary>
+        /// <param name="numb_queue"></param>
+        /// <returns></returns>
+        public class_menu_in_day get_menu_in_day(int day_id, string day)
+        {
+            class_menu_in_day menu = new class_menu_in_day();
+            string query = "select day_id, day "
+                           + "from Menu_in_day "
+                           + "where day_id = '" + day_id + "'";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                if (rd.Read())
+                {
+                    menu.result = "OK";
+                    menu.day_id = rd.GetString(0);
+
+                    if (rd.IsDBNull(1))
+                    {
+                        menu.day = "";
+                    }
+                    else
+                    {
+                        menu.day = rd.GetString(1);
+                    }
+
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                menu.result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            return menu;
+        }
+
+
+    /// <summary>
+    /// Создаёт запись о блюде в меню
+    /// </summary>
+    /// <param name="serve_time"></param>
+    /// <param name="food"></param>
+    /// <returns></returns>
+        public string add_food_in_menu(string serve_time, int menu_id, int day_id, string food)
+        {
+            this._command_text = "insert into Food_in_menu";
+            this._command_text += "(Serve_time_of_food, ID_menu, ID_food, day_id ) ";
+            this._command_text += "values(";
+
+            if (serve_time == "")
+            { this._command_text += "null"; this._command_text += ","; }
+            else
+            {
+                this._command_text += "'" + serve_time + "',";
+            }
+            if (menu_id.ToString() == "")
+            { this._command_text += "null"; this._command_text += ","; }
+            else
+            {
+                this._command_text += "'" + menu_id + "',";
+            }
+            if (food.ToString() == "")
+            { this._command_text += "null"; this._command_text += ","; }
+            else
+            {
+                this._command_text += "(select ID_food from Foods where Name_food ='" + food + "'),";
+            }
+            if (day_id.ToString() == "")
+            { this._command_text += "null"; this._command_text += ")"; }
+            else
+            {
+                this._command_text += "'" + day_id + "')";
+            }
+
+            try
+            {
+                class_food_in_menu[] menu = new class_food_in_menu[512];
+                string query = "Select F.ID_food, MID.day_id, F.Name_food "
+                             + "from Food_in_menu FIM "
+                             + "join Foods F on F.ID_food = FIM.ID_Food "
+                             + "join Menu_in_day MID on MID.day_id = FIM.day_id "
+                             + "where Serve_time_of_food = '" + serve_time + "' and MID.day_id = '" + day_id +"'";
+                    SqlCommand com = Program.data_module._conn.CreateCommand();
+                    com.CommandText = query;
+                    SqlDataReader rd = com.ExecuteReader();
+                    int i = 0;
+                    while (rd.Read())
+                    {
+                        i++;
+                        menu[i] = new class_food_in_menu();
+                        menu[i].result = "OK";
+                        menu[i].food_id = rd.GetInt32(0).ToString();
+                        menu[i].day_id = rd.GetInt32(1).ToString();
+                        menu[i].food = rd.GetString(2);
+                        if ((menu[i].food == food) && (menu[i].day_id == Convert.ToString(day_id)))
+                        {
+                            rd.Close();
+                            rd.Dispose();
+                            com.Dispose();
+                        }
+                        
+                    }
+                    rd.Close();
+                    rd.Dispose();
+                    com.Dispose();
+                
+                    com = Program.data_module._conn.CreateCommand();
+                    com.CommandText = this._command_text;
+                    com.ExecuteNonQuery();
+                    com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Это блюдо уже есть в меню!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return "OK";
+        }
+
+        public class_food_in_menu get_food_in_menu(string food)
+        {
+            class_food_in_menu food_in_menu = new class_food_in_menu();
+            string query = "select F.Name_food "
+                         + "from Food_in_menu FIM "
+                         + "join Foods F on F.ID_food = FIM.ID_food";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                if (rd.Read())
+                {
+                    food_in_menu.result = "OK";
+
+                    if (rd.IsDBNull(0))
+                    {
+                        food_in_menu.food = "";
+                    }
+                    else
+                    {
+                        food_in_menu.food = rd.GetString(0);
+                    }
+
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                food_in_menu.result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            return food_in_menu;
+        }
+        //возвращает карту по указанному в параметрах идентификатору (коду)
+        public class_food_in_menu[] get_foodMenu()
+        {
+            class_food_in_menu[] food_in_menu = new class_food_in_menu[512];
+            string query = "Select F.ID_food, F.Name_food "
+                         + "from Foods F ";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                int i = 0;
+                while (rd.Read())
+                {
+                    i++;
+                    food_in_menu[i] = new class_food_in_menu();
+                    food_in_menu[i].result = "OK";
+                    food_in_menu[i].food_id = rd.GetInt32(0).ToString();
+                    food_in_menu[i].food = rd.GetString(1);
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                food_in_menu[0].result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            return food_in_menu;
+        }
+
     }
 }

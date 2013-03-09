@@ -37,6 +37,7 @@
             this.b_diet_in_food = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Queue = new System.Windows.Forms.ToolStripMenuItem();
             this.b_queue = new System.Windows.Forms.ToolStripMenuItem();
+            this.b_add_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Digest = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Digest_Ingridients = new System.Windows.Forms.ToolStripMenuItem();
             this.Diets_menu = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +97,7 @@
             this.frmMDI_MainMenu_Menu.Name = "frmMDI_MainMenu_Menu";
             this.frmMDI_MainMenu_Menu.Size = new System.Drawing.Size(53, 20);
             this.frmMDI_MainMenu_Menu.Text = "Меню";
-             // 
+            // 
             // Food
             // 
             this.Food.Name = "Food";
@@ -114,7 +115,8 @@
             // frmMDI_MainMenu_Queue
             // 
             this.frmMDI_MainMenu_Queue.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.b_queue});
+            this.b_queue,
+            this.b_add_menu});
             this.frmMDI_MainMenu_Queue.Name = "frmMDI_MainMenu_Queue";
             this.frmMDI_MainMenu_Queue.Size = new System.Drawing.Size(66, 20);
             this.frmMDI_MainMenu_Queue.Text = "Очередь";
@@ -122,9 +124,16 @@
             // b_queue
             // 
             this.b_queue.Name = "b_queue";
-            this.b_queue.Size = new System.Drawing.Size(197, 22);
+            this.b_queue.Size = new System.Drawing.Size(223, 22);
             this.b_queue.Text = "Просмотреть очереди";
             this.b_queue.Click += new System.EventHandler(this.b_queue_Click);
+            // 
+            // b_add_menu
+            // 
+            this.b_add_menu.Name = "b_add_menu";
+            this.b_add_menu.Size = new System.Drawing.Size(223, 22);
+            this.b_add_menu.Text = "Создать меню для очереди";
+            this.b_add_menu.Click += new System.EventHandler(this.b_add_menu_Click);
             // 
             // frmMDI_MainMenu_Digest
             // 
@@ -142,35 +151,35 @@
             // 
             this.frmMDI_MainMenu_Digest_Ingridients.Image = ((System.Drawing.Image)(resources.GetObject("frmMDI_MainMenu_Digest_Ingridients.Image")));
             this.frmMDI_MainMenu_Digest_Ingridients.Name = "frmMDI_MainMenu_Digest_Ingridients";
-            this.frmMDI_MainMenu_Digest_Ingridients.Size = new System.Drawing.Size(174, 22);
+            this.frmMDI_MainMenu_Digest_Ingridients.Size = new System.Drawing.Size(213, 22);
             this.frmMDI_MainMenu_Digest_Ingridients.Text = "Ингредиенты";
             this.frmMDI_MainMenu_Digest_Ingridients.Click += new System.EventHandler(this.frmMDI_MainMenu_Digest_Ingridients_Click);
             // 
             // Diets_menu
             // 
             this.Diets_menu.Name = "Diets_menu";
-            this.Diets_menu.Size = new System.Drawing.Size(174, 22);
+            this.Diets_menu.Size = new System.Drawing.Size(213, 22);
             this.Diets_menu.Text = "Диеты";
             this.Diets_menu.Click += new System.EventHandler(this.Diet_Click);
             // 
             // Cooking_book_menu
             // 
             this.Cooking_book_menu.Name = "Cooking_book_menu";
-            this.Cooking_book_menu.Size = new System.Drawing.Size(174, 22);
-            this.Cooking_book_menu.Text = "Кулинарная книга";
+            this.Cooking_book_menu.Size = new System.Drawing.Size(213, 22);
+            this.Cooking_book_menu.Text = "Кулинарный справочник";
             this.Cooking_book_menu.Click += new System.EventHandler(this.Cooking_book_Click);
             // 
             // Cards_Menu
             // 
             this.Cards_Menu.Name = "Cards_Menu";
-            this.Cards_Menu.Size = new System.Drawing.Size(174, 22);
+            this.Cards_Menu.Size = new System.Drawing.Size(213, 22);
             this.Cards_Menu.Text = "Карта-раскладка";
             this.Cards_Menu.Click += new System.EventHandler(this.Cards_Click);
             // 
             // Person
             // 
             this.Person.Name = "Person";
-            this.Person.Size = new System.Drawing.Size(174, 22);
+            this.Person.Size = new System.Drawing.Size(213, 22);
             this.Person.Text = "Персонал";
             this.Person.Click += new System.EventHandler(this.Person_Click);
             // 
@@ -343,6 +352,7 @@
         public System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Windiw;
         public System.Windows.Forms.ToolStripMenuItem Cards;
         private System.Windows.Forms.ToolStripMenuItem Person;
+        private System.Windows.Forms.ToolStripMenuItem b_add_menu;
     }
 }
 

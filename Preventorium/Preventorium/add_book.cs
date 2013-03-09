@@ -19,6 +19,8 @@ namespace Preventorium
           {
               this.b_save.Enabled = true;
               if (this._state == "OLD") { this.set_state("MOD"); };
+              // Включается кнопка "Сохранить" если текстбоксы не пустые
+              if ((tb_author.Text != "") && (tb_name.Text != "") && (tb_year.Text != "")) { b_save.Enabled = true; }
           }
 
           // Конструктор, вызываемый при нажатии "Добавить"
@@ -88,7 +90,7 @@ namespace Preventorium
            private void b_save_Click(object sender, EventArgs e)
            {   
 
-                    string result; //Результат попытки сохранения/добавления справочника
+            string result; //Результат попытки сохранения/добавления справочника
             switch (this._state)
             {
                 //Если добавляется новая запись...
@@ -111,7 +113,7 @@ namespace Preventorium
                     break;
 
                 default:
-                    result = "NDF";
+                    result = "Ошибка";
                     // не используется, однако mvs не позволяет 
                     // дальше работать переменной, которой в одной
                     // из веток кода не присваивается значение

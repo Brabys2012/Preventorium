@@ -44,6 +44,10 @@
             this.Menu_Strip_diets = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.read_diets = new System.Windows.Forms.ToolStripMenuItem();
             this.del_diets = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.Menu_diets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
@@ -65,9 +69,13 @@
             // 
             this.Menu_diets.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.Menu_diets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator4,
             this.bAdd,
+            this.toolStripSeparator1,
             this.bEdit,
-            this.bDelete});
+            this.toolStripSeparator3,
+            this.bDelete,
+            this.toolStripSeparator2});
             this.Menu_diets.Location = new System.Drawing.Point(0, 0);
             this.Menu_diets.Name = "Menu_diets";
             this.Menu_diets.Size = new System.Drawing.Size(308, 25);
@@ -183,6 +191,26 @@
             this.del_diets.Text = "Удалить";
             this.del_diets.Click += new System.EventHandler(this.del_diets_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // diets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,6 +245,10 @@
         private System.Windows.Forms.ContextMenuStrip Menu_Strip_diets;
         private System.Windows.Forms.ToolStripMenuItem read_diets;
         private System.Windows.Forms.ToolStripMenuItem del_diets;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 
 
     }

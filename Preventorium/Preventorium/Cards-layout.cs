@@ -96,8 +96,7 @@ namespace Preventorium
         public class_book[] _book2;
         public class_book[] _book3;
         public class_book[] _book4;
-
-       // public class_post[] _post;
+        public string foods;
 
 
         /// <summary>
@@ -108,7 +107,16 @@ namespace Preventorium
 
         public Cards_layout()
         {
+         
             InitializeComponent();
+
+        }
+
+        public Cards_layout(string food )
+        {
+            foods = food;
+            InitializeComponent();
+            
         }
         /// <summary>
         /// Событие загрузки формы в котором будет заполянться в комбобокс список блюд 
@@ -120,11 +128,13 @@ namespace Preventorium
             // this._ingr_list = this.get_ingr_list();
 
             //  fill_ingr_list();
-           
+            
             // Метод который содержит sql запрос ,который возвращает по имени блюда значения: наименование блюда и т.д
             this._food_list = this.food();
             // Метод заполняет комбобокс блюдами
             fill_foods_list();
+            cb_food.Text = foods;
+            cb_food.SelectedItem = 1;
 
         }
         /// <summary>
@@ -2050,54 +2060,7 @@ namespace Preventorium
             
         }
 
-        /*private void fill_ingr_list()
-        {
-            if (this._ingr_list != null)
-            {
-
-                this.cb_ingr2.Items.Clear();
-                this.cb_ingr1.Items.Clear();
-                this.cb_ingr3.Items.Clear();
-                this.cb_ingr4.Items.Clear();
-                this.cb_ingr5.Items.Clear();
-                this.cb_ingr6.Items.Clear();
-                this.cb_ingr7.Items.Clear();
-                this.cb_ingr8.Items.Clear();
-                this.cb_ingr9.Items.Clear();
-                this.cb_ingr10.Items.Clear();
-                this.cb_ingr11.Items.Clear();
-                this.cb_ingr12.Items.Clear();
-                this.cb_ingr14.Items.Clear();
-                this.cb_ingr13.Items.Clear();
-            }
-            for (int i = 1; i < this._ingr_list.Count(); i++)
-            {
-                if (this._ingr_list[i] != null)
-                {
-                    
-                    this.cb_ingr1.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr2.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr3.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr4.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr5.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr6.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr7.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr8.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr9.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr10.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr11.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr12.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr13.Items.Add(this._ingr_list[i].name.Trim());
-                    this.cb_ingr14.Items.Add(this._ingr_list[i].name.Trim());
-                    
-
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }*/
+      
         /// <summary>
         /// Метод заполняет комбобокс блюдами
         /// </summary>
@@ -2123,9 +2086,9 @@ namespace Preventorium
    
         public void bt_ok_Click(object sender, EventArgs e)
         {
-            if ((cb_food.Text == "") || (cb_diets_vrach.Text == "") || (Cb_diet_vrach2.Text == ""))
+            if ((cb_food.Text == "") || (cb_diets_vrach.Text == "") && (Cb_diet_vrach2.Text == ""))
             {
-                MessageBox.Show("Вы не выбрали блюдо или ответсвенного за диеты   ");
+                MessageBox.Show("Вы не выбрали блюдо или ответственного за диеты   ");
                 return;
             }
             
@@ -2148,7 +2111,6 @@ namespace Preventorium
 
 
           
-
             if (_book[1] == null)
             {
                 var name = "";
@@ -2168,10 +2130,7 @@ namespace Preventorium
 
             }
 
-
-
-            //  for (int t = 1; t < this._book1.Count(); t++)
-            //  {
+              
 
             if (_book1[1] == null)
             {
@@ -2192,7 +2151,7 @@ namespace Preventorium
                 word1("[year2]", name1, word);
                 word1("[book2]", name, word);
             }
-            //  }
+           
 
             if (_book2[1] == null)
             {
@@ -2794,7 +2753,7 @@ namespace Preventorium
                     word1("[d11]", diet12, word);
                 }
             }
-            ////////---------- вот здесь остановился
+          
 
             if (_Diet[13] == null)
             {
@@ -2962,9 +2921,7 @@ namespace Preventorium
                     word1("[d20]", diet21, word);
                 }
             }
-            ///// -----------------------------------------------------------------------
-
-            
+                       
             if (_ingr_list1[1] == null)
             {
                 var cal = "";
@@ -3858,39 +3815,37 @@ namespace Preventorium
                 }
             }
 
+               if (_food_list2[1] == null)
+               {
+                   var id = "";
+                   var opis = "";
+                   var cost = "";
 
-            if (this._food_list2 == null)
-            {
-                var net1 = "";
-                var br1 = "";
+                   word1("{id}", id, word);
+                   word1("[opis]", opis, word);
+                   word1("{price}", cost, word);
+               }
+               else
+               {
+                    for (int i = 1; i < this._food_list2.Count(); i++)
+                   {
+                       if (this._food_list2[i] != null)
+                       {
+                           var id = this._food_list2[i].nam_card.Trim();
+                           var opis = this._food_list2[i].opis.Trim();
+                           var cost = this._food_list2[i].cost.Trim();
 
+                           word1("{id}", id, word);
+                           word1("[opis]", opis, word);
+                           word1("{price}", cost, word);
 
-                word1("[n1]", net1, word);
-                word1("[br1]", br1, word);
+                       }
+                      
+                   }
+                   
+               }
 
-            }
-            else
-            {
-
-                for (int i = 1; i < this._food_list2.Count(); i++)
-                {
-                    if (this._food_list2[i] != null)
-                    {
-
-                        var id = this._food_list2[i].nam_card.Trim();
-                        var opis = this._food_list2[i].opis.Trim();
-                        var cost = this._food_list2[i].cost.Trim();
-
-                        word1("{id}", id, word);
-                        word1("[opis]", opis, word);
-                        word1("{price}", cost, word);
-
-
-                    }
-                }
-            }
-            //-----------------------------------------
-            if (this._food_list1 == null)
+               if (this._food_list1 == null)
             {
                 var net1 = "";
                 var br1 = "";
@@ -4077,8 +4032,6 @@ namespace Preventorium
             this._ves_list11 = ves_list11();
             this._ves_list12 = ves_list12();
             this._ves_list13 = ves_list13();
-
-            
 
             this._Diet = this.diet();
             this._id_book = get_id_book_list();
@@ -4388,10 +4341,7 @@ namespace Preventorium
                 }
             }
             return book;
-
-
-
-        }
+          }
         public class_book[] get_book_list4()
         {
             class_book[] book = new class_book[512];

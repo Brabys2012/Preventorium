@@ -41,6 +41,7 @@
             this.bEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.bDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.gw = new System.Windows.Forms.DataGridView();
             this.Menu_Strip_food = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -62,7 +63,8 @@
             this.toolStripSeparator2,
             this.bEdit,
             this.toolStripSeparator3,
-            this.bDelete});
+            this.bDelete,
+            this.toolStripSeparator4});
             menu_Food.Location = new System.Drawing.Point(0, 0);
             menu_Food.Name = "menu_Food";
             menu_Food.Size = new System.Drawing.Size(653, 25);
@@ -114,11 +116,15 @@
             this.bDelete.Text = "Удалить";
             this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // gw
             // 
             this.gw.AllowUserToAddRows = false;
             this.gw.AllowUserToDeleteRows = false;
-            this.gw.AllowUserToResizeColumns = false;
             this.gw.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -225,6 +231,7 @@
         private System.Windows.Forms.ContextMenuStrip Menu_Strip_food;
         private System.Windows.Forms.ToolStripMenuItem menu_strip_food_read;
         private System.Windows.Forms.ToolStripMenuItem delete_menu_strip;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 
 
     }

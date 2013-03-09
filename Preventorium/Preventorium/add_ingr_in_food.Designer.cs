@@ -131,9 +131,9 @@
             this.Controls.Add(this.l_ingr);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "add_ingr_in_food";
             this.Text = "Добавить ингридиенты в блюдо";
-            this.Load += new System.EventHandler(this.add_ingr_in_food_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

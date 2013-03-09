@@ -59,7 +59,7 @@ namespace Preventorium
             this._ds = new System.Data.DataSet();
             this.ConnStatus = ConnectionStatus.DISCONNECTED;
 
-                if (!(this.set_connection_settings("Integrated Security=true;Initial Catalog=DB1;Server=BABUR-PC")))
+                if (!(this.set_connection_settings("Integrated Security=true;Initial Catalog=1;Server=BABUR-PC")))
                 MessageBox.Show("Неверная строка подключения!");
         }
 
@@ -79,6 +79,77 @@ namespace Preventorium
             return true;
         }
 
+        // ------------------------------------------------------------------
+        public DataSet get_data_table_breakfast(string table_name, int data)
+        {
+            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food "
+                           + "from Food_in_menu FIM "
+                           + "join Foods F on F.ID_food = FIM.ID_food "
+                           + "where FIM.Serve_time_of_food = 'завтрак' and FIM.day_id='" + data+ "'";
+            try
+            {
+                this._ds = new DataSet();
+                this._da = new SqlDataAdapter(query, this._conn);
+                this._cb = new SqlCommandBuilder(this._da);
+
+                this._da.Fill(this._ds, table_name);
+                this._active_table = table_name;
+                return this._ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Data + " " + ex.Message);
+                return null;
+            }
+        }
+
+        // ------------------------------------------------------------------
+        public DataSet get_data_table_dinner(string table_name, int data)
+        {
+            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food "
+                           + "from Food_in_menu FIM "
+                           + "join Foods F on F.ID_food = FIM.ID_food "
+                           + "where FIM.Serve_time_of_food = 'обед' and FIM.day_id='" + data + "'";
+            try
+            {
+                this._ds = new DataSet();
+                this._da = new SqlDataAdapter(query, this._conn);
+                this._cb = new SqlCommandBuilder(this._da);
+
+                this._da.Fill(this._ds, table_name);
+                this._active_table = table_name;
+                return this._ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Data + " " + ex.Message);
+                return null;
+            }
+        }
+
+        // ------------------------------------------------------------------
+        public DataSet get_data_table_supper(string table_name,int data)
+        {
+            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food "
+                           + "from Food_in_menu FIM "
+                           + "join Foods F on F.ID_food = FIM.ID_food "
+                           + "where FIM.Serve_time_of_food = 'ужин' and FIM.day_id='" + data + "'";
+            try
+            {
+                this._ds = new DataSet();
+                this._da = new SqlDataAdapter(query, this._conn);
+                this._cb = new SqlCommandBuilder(this._da);
+
+                this._da.Fill(this._ds, table_name);
+                this._active_table = table_name;
+                return this._ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Data + " " + ex.Message);
+                return null;
+            }
+        }
 
         // ------------------------------------------------------------------
         public DataSet get_data_table_diet_in_food(string table_name)
@@ -133,8 +204,53 @@ namespace Preventorium
             }
         }
 
-// ------------------------------------------------------------------       
+        // ------------------------------------------------------------------
+        public DataSet get_menu(string table_name)
+        {
+            string query = "select M.ID_menu, M.ID_queue, Q.Number_queue "
+                         + "from Menu M "
+                         + "join Queue Q on Q.ID_queue = M.ID_queue ";
+            try
+            {
+                this._ds = new DataSet();
+                this._da = new SqlDataAdapter(query, this._conn);
+                this._cb = new SqlCommandBuilder(this._da);
 
+                this._da.Fill(this._ds, table_name);
+                this._active_table = table_name;
+                return this._ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Data + " " + ex.Message);
+                return null;
+            }
+        }
+
+// ------------------------------------------------------------------  
+
+        public DataSet get_menu_in_day(string table_name, string ID)
+        {
+            string query = "select * "
+                         + "from Menu_in_day"
+                         + " where ID_menu ='" + ID + "'";
+            try
+            {
+                this._ds = new DataSet();
+                this._da = new SqlDataAdapter(query, this._conn);
+                this._cb = new SqlCommandBuilder(this._da);
+
+                this._da.Fill(this._ds, table_name);
+                this._active_table = table_name;
+                return this._ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Data + " " + ex.Message);
+                return null;
+            }
+        }
+//------------------------------------------------------
         public DataSet get_data_table(string table_name)
         {
             string query = "";

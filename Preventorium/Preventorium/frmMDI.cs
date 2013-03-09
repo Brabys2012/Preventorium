@@ -10,6 +10,8 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Net.Sockets;
+using System.Data.SqlClient;
+using word = Microsoft.Office.Interop.Word;
 
 namespace Preventorium
 {
@@ -19,8 +21,7 @@ namespace Preventorium
     /// </summary>
     public partial class frmMDI : Form
     {
-
-        #region Форма MDI.
+                #region Форма MDI.
 
         /// <summary>
         /// Инициализирует главную MDI форму программы.
@@ -29,12 +30,14 @@ namespace Preventorium
         {
             InitializeComponent();     
         }
-        /// <summary>
+               
+         
+         /// <summary>
         /// Происходит при закгрузке формы.
         /// </summary>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Инициализируем настройки подключения к БД
+              // Инициализируем настройки подключения к БД
             db_settings db_set = new db_settings();
 
             // Преверяем если конфигурационнго файла нету,то выводим форму настроек для измения настроек
@@ -170,11 +173,10 @@ namespace Preventorium
         private void frmMDI_MainMenu_Service_Parameters_Click(object sender, EventArgs e)
         {
               //TODO: Доработать!!!: Переделать вывод сообщений пользователю MessageBox.Show() в нормальное и понятное представление.
-
+           
             // Инициализируем пользовательские настройки
             db_settings db_set = new db_settings();
-                            
-            
+                                        
                 // Отображаем форму настроек, и, если пользователь изменил настройки, то изменяем подключение
                 if (db_set.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -340,6 +342,13 @@ namespace Preventorium
             form.Show();
         }
 
-        
+        private void b_add_menu_Click(object sender, EventArgs e)
+        {
+            menu form = new menu();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+              
     }
 }
