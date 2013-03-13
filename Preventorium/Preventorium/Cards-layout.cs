@@ -2086,7 +2086,7 @@ namespace Preventorium
    
         public void bt_ok_Click(object sender, EventArgs e)
         {
-            if ((cb_food.Text == "") || (cb_diets_vrach.Text == "") && (Cb_diet_vrach2.Text == ""))
+            if ((cb_food.Text == "") || (cb_ok.Text=="") || (cb_diets_vrach.Text == "") && (Cb_diet_vrach2.Text == ""))
             {
                 MessageBox.Show("Вы не выбрали блюдо или ответственного за диеты   ");
                 return;
@@ -4044,19 +4044,13 @@ namespace Preventorium
             //  get_book_year();
 
             //fill_book_list();
-
+            this.bt_ok.Enabled = true;
 
             this._person = this.get_person_list();
             fill_person_list();
            // this._post = this.get_post_list();
+            
 
-            this.cb_diets_vrach.Visible = true;
-            this.cb_ok.Visible = true;
-            this.cb_diets_vrach.Visible = true;
-            this.bt_ok.Enabled = true;
-            this.Cb_diet_vrach2.Visible = true;
-            gbcards.Visible = true;
-            gbdiets.Visible = true;
         }
 
     /*    public class_post[] get_post_list()
@@ -4170,7 +4164,7 @@ namespace Preventorium
                         book[i].result = "OK";
                         book[i].author = rd.GetString(1).ToString();
 
-                        book[i].year = rd.GetString(2).ToString();
+                        book[i].year = rd.GetInt32(2).ToString();
                         book[i].name = rd.GetString(3).ToString();
 
 
@@ -4222,7 +4216,7 @@ namespace Preventorium
                         book[i].result = "OK";
                         book[i].author = rd.GetString(1).ToString();
 
-                        book[i].year = rd.GetString(2).ToString();
+                        book[i].year = rd.GetInt32(2).ToString();
                         book[i].name = rd.GetString(3).ToString();
 
 
@@ -4372,7 +4366,7 @@ namespace Preventorium
                         book[i].result = "OK";
                         book[i].author = rd.GetString(1).ToString();
 
-                        book[i].year = rd.GetString(2).ToString();
+                        book[i].year = rd.GetInt32(2).ToString();
                         book[i].name = rd.GetString(3).ToString();
 
 

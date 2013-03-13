@@ -171,6 +171,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_ingr";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сведения о ингредиенте";
             this.ResumeLayout(false);
             this.PerformLayout();

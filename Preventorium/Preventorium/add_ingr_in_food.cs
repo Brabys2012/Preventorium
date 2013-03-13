@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Preventorium
 {
@@ -14,8 +15,7 @@ namespace Preventorium
         private string ingr_name;
         public string food_name;
         private string ingr_id;
-      
-       
+        private string id;
 
         private void enabled_b_save(object sender, EventArgs e)
         {
@@ -26,15 +26,14 @@ namespace Preventorium
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
-        public add_ingr_in_food(db_connect data_module)
+        public add_ingr_in_food(db_connect data_module, string food_id)
         {
             InitializeComponent();
-            
+            this.cb_ingr.Items.Clear();
             class_ingr_in_food[] ingr_in_food = new class_ingr_in_food[512];
             ingr_in_food = Program.add_read_module.get_list_ingr_id();
             if (ingr_in_food != null)
             {
-                this.cb_ingr.Items.Clear();
                 for (int i = 1; i < ingr_in_food.Count(); i++)
                 {
                     if (ingr_in_food[i] != null)
@@ -46,7 +45,7 @@ namespace Preventorium
                         break;
                     }
                 }
-            }
+        }
    
             this._data_module = data_module;
             this.set_state("NEW");
@@ -55,9 +54,8 @@ namespace Preventorium
 
         //Добавление ингридиента
         private void add_new_ingr_in_food()
-        {                        
-           
-            add_ingr_in_food add_ingr = new add_ingr_in_food(Program.data_module);
+        {
+            add_ingr_in_food add_ingr = new add_ingr_in_food(Program.data_module, id);
             add_ingr.ShowDialog();
         }
 
@@ -66,7 +64,7 @@ namespace Preventorium
         public add_ingr_in_food(db_connect data_module, string ingr_in_food_name_food, string ingr_in_food_ingr_name, int ingr_id, int food_id)
         {
             InitializeComponent();
-
+            this.cb_ingr.Items.Clear();
             class_ingr_in_food[] ingr_in_food = new class_ingr_in_food[512];
             ingr_in_food = Program.add_read_module.get_list_ingr_id();
             if (ingr_in_food != null)
@@ -78,12 +76,14 @@ namespace Preventorium
                     {
                         this.cb_ingr.Items.Add(ingr_in_food[i].ingr_name);
                     }
+
                     else
                     {
                         break;
                     }
                 }
             }
+
             
             this.ingr_id = ingr_id.ToString();
           
@@ -170,7 +170,7 @@ namespace Preventorium
                 string food_old = ingr_in_food.food_name;
                 string food_ID = ingr_in_food.id_food;
       
-                add_ingr_in_food ingr_in_foods = new add_ingr_in_food(Program.data_module);
+                add_ingr_in_food ingr_in_foods = new add_ingr_in_food(Program.data_module, id);
 
                
                 result = Program.add_read_module.upd_ingr_in_food(Convert.ToInt32(this.ingr_id),
@@ -216,6 +216,7 @@ namespace Preventorium
             this.Close();
         }
 
-            
+       
+                  
     }
 }

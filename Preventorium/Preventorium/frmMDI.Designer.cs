@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMDI));
             this.frmMDI_MainMenu = new System.Windows.Forms.MenuStrip();
-            this.Cards = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Food = new System.Windows.Forms.ToolStripMenuItem();
             this.b_diet_in_food = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +47,7 @@
             this.frmMDI_MainMenu_Service_Parameters = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Reports = new System.Windows.Forms.ToolStripMenuItem();
             this.ingr_Excel = new System.Windows.Forms.ToolStripMenuItem();
+            this.b_report = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Windiw = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Windiw_Сascade = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Windiw_Vertical = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +67,6 @@
             // frmMDI_MainMenu
             // 
             this.frmMDI_MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Cards,
             this.frmMDI_MainMenu_Menu,
             this.frmMDI_MainMenu_Queue,
             this.frmMDI_MainMenu_Digest,
@@ -81,13 +80,6 @@
             this.frmMDI_MainMenu.Size = new System.Drawing.Size(675, 24);
             this.frmMDI_MainMenu.TabIndex = 0;
             this.frmMDI_MainMenu.Text = "MenuStrip";
-            // 
-            // Cards
-            // 
-            this.Cards.Name = "Cards";
-            this.Cards.Size = new System.Drawing.Size(176, 20);
-            this.Cards.Text = "Создать карточку-раскладку";
-            this.Cards.Click += new System.EventHandler(this.Cards_layout_Click);
             // 
             // frmMDI_MainMenu_Menu
             // 
@@ -131,8 +123,8 @@
             // b_add_menu
             // 
             this.b_add_menu.Name = "b_add_menu";
-            this.b_add_menu.Size = new System.Drawing.Size(223, 22);
-            this.b_add_menu.Text = "Создать меню для очереди";
+            this.b_add_menu.Size = new System.Drawing.Size(197, 22);
+            this.b_add_menu.Text = "Меню для очереди";
             this.b_add_menu.Click += new System.EventHandler(this.b_add_menu_Click);
             // 
             // frmMDI_MainMenu_Digest
@@ -201,7 +193,8 @@
             // frmMDI_MainMenu_Reports
             // 
             this.frmMDI_MainMenu_Reports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ingr_Excel});
+            this.ingr_Excel,
+            this.b_report});
             this.frmMDI_MainMenu_Reports.Name = "frmMDI_MainMenu_Reports";
             this.frmMDI_MainMenu_Reports.Size = new System.Drawing.Size(60, 20);
             this.frmMDI_MainMenu_Reports.Text = "Отчеты";
@@ -210,9 +203,17 @@
             // 
             this.ingr_Excel.Image = ((System.Drawing.Image)(resources.GetObject("ingr_Excel.Image")));
             this.ingr_Excel.Name = "ingr_Excel";
-            this.ingr_Excel.Size = new System.Drawing.Size(205, 22);
+            this.ingr_Excel.Size = new System.Drawing.Size(278, 22);
             this.ingr_Excel.Text = "Отчет по ингридиентам";
             this.ingr_Excel.Click += new System.EventHandler(this.Report_ingr_Click);
+            // 
+            // b_report
+            // 
+            this.b_report.Image = ((System.Drawing.Image)(resources.GetObject("b_report.Image")));
+            this.b_report.Name = "b_report";
+            this.b_report.Size = new System.Drawing.Size(278, 22);
+            this.b_report.Text = "Сформировать карточку - раскладку";
+            this.b_report.Click += new System.EventHandler(this.b_report_Click);
             // 
             // frmMDI_MainMenu_Windiw
             // 
@@ -350,9 +351,9 @@
         public System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Digest;
         public System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Queue;
         public System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Windiw;
-        public System.Windows.Forms.ToolStripMenuItem Cards;
         private System.Windows.Forms.ToolStripMenuItem Person;
         private System.Windows.Forms.ToolStripMenuItem b_add_menu;
+        private System.Windows.Forms.ToolStripMenuItem b_report;
     }
 }
 

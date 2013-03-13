@@ -42,6 +42,10 @@
             this.b_editMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.b_delMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -52,12 +56,16 @@
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator4,
             this.b_add,
+            this.toolStripSeparator1,
             this.b_edit,
-            this.b_delete});
+            this.toolStripSeparator3,
+            this.b_delete,
+            this.toolStripSeparator2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(257, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(351, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -141,7 +149,7 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(257, 118);
+            this.gw.Size = new System.Drawing.Size(351, 118);
             this.gw.TabIndex = 1;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             // 
@@ -169,14 +177,35 @@
             this.b_delMenu.Text = "Удалить";
             this.b_delMenu.Click += new System.EventHandler(this.b_delMenu_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 143);
+            this.ClientSize = new System.Drawing.Size(351, 143);
             this.Controls.Add(this.gw);
             this.Controls.Add(this.toolStrip1);
             this.Name = "menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Меню для очереди";
             this.Load += new System.EventHandler(this.menu_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -200,5 +229,9 @@
         private System.Windows.Forms.ToolStripMenuItem b_editMenu;
         private System.Windows.Forms.ToolStripMenuItem b_delMenu;
         public System.Windows.Forms.DataGridView gw;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

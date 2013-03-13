@@ -59,7 +59,6 @@ namespace Preventorium
                             this.frmMDI_MainMenu_Digest.Enabled= false;
                             this.frmMDI_MainMenu_Reports.Enabled = false;
                             this.frmMDI_MainMenu_Windiw.Enabled = false;
-                            this.Cards.Enabled = false;
 
                             return;
                         }
@@ -69,7 +68,6 @@ namespace Preventorium
                         this.frmMDI_MainMenu_Digest.Enabled = true;
                         this.frmMDI_MainMenu_Reports.Enabled = true;
                         this.frmMDI_MainMenu_Windiw.Enabled = true;
-                        this.Cards.Enabled = true;
 
                     }
                     else
@@ -87,7 +85,6 @@ namespace Preventorium
                             this.frmMDI_MainMenu_Digest.Enabled= false;
                             this.frmMDI_MainMenu_Reports.Enabled = false;
                             this.frmMDI_MainMenu_Windiw.Enabled = false;
-                            this.Cards.Enabled = false;
                             return;
                         }
                         // Если успешно подключились, то изменяем статус программы
@@ -98,7 +95,6 @@ namespace Preventorium
                         this.frmMDI_MainMenu_Digest.Enabled = true;
                         this.frmMDI_MainMenu_Reports.Enabled = true;
                         this.frmMDI_MainMenu_Windiw.Enabled = true;
-                        this.Cards.Enabled = true;
 
                     }
                 }
@@ -117,7 +113,6 @@ namespace Preventorium
                     this.frmMDI_MainMenu_Digest.Enabled = false;
                     this.frmMDI_MainMenu_Reports.Enabled = false;
                     this.frmMDI_MainMenu_Windiw.Enabled = false;
-                    this.Cards.Enabled = false;
                     return;
                 }
                 // Если успешно подключились, то изменяем статус программы
@@ -128,7 +123,6 @@ namespace Preventorium
                 this.frmMDI_MainMenu_Digest.Enabled = true;
                 this.frmMDI_MainMenu_Reports.Enabled = true;
                 this.frmMDI_MainMenu_Windiw.Enabled = true;
-                this.Cards.Enabled = true;
             }
         }
         
@@ -197,7 +191,6 @@ namespace Preventorium
                             this.frmMDI_MainMenu_Digest.Enabled = false;
                             this.frmMDI_MainMenu_Reports.Enabled = false;
                             this.frmMDI_MainMenu_Windiw.Enabled = false;
-                            this.Cards.Enabled = false;
                             return;
                         }
                         else
@@ -210,7 +203,6 @@ namespace Preventorium
                             this.frmMDI_MainMenu_Digest.Enabled = true;
                             this.frmMDI_MainMenu_Reports.Enabled = true;
                             this.frmMDI_MainMenu_Windiw.Enabled = true;
-                            this.Cards.Enabled = true;
                            
                         }
                     }
@@ -349,6 +341,11 @@ namespace Preventorium
             form.Show();
         }
 
+        private void b_report_Click(object sender, EventArgs e)
+        {
+            Cards_layout form = new Cards_layout();
+            form.ShowDialog();
+        }
               
     }
 }

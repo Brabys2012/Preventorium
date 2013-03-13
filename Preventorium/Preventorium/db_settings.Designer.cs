@@ -166,7 +166,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "db_settings";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Параметры подключения";
             this.Load += new System.EventHandler(this.db_settings_Load);
             this.ResumeLayout(false);

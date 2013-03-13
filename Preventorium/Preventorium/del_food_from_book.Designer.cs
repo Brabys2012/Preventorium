@@ -75,6 +75,7 @@
             this.Controls.Add(this.b_apply);
             this.Controls.Add(this.label1);
             this.Name = "del_food_from_book";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 

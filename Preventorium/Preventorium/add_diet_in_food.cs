@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Preventorium
 {
@@ -45,6 +46,7 @@ namespace Preventorium
                     {
                         this.cb_diet_numb.Items.Add(diet_in_food[i].diet_numb);
                     }
+
                     else
                     {
                         break;
@@ -61,9 +63,10 @@ namespace Preventorium
                 for (int i = 1; i < card.Count(); i++)
                 {
                     if (card[i] != null)
-                    {
+                    {            
                         this.cb_card_numb.Items.Add(card[i].card_numb);
                     }
+
                     else
                     {
                         break;
@@ -79,9 +82,10 @@ namespace Preventorium
                 for (int i = 1; i < food.Count(); i++)
                 {
                     if (food[i] != null)
-                    {
-                        this.cb_food_name.Items.Add(food[i].food_name);
+                    {  
+                       this.cb_food_name.Items.Add(food[i].food_name);
                     }
+
                     else
                     {
                         break;
@@ -89,13 +93,10 @@ namespace Preventorium
                 }
             }
         
-    
             this._data_module = data_module;
             this.set_state("NEW");
 
         }
-
-
 
         //Добавление диеты
         private void add_new_diet_in_food()

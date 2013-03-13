@@ -88,6 +88,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить меню";
             this.ResumeLayout(false);
             this.PerformLayout();

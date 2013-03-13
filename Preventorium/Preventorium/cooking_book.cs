@@ -71,7 +71,7 @@ namespace Preventorium
 
             this.load_data_table("Book");
             gw.Columns[1].HeaderText = "Автор(ы)";
-            gw.Columns[2].DefaultCellStyle.Format = "##.00 год.";
+            gw.Columns[2].DefaultCellStyle.Format = "## год.";
             gw.Columns[2].HeaderText = "Год выпуска";
             gw.Columns[3].HeaderText = "Название";
 

@@ -165,6 +165,12 @@
     <Compile Include="del_food_from_book.designer.cs">
       <DependentUpon>del_food_from_book.cs</DependentUpon>
     </Compile>
+    <Compile Include="del_food_from_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="del_food_from_menu.Designer.cs">
+      <DependentUpon>del_food_from_menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="del_ingr_from_food.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="del_food_from_book.resx">
       <DependentUpon>del_food_from_book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="del_food_from_menu.resx">
+      <DependentUpon>del_food_from_menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="del_ingr_from_food.resx">
       <DependentUpon>del_ingr_from_food.cs</DependentUpon>

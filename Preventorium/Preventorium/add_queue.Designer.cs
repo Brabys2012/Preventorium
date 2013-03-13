@@ -150,6 +150,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_queue";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить очередь";
             this.ResumeLayout(false);
             this.PerformLayout();

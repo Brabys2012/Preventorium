@@ -86,6 +86,7 @@
             // 
             // tb_method
             // 
+            this.tb_method.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tb_method.Location = new System.Drawing.Point(136, 25);
             this.tb_method.Multiline = true;
             this.tb_method.Name = "tb_method";
@@ -153,6 +154,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_cards";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить карточку-раскладку";
             this.ResumeLayout(false);
             this.PerformLayout();

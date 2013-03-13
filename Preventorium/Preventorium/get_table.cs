@@ -270,6 +270,36 @@ namespace Preventorium
             return "OK";
         }
 
+    /// <summary>
+    /// Удаляет блюдо из меню
+    /// </summary>
+    /// <param name="table_name"></param>
+    /// <param name="id_name"></param>
+    /// <param name="ingr_id"></param>
+    /// <param name="food_id"></param>
+    /// <returns></returns>
+        public string del_food_menu(string table_name, int food, string serve)
+        {
+            string query = "delete from ";
+            query += table_name;
+            query += " where (ID_food = '" + food + "') and (Serve_time_of_food = '" + serve + "')";
+
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                return ("ERROR" + " " + ex.Message + " " + ex.Data);
+            }
+
+            return "OK";
+        }
+
         public string del_record_by_diet_id(string table_name, string id_name, int food_id, int diet_id, int card_id)
         {
             string query = "delete from ";
@@ -1189,7 +1219,7 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                return (ex.Message + " " + ex.Data);
+                MessageBox.Show("Ингредиент уже содержится в блюде!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return "OK";
@@ -1347,7 +1377,7 @@ namespace Preventorium
         public class_ingr_in_food[] get_list_ingr_id()
         {
             class_ingr_in_food[] ingr = new class_ingr_in_food[512];
-            string query = "Select ingridient_name, Id_ingridients from Ingridients";
+            string query = "Select  ingridient_name, Id_ingridients from Ingridients";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -1664,7 +1694,7 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                return (ex.Message + " " + ex.Data);
+                MessageBox.Show("Выбранная диета уже содержится в данном блюде!","Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return "OK";

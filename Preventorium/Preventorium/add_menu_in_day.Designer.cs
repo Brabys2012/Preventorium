@@ -87,6 +87,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_menu_in_day";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 

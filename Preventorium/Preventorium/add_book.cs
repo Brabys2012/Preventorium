@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace Preventorium
 {
@@ -27,6 +28,8 @@ namespace Preventorium
            public add_book(db_connect data_module)
         {
             InitializeComponent();
+            gb_data.Visible = false;
+            this.Size = new Size(295, 232);
             this._data_module = data_module;
             this.set_state("NEW");
         }

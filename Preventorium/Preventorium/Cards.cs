@@ -29,6 +29,7 @@ namespace Preventorium
             bs.DataSource = Program.data_module.get_data_table_cards("Cards").Tables[state];
             gw.DataSource = bs;
             gw.Columns[0].Visible = false;
+            gw.Columns[3].Visible = false;
             gw.Columns[5].Visible = false;
             gw.Update();
             gw.Show();
@@ -86,7 +87,6 @@ namespace Preventorium
             gw.Columns[1].HeaderText = "Блюдо";
             gw.Columns[2].DefaultCellStyle.Format = "##.00 руб.";
             gw.Columns[2].HeaderText = "Ориентировочная стоимость";
-            gw.Columns[3].HeaderText = "Метод приготовления";
             gw.Columns[4].HeaderText = "Номер карты";
 
         }

@@ -238,7 +238,7 @@
             this.Controls.Add(this.Menu_ingr);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ingr";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ингредиенты";
             this.Load += new System.EventHandler(this.ingr_Load);
             this.Menu_ingr.ResumeLayout(false);

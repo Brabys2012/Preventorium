@@ -132,6 +132,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_diet_in_food";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Диеты для блюда";
             this.ResumeLayout(false);
             this.PerformLayout();

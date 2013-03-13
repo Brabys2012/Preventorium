@@ -37,17 +37,17 @@
             this.tb_desc = new System.Windows.Forms.TextBox();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.Menu_diets = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.bAdd = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.bDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.gw = new System.Windows.Forms.DataGridView();
             this.Menu_Strip_diets = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.read_diets = new System.Windows.Forms.ToolStripMenuItem();
             this.del_diets = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.Menu_diets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
@@ -82,6 +82,11 @@
             this.Menu_diets.TabIndex = 4;
             this.Menu_diets.Text = "toolStrip1";
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // bAdd
             // 
             this.bAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -91,6 +96,11 @@
             this.bAdd.Size = new System.Drawing.Size(23, 22);
             this.bAdd.Text = "Добавление диеты";
             this.bAdd.Click += new System.EventHandler(this.bAddDiet_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bEdit
             // 
@@ -102,6 +112,11 @@
             this.bEdit.Text = "Редактирование диеты";
             this.bEdit.Click += new System.EventHandler(this.bEditDiet_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // bDelete
             // 
             this.bDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -111,6 +126,11 @@
             this.bDelete.Size = new System.Drawing.Size(23, 22);
             this.bDelete.Text = "Удалить";
             this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // gw
             // 
@@ -173,7 +193,7 @@
             this.read_diets,
             this.del_diets});
             this.Menu_Strip_diets.Name = "Menu_Strip_diets";
-            this.Menu_Strip_diets.Size = new System.Drawing.Size(155, 70);
+            this.Menu_Strip_diets.Size = new System.Drawing.Size(155, 48);
             // 
             // read_diets
             // 
@@ -191,26 +211,6 @@
             this.del_diets.Text = "Удалить";
             this.del_diets.Click += new System.EventHandler(this.del_diets_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
             // diets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,6 +221,7 @@
             this.Controls.Add(this.tb_desc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "diets";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Диеты";
             this.Load += new System.EventHandler(this.diet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();

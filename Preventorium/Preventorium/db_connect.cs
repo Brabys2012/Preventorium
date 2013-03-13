@@ -207,7 +207,7 @@ namespace Preventorium
         // ------------------------------------------------------------------
         public DataSet get_menu(string table_name)
         {
-            string query = "select M.ID_menu, M.ID_queue, Q.Number_queue "
+            string query = "select M.ID_menu, M.ID_queue, Q.Number_queue, Q.Number_of_mens, Q.Starting_date, Q.Ending_date "
                          + "from Menu M "
                          + "join Queue Q on Q.ID_queue = M.ID_queue ";
             try

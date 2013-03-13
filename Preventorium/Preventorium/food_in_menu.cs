@@ -49,6 +49,7 @@ namespace Preventorium
            public class_food[] _food_list_support6;
            public class_food[] _food_list_support7;
            public class_food[] _food_list_support8;
+
            private readonly string File = @"\1.docx";
         
 
@@ -112,10 +113,10 @@ namespace Preventorium
                switch (this._current_state)
                {
                    case "Food_in_menu":
-                       delete del = null;
+                       del_food_from_menu del = null;
                        try
                        {
-                           del = new delete(Program.data_module, Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), "Food_in_menu");
+                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
                            del.ShowDialog();
                        }
                        catch (Exception ex)
@@ -197,10 +198,10 @@ namespace Preventorium
                switch (this._current_state)
                {
                    case "Food_in_menu":
-                       delete del = null;
+                       del_food_from_menu del = null;
                        try
                        {
-                           del = new delete(Program.data_module, Convert.ToInt32(gw_dinner.Rows[gw_dinner.CurrentRow.Index].Cells[0].Value.ToString()), "Food_in_menu");
+                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
                            del.ShowDialog();
                        }
                        catch (Exception ex)
@@ -217,10 +218,10 @@ namespace Preventorium
                switch (this._current_state)
                {
                    case "Food_in_menu":
-                       delete del = null;
+                       del_food_from_menu del = null;
                        try
                        {
-                           del = new delete(Program.data_module, Convert.ToInt32(gw_supper.Rows[gw_supper.CurrentRow.Index].Cells[0].Value.ToString()), "Food_in_menu");
+                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
                            del.ShowDialog();
                        }
                        catch (Exception ex)
@@ -245,10 +246,8 @@ namespace Preventorium
                this._food_list_breakfast4 = this.food_breakfast4();
                this._food_list_breakfast5 = this.food_breakfast5();
                this._food_list_breakfast6 = this.food_breakfast6();
-
                this._food_list_breakfast7 = this.food_breakfast7();
                this._food_list_breakfast8 = this.food_breakfast8();
-
                this._food_list_dinner1 = this.food_dinner1();
                this._food_list_dinner2 = this.food_dinner2();
                this._food_list_dinner3 = this.food_dinner3();
@@ -257,7 +256,6 @@ namespace Preventorium
                this._food_list_dinner6 = this.food_dinner6();
                this._food_list_dinner7 = this.food_dinner7();
                this._food_list_dinner8 = this.food_dinner8();
-
                this._food_list_support1 = this.food_support1();
                this._food_list_support2 = this.food_support2();
                this._food_list_support3 = this.food_support3();
@@ -302,8 +300,9 @@ namespace Preventorium
                    {
 
                        var name2 = "";
-
                        word1("[Блюдо1]", name2, word);
+                       word1("[Вес1]", name2, word);
+                       word1("[Вес]", name2, word);
                    }
                    else
                    {
@@ -311,19 +310,22 @@ namespace Preventorium
                        if (this._food_list_breakfast1[1] != null)
                        {
                            var name2 = _food_list_breakfast1[1].name;
-
+                           var ves = _food_list_breakfast1[1].weight;
+                           var vess = "Вес:";
                            word1("[Блюдо1]", name2, word);
+                           word1("[Вес1]", ves, word);
+                           word1("[Вес]", vess, word);
 
                        }
                    }
-                   
-
-                       if (_food_list_breakfast2 == null)
+                        if (_food_list_breakfast2 == null)
                        {
-
                            var name2 = "";
-
+                          
                            word1("[Блюдо2]", name2, word);
+                           word1("[Вес2]", name2, word);
+                           word1("[Весc1]", name2, word);
+                          
                        }
                        else
                        {
@@ -331,18 +333,21 @@ namespace Preventorium
                            if (this._food_list_breakfast1[1] != null)
                            {
                                var name2 = _food_list_breakfast2[1].name;
-
+                               var ves = _food_list_breakfast2[1].weight;
                                word1("[Блюдо2]", name2, word);
+                               word1("[Вес2]", ves, word);
+                               var vess = "Вес:";
+                               word1("[Весc1]", vess, word);
                            }
 
                        }
 
                        if (_food_list_breakfast3 == null)
                        {
-
                            var name2 = "";
-
-                           word1("[Блюдо3]", name2, word);
+                          word1("[Блюдо3]", name2, word);
+                          word1("[Вес3]", name2, word);
+                          word1("[Весc2]", name2, word);
                        }
                        else
                        {
@@ -350,8 +355,11 @@ namespace Preventorium
                            if (this._food_list_breakfast3[1] != null)
                            {
                                var name2 = _food_list_breakfast3[1].name;
-
+                               var ves = _food_list_breakfast3[1].weight;
+                               word1("[Вес3]", ves, word);
                                word1("[Блюдо3]", name2, word);
+                               var vess = "Вес:";
+                               word1("[Весc2]", vess, word);
                            }
 
                        }
@@ -359,8 +367,9 @@ namespace Preventorium
                        {
 
                            var name2 = "";
-
+                           word1("[Вес4]", name2, word);
                            word1("[Блюдо4]", name2, word);
+                           word1("[Весc3]", name2, word);
                        }
                        else
                        {
@@ -368,8 +377,11 @@ namespace Preventorium
                            if (this._food_list_breakfast4[1] != null)
                            {
                                var name2 = _food_list_breakfast4[1].name;
-
+                               var ves = _food_list_breakfast4[1].weight;
                                word1("[Блюдо4]", name2, word);
+                               word1("[Вес4]", ves, word);
+                               var vess = "Вес:";
+                               word1("[Весc3]", vess, word);
                            }
 
                        }
@@ -379,6 +391,8 @@ namespace Preventorium
                            var name2 = "";
 
                            word1("[Блюдо5]", name2, word);
+                           word1("[Вес5]", name2, word);
+                           word1("[Весc4]", name2, word);
                        }
                        else
                        {
@@ -386,15 +400,20 @@ namespace Preventorium
                            if (this._food_list_breakfast5[1] != null)
                            {
                                var name2 = _food_list_breakfast5[1].name;
+                               var ves = _food_list_breakfast5[1].weight;
 
                                word1("[Блюдо5]", name2, word);
+                               var vess = "Вес:";
+                               word1("[Вес5]", ves, word);
+                               word1("[Весc4]", vess, word);
                            }
 
                        }
                        if (_food_list_breakfast6 == null)
                        {
                            var name2 = "";
-
+                           word1("[Вес6]", name2, word);
+                           word1("[Весc5]", name2, word);
                            word1("[Блюдо6]", name2, word);
                        }
                        else
@@ -403,15 +422,19 @@ namespace Preventorium
                            if (this._food_list_breakfast6[1] != null)
                            {
                                var name2 = _food_list_breakfast6[1].name;
-
+                               var ves = _food_list_breakfast6[1].weight;
+                               var vess = "Вес:";
                                word1("[Блюдо6]", name2, word);
+                               word1("[Весc5]", vess, word);
+                               word1("[Вес6]", ves, word);
                            }
                        }
                        if (_food_list_breakfast7 == null)
                        {
                            var name2 = "";
-
+                           word1("[Вес7]", name2, word);
                            word1("[Блюдо7]", name2, word);
+                           word1("[Весc6]", name2, word);
                        }
                        else
                        {
@@ -419,14 +442,18 @@ namespace Preventorium
                            if (this._food_list_breakfast7[1] != null)
                            {
                                var name2 = _food_list_breakfast7[1].name;
-
+                               var ves = _food_list_breakfast7[1].weight;
+                               var vess = "Вес:";
                                word1("[Блюдо7]", name2, word);
+                               word1("[Весc6]", vess, word);
+                               word1("[Вес7]", ves, word);
                            }
                        }
                        if (_food_list_breakfast8 == null)
                        {
                            var name2 = "";
-
+                           word1("[Вес8]", name2, word);
+                           word1("[Весc7]", name2, word);
                            word1("[Блюдо8]", name2, word);
                        }
                        else
@@ -435,6 +462,11 @@ namespace Preventorium
                            if (this._food_list_breakfast8[1] != null)
                            {
                                var name2 = _food_list_breakfast8[1].name;
+
+                               var ves = _food_list_breakfast8[1].weight;
+                               var vess = "Вес:";
+                               word1("[Весc7]", vess, word);
+                               word1("[Вес8]", ves, word);
 
                                word1("[Блюдо8]", name2, word);
                            }
@@ -446,6 +478,8 @@ namespace Preventorium
                            var name2 = "";
 
                            word1("[оБлюдо1]", name2, word);
+                           word1("[Ves]", name2, word);
+                           word1("[Ves1]", name2, word);
                        }
                        else
                        {
@@ -453,8 +487,13 @@ namespace Preventorium
                            if (this._food_list_dinner1[1] != null)
                            {
                                var name2 = _food_list_dinner1[1].name;
+                               var ves = _food_list_dinner1[1].weight;
+                               var vess = "Вес:";
 
                                word1("[оБлюдо1]", name2, word);
+                               word1("[Ves1]", ves, word);
+                               word1("[Ves]", vess, word);
+                               
                            }
                        }
 
@@ -463,6 +502,8 @@ namespace Preventorium
                            var name2 = "";
 
                            word1("[оБлюдо2]", name2, word);
+                           word1("[Vess1]", name2, word);
+                           word1("[Ves2]", name2, word);
                        }
                        else
                        {
@@ -470,15 +511,19 @@ namespace Preventorium
                            if (this._food_list_dinner2[1] != null)
                            {
                                var name2 = _food_list_dinner2[1].name;
-
+                               var ves = _food_list_dinner2[1].weight;
+                               var vess = "Вес:";
                                word1("[оБлюдо2]", name2, word);
+                               word1("[Ves2]", ves, word);
+                               word1("[Vess1]", vess, word);
                            }
                        }
 
                        if (_food_list_dinner3 == null)
                        {
                            var name2 = "";
-
+                           word1("[Vess2]", name2, word);
+                           word1("[Ves3]", name2, word);
                            word1("[оБлюдо3]", name2, word);
                        }
                        else
@@ -487,14 +532,18 @@ namespace Preventorium
                            if (this._food_list_dinner3[1] != null)
                            {
                                var name2 = _food_list_dinner3[1].name;
-
+                               var ves = _food_list_dinner3[1].weight;
+                               var vess = "Вес:";
                                word1("[оБлюдо3]", name2, word);
+                               word1("[Ves3]", ves, word);
+                               word1("[Vess2]", vess, word);
                            }
                        }
                        if (_food_list_dinner4 == null)
                        {
                            var name2 = "";
-
+                           word1("[Vess3]", name2, word);
+                           word1("[Ves4]", name2, word);
                            word1("[оБлюдо4]", name2, word);
                        }
                        else
@@ -503,7 +552,10 @@ namespace Preventorium
                            if (this._food_list_dinner4[1] != null)
                            {
                                var name2 = _food_list_dinner4[1].name;
-
+                               var ves = _food_list_dinner4[1].weight;
+                               var vess = "Вес:";
+                               word1("[Vess3]", vess, word);
+                               word1("[Ves4]", ves, word);
                                word1("[оБлюдо4]", name2, word);
                            }
 
@@ -514,7 +566,8 @@ namespace Preventorium
                    if (_food_list_dinner5 == null)
                    {
                        var name2 = "";
-
+                       word1("[Vess4]", name2, word);
+                       word1("[Ves5]", name2, word);
                        word1("[оБлюдо5]", name2, word);
                    }
                    else
@@ -523,7 +576,10 @@ namespace Preventorium
                        if (this._food_list_dinner5[1] != null)
                        {
                            var name2 = _food_list_dinner5[1].name;
-
+                           var ves = _food_list_dinner5[1].weight;
+                           var vess = "Вес:";
+                           word1("[Vess4]", vess, word);
+                           word1("[Ves5]", ves, word);
                            word1("[оБлюдо5]", name2, word);
                        }
                    }
@@ -531,7 +587,8 @@ namespace Preventorium
                    if (_food_list_dinner6 == null)
                    {
                        var name2 = "";
-
+                       word1("[Vess5]", name2, word);
+                       word1("[Ves6]", name2, word);
                        word1("[оБлюдо6]", name2, word);
                    }
                    else
@@ -540,7 +597,10 @@ namespace Preventorium
                        if (this._food_list_dinner6[1] != null)
                        {
                            var name2 = _food_list_dinner6[1].name;
-
+                           var ves = _food_list_dinner6[1].weight;
+                           var vess = "Вес:";
+                           word1("[Vess5]", vess, word);
+                           word1("[Ves6]", ves, word);
                            word1("[оБлюдо6]", name2, word);
                        }
                    }
@@ -549,7 +609,9 @@ namespace Preventorium
                    if (_food_list_dinner7 == null)
                    {
                        var name2 = "";
-
+                      
+                       word1("[Vess6]", name2, word);
+                       word1("[Ves7]", name2, word);
                        word1("[оБлюдо7]", name2, word);
                    }
                    else
@@ -558,7 +620,11 @@ namespace Preventorium
                        if (this._food_list_dinner3[1] != null)
                        {
                            var name2 = _food_list_dinner7[1].name;
+                           var ves = _food_list_dinner7[1].weight;
+                           var vess = "Вес:";
 
+                           word1("[Vess6]", vess, word);
+                           word1("[Ves7]", ves, word);
                            word1("[оБлюдо7]", name2, word);
                        }
                    }
@@ -566,7 +632,8 @@ namespace Preventorium
                    if (_food_list_dinner8 == null)
                    {
                        var name2 = "";
-
+                       word1("[Vess7]", name2, word);
+                       word1("[Ves8]", name2, word);
                        word1("[оБлюдо8]", name2, word);
                    }
                    else
@@ -575,14 +642,19 @@ namespace Preventorium
                        if (this._food_list_dinner8[1] != null)
                        {
                            var name2 = _food_list_dinner8[1].name;
-
+                           var ves = _food_list_dinner7[1].weight;
+                           var vess = "Вес:";
+                           
+                           word1("[Vess7]", vess, word);
+                           word1("[Ves8]", ves, word);
                            word1("[оБлюдо8]", name2, word);
                        }
                    }
                    if (_food_list_support1 == null)
                    {
                        var name2 = "";
-
+                       word1("[в]", name2, word);
+                       word1("[1]", name2, word);
                        word1("[уБлюдо1]", name2, word);
                    }
                    else
@@ -591,13 +663,18 @@ namespace Preventorium
                        if (this._food_list_support1[1] != null)
                        {
                            var name2 = _food_list_support1[1].name;
-
+                           var ves = _food_list_support1[1].weight;
+                           var vess = "Вес:";
+                           word1("[в]", vess, word);
+                           word1("[1]", ves, word);
                            word1("[уБлюдо1]", name2, word);
                        }
                    }
                    if (_food_list_support2 == null)
                    {
                        var name2 = "";
+                       word1("[в1]", name2, word);
+                       word1("[2]", name2, word);
 
                        word1("[уБлюдо2]", name2, word);
                    }
@@ -607,6 +684,10 @@ namespace Preventorium
                        if (this._food_list_support2[1] != null)
                        {
                            var name2 = _food_list_support2[1].name;
+                           var ves = _food_list_support2[1].weight;
+                           var vess = "Вес:";
+                           word1("[в1]", vess, word);
+                           word1("[2]", ves, word);
 
                            word1("[уБлюдо2]", name2, word);
                        }
@@ -616,6 +697,8 @@ namespace Preventorium
                        var name2 = "";
 
                        word1("[уБлюдо3]", name2, word);
+                       word1("[в2]", name2, word);
+                       word1("[3]", name2, word);
                    }
                    else
                    {
@@ -623,13 +706,18 @@ namespace Preventorium
                        if (this._food_list_support3[1] != null)
                        {
                            var name2 = _food_list_support3[1].name;
-
+                           var ves = _food_list_support3[1].weight;
+                           var vess = "Вес:";
+                           word1("[в2]", vess, word);
+                           word1("[3]", ves, word);
                            word1("[уБлюдо3]", name2, word);
                        }
                    }
                    if (_food_list_support4 == null)
                    {
                        var name2 = "";
+                       word1("[в3]", name2, word);
+                       word1("[4]", name2, word);
 
                        word1("[уБлюдо4]", name2, word);
                    }
@@ -639,6 +727,11 @@ namespace Preventorium
                        if (this._food_list_support4[1] != null)
                        {
                            var name2 = _food_list_support4[1].name;
+                           var ves = _food_list_support4[1].weight;
+                           var vess = "Вес:";
+                           word1("[в3]", vess, word);
+                           word1("[4]", ves, word);
+
 
                            word1("[уБлюдо4]", name2, word);
                        }
@@ -646,6 +739,8 @@ namespace Preventorium
                    if (_food_list_support5 == null)
                    {
                        var name2 = "";
+                       word1("[в4]", name2, word);
+                       word1("[5]", name2, word);
 
                        word1("[уБлюдо5]", name2, word);
                    }
@@ -655,6 +750,10 @@ namespace Preventorium
                        if (this._food_list_support5[1] != null)
                        {
                            var name2 = _food_list_support5[1].name;
+                           var ves = _food_list_support5[1].weight;
+                           var vess = "Вес:";
+                           word1("[в4]", vess, word);
+                           word1("[5]", ves, word);
 
                            word1("[уБлюдо5]", name2, word);
                        }
@@ -662,6 +761,8 @@ namespace Preventorium
                    if (_food_list_support6 == null)
                    {
                        var name2 = "";
+                       word1("[в5]", name2, word);
+                       word1("[6]", name2, word);
 
                        word1("[уБлюдо6]", name2, word);
                    }
@@ -671,13 +772,18 @@ namespace Preventorium
                        if (this._food_list_support6[1] != null)
                        {
                            var name2 = _food_list_support6[1].name;
-
+                           var ves = _food_list_support6[1].weight;
+                           var vess = "Вес:";
+                           word1("[в5]", vess, word);
+                           word1("[6]", ves, word);
                            word1("[уБлюдо6]", name2, word);
                        }
                    }
                    if (_food_list_support7 == null)
                    {
                        var name2 = "";
+                       word1("[в6]", name2, word);
+                       word1("[7]", name2, word);
 
                        word1("[уБлюдо7]", name2, word);
                    }
@@ -687,6 +793,10 @@ namespace Preventorium
                        if (this._food_list_support7[1] != null)
                        {
                            var name2 = _food_list_support7[1].name;
+                           var ves = _food_list_support7[1].weight;
+                           var vess = "Вес:";
+                           word1("[в6]", vess, word);
+                           word1("[7]", ves, word);
 
                            word1("[уБлюдо7]", name2, word);
                        }
@@ -694,6 +804,8 @@ namespace Preventorium
                    if (_food_list_support8 == null)
                    {
                        var name2 = "";
+                       word1("[в7]", name2, word);
+                       word1("[8]", name2, word);
 
                        word1("[уБлюдо8]", name2, word);
                    }
@@ -703,6 +815,10 @@ namespace Preventorium
                        if (this._food_list_support8[1] != null)
                        {
                            var name2 = _food_list_support8[1].name;
+                           var ves = _food_list_support8[1].weight;
+                           var vess = "Вес:";
+                           word1("[в7]", vess, word);
+                           word1("[8]", ves, word);
 
                            word1("[уБлюдо8]", name2, word);
                        }
@@ -713,7 +829,8 @@ namespace Preventorium
                }
            }
 
-           public class_menu_in_food[] menu_in_day()
+        #region
+        public class_menu_in_food[] menu_in_day()
            {
                class_menu_in_food[] menu_in_day = new class_menu_in_food[512];
 
@@ -776,6 +893,8 @@ namespace Preventorium
                        foods_list[i].result = "OK";
                        foods_list[i].food_id = rd.GetInt32(2).ToString();
                        foods_list[i].service = rd.GetInt32(3).ToString();
+                       
+                       
 
                    }
                    rd.Close();
@@ -819,6 +938,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -863,7 +983,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
-
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
                        }
                        rd.Close();
                        rd.Dispose();
@@ -906,6 +1026,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString(); ;
 
                        }
                        rd.Close();
@@ -950,7 +1071,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
-
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
                        }
                        rd.Close();
                        rd.Dispose();
@@ -993,7 +1114,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
-
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
                        }
                        rd.Close();
                        rd.Dispose();
@@ -1034,7 +1155,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
-
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
                        }
                        rd.Close();
                        rd.Dispose();
@@ -1076,7 +1197,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
-
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
                        }
                        rd.Close();
                        rd.Dispose();
@@ -1118,7 +1239,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
-
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
                        }
                        rd.Close();
                        rd.Dispose();
@@ -1199,7 +1320,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
-
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
                        }
                        rd.Close();
                        rd.Dispose();
@@ -1242,6 +1363,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1286,6 +1408,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1327,6 +1450,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1370,6 +1494,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1413,6 +1538,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1456,6 +1582,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1499,6 +1626,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1539,6 +1667,7 @@ namespace Preventorium
                        foods_list[i] = new class_menu_in_food();
                        foods_list[i].result = "OK";
                        foods_list[i].food_id = rd.GetInt32(2).ToString();
+                     
 
                    }
                    rd.Close();
@@ -1583,6 +1712,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1626,6 +1756,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1668,6 +1799,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1711,6 +1843,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1753,7 +1886,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
-
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
                        }
                        rd.Close();
                        rd.Dispose();
@@ -1795,6 +1928,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1838,6 +1972,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1881,6 +2016,7 @@ namespace Preventorium
                            foods_list[i] = new class_food();
                            foods_list[i].result = "OK";
                            foods_list[i].name = rd.GetString(1);
+                           foods_list[i].weight = rd.GetDouble(6).ToString();
 
                        }
                        rd.Close();
@@ -1898,6 +2034,54 @@ namespace Preventorium
                return foods_list;
 
            }
+        #endregion
+
+
+           public class_food[] food1()
+           {
+               class_food[] foods_list1 = new class_food[512];
+
+               string query = "select *  from Foods where Name_food='" + _food_list_breakfast1[1].name;
+               string query3 = query;
+               try
+               {
+                   SqlCommand com = Program.data_module._conn.CreateCommand();
+                   com.CommandText = query3;
+                   int i = 0;
+
+                   SqlDataReader rd = com.ExecuteReader();
+
+                   while (rd.Read())
+                   {
+                       i = i + 1;
+                       foods_list1[i] = new class_food();
+                       foods_list1[i].result = "OK";
+                       foods_list1[i].food_id = rd.GetInt32(0).ToString();
+                       foods_list1[i].name = rd.GetString(1).ToString();
+                       foods_list1[i].calories = rd.GetDouble(2).ToString();
+                       foods_list1[i].proteins = rd.GetDouble(3).ToString();
+                       foods_list1[i].fats = rd.GetDouble(4).ToString();
+                       foods_list1[i].carbo = rd.GetDouble(5).ToString();
+                       foods_list1[i].weight = rd.GetDouble(6).ToString();
+
+
+                   }
+                   rd.Close();
+                   rd.Dispose();
+                   com.Dispose();
+               }
+
+               catch (Exception ex)
+               {
+                   MessageBox.Show(ex.Message + " " + ex.Data);
+                   return null;
+               }
+
+               return foods_list1;
+
+           }
+
+
 
            private void word1(string stubToReplace, string text, word.Document word)
            {
@@ -1908,7 +2092,6 @@ namespace Preventorium
                range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
 
            }
-
-       
+              
     }
 }

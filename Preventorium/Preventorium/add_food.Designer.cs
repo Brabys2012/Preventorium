@@ -415,6 +415,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_food";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сведения о блюде";
             this.Load += new System.EventHandler(this.add_food_Load);
             this.gb_food_data.ResumeLayout(false);

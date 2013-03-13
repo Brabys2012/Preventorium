@@ -10,7 +10,6 @@ namespace Preventorium
     public partial class add_food : Form
     {
         public string name_old;
-        
         private string _current_state;
 
         /// <summary>
@@ -59,11 +58,7 @@ namespace Preventorium
             tb_proteins.Enabled = false;
             tb_weight.Enabled = false;
             this.fill_food_data();
-
-
-            this.set_state("OLD");
-                           
-            
+            this.set_state("OLD");                 
         }
 
 
@@ -305,9 +300,9 @@ namespace Preventorium
         /// <summary>
         /// Добавление нового ингридиента в блюдо.
         /// </summary>
-        private void add_new_ingr_in_food()
+        private void add_new_ingr_in_food(string id)
         {
-            add_ingr_in_food ingr_in_food = new add_ingr_in_food(Program.data_module);
+            add_ingr_in_food ingr_in_food = new add_ingr_in_food(Program.data_module, id);
             ingr_in_food.food_name = this.tb_name.Text;
             ingr_in_food.ShowDialog();
         }
@@ -317,7 +312,7 @@ namespace Preventorium
             switch (this._current_state)
             {
                 case "Ingridients_in_food":
-                    this.add_new_ingr_in_food();
+                    this.add_new_ingr_in_food(_id);
                     
                     break;
             }

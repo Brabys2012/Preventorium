@@ -64,7 +64,7 @@ namespace Preventorium
         public void queue_Load(object sender, EventArgs e)
         {
             this.load_data_table("Queue");
-            gw.Columns[1].HeaderText = "Количество человек";
+            gw.Columns[1].HeaderText = "Число человек";
             gw.Columns[2].HeaderText = "Дата начала очереди";
             gw.Columns[3].HeaderText = "Дата окончания очереди";
             gw.Columns[4].HeaderText = "Продолжительность";

@@ -141,6 +141,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_person";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить сотрудника";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

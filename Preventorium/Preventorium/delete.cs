@@ -144,17 +144,6 @@ namespace Preventorium
                         MessageBox.Show(result8);
                     }
                     break;
-                case "Food_in_menu":
-                    string result9 = Program.add_read_module.del_record_by_id("Food_in_menu", "ID_food", Convert.ToInt32(this._id));
-                    if (result9 == "OK")
-                    {
-                        this.Dispose();
-                    }
-                    else
-                    {
-                        MessageBox.Show(result9);
-                    }
-                    break;
             }
         }
 

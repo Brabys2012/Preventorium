@@ -48,7 +48,6 @@ namespace Preventorium
                 form.frmMDI_MainMenu_Digest.Enabled = false;
                 form.frmMDI_MainMenu_Reports.Enabled = false;
                 form.frmMDI_MainMenu_Windiw.Enabled = false;
-                form.Cards.Enabled = false;
                 return;
             }
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

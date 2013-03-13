@@ -7,7 +7,6 @@ namespace Preventorium
     public partial class menu : Form
     {
            private string _current_state;
-           private string _id;
 
            public menu()
            {
@@ -29,6 +28,9 @@ namespace Preventorium
            {
                this.load_data_table("Menu");
                gw.Columns[2].HeaderText = "Номер очереди";
+               gw.Columns[3].HeaderText = "Количество человек";
+               gw.Columns[4].HeaderText = "Дата начала";
+               gw.Columns[5].HeaderText = "Дата окончания";
            }
 
            //Удаление меню
@@ -97,7 +99,6 @@ namespace Preventorium
            private void b_edit_Click(object sender, EventArgs e)
            {
                int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
-              
                menu_in_day form = new menu_in_day(id);
                form.ShowDialog();
            }
@@ -105,10 +106,9 @@ namespace Preventorium
            private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
            {
                int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
-
                menu_in_day form = new menu_in_day(id);
                form.ShowDialog();
            }
-
+        
        }
 }

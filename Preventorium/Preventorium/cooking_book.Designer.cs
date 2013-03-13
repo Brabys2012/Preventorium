@@ -180,7 +180,7 @@
             this.Read_menu_book,
             this.delete_menu_book});
             this.Menu_Strip_book.Name = "Menu_Strip_book";
-            this.Menu_Strip_book.Size = new System.Drawing.Size(155, 70);
+            this.Menu_Strip_book.Size = new System.Drawing.Size(155, 48);
             // 
             // Read_menu_book
             // 
@@ -206,6 +206,7 @@
             this.Controls.Add(this.gw);
             this.Controls.Add(this.Menu_book);
             this.Name = "cooking_book";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Кулинарный справочник";
             this.Load += new System.EventHandler(this.book_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();

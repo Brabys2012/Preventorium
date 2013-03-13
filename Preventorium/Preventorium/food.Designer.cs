@@ -206,6 +206,7 @@
             this.Controls.Add(menu_Food);
             this.Name = "food";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Блюда";
             this.Load += new System.EventHandler(this.food_Load);
             menu_Food.ResumeLayout(false);
