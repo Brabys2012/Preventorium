@@ -100,7 +100,7 @@
             this.add_butt.Size = new System.Drawing.Size(23, 22);
             this.add_butt.Text = "Добавить ингридиент";
             this.add_butt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-         
+            this.add_butt.Click += new System.EventHandler(this.add_but_Click);
             // 
             // read_but
             // 
@@ -204,7 +204,6 @@
             this.gw.TabIndex = 8;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
-         
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // Menu_ingr_strip
