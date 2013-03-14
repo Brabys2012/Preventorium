@@ -123,5 +123,13 @@ namespace Preventorium
             this.bDelete_Click(sender,e);
         }
 
+        private void gw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Keys)e.KeyChar == Keys.Enter)
+            {
+                bEdit_Click(sender, e);
+            } 
+        }
+
     }
 }

@@ -450,7 +450,7 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                return (ex.Message + " " + ex.Data);
+                MessageBox.Show("Для данного блюда уже определена карточка - раскладка!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return "OK";

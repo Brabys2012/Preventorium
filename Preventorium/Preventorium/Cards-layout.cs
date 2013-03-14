@@ -80,6 +80,8 @@ namespace Preventorium
         /// Это поле список людей работающих  в данной предметной области
         /// </summary>
         public class_person[] _person;
+
+        public class_book[] _foodyear;
         /// <summary>
         /// СОдержит id книги по которому ,будем вытаскивать книги
         /// </summary>
@@ -333,6 +335,9 @@ namespace Preventorium
                     ingr_list[i] = new class_ingridients();
                     ingr_list[i].result = "OK";
                     ingr_list[i].name = rd.GetString(1).ToString();
+
+                    if (ingr_list[i].name == null)
+                    { ingr_list[i].name = ""; }
                     ingr_list[i].ingr_id = rd.GetInt32(2).ToString();
 
                 }
@@ -358,7 +363,7 @@ namespace Preventorium
             // string query1 = cb_ingr1.Text + "'";
             // for (int k = 1; k < this._ingr_list.Count(); k++)
 
-            if (this._ingr_list[1] != null)
+            if (this._ingr_list != null)
             {
                 string query1 = _ingr_list[1].name + "'";
                 string query2 = query + query1;
@@ -407,10 +412,11 @@ namespace Preventorium
 
             if (this._ingr_list[2] != null)
             {
+               
                 string query1 = _ingr_list[2].name + "'";
                 string query2 = query + query1;
                 try
-                {
+                {    
                     SqlCommand com = Program.data_module._conn.CreateCommand();
                     com.CommandText = query2;
                     SqlDataReader rd = com.ExecuteReader();
@@ -1067,8 +1073,13 @@ namespace Preventorium
                             card[i].result = "OK";
                             card[i].id = rd.GetInt32(0).ToString();
                             card[i].cost = rd.GetSqlMoney(2).ToString();
-                            card[i].opis = rd.GetString(3).ToString();
-                            card[i].nam_card=rd.GetString(4);
+                            if (rd.IsDBNull(3))
+                            { card[i].opis = ""; }
+                            else
+                            {
+                                card[i].opis = rd.GetString(3);
+                            }
+                            card[i].nam_card = rd.GetString(4);
 
                         }                        
                         rd.Close();
@@ -2117,7 +2128,7 @@ namespace Preventorium
                 var name1 = "";
 
                 word1("[book]", name, word);
-                word1("[year]", name1, word);
+              //  word1("[year]", name1, word);
             }
 
             if (this._book[1] != null)
@@ -2126,11 +2137,25 @@ namespace Preventorium
 
                 var name1 = _book[1].year;
                 word1("[book]", name, word);
-                word1("[year]", name1, word);
+               // word1("[year]", name1, word);
 
             }
 
-              
+           
+                if (_foodyear[1] == null)
+                { }
+
+                if (this._foodyear[1] != null)
+                {
+
+                      var name1 = _foodyear[1].year;
+
+                    word1("[year]", name1, word);
+
+                }
+            
+                    
+                    
 
             if (_book1[1] == null)
             {
@@ -2148,7 +2173,7 @@ namespace Preventorium
 
                 var name1 = _book1[1].year;
 
-                word1("[year2]", name1, word);
+                //word1("[year2]", name1, word);
                 word1("[book2]", name, word);
             }
            
@@ -4041,7 +4066,7 @@ namespace Preventorium
             this._book3 = get_book_list3();
             this._book4 = get_book_list4();
             
-            //  get_book_year();
+              this._foodyear = get_book_year();
 
             //fill_book_list();
             this.bt_ok.Enabled = true;
@@ -4384,63 +4409,76 @@ namespace Preventorium
             }
             return book;
 
+        }
+
+        public class_book[] get_book_year()
+        { //TODO: sdsd
+            class_book[] book = new class_book[512];
+            string query = "select MAX(B.Year) as Year from Book B join FoodInBook FIB on FIB.IDBook = B.IDBook where FIB.ID_food ='";
+                  for (int t = 1; t < this._food_list1.Count(); t++)
+
+                      if (this._food_list1[t] != null)
+                      {
+
+                          string g1 = this._food_list1[t].food_id + "'";
+                          string query2 = query + g1 + " and  FIB.ID_food='";
+                          
+                           if (this._food_list1[t] != null)
+                           {
+                               string g2 = _food_list2[t].id;
+                               string query3 = query2 + g2 +"'";
+                               
+                          try
+                          {
+                              SqlCommand com = Program.data_module._conn.CreateCommand();
+                              com.CommandText = query3;
+
+                              SqlDataReader rd = com.ExecuteReader();
+                              int i = 0;
+                              while (rd.Read())
+                              {
+                                  i = i + 1;
+                                  book[i] = new class_book();
+                                  book[i].result = "OK";
+                                  if (rd.IsDBNull(0))
+                                  {
+                                      book[i].year = "";
+                                  }
+                                  else
+                                  {
+                                      book[i].year = rd.GetInt32(0).ToString();
+                                  }
+ 
+                              }
+                              rd.Close();
+                              rd.Dispose();
+                              com.Dispose();
+                          }
+
+                          catch (Exception ex)
+                          {
+                              MessageBox.Show(ex.Message + " " + ex.Data);
+                              return null;
+                          }
+                      }}
+                          return book;
+                      
 
         }
+
 
         
         
     }
 }
-      /*  public class_book[] get_book_year()
-        {
-            class_book[] book = new class_book[512];
-            string query = "select Max(Year) as 'Year' from Book";
+        
+
             
-                string query2 = query;
-
-                try
-                {
-                    SqlCommand com = Program.data_module._conn.CreateCommand();
-                    com.CommandText = query2;
-
-                    SqlDataReader rd = com.ExecuteReader();
-                    int i = 0;
-                    while (rd.Read())
-                    {
-                        i = i + 1;
-                        book[i] = new class_book();
-                        book[i].result = "OK";
-                        
-
-                        book[i].year = rd.GetString(0).ToString();
-                        
-
-
-                    }
-                    rd.Close();
-                    rd.Dispose();
-                    com.Dispose();
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message + " " + ex.Data);
-                    return null;
-                }
-            
-            return book;
-
-
-
-        }
-
-
-            }
        
    
-        }
         
         
+        
 
 
 
@@ -4460,4 +4498,3 @@ namespace Preventorium
 
 
 
-*/

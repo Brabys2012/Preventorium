@@ -81,7 +81,7 @@ namespace Preventorium
                 {
                     if (food_in_book[i] != null)
                     {
-                        this.cb_food.Items.Add(food_in_book[i].food);
+                        this.cb_food.Items.Add(food_in_book[i].food_id);
                     }
                     else
                     {

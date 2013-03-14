@@ -201,7 +201,8 @@ namespace Preventorium
                        del_food_from_menu del = null;
                        try
                        {
-                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
+                           this.load_data_table2(this._current_state);
+                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_dinner.Rows[gw_dinner.CurrentRow.Index].Cells[0].Value.ToString()), gw_dinner.Rows[gw_dinner.CurrentRow.Index].Cells[2].Value.ToString());
                            del.ShowDialog();
                        }
                        catch (Exception ex)
@@ -221,7 +222,8 @@ namespace Preventorium
                        del_food_from_menu del = null;
                        try
                        {
-                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
+                           this.load_data_table3(this._current_state);
+                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_supper.Rows[gw_supper.CurrentRow.Index].Cells[0].Value.ToString()), gw_supper.Rows[gw_supper.CurrentRow.Index].Cells[2].Value.ToString());
                            del.ShowDialog();
                        }
                        catch (Exception ex)

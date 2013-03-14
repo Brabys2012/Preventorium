@@ -173,6 +173,7 @@
             this.gw.Size = new System.Drawing.Size(707, 237);
             this.gw.TabIndex = 1;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
+            this.gw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gw_KeyPress);
             // 
             // Menu_Strip_Queue
             // 

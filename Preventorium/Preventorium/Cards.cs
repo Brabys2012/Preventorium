@@ -310,6 +310,14 @@ namespace Preventorium
                 MessageBox.Show("ERROR_" + ex.Data + " " + ex.Message);
             }
         }
+
+        private void gw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Keys)e.KeyChar == Keys.Enter)
+            {
+                b_edit_Click(sender, e);
+            } 
+        }
  
     }
 }
