@@ -132,5 +132,10 @@ namespace Preventorium
             }
         }
 
+        private void Read_Click(object sender, EventArgs e)
+        {
+            this.b_edit_Click(sender, e);
+        }
+
     }
 }

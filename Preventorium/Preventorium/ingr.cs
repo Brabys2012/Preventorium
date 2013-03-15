@@ -285,31 +285,36 @@ namespace Preventorium
 
               private void gw_KeyDown(object sender, KeyEventArgs e)
         {
-            int rowIndex = (gw.CurrentRow.Index-1);
-
-            if (rowIndex < 0 )
-            {
-                rowIndex = 0;
-            }
-
-            if (e.KeyCode == Keys.Enter )
-            {
-                 this.read_but_Click(sender, e);
-                
-                gw.CurrentCell = gw[0, rowIndex];
-            }
-
-            if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
-            {
-                add_but_Click(sender, e);
-            }
-
-            if (e.KeyCode == Keys.Delete)
+            try
             {
 
-                bDelete_Click(sender, e);
-            }
+                  if (e.KeyCode == Keys.Enter)
+                {
+                    int rowIndex = (gw.CurrentRow.Index - 1);
 
+                    if (rowIndex < 0)
+                    {
+                        rowIndex = 0;
+                    }
+
+                    this.read_but_Click(sender, e);
+
+                    gw.CurrentCell = gw[0, rowIndex];
+                }
+
+                if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                {
+                    add_but_Click(sender, e);
+                }
+
+                if (e.KeyCode == Keys.Delete)
+                {
+
+                    bDelete_Click(sender, e);
+                }
+            }
+            catch
+            { }
 
             
         }

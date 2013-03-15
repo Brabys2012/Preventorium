@@ -263,7 +263,7 @@ namespace Preventorium
         /// </summary>
         private void frmMDI_MainMenu_Help_Help_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Раздел находится в разработке!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion

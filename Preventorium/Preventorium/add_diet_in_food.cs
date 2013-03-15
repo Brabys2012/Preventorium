@@ -31,12 +31,12 @@ namespace Preventorium
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
-        public add_diet_in_food(db_connect data_module)
+        public add_diet_in_food(db_connect data_module, int _id_card)
         {
             InitializeComponent();
             
             class_diet_in_food[] diet_in_food = new class_diet_in_food[512];
-            diet_in_food = Program.add_read_module.get_list_diet_id();
+            diet_in_food = Program.add_read_module.get_list_diet_id(_id_card);
             if (diet_in_food != null)
             {
                 this.cb_diet_numb.Items.Clear();
@@ -101,7 +101,7 @@ namespace Preventorium
         //Добавление диеты
         private void add_new_diet_in_food()
         {
-            add_diet_in_food add_diet = new add_diet_in_food(Program.data_module);
+            add_diet_in_food add_diet = new add_diet_in_food(Program.data_module, Convert.ToInt32(card_id));
             add_diet.ShowDialog();
         }
 
@@ -112,7 +112,7 @@ namespace Preventorium
             InitializeComponent();
             
             class_diet_in_food[] diet_in_food = new class_diet_in_food[512];
-            diet_in_food = Program.add_read_module.get_list_diet_id();
+            diet_in_food = Program.add_read_module.get_list_diet(card_id);
             if (diet_in_food != null)
             {
                 this.cb_diet_numb.Items.Clear();

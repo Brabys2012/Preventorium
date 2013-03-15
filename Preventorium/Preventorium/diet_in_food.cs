@@ -46,7 +46,7 @@ namespace Preventorium
         //Добавление новой диеты в блюдо
         private void add_new_diet_in_food()
         {
-            add_diet_in_food diet_in_food = new add_diet_in_food(Program.data_module);
+            add_diet_in_food diet_in_food = new add_diet_in_food(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()));
             diet_in_food.ShowDialog();
         }
 

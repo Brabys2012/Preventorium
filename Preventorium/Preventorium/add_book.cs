@@ -36,10 +36,10 @@ namespace Preventorium
 
            //Конструктор, вызываемый
            //для редактирования существующего справочника
-           public add_book(db_connect data_module, int ingr_id)
+           public add_book(db_connect data_module, int id)
         {
             InitializeComponent();
-            this._id = ingr_id.ToString();
+            this._id = id.ToString();
             this._data_module = data_module;
             this.fill_book_data();
             this.set_state("OLD");
@@ -191,11 +191,11 @@ namespace Preventorium
            }
 
            /// <summary>
-           /// Добавление нового ингридиента в блюдо.
+           /// Блюда в кулинарный справочник
            /// </summary>
-           private void add_new_food_in_book()
+           private void add_new_food_in_book(int id_book)
            {
-               add_food_in_book food_in_book = new add_food_in_book(Program.data_module);
+               add_food_in_book food_in_book = new add_food_in_book(Program.data_module, id_book);
                food_in_book.book = this.tb_name.Text;
                food_in_book.ShowDialog();
            }
@@ -205,7 +205,7 @@ namespace Preventorium
                switch (this._current_state)
                {
                    case "FoodInBook":
-                       this.add_new_food_in_book();
+                       this.add_new_food_in_book(Convert.ToInt32(_id));
 
                        break;
                }

@@ -23,7 +23,7 @@ namespace Preventorium
         public string book;
         public string food_id;
         private string card_id;
-        private string book_id;
+        public int book_id;
 
         private void enabled_b_save(object sender, EventArgs e)
         {
@@ -32,12 +32,12 @@ namespace Preventorium
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
-        public add_food_in_book(db_connect data_module)
+        public add_food_in_book(db_connect data_module, int book_id)
         {
             InitializeComponent();
             
             food_in_book[] food_in_book = new food_in_book[512];
-            food_in_book = Program.add_read_module.get_list_food_in_book_id();
+            food_in_book = Program.add_read_module.get_list_food_in_book_id(book_id);
             if (food_in_book != null)
             {
                 this.cb_food.Items.Clear();
@@ -62,7 +62,7 @@ namespace Preventorium
         //Добавление блюда
         private void add_new_food_in_book()
         {
-            add_food_in_book add_food = new add_food_in_book(Program.data_module);
+            add_food_in_book add_food = new add_food_in_book(Program.data_module, book_id);
             add_food.ShowDialog();
         }
 
@@ -73,7 +73,7 @@ namespace Preventorium
             InitializeComponent();
 
             food_in_book[] food_in_book = new food_in_book[512];
-            food_in_book = Program.add_read_module.get_list_food_in_book_id();
+            food_in_book = Program.add_read_module.get_list_food_in_book_id(book_id);
             if (food_in_book != null)
             {
                 this.cb_food.Items.Clear();
@@ -152,7 +152,7 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
-                    string query = "Select Id_Cards, Number_Card, F.ID_food from Cards "
+                    string query = "Select Number_Card from Cards "
                             + "join Foods F on F.ID_food = Cards.ID_food "
                             + "where F.Name_food = '" + cb_food.Text + "'";
                       try
@@ -162,13 +162,13 @@ namespace Preventorium
                 SqlDataReader rd = com.ExecuteReader();
                 if (rd.Read())
                 {
-                    if (rd.IsDBNull(1))
+                    if (rd.IsDBNull(0))
                     {
                         card_numb = "";
                     }
                     else
                     {
-                        card_numb = rd.GetString(1);
+                        card_numb = rd.GetString(0);
                     }
                 }
                 rd.Close();

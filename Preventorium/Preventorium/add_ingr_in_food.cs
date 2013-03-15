@@ -15,23 +15,26 @@ namespace Preventorium
         private string ingr_name;
         public string food_name;
         private string ingr_id;
-        private string id;
+        private int id;
 
         private void enabled_b_save(object sender, EventArgs e)
         {
-            this.b_save.Enabled = true;
+
+       
             if (this._state == "OLD") { this.set_state("MOD"); };
+            // Включается кнопка "Сохранить" если текстбоксы не пустые
+            if ((tb_gross.Text != "") && (tb_net.Text != ""))  { this.b_save.Enabled = true; }
           
            
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
-        public add_ingr_in_food(db_connect data_module, string food_id)
+        public add_ingr_in_food(db_connect data_module, int food_id)
         {
             InitializeComponent();
             this.cb_ingr.Items.Clear();
             class_ingr_in_food[] ingr_in_food = new class_ingr_in_food[512];
-            ingr_in_food = Program.add_read_module.get_list_ingr_id();
+            ingr_in_food = Program.add_read_module.get_list_ingr_id(food_id);
             if (ingr_in_food != null)
             {
                 for (int i = 1; i < ingr_in_food.Count(); i++)
@@ -66,7 +69,7 @@ namespace Preventorium
             InitializeComponent();
             this.cb_ingr.Items.Clear();
             class_ingr_in_food[] ingr_in_food = new class_ingr_in_food[512];
-            ingr_in_food = Program.add_read_module.get_list_ingr_id();
+            ingr_in_food = Program.add_read_module.get_list_ingr_id(food_id);
             if (ingr_in_food != null)
             {
                 this.cb_ingr.Items.Clear();

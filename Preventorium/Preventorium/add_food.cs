@@ -21,7 +21,7 @@ namespace Preventorium
         /// </summary>
         private string _state;
         //ID блюда для загрузки данных (в режиме OLD)
-        private string _id;
+        private int _id;
         
         // Конструктор, вызываемый при нажатии "Добавить" 
         public add_food(db_connect data_module)
@@ -50,7 +50,7 @@ namespace Preventorium
         public add_food(db_connect data_module, int food_id)
         {
             InitializeComponent();
-            this._id = food_id.ToString();
+            this._id = food_id;
             this._data_module = data_module;
             tb_calories.Enabled = false;
             tb_carbo.Enabled = false;
@@ -300,7 +300,7 @@ namespace Preventorium
         /// <summary>
         /// Добавление нового ингридиента в блюдо.
         /// </summary>
-        private void add_new_ingr_in_food(string id)
+        private void add_new_ingr_in_food(int id)
         {
             add_ingr_in_food ingr_in_food = new add_ingr_in_food(Program.data_module, id);
             ingr_in_food.food_name = this.tb_name.Text;

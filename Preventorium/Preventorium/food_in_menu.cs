@@ -2094,6 +2094,53 @@ namespace Preventorium
                range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
 
            }
-              
+
+           private void gw_breakfast_KeyDown(object sender, KeyEventArgs e)
+           {
+               if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+               {
+                   this.add_breakfast_Click(sender, e);
+               }
+
+               if (e.KeyCode == Keys.Delete)
+               {
+
+                   this.del_breakfast_Click(sender, e);
+               }
+
+           }
+
+           private void gw_dinner_KeyDown(object sender, KeyEventArgs e)
+           {
+               if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+               {
+                   this.add_dinner_Click(sender, e);
+               }
+
+               if (e.KeyCode == Keys.Delete)
+               {
+
+                   this.del_dinner_Click(sender, e);
+               }
+
+           }
+
+           private void gw_supper_KeyDown(object sender, KeyEventArgs e)
+           {
+               
+                   if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                   {
+                       this.add_supper_Click(sender, e);
+                   }
+
+                   if (e.KeyCode == Keys.Delete)
+                   {
+
+                       this.del_supper_Click(sender, e);
+                   }
+               
+               
+           }
+     
     }
 }

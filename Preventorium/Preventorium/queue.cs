@@ -125,10 +125,50 @@ namespace Preventorium
 
         private void gw_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((Keys)e.KeyChar == Keys.Enter)
+
+        }
+
+        private void gw_MouseDown(object sender, MouseEventArgs e)
+        {
+            int rowIndex = gw.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndex == -1) return;
+
+            gw.ClearSelection();
+            gw.Rows[rowIndex].Selected = true;
+            gw.CurrentCell = gw[1, rowIndex];// 0  - это номер столбца
+        }
+
+        private void gw_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
             {
-                bEdit_Click(sender, e);
-            } 
+                if (e.KeyCode == Keys.Enter)
+                {
+                    int rowIndex = (gw.CurrentRow.Index - 1);
+
+                    if (rowIndex < 0)
+                    {
+                        rowIndex = 0;
+                    }
+
+                    this.bEdit_Click(sender, e);
+
+                    gw.CurrentCell = gw[1, rowIndex];
+                }
+
+                if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                {
+                    bAdd_Click(sender, e);
+                }
+
+                if (e.KeyCode == Keys.Delete)
+                {
+
+                    bDelete_Click(sender, e);
+                }
+            }
+            catch
+            { }
         }
 
     }

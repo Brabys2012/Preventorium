@@ -87,7 +87,7 @@ namespace Preventorium
             {
                 if ((Program.user_set._server != t_server.Text) || (Program.user_set._schema != t_schema.Text))
                 {
-                    this.b_apply.Enabled = true;
+                    //this.b_apply.Enabled = true;
                     this.b_abolition.Enabled = false;
                     Program.data_module.disconnect_db();
                 }
