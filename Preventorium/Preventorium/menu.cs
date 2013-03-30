@@ -99,14 +99,16 @@ namespace Preventorium
            private void b_edit_Click(object sender, EventArgs e)
            {
                int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
-               menu_in_day form = new menu_in_day(id);
+               int queue = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString());
+               menu_in_day form = new menu_in_day(id, queue);
                form.ShowDialog();
            }
 
            private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
            {
                int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
-               menu_in_day form = new menu_in_day(id);
+               int queue=Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString());
+               menu_in_day form = new menu_in_day(id,queue);
                form.ShowDialog();
            }
         

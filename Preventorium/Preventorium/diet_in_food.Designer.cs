@@ -37,13 +37,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.b_add = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.b_edit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.b_delete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.gw = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.edit = new System.Windows.Forms.ToolStripMenuItem();
             this.del = new System.Windows.Forms.ToolStripMenuItem();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
@@ -59,13 +56,11 @@
             this.toolStripSeparator1,
             this.b_add,
             this.toolStripSeparator3,
-            this.b_edit,
-            this.toolStripSeparator2,
             this.b_delete,
             this.toolStripSeparator4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(284, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(548, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -88,21 +83,6 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // b_edit
-            // 
-            this.b_edit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_edit.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
-            this.b_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.b_edit.Name = "b_edit";
-            this.b_edit.Size = new System.Drawing.Size(23, 22);
-            this.b_edit.Text = "Редактировать";
-            this.b_edit.Click += new System.EventHandler(this.b_edit_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // b_delete
             // 
@@ -169,32 +149,22 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(284, 237);
+            this.gw.Size = new System.Drawing.Size(548, 237);
             this.gw.TabIndex = 1;
-            this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.edit,
             this.del});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 48);
-            // 
-            // edit
-            // 
-            this.edit.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
-            this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(154, 22);
-            this.edit.Text = "Редактировать";
-            this.edit.Click += new System.EventHandler(this.edit_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
             // 
             // del
             // 
             this.del.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
             this.del.Name = "del";
-            this.del.Size = new System.Drawing.Size(154, 22);
+            this.del.Size = new System.Drawing.Size(152, 22);
             this.del.Text = "Удалить";
             this.del.Click += new System.EventHandler(this.del_Click);
             // 
@@ -202,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(548, 262);
             this.Controls.Add(this.gw);
             this.Controls.Add(this.toolStrip1);
             this.Name = "diet_in_food";
@@ -224,15 +194,12 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.BindingSource bs;
         private System.Windows.Forms.ToolStripButton b_add;
-        private System.Windows.Forms.ToolStripButton b_edit;
         private System.Windows.Forms.ToolStripButton b_delete;
         public System.Windows.Forms.DataGridView gw;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem edit;
         private System.Windows.Forms.ToolStripMenuItem del;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

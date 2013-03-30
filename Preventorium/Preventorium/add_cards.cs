@@ -93,7 +93,7 @@ namespace Preventorium
         public void fill_card_data()
         {     
             class_card card;
-            card = Program.add_read_module.get_card(Convert.ToInt32(this.card_id), food_name);
+            card = Program.add_read_module.get_card(food_name);
             if (card.result == "OK")
             {
                

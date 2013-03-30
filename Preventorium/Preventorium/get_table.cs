@@ -450,7 +450,7 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                return (ex.Message + " " + ex.Data);
+                MessageBox.Show("Для данного блюда уже определена карточка - раскладка!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return "OK";
@@ -521,13 +521,13 @@ namespace Preventorium
         }
 
         // возвращает карту по указанному в параметрах идентификатору (коду)
-        public class_card get_card(int card_id, string food_name)
+        public class_card get_card(string food_name)
         {
             class_card card = new class_card();
             string query = "Select C.Id_Cards, F.Name_food, C.Cost, C.Method_of_cooking, C.Number_Card "
                            + "From Cards C "
                            + "join Foods F on F.ID_food = C.ID_food ";
-            query += "where C.Id_Cards = '" + card_id + "' and F.Name_food = '" + food_name.ToString() + "'";
+            query += "where F.Name_food = '" + food_name + "'";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -536,7 +536,6 @@ namespace Preventorium
                 if (rd.Read())
                 {
                     card.result = "OK";
-                    card.card_id = card_id.ToString();
                     card.food_name = rd.GetString(1);
 
                     if (rd.IsDBNull(2))
@@ -585,7 +584,9 @@ namespace Preventorium
         public class_card[] get_list_food_name_in_card()
         {
             class_card[] food = new class_card[512];
-            string query = "Select Name_food, ID_food from Foods";
+            string query = "Select Name_food, ID_food from Foods "
+                         + "where ID_food not in "
+                        + "(select ID_food from Cards)";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -1283,7 +1284,7 @@ namespace Preventorium
         }
 
 
-        public string upd_food_( string food_name, string food_ID)
+        public string upd_food_( string food_name, int food_ID)
         {
 
             string query = "update Foods set Name_food ='" + food_name + "'" + " from Foods where   ID_food ='" + food_ID + "'";
@@ -1374,10 +1375,14 @@ namespace Preventorium
          ///  возвращает ингридиент по указанному в параметрах идентификатору (коду)
         /// </summary>
         /// <returns></returns>
-        public class_ingr_in_food[] get_list_ingr_id()
+        public class_ingr_in_food[] get_list_ingr_id(int _id_food)
         {
             class_ingr_in_food[] ingr = new class_ingr_in_food[512];
-            string query = "Select  ingridient_name, Id_ingridients from Ingridients";
+            string query = "select I.Id_ingridients, I.ingridient_name from Ingridients I "
+                         + "where I.Id_ingridients not in "
+                         + "(select Id_ingridients from Ingridients_in_food IIF "
+                         + "join Foods F on IIF.ID_food = F.ID_food "
+                         + "where F.ID_food = '" + _id_food +"')";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -1389,8 +1394,8 @@ namespace Preventorium
                     i++;
                     ingr[i] = new class_ingr_in_food();
                     ingr[i].result = "OK";
-                    ingr[i].id_ingr = rd.GetInt32(1).ToString();
-                    ingr[i].ingr_name = rd.GetString(0);
+                    ingr[i].id_ingr = rd.GetInt32(0).ToString();
+                    ingr[i].ingr_name = rd.GetString(1);
                 }
                 rd.Close();
                 rd.Dispose();
@@ -1694,112 +1699,37 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                MessageBox.Show("Выбранная диета уже содержится в данном блюде!","Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите блюдо!","Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return "OK";
         }
 
-        /// <summary>
-        /// модифицирует запись о диете в блюде
-        /// </summary>
-        /// <param name="food_id"></param>
-        /// <param name="diet_id"></param>
-        /// <param name="card_id"></param>
-        /// <param name="food_name"></param>
-        /// <param name="diet_numb"></param>
-        /// <param name="card_numb"></param>
-        /// <param name="food_old"></param>
-        /// <param name="diet_old"></param>
-        /// <param name="card_old"></param>
-        /// <returns></returns>
-        public string upd_diet_in_food(int food_id, int diet_id, int card_id, string food_name, string diet_numb, string card_numb, string food_old, string diet_old, string card_old)
+    /// <summary>
+    /// Возвращает помер диеты и id
+    /// </summary>
+    /// <returns></returns>
+        public class_diet_in_food[] get_list_diet_id(int _id_food)
         {
-            string query = "update Food_In_Diets set ";
-            query += "Id_Cards=";
-            if (card_id.ToString() == "") { query += "null,"; }
-            else
-            {
-                query += "(select Id_Cards from Cards where Number_Card = '" + card_numb + "'),";
-            }
-
-            query += "ID_food=";
-            if (food_id.ToString() == "") { query += "null,"; }
-            else
-            {
-                query += "(select ID_food from Foods where Name_food = '" + food_name + "'),";
-            }
-
-            query += "ID_Diets =";
-            if (diet_id.ToString() == "") { query += "null"; }
-            else
-            {
-                query += "(select ID_Diets from Diets where NumOfDiet = '" + diet_numb + "')";
-            }
-
-            query += " where Id_Cards = (select Id_Cards from Cards where Number_Card = '" + card_old + "') ";
-            query += "and ID_food = (select ID_food from Foods where Name_food = '" + food_old + "') ";
-            query += "and ID_Diets = (select ID_DIets from Diets where NumOfDiet = '" + diet_old + "')";
-            try
-            {
-                SqlCommand com = Program.data_module._conn.CreateCommand();
-                com.CommandText = query;
-                com.ExecuteNonQuery();
-                com.Dispose();
-            }
-
-            catch (Exception ex)
-            {
-                return ("ERROR_" + ex.Message + " " + ex.Data);
-            }
-
-            return "OK";
-        }
-
-        /// <summary>
-        /// возвращает диету в блюде по указанному в параметрах идентификатору (коду)
-        /// </summary>
-        /// <param name="food_name"></param>
-        /// <param name="diet_numb"></param>
-        /// <param name="card_numb"></param>
-        /// <returns></returns>
-         public class_diet_in_food get_diet_in_food(string food_name, string diet_numb, string card_numb)
-        {
-            class_diet_in_food diet_in_food = new class_diet_in_food();
-            string query = "Select F.Name_food, D.NumOfDiet, C.Number_Card, FID.ID_food "
-                            + "From Food_In_Diets FID "
-                            + "join Diets D on D.ID_Diets = FID.ID_Diets "
-                            + "join Cards C on C.ID_food = FID.ID_food "
-                            + "join Foods F on F.ID_food = FID.ID_food ";
-            query += "where F.Name_food = '" + food_name.ToString() + "'" + "and D.NumOfDiet = '" + diet_numb.ToString() + "' and C.Number_Card = '" + card_numb.ToString() + "'";
+            class_diet_in_food[] diet = new class_diet_in_food[512];
+            string query = "select NumOfDiet, ID_Diets from Diets "
+                         + "where ID_Diets not in "
+                         + "(select ID_Diets from Food_In_Diets "
+                         + "where ID_food = '" + _id_food + "')";
+                         
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
                 com.CommandText = query;
                 SqlDataReader rd = com.ExecuteReader();
-                if (rd.Read())
+                int i = 0;
+                while (rd.Read())
                 {
-                    diet_in_food.result = "OK";
-                    diet_in_food.food_name = food_name.ToString();
-                    diet_in_food.diet_numb = rd.GetString(1);
-
-                    if (rd.IsDBNull(2))
-                    {
-                        diet_in_food.card_numb = "";
-                    }
-                    else
-                    {
-                        diet_in_food.card_numb = rd.GetString(2);
-                    }
-                    if (rd.IsDBNull(3))
-                    {
-                        diet_in_food.food_id = "";
-                    }
-                    else
-                    {
-                        diet_in_food.food_id = rd.GetInt32(3).ToString();
-                    }
-
+                    i++;
+                    diet[i] = new class_diet_in_food();
+                    diet[i].result = "OK";
+                    diet[i].diet_id = rd.GetInt32(1).ToString();
+                    diet[i].diet_numb = rd.GetString(0);
                 }
                 rd.Close();
                 rd.Dispose();
@@ -1808,19 +1738,25 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                diet_in_food.result = "ERROR_" + ex.Data + " " + ex.Message;
+                diet[1].result = "ERROR_" + ex.Data + " " + ex.Message;
             }
 
-            return diet_in_food;
+            return diet;
         }
+
         /// <summary>
-    /// Возвращает помер диеты и id
-    /// </summary>
-    /// <returns></returns>
-        public class_diet_in_food[] get_list_diet_id()
+        /// Возвращает номер диеты и id для редактировани диеты в блюде
+        /// </summary>
+        /// <returns></returns>
+        public class_diet_in_food[] get_list_diet(int _id_card)
         {
             class_diet_in_food[] diet = new class_diet_in_food[512];
-            string query = "Select NumOfDiet, ID_Diets from Diets";
+            string query = "select NumOfDiet, ID_Diets from Diets "
+                         + "where ID_Diets not in "
+                         + "(select ID_Diets from Food_In_Diets FID "
+                         + "join Cards C on C.Id_Cards = FID.Id_Cards "
+                         + "where C.Id_Cards = '" + _id_card + "')";
+
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -1855,7 +1791,10 @@ namespace Preventorium
         public class_diet_in_food[] get_list_food_name()
         {
             class_diet_in_food[] food = new class_diet_in_food[512];
-            string query = "Select Name_food, ID_food from Foods";
+            string query = "select distinct F.Name_food, F.ID_food from Foods F "
+                         + "where F.ID_food in (select ID_food from Cards) "
+                         + "and (select COUNT(ID_Diets) from Food_In_Diets FID where FID.ID_food = F.ID_food) < (select COUNT(ID_Diets) from Diets) "
+                         + "group by F.Name_food, F.ID_food";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -1887,23 +1826,23 @@ namespace Preventorium
         /// возвращает карту по указанному в параметрах идентификатору (коду)
         /// </summary>
         /// <returns></returns>
-        public class_diet_in_food[] get_list_card_id()
+        public class_diet_in_food get_list_card_id(int food_id)
         {
-            class_diet_in_food[] card = new class_diet_in_food[512];
-            string query = "Select Number_Card, Id_Cards from Cards";
+            class_diet_in_food card = new class_diet_in_food();
+            string query = "select Number_Card, Id_Cards from Cards C "
+                         + "join Foods F on F.ID_food = C.ID_food "
+                         + "where F.ID_food = '" + food_id + "'";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
                 com.CommandText = query;
                 SqlDataReader rd = com.ExecuteReader();
-                int i = 0;
-                while (rd.Read())
+                if (rd.Read())
                 {
-                    i++;
-                    card[i] = new class_diet_in_food();
-                    card[i].result = "OK";
-                    card[i].card_id = rd.GetInt32(1).ToString();
-                    card[i].card_numb = rd.GetString(0);
+                    card = new class_diet_in_food();
+                    card.result = "OK";
+                    card.card_id = rd.GetInt32(1).ToString();
+                    card.card_numb = rd.GetString(0);
                 }
                 rd.Close();
                 rd.Dispose();
@@ -1912,17 +1851,17 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                card[1].result = "ERROR_" + ex.Data + " " + ex.Message;
+                card.result = "ERROR_" + ex.Data + " " + ex.Message;
             }
 
             return card;
         }
 
         //добавляет сотрудника
-        public string add_person(string surname, string name, string secname)
+        public string add_person(string surname, string name, string secname, string post)
         {
             this._command_text = "insert into Person";
-            this._command_text += "(Surname, Name, Secondname) ";
+            this._command_text += "(Surname, Name, Secondname, Post) ";
             this._command_text += "values(";
 
             if (surname == "")
@@ -1940,10 +1879,17 @@ namespace Preventorium
             }
 
             if (secname == "")
+            { this._command_text += "null"; this._command_text += ", "; }
+            else
+            {
+                this._command_text += "'" + secname + "', ";
+            }
+
+            if (post == "")
             { this._command_text += "null"; this._command_text += ") "; }
             else
             {
-                this._command_text += "'" + secname + "') ";
+                this._command_text += "'" + post + "') ";
             }
 
             try
@@ -1963,7 +1909,7 @@ namespace Preventorium
         }
 
         //модифицирует сотрудника
-        public string upd_person(int post_id, string surname, string name, string secname)
+        public string upd_person(int post_id, string surname, string name, string secname, string post)
         {
             string query = "update Person set ";
             query += "Surname=";
@@ -1981,10 +1927,17 @@ namespace Preventorium
             }
 
             query += "Secondname =";
-            if (secname == "") { query += "null "; }
+            if (secname == "") { query += "null, "; }
             else
             {
-                query += "'" + secname + "' ";
+                query += "'" + secname + "', ";
+            }
+
+            query += "Post =";
+            if (post == "") { query += "null "; }
+            else
+            {
+                query += "'" + post + "' ";
             }
 
             query += "where IDPost = '" + post_id + "'";
@@ -2008,7 +1961,7 @@ namespace Preventorium
         public class_person get_person(int post_id)
         {
             class_person person = new class_person();
-            string query = "select Surname, Name, Secondname, IDPost "
+            string query = "select Surname, Name, Secondname, Post, IDPost "
                             + "from Person ";
             query += "where IDPost = '" + post_id + "'";
             try
@@ -2038,6 +1991,14 @@ namespace Preventorium
                     {
                         person.secondname = rd.GetString(2);
                     }
+                    if (rd.IsDBNull(3))
+                    {
+                        person.post = "";
+                    }
+                    else
+                    {
+                        person.post = rd.GetString(3);
+                    }
 
                 }
                 rd.Close();
@@ -2054,7 +2015,7 @@ namespace Preventorium
         }
 
         //добавляет блюдо в справочник
-        public string add_food_in_book(string card_numb, string food, string book)
+        public string add_food_in_book(string card_numb, string food, string book, string author)
         {
             this._command_text = "insert into FoodInBook";
             this._command_text += "(Id_Cards, ID_food, IDBook) ";
@@ -2081,7 +2042,7 @@ namespace Preventorium
             { this._command_text += "null"; this._command_text += ")"; }
             else
             {
-                this._command_text += "(select IDBook from Book where Name ='" + book;
+                this._command_text += "(select IDBook from Book where Name ='" + book + "' and Author = '" + author;
                 this._command_text += "'))";
             }
 
@@ -2095,7 +2056,7 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                MessageBox.Show("Для этого блюда уже определен справочник!");
+                MessageBox.Show("Блюдо уже содержится в этом справочнике!");
             }
 
             return "OK";
@@ -2159,13 +2120,16 @@ namespace Preventorium
 
             return food_in_book;
         }
-        //возвращает карту по указанному в параметрах идентификатору (коду)
-        public food_in_book[] get_list_food_in_book_id()
+
+        //получаем список блюд
+        public food_in_book[] get_list_food_in_book_id(int _id_book)
         {
             food_in_book[] card = new food_in_book[512];
-            string query = "Select C.ID_food, F.Name_food "
-                         + "from Cards C "
-                         + "join Foods F on F.ID_food = C.ID_food";
+            string query = "select C.ID_food, F.Name_food from Cards C "
+                         + "join Foods F on F.ID_food = C.ID_food "
+                         + "where C.ID_food not in "
+                         + "(select ID_food from FoodInBook "
+                         + "where IDBook = '" + _id_book + "')";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -2290,8 +2254,9 @@ namespace Preventorium
         public class_queue[] get_numb_queue()
         {
             class_queue[] menu = new class_queue[512];
-            string query = "Select ID_queue, Number_queue "
-                         + "from Queue";
+            string query = "select ID_queue, Number_queue from Queue "
+                         + "where ID_queue not in "
+                         + "(select ID_queue from Menu)";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -2410,10 +2375,10 @@ namespace Preventorium
     /// <param name="serve_time"></param>
     /// <param name="food"></param>
     /// <returns></returns>
-        public string add_food_in_menu(string serve_time, int menu_id, int day_id, string food)
+        public string add_food_in_menu(string serve_time, int menu_id, int day_id, string food, string serve)
         {
             this._command_text = "insert into Food_in_menu";
-            this._command_text += "(Serve_time_of_food, ID_menu, ID_food, day_id ) ";
+            this._command_text += "(Serve_time_of_food, ID_menu, ID_food, day_id, count_serve ) ";
             this._command_text += "values(";
 
             if (serve_time == "")
@@ -2435,10 +2400,16 @@ namespace Preventorium
                 this._command_text += "(select ID_food from Foods where Name_food ='" + food + "'),";
             }
             if (day_id.ToString() == "")
+            { this._command_text += "null"; this._command_text += ","; }
+            else
+            {
+                this._command_text += "'" + day_id + "',";
+            }
+            if (serve == "")
             { this._command_text += "null"; this._command_text += ")"; }
             else
             {
-                this._command_text += "'" + day_id + "')";
+                this._command_text += "'" + serve + "')";
             }
 
             try
@@ -2525,11 +2496,12 @@ namespace Preventorium
             return food_in_menu;
         }
         //возвращает карту по указанному в параметрах идентификатору (коду)
-        public class_food_in_menu[] get_foodMenu()
+        public class_food_in_menu[] get_foodMenu(string serve_time, int day)
         {
             class_food_in_menu[] food_in_menu = new class_food_in_menu[512];
             string query = "Select F.ID_food, F.Name_food "
-                         + "from Foods F ";
+                         + "from Foods F "
+                         + "where F.ID_food not in (select ID_food from Food_in_menu where Serve_time_of_food = '" + serve_time +"'"+ "and day_id='"+day+"'"+ ")";
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();

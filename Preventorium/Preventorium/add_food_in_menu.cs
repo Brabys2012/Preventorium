@@ -29,7 +29,7 @@ namespace Preventorium
             InitializeComponent();
 
             class_food_in_menu[] food_in_menu = new class_food_in_menu[512];
-            food_in_menu = Program.add_read_module.get_foodMenu();
+            food_in_menu = Program.add_read_module.get_foodMenu(serve_time,AddDayID);
             if (food_in_menu != null)
             {
                 this.lb_food.Items.Clear();
@@ -57,41 +57,6 @@ namespace Preventorium
             add_food_in_menu food_in_menu = new add_food_in_menu(Program.data_module, serve, id, AddDayID);
             food_in_menu.ShowDialog();
         }
-
-
-        /*//Конструктор, вызываемый для редактирования
-        public add_menu(db_connect data_module, string food_in_book_card, string food_in_book_food, string food_in_book_book, int card_id, int food_id, int book_id)
-        {
-            InitializeComponent();
-
-            class_queue[] queue = new class_queue[512];
-            queue = Program.add_read_module.get_numb_queue();
-            if (queue != null)
-            {
-                this.cb_numb_queue.Items.Clear();
-                for (int i = 1; i < queue.Count(); i++)
-                {
-                    if (queue[i] != null)
-                    {
-                        this.cb_numb_queue.Items.Add(queue[i].numb_queue);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            
-            this.queue_id = queue_id.ToString();
-          
-            this.set_state("OLD");
-
-            this.numb_queue = numb_queue.ToString();
-
-            this.fill_menu_data();
-            this._data_module = data_module;
-           
-        }*/
 
         //заполняет форму данными, полученными из базы данных при просмотре существующей в БД записи
         public void fill_food_in_menu_data()
@@ -144,7 +109,7 @@ namespace Preventorium
             {
                 //Если добавляется новая запись...
                 case "NEW":
-                    result = Program.add_read_module.add_food_in_menu(serve, id, AddDayID, this.lb_food.Text);
+                    result = Program.add_read_module.add_food_in_menu(serve, id, AddDayID, this.lb_food.Text, this.tb_serve.Text);
                     this.Close();
                     break;
 

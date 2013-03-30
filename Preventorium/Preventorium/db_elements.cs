@@ -26,6 +26,7 @@ public class class_food
     public string fats;
     public string carbo;
     public string weight;
+    public string count_portc;
 }
 /// <summary>
 /// Класс диеты: Содержит переменные которым передаются значения по sql запросу,возвращает данные о диетах
@@ -104,7 +105,7 @@ public class class_person
 /// <summary>
 /// Класс ингридиенты в блюде: Содержит переменные которым передаются значения по sql запросу,возвращает сведения о ингридиентах в блюдах
 /// </summary>
-public class class_ingr_in_food
+public  class class_ingr_in_food
 {
     public string result;
     public string ingr_id;
@@ -190,7 +191,6 @@ public class class_menu_in_day
     public string day_id;
     public string day;
 }
-
 public class class_food_in_menu
 {
     public string result;
@@ -199,6 +199,7 @@ public class class_food_in_menu
     public string food_id;
     public string serve_time;
     public string food;
+    public string serve;
 }
 
 
@@ -207,5 +208,6 @@ public class class_menu_in_food
     public string result;
     public string service;
     public string food_id;
+    
 
 }

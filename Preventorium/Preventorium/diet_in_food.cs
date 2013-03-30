@@ -50,67 +50,16 @@ namespace Preventorium
             diet_in_food.ShowDialog();
         }
 
-        //редактирование
-        private void b_edit_Click(object sender, EventArgs e)
-        {
-            switch (this._current_state)
-            {
-                case "Food_in_diets":
-
-                    add_diet_in_food diet_in_food = null;
-                    try
-                    {
-                        diet_in_food = new add_diet_in_food(Program.data_module, gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString(),
-                                                                                 gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString(),
-                                                                                 gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString(),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[3].Value.ToString()),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
-                        diet_in_food.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите блюдо!");
-                    }
-                    break;
-            }
-            this.load_data_table(this._current_state);
-        }
-
         public void diet_in_food_Load(object sender, EventArgs e)
         {
 
             this.load_data_table("Food_in_diets");
             gw.Columns[0].HeaderText = "Блюдо";
+            gw.Columns[1].Width = 40;
             gw.Columns[1].HeaderText = "Номер диеты";
+            gw.Columns[2].Width = 100;
             gw.Columns[2].HeaderText = "Номер карты";
 
-        }
-
-        private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            switch (this._current_state)
-            {
-                case "Food_in_diets":
-
-                    add_diet_in_food diet_in_food = null;
-                    try
-                    {
-                        diet_in_food = new add_diet_in_food(Program.data_module, gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString(),
-                                                                                 gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString(),
-                                                                                 gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString(),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[3].Value.ToString()),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
-                        diet_in_food.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите блюдо!");
-                    }
-                    break;
-            }
-            this.load_data_table(this._current_state);
         }
 
         private void b_delete_Click(object sender, EventArgs e)
@@ -144,11 +93,6 @@ namespace Preventorium
             gw.Rows[rowIndex].Selected = true;
             gw.CurrentCell = gw[1, rowIndex];
 
-        }
-
-        private void edit_Click(object sender, EventArgs e)
-        {
-            this.b_edit_Click(sender, e);
         }
 
         private void del_Click(object sender, EventArgs e)

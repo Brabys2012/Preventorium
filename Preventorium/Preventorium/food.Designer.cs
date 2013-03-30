@@ -67,7 +67,7 @@
             this.toolStripSeparator4});
             menu_Food.Location = new System.Drawing.Point(0, 0);
             menu_Food.Name = "menu_Food";
-            menu_Food.Size = new System.Drawing.Size(653, 25);
+            menu_Food.Size = new System.Drawing.Size(832, 25);
             menu_Food.TabIndex = 2;
             menu_Food.Text = "foods";
             // 
@@ -169,7 +169,7 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(653, 237);
+            this.gw.Size = new System.Drawing.Size(832, 271);
             this.gw.TabIndex = 3;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
@@ -201,9 +201,10 @@
             // food
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(653, 262);
+            this.ClientSize = new System.Drawing.Size(832, 296);
             this.Controls.Add(this.gw);
             this.Controls.Add(menu_Food);
+            this.DoubleBuffered = true;
             this.Name = "food";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

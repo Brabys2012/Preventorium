@@ -31,6 +31,8 @@
             this.lb_food = new System.Windows.Forms.ListBox();
             this.b_save = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_serve = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lb_food
@@ -45,6 +47,7 @@
             // 
             // b_save
             // 
+            this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b_save.Location = new System.Drawing.Point(13, 205);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
@@ -56,6 +59,7 @@
             // b_cancel
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.b_cancel.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b_cancel.Location = new System.Drawing.Point(130, 205);
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Size = new System.Drawing.Size(75, 23);
@@ -64,13 +68,32 @@
             this.b_cancel.UseVisualStyleBackColor = true;
             this.b_cancel.Click += new System.EventHandler(this.b_cancel_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(212, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 36);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Количество \r\nпорций:";
+            // 
+            // tb_serve
+            // 
+            this.tb_serve.Location = new System.Drawing.Point(215, 52);
+            this.tb_serve.Name = "tb_serve";
+            this.tb_serve.Size = new System.Drawing.Size(78, 20);
+            this.tb_serve.TabIndex = 4;
+            // 
             // add_food_in_menu
             // 
             this.AcceptButton = this.b_save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_cancel;
-            this.ClientSize = new System.Drawing.Size(220, 240);
+            this.ClientSize = new System.Drawing.Size(298, 233);
+            this.Controls.Add(this.tb_serve);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.b_cancel);
             this.Controls.Add(this.b_save);
             this.Controls.Add(this.lb_food);
@@ -80,6 +103,7 @@
             this.Name = "add_food_in_menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -88,5 +112,7 @@
         private System.Windows.Forms.ListBox lb_food;
         private System.Windows.Forms.Button b_save;
         private System.Windows.Forms.Button b_cancel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_serve;
     }
 }

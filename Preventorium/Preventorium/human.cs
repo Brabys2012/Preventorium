@@ -24,7 +24,6 @@ namespace Preventorium
             bs.DataSource = Program.data_module.get_data_table(state).Tables[state];
             gw.DataSource = bs;
             gw.Columns[0].Visible = false;// скрываем не нужный столбец
-
             gw.Update();
             gw.Show();
             this._current_state = state;
@@ -44,6 +43,7 @@ namespace Preventorium
             gw.Columns[1].HeaderText = "Фамилия";
             gw.Columns[2].HeaderText = "Имя";
             gw.Columns[3].HeaderText = "Отчество";
+            gw.Columns[4].HeaderText = "Должность";
         }
 
         // редактирование по двойному клику 

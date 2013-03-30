@@ -154,9 +154,9 @@ namespace Preventorium
                         card[i].result = "OK";
                         
                         card[i].diet_numb = rd.GetString(3).ToString();
+                        
 
-
-                        if (rd.IsDBNull(2))
+                           if (rd.IsDBNull(2))
                         {
                             card[i].method = "";
                         }
@@ -179,19 +179,20 @@ namespace Preventorium
 
             }  return card;
 
-                    }
+         }
 
 
         public void gw_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
           this._card_list = this.get_card_list();
-                 
 
-         if (this._card_list != null)
-            {
-               this.lb_diet.Items.Clear();
-            }
+          tb_desc.Text = "";
+          if (this._card_list != null)
+          {
+              this.lb_diet.Items.Clear();
+          }
+         
             for (int i = 1; i < this._card_list.Count(); i++)
             {
                 if (this._card_list[i] != null)
@@ -203,12 +204,12 @@ namespace Preventorium
                 }
                 else
                 {
+                    
                     break;
                 }
 
             }
-
-                        
+                                    
             class_card[] card = new class_card[512];
             string cell = gw.Rows[gw.CurrentRow.Index].Cells[3].Value.ToString();
             string query = "select * from Cards where Method_of_cooking='" + cell + "'";
@@ -292,6 +293,7 @@ namespace Preventorium
                     if (rd.IsDBNull(0))
                     {
                         diet.description = "";
+                        tb_desc.Text = diet.description;
                     }
                     else
                     {
@@ -310,6 +312,16 @@ namespace Preventorium
                 MessageBox.Show("ERROR_" + ex.Data + " " + ex.Message);
             }
         }
+
+        private void gw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Keys)e.KeyChar == Keys.Enter)
+            {
+                b_edit_Click(sender, e);
+            } 
+        }
+
+      
  
     }
 }

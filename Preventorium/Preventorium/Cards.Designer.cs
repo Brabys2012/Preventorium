@@ -68,7 +68,7 @@
             this.groupBox1.Location = new System.Drawing.Point(-1, -14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(490, 344);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // gw
@@ -120,9 +120,10 @@
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
             this.gw.Size = new System.Drawing.Size(484, 300);
-            this.gw.TabIndex = 2;
+            this.gw.TabIndex = 1;
             this.gw.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellClick);
             this.gw.DoubleClick += new System.EventHandler(this.gw_DoubleClick);
+            this.gw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gw_KeyPress);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // Menu_Card
@@ -164,7 +165,7 @@
             this.tool_cards.Location = new System.Drawing.Point(3, 16);
             this.tool_cards.Name = "tool_cards";
             this.tool_cards.Size = new System.Drawing.Size(484, 25);
-            this.tool_cards.TabIndex = 1;
+            this.tool_cards.TabIndex = 0;
             this.tool_cards.Text = "toolStrip1";
             // 
             // toolStripSeparator1
@@ -238,7 +239,7 @@
             this.tb_desc.Name = "tb_desc";
             this.tb_desc.ReadOnly = true;
             this.tb_desc.Size = new System.Drawing.Size(261, 121);
-            this.tb_desc.TabIndex = 6;
+            this.tb_desc.TabIndex = 2;
             // 
             // lb_diet
             // 
@@ -248,7 +249,7 @@
             this.lb_diet.Location = new System.Drawing.Point(6, 25);
             this.lb_diet.Name = "lb_diet";
             this.lb_diet.Size = new System.Drawing.Size(48, 112);
-            this.lb_diet.TabIndex = 5;
+            this.lb_diet.TabIndex = 1;
             this.lb_diet.SelectedIndexChanged += new System.EventHandler(this.lb_diet_SelectedIndexChanged);
             // 
             // label2
@@ -268,7 +269,7 @@
             this.label1.Location = new System.Drawing.Point(6, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 18);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Показано по диетам № :";
             // 
             // tb_method
@@ -279,7 +280,7 @@
             this.tb_method.Name = "tb_method";
             this.tb_method.ReadOnly = true;
             this.tb_method.Size = new System.Drawing.Size(315, 152);
-            this.tb_method.TabIndex = 1;
+            this.tb_method.TabIndex = 4;
             // 
             // Cards
             // 

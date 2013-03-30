@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -17,73 +12,29 @@ namespace Preventorium
         //Состояние (new/old/mod)
         private string _state;
         //ID для загрузки данных (в режиме OLD)
-        private string diet_numb;
-        private string card_numb;
-        private string food_name;
-        private string diet_id;
-        private string card_id;
-        private string food_id;
+        public int IDFood;
 
         private void enabled_b_save(object sender, EventArgs e)
         {
             if (this._state == "OLD") { this.set_state("MOD"); }
-            if ((cb_card_numb.Text != "") && (cb_diet_numb.Text != "") && (cb_food_name.Text != "")) { b_save.Enabled = true; }
         }
 
         // Конструктор, вызываемый при нажатии "Добавить"
         public add_diet_in_food(db_connect data_module)
         {
             InitializeComponent();
-            
-            class_diet_in_food[] diet_in_food = new class_diet_in_food[512];
-            diet_in_food = Program.add_read_module.get_list_diet_id();
-            if (diet_in_food != null)
-            {
-                this.cb_diet_numb.Items.Clear();
-                for (int i = 1; i < diet_in_food.Count(); i++)
-                {
-                    if (diet_in_food[i] != null)
-                    {
-                        this.cb_diet_numb.Items.Add(diet_in_food[i].diet_numb);
-                    }
-
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
-
-            class_diet_in_food[] card = new class_diet_in_food[512];
-            card = Program.add_read_module.get_list_card_id();
-            if (card != null)
-            {
-                this.cb_card_numb.Items.Clear();
-                for (int i = 1; i < card.Count(); i++)
-                {
-                    if (card[i] != null)
-                    {            
-                        this.cb_card_numb.Items.Add(card[i].card_numb);
-                    }
-
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
+            if (lb_food_name.Text == "") { tb_card_numb.Enabled = false; lb_diet_numb.Enabled = false; }
            
             class_diet_in_food[] food = new class_diet_in_food[512];
             food = Program.add_read_module.get_list_food_name();
             if (food != null)
             {
-                this.cb_food_name.Items.Clear();
+                this.lb_food_name.Items.Clear();
                 for (int i = 1; i < food.Count(); i++)
                 {
                     if (food[i] != null)
                     {  
-                       this.cb_food_name.Items.Add(food[i].food_name);
+                       this.lb_food_name.Items.Add(food[i].food_name);
                     }
 
                     else
@@ -105,103 +56,6 @@ namespace Preventorium
             add_diet.ShowDialog();
         }
 
-
-        //Конструктор, вызываемый для редактирования
-        public add_diet_in_food(db_connect data_module, string diet_in_food_name_food, string diet_in_food_diet_numb, string diet_in_food_card_numb, int food_id, int diet_id, int card_id)
-        {
-            InitializeComponent();
-            
-            class_diet_in_food[] diet_in_food = new class_diet_in_food[512];
-            diet_in_food = Program.add_read_module.get_list_diet_id();
-            if (diet_in_food != null)
-            {
-                this.cb_diet_numb.Items.Clear();
-                for (int i = 1; i < diet_in_food.Count(); i++)
-                {
-                    if (diet_in_food[i] != null)
-                    {
-                        this.cb_diet_numb.Items.Add(diet_in_food[i].diet_numb);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
-            class_diet_in_food[] card = new class_diet_in_food[512];
-            card = Program.add_read_module.get_list_card_id();
-            if (card != null)
-            {
-                this.cb_card_numb.Items.Clear();
-                for (int i = 1; i < card.Count(); i++)
-                {
-                    if (card[i] != null)
-                    {
-                        this.cb_card_numb.Items.Add(card[i].card_numb);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
-            class_diet_in_food[] food = new class_diet_in_food[512];
-            food = Program.add_read_module.get_list_food_name();
-            if (food != null)
-            {
-                this.cb_food_name.Items.Clear();
-                for (int i = 1; i < food.Count(); i++)
-                {
-                    if (food[i] != null)
-                    {
-                        this.cb_food_name.Items.Add(food[i].food_name);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
-            this.diet_id = diet_id.ToString();
-            this.card_id = card_id.ToString();
-            this.food_id = food_id.ToString();
-          
-            this.set_state("OLD");
-           
-           this.food_name = diet_in_food_name_food.ToString();
-            this.diet_numb = diet_in_food_diet_numb.ToString();
-            this.card_numb = diet_in_food_card_numb.ToString();
-
-            this.fill_diet_in_food_data();
-            this._data_module = data_module;
-           
-        }
-
-        //заполняет форму данными, полученными из базы данных при просмотре существующей в БД записи
-        public void fill_diet_in_food_data()
-        {
-            
-            class_diet_in_food diet_in_food;
-            diet_in_food = Program.add_read_module.get_diet_in_food(food_name, diet_numb, card_numb);
-            if (diet_in_food.result == "OK")
-            {
-               
-                this.cb_food_name.Text = diet_in_food.food_name;
-                this.cb_diet_numb.Text = diet_in_food.diet_numb;
-                this.cb_card_numb.Text = diet_in_food.card_numb;
-            }
-            else
-            {
-                //Не удалось получить сведений
-                MessageBox.Show(diet_in_food.result);
-                this.Dispose();
-            }
-        }
-
-
         public void set_state(string state)
         {
             switch (state)
@@ -209,20 +63,12 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Просмотр";
-                    this.b_save.Enabled = false;
+                    this.b_save.Enabled = true;
                     break;
 
                 case "NEW":
                     this._state = "NEW";
                     this.Text = "Добавление";
-                    this.b_save.Enabled = false;
-                    break;
-
-                case "MOD":
-                    this._state = "MOD";
-                    this.Text = "Редактирование";
-                    this.cb_food_name.Enabled = false;
-                    this.cb_card_numb.Enabled = false;
                     this.b_save.Enabled = true;
                     break;
             }
@@ -230,42 +76,18 @@ namespace Preventorium
 
         private void b_save_Click(object sender, EventArgs e)
         {
-
-            string result; //Результат попытки сохранения/добавления
+            string result = ""; //Результат попытки сохранения/добавления
             switch (this._state)
             {
                 //Если добавляется новая запись...
                 case "NEW":
 
-                    result = Program.add_read_module.add_diet_in_food(this.cb_card_numb.Text,
-                        this.cb_food_name.Text,
-                        this.cb_diet_numb.Text);
+                    result = Program.add_read_module.add_diet_in_food(this.tb_card_numb.Text,
+                        this.lb_food_name.Text,
+                        this.lb_diet_numb.Text);
                     this.Close();
                     break;
 
-
-                //Если модифицируется существующая...
-                case "MOD":
-                    
-           class_diet_in_food diet_in_food;
-                diet_in_food = Program.add_read_module.get_diet_in_food(food_name, diet_numb, card_numb);
-
-                string food_old = diet_in_food.food_name;
-                string diet_old = diet_in_food.diet_numb;
-                string card_old = diet_in_food.card_numb;
-               
-                result = Program.add_read_module.upd_diet_in_food(Convert.ToInt32(this.food_id),
-                 Convert.ToInt32(this.diet_id), Convert.ToInt32(this.card_id), this.cb_food_name.Text, this.cb_diet_numb.Text,
-                     this.cb_card_numb.Text, food_old, diet_old, card_old);
-                    this.Close();
-                    break;
-
-                default:
-                    result = "NDF";
-                    // не используется, однако mvs не позволяет 
-                    // дальше работать переменной, которой в одной
-                    // из веток кода не присваивается значение
-                    break;
             }
 
             if (result == "OK")
@@ -275,11 +97,6 @@ namespace Preventorium
                     this.set_state("OLD");
                     this.Dispose();
                 }
-                else
-                    if (this._state == "MOD")
-                    {
-                        this.set_state("OLD");
-                    }
             }
             else
             {
@@ -291,6 +108,76 @@ namespace Preventorium
         private void b_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Лист бокс с номерами диет активируется при выборе блюда
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lb_food_name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lb_diet_numb.Enabled = true;
+        }
+
+        /// <summary>
+        /// Заполняем лист бокс номерами диет при выборе блюда
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lb_food_name_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //получаем ID выбранного блюда
+            class_food diet = new class_food();
+            string query = "select ID_food from Foods "
+                         + "where Name_food = '" + lb_food_name.Text + "'";
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                SqlDataReader rd = com.ExecuteReader();
+                if (rd.Read())
+                {
+                    diet = new class_food();
+                    diet.food_id = rd.GetInt32(0).ToString();
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                diet.result = "ERROR_" + ex.Data + " " + ex.Message;
+            }
+
+            //Список диет
+            class_diet_in_food[] diet_in_food = new class_diet_in_food[512];
+            diet_in_food = Program.add_read_module.get_list_diet_id(Convert.ToInt32(diet.food_id));
+            if (diet_in_food != null)
+            {
+                this.lb_diet_numb.Items.Clear();
+                for (int i = 1; i < diet_in_food.Count(); i++)
+                {
+                    if (diet_in_food[i] != null)
+                    {
+                        this.lb_diet_numb.Items.Add(diet_in_food[i].diet_numb);
+                    }
+
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            //Записываем номер карты выбранного блюда в текст бокс 
+            class_diet_in_food card = new class_diet_in_food();
+            card = Program.add_read_module.get_list_card_id(Convert.ToInt32(diet.food_id));
+            if (card != null)
+            {
+                tb_card_numb.Text = card.card_numb;
+            }
         }
 
     }
