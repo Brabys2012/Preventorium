@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Preventorium
@@ -60,7 +54,7 @@ namespace Preventorium
                 this.tb_surname.Text = person.surname;
                 this.tb_name.Text = person.name;
                 this.tb_sec_name.Text = person.secondname;
-
+                this.tb_post.Text = person.post;
             }
             else
             {
@@ -106,7 +100,8 @@ namespace Preventorium
                     result = Program.add_read_module.add_person(
                         this.tb_surname.Text,
                         this.tb_name.Text,
-                        this.tb_sec_name.Text);
+                        this.tb_sec_name.Text,
+                        this.tb_post.Text);
                     this.Close();
                     break;
 
@@ -119,7 +114,8 @@ namespace Preventorium
                 result = Program.add_read_module.upd_person(Convert.ToInt32(this.post_id),
                     this.tb_surname.Text,
                      this.tb_name.Text,
-                     this.tb_sec_name.Text);
+                     this.tb_sec_name.Text,
+                     this.tb_post.Text);
                     this.Close();
                     break;
 

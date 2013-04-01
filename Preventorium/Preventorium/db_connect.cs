@@ -82,7 +82,7 @@ namespace Preventorium
         // ------------------------------------------------------------------
         public DataSet get_data_table_breakfast(string table_name, int data)
         {
-            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food "
+            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food, FIM.count_serve "
                            + "from Food_in_menu FIM "
                            + "join Foods F on F.ID_food = FIM.ID_food "
                            + "where FIM.Serve_time_of_food = 'завтрак' and FIM.day_id='" + data+ "'";
@@ -106,7 +106,7 @@ namespace Preventorium
         // ------------------------------------------------------------------
         public DataSet get_data_table_dinner(string table_name, int data)
         {
-            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food "
+            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food, FIM.count_serve "
                            + "from Food_in_menu FIM "
                            + "join Foods F on F.ID_food = FIM.ID_food "
                            + "where FIM.Serve_time_of_food = 'обед' and FIM.day_id='" + data + "'";
@@ -130,7 +130,7 @@ namespace Preventorium
         // ------------------------------------------------------------------
         public DataSet get_data_table_supper(string table_name,int data)
         {
-            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food "
+            string query = "select FIM.ID_food, FIM.day_id, FIM.Serve_time_of_food, F.Name_food, FIM.count_serve "
                            + "from Food_in_menu FIM "
                            + "join Foods F on F.ID_food = FIM.ID_food "
                            + "where FIM.Serve_time_of_food = 'ужин' and FIM.day_id='" + data + "'";
@@ -361,7 +361,7 @@ namespace Preventorium
             }
             catch (Exception exc)
             {
-                MessageBox.Show(string.Format("Не удалось подключиться к базе данных по причине {0}.", "\n\nПроверьте настройки подключения или обратитесь к системному администратору.", exc), "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(string.Format("Не удалось подключиться к базе данных!!!{0}.", "\n\nПроверьте настройки подключения или обратитесь к системному администратору.", exc), "Ошибка подключения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 // Устанавливаем статус и возвращаем результат
                 this.ConnStatus = ConnectionStatus.CONNECT_ERROR;
                 return ConnectionStatus.CONNECT_ERROR;

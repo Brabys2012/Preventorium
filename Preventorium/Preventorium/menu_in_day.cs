@@ -15,10 +15,12 @@ namespace Preventorium
         private string _current_state;
         private string _id ;
         private int AddMenuID;
+        private int queue;
 
-            public menu_in_day(int menu_id)
+            public menu_in_day(int menu_id, int ID_queue)
         {
             AddMenuID = menu_id;
+            queue = ID_queue;
             InitializeComponent();
         }
         
@@ -105,13 +107,13 @@ namespace Preventorium
                 int day_id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString());
                 int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
              
-                food_in_menu form = new food_in_menu(id, day_id);
+                food_in_menu form = new food_in_menu(id, day_id, queue);
                 form.ShowDialog();
            }
 
             catch (Exception ex)
             {
-            
+                GC.Collect();
             }
         }
 
@@ -121,7 +123,7 @@ namespace Preventorium
             {
                 int day_id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString());
                 int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
-                food_in_menu form = new food_in_menu(id, day_id);
+                food_in_menu form = new food_in_menu(id, day_id,queue);
                 form.ShowDialog();
             }
 

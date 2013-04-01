@@ -43,7 +43,7 @@
             // cb_food
             // 
             this.cb_food.FormattingEnabled = true;
-            this.cb_food.Location = new System.Drawing.Point(12, 25);
+            this.cb_food.Location = new System.Drawing.Point(15, 25);
             this.cb_food.Name = "cb_food";
             this.cb_food.Size = new System.Drawing.Size(121, 21);
             this.cb_food.TabIndex = 1;
@@ -52,35 +52,38 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(52, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Блюдо:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(12, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 26);
+            this.label2.Size = new System.Drawing.Size(119, 36);
             this.label2.TabIndex = 2;
             this.label2.Text = "Ориентировочная\r\nстоимость блюда:";
             // 
             // tb_cost
             // 
-            this.tb_cost.Location = new System.Drawing.Point(12, 78);
+            this.tb_cost.Location = new System.Drawing.Point(15, 88);
             this.tb_cost.Name = "tb_cost";
-            this.tb_cost.Size = new System.Drawing.Size(118, 20);
+            this.tb_cost.Size = new System.Drawing.Size(121, 20);
             this.tb_cost.TabIndex = 3;
             this.tb_cost.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(139, 9);
+            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(133, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 13);
+            this.label3.Size = new System.Drawing.Size(151, 18);
             this.label3.TabIndex = 6;
             this.label3.Text = "Способ приготовления:";
             // 
@@ -91,30 +94,32 @@
             this.tb_method.Multiline = true;
             this.tb_method.Name = "tb_method";
             this.tb_method.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_method.Size = new System.Drawing.Size(248, 112);
+            this.tb_method.Size = new System.Drawing.Size(248, 127);
             this.tb_method.TabIndex = 7;
             this.tb_method.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 101);
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(12, 111);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.Size = new System.Drawing.Size(92, 18);
             this.label4.TabIndex = 4;
             this.label4.Text = "Номер карты:";
             // 
             // tb_card_numb
             // 
-            this.tb_card_numb.Location = new System.Drawing.Point(12, 117);
+            this.tb_card_numb.Location = new System.Drawing.Point(15, 132);
             this.tb_card_numb.Name = "tb_card_numb";
-            this.tb_card_numb.Size = new System.Drawing.Size(118, 20);
+            this.tb_card_numb.Size = new System.Drawing.Size(121, 20);
             this.tb_card_numb.TabIndex = 5;
             this.tb_card_numb.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // b_save
             // 
-            this.b_save.Location = new System.Drawing.Point(34, 146);
+            this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.b_save.Location = new System.Drawing.Point(180, 158);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
             this.b_save.TabIndex = 8;
@@ -125,7 +130,8 @@
             // b_cancel
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.b_cancel.Location = new System.Drawing.Point(279, 146);
+            this.b_cancel.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.b_cancel.Location = new System.Drawing.Point(306, 158);
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Size = new System.Drawing.Size(75, 23);
             this.b_cancel.TabIndex = 9;
@@ -139,7 +145,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_cancel;
-            this.ClientSize = new System.Drawing.Size(393, 181);
+            this.ClientSize = new System.Drawing.Size(393, 187);
             this.Controls.Add(this.b_cancel);
             this.Controls.Add(this.b_save);
             this.Controls.Add(this.tb_card_numb);

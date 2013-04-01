@@ -72,6 +72,57 @@ where ID_food=@ID_food
 
 
 
+*Триггер, который считает калорийность, белки,жиры углеводы и вес блюда*/ 
+create trigger CountCalloriesFood on Ingridients_in_food after delete
+as
+Declare
+          @cal_ingr as float,
+          @net_weight as float,
+          @cal_food as float,
+          @ID_food as int,
+          @ID_ingr as int,
+          @prodactWeight as float,
+          @proteins as float,
+          @totalProteins as float,
+          @Fat as float,
+          @TotalFat as float,
+          @Carbo as float,
+	  @totalcarbo as float
+
+select @ID_food=ID_food, @net_weight=Net_weight, @ID_ingr=ID_ingridients
+from deleted
+
+select @cal_ingr=calories, @Carbo=Carbohydrates, @Fat=fats, @proteins=proteins
+from Ingridients
+where Id_ingridients=@ID_ingr
+
+select @cal_food=Full_calories, @totalProteins=totalProteins, @totalFat=totalFats, @totalCarbo=TotalCarbohydrates, @prodactWeight=Finish_weight_of_food
+from Foods
+where ID_food=@ID_food
+
+  begin
+       set @prodactWeight=@prodactWeight-@net_weight
+       
+       set @cal_food=@cal_food-@net_weight/100*@cal_ingr
+
+       set @totalProteins = @totalProteins-@net_weight/100*@proteins
+
+       set @totalFat = @totalFat - @net_weight/100*@Fat
+   
+       set @totalCarbo = @totalCarbo - @net_weight/100*@Carbo
+
+  end
+
+update Foods
+set Full_calories=@cal_food, Finish_weight_of_food=@prodactWeight, TotalProteins = @totalProteins, TotalCarbohydrates = @totalCarbo, TotalFats = @totalFat 
+where ID_food=@ID_food
+
+
+
+
+
+
+
 /*Триггер, который считает калорийность, белки,жиры углеводы и вес блюда*/ 
 create trigger CountCalloriesFood on Ingridients_in_food after update
 as

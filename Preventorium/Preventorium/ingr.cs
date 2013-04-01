@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -69,7 +69,7 @@ namespace Preventorium
                 for (int i = 0; i < gw.Columns.Count - 1; i++)
                 {
                     worksheet.Cells[1 + 3, i + 1] = gw.Columns[i].HeaderText;
-                    worksheet.Cells[1, 8] = " Отчет по ингридиентам ";
+                    worksheet.Cells[1, 8] = " Отчет по ингредиентам ";
                     worksheet.Cells[1, 8].Font.Bold = 1;
                     worksheet.Cells[1, 8].Font.Size = 20;
                     worksheet.get_Range("G1:K1").MergeCells = true;
@@ -133,7 +133,6 @@ namespace Preventorium
             finally
             {
                 GC.Collect();
-                app.Workbooks.Close();
                 app.Quit();
             }
         }
@@ -143,9 +142,13 @@ namespace Preventorium
             this.load_data_table("Ingridients");
             //перименование столбцов
             gw.Columns[0].HeaderText = "Название ингредиента";
+            gw.Columns[1].Width = 50;
             gw.Columns[1].HeaderText = "Калории";
+            gw.Columns[2].Width = 50;
             gw.Columns[2].HeaderText = "Углеводы";
+            gw.Columns[3].Width = 40;
             gw.Columns[3].HeaderText = "Жиры";
+            gw.Columns[4].Width = 80;
             gw.Columns[4].HeaderText = "Белки";
         }
 
@@ -319,9 +322,6 @@ namespace Preventorium
             
         }
 
-             
-       
-      
     }
 }
     

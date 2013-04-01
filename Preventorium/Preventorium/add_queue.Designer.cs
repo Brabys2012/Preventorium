@@ -42,60 +42,67 @@
             // 
             // tb_end
             // 
-            this.tb_end.Location = new System.Drawing.Point(134, 64);
+            this.tb_end.Location = new System.Drawing.Point(168, 80);
+            this.tb_end.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_end.Name = "tb_end";
-            this.tb_end.Size = new System.Drawing.Size(139, 20);
+            this.tb_end.Size = new System.Drawing.Size(184, 25);
             this.tb_end.TabIndex = 7;
             this.tb_end.ValueChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // tb_start
             // 
-            this.tb_start.Location = new System.Drawing.Point(134, 25);
+            this.tb_start.Location = new System.Drawing.Point(168, 29);
+            this.tb_start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_start.Name = "tb_start";
-            this.tb_start.Size = new System.Drawing.Size(139, 20);
+            this.tb_start.Size = new System.Drawing.Size(184, 25);
             this.tb_start.TabIndex = 5;
             this.tb_start.ValueChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // tb_mens
             // 
-            this.tb_mens.Location = new System.Drawing.Point(15, 25);
+            this.tb_mens.Location = new System.Drawing.Point(16, 31);
+            this.tb_mens.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_mens.Name = "tb_mens";
-            this.tb_mens.Size = new System.Drawing.Size(110, 20);
+            this.tb_mens.Size = new System.Drawing.Size(145, 25);
             this.tb_mens.TabIndex = 1;
             this.tb_mens.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(131, 48);
+            this.label4.Location = new System.Drawing.Point(165, 58);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.Size = new System.Drawing.Size(110, 18);
             this.label4.TabIndex = 6;
             this.label4.Text = "Дата окончания:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(131, 9);
+            this.label3.Location = new System.Drawing.Point(165, 9);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.Size = new System.Drawing.Size(88, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "Дата начала:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Location = new System.Drawing.Point(13, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 13);
+            this.label2.Size = new System.Drawing.Size(131, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "Количество человек:";
             // 
             // b_save
             // 
-            this.b_save.Location = new System.Drawing.Point(35, 90);
+            this.b_save.Location = new System.Drawing.Point(44, 113);
+            this.b_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.b_save.Name = "b_save";
-            this.b_save.Size = new System.Drawing.Size(75, 23);
+            this.b_save.Size = new System.Drawing.Size(100, 32);
             this.b_save.TabIndex = 8;
             this.b_save.Text = "Сохранить";
             this.b_save.UseVisualStyleBackColor = true;
@@ -104,9 +111,10 @@
             // b_abolition
             // 
             this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.b_abolition.Location = new System.Drawing.Point(172, 90);
+            this.b_abolition.Location = new System.Drawing.Point(215, 113);
+            this.b_abolition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.b_abolition.Name = "b_abolition";
-            this.b_abolition.Size = new System.Drawing.Size(75, 23);
+            this.b_abolition.Size = new System.Drawing.Size(100, 32);
             this.b_abolition.TabIndex = 9;
             this.b_abolition.Text = "Отмена";
             this.b_abolition.UseVisualStyleBackColor = true;
@@ -115,27 +123,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 48);
+            this.label1.Location = new System.Drawing.Point(13, 60);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(105, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Номер очереди:";
             // 
             // tb_numb
             // 
-            this.tb_numb.Location = new System.Drawing.Point(15, 64);
+            this.tb_numb.Location = new System.Drawing.Point(16, 82);
+            this.tb_numb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_numb.Name = "tb_numb";
-            this.tb_numb.Size = new System.Drawing.Size(110, 20);
+            this.tb_numb.Size = new System.Drawing.Size(145, 25);
             this.tb_numb.TabIndex = 3;
             this.tb_numb.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // add_queue
             // 
             this.AcceptButton = this.b_save;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_abolition;
-            this.ClientSize = new System.Drawing.Size(280, 121);
+            this.ClientSize = new System.Drawing.Size(362, 151);
             this.Controls.Add(this.tb_numb);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_end);
@@ -146,7 +156,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_queue";

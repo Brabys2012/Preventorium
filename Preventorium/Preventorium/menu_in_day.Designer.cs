@@ -1,4 +1,4 @@
-﻿namespace Preventorium
+namespace Preventorium
 {
     partial class menu_in_day
     {
@@ -43,9 +43,9 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.gw = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Read = new System.Windows.Forms.ToolStripMenuItem();
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
-            this.Read = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -182,14 +182,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(155, 70);
             // 
-            // delete
-            // 
-            this.delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(154, 22);
-            this.delete.Text = "Удалить";
-            this.delete.Click += new System.EventHandler(this.delete_Click);
-            // 
             // Read
             // 
             this.Read.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
@@ -198,6 +190,14 @@
             this.Read.Text = "Редактировать";
             this.Read.Click += new System.EventHandler(this.Read_Click);
             // 
+            // delete
+            // 
+            this.delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(154, 22);
+            this.delete.Text = "Удалить";
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
             // menu_in_day
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,6 +205,8 @@
             this.ClientSize = new System.Drawing.Size(245, 262);
             this.Controls.Add(this.gw);
             this.Controls.Add(this.toolStrip1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "menu_in_day";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Меню на день";

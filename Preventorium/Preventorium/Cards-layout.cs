@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -1110,9 +1110,7 @@ namespace Preventorium
 
             }
             else
-            {
-
-                //                for (int k = 1; k < this._ingr_list.Count(); k++)
+            {           //                for (int k = 1; k < this._ingr_list.Count(); k++)
 
                 if (this._ingr_list[1] != null)
                 {
@@ -2099,7 +2097,7 @@ namespace Preventorium
         {
             if ((cb_food.Text == "") || (cb_ok.Text=="") || (cb_diets_vrach.Text == "") && (Cb_diet_vrach2.Text == ""))
             {
-                MessageBox.Show("Вы не выбрали блюдо или ответственного за диеты   ");
+                MessageBox.Show("Вы не выбрали того,кто утвержадет карточку-раскладку или ответственного за диеты !!!", "Внимание !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             
@@ -2126,8 +2124,7 @@ namespace Preventorium
             {
                 var name = "";
                 var name1 = "";
-
-                word1("[book]", name, word);
+                                word1("[book]",name, word);
               //  word1("[year]", name1, word);
             }
 
@@ -2538,9 +2535,7 @@ namespace Preventorium
             }
 
 
-
-
-            // ---- ---- -- -- - - - - - -- - - - 
+                        // ---- ---- -- -- - - - - - -- - - - 
 
             if (_Diet[1] == null)
             {
@@ -3848,6 +3843,12 @@ namespace Preventorium
 
                    word1("{id}", id, word);
                    word1("[opis]", opis, word);
+                   word1("[opis1]", opis, word);
+                   word1("[opis2]", opis, word);
+                   word1("[opis3]", opis, word);
+                   word1("[opis4]", opis, word);
+                   word1("[opis5]", opis, word);
+                   word1("[opis6]", opis, word);
                    word1("{price}", cost, word);
                }
                else
@@ -3857,14 +3858,107 @@ namespace Preventorium
                        if (this._food_list2[i] != null)
                        {
                            var id = this._food_list2[i].nam_card.Trim();
-                           var opis = this._food_list2[i].opis.Trim();
+                           string  opis = this._food_list2[i].opis.Trim();
+                           
+                           
                            var cost = this._food_list2[i].cost.Trim();
 
                            word1("{id}", id, word);
-                           word1("[opis]", opis, word);
+                          
                            word1("{price}", cost, word);
 
-                       }
+                           if ((opis.Length >= 255) && (opis.Length <=510))
+                           {
+                               int stroka = opis.Length - 255;
+                               word1("[opis]", opis.Substring(0, 255), word);
+                               word1("[opis1]", opis.Substring(255, stroka), word);
+                               word1("[opis2]", "", word);
+                               word1("[opis3]", "", word);
+                               word1("[opis4]", "", word);
+                               word1("[opis5]", "", word);
+                               word1("[opis6]", "", word);
+
+                           }
+                           
+                          if ((opis.Length < 255))
+                           {
+                               word1("[opis]", opis, word);
+                               word1("[opis1]", "", word);
+                               word1("[opis2]", "", word);
+                               word1("[opis3]", "", word);
+                               word1("[opis4]", "", word);
+                               word1("[opis5]", "", word);
+                               word1("[opis6]", "", word);
+                              
+                           }
+
+                             if ((opis.Length > 510) &&  (opis.Length <= 765) )
+                             {
+                                 word1("[opis]", opis.Substring(0, 255), word);
+                                 int stroka= opis.Length-510;
+                                 word1("[opis1]", opis.Substring(255, 255), word);
+                                 word1("[opis2]", opis.Substring(510, stroka),word);
+                                 word1("[opis3]", "", word);
+                                 word1("[opis4]", "", word);
+                                 word1("[opis5]", "", word);
+                                 word1("[opis6]", "", word);
+                             
+                             }
+
+                             if ((opis.Length > 765) && (opis.Length <= 1020))
+                             
+                             {
+                                 word1("[opis]", opis.Substring(0, 255), word);
+                                 int stroka = opis.Length - 765;
+                                 word1("[opis1]", opis.Substring(255, 255), word);
+                                 word1("[opis2]", opis.Substring(510, 255), word);
+                                 word1("[opis3]", opis.Substring(765, stroka), word);
+                                 word1("[opis4]", "", word);
+                                 word1("[opis5]", "", word);
+                                 word1("[opis6]", "", word);
+                             
+                             }
+
+                             if ((opis.Length > 1020) && (opis.Length <= 1275))
+                             {
+                                 word1("[opis]", opis.Substring(0, 255), word);
+                                 int stroka = opis.Length - 1020;
+                                 word1("[opis1]", opis.Substring(255, 255), word);
+                                 word1("[opis2]", opis.Substring(510, 255), word);
+                                 word1("[opis3]", opis.Substring(765, 255), word);
+                                 word1("[opis4]", opis.Substring(1020, stroka), word);
+                                 word1("[opis5]", "", word);
+                                 word1("[opis6]", "", word);
+                             
+                             }
+
+                           if ((opis.Length > 1275) && (opis.Length <= 1530))
+                             {
+                                 word1("[opis]", opis.Substring(0, 255), word);
+                                 int stroka = opis.Length - 1275; ;
+                                 word1("[opis1]", opis.Substring(255, 255), word);
+                                 word1("[opis2]", opis.Substring(510, 255), word);
+                                 word1("[opis3]", opis.Substring(765, 255), word);
+                                 word1("[opis4]", opis.Substring(1020, 255), word);
+                                 word1("[opis5]", opis.Substring(1275, stroka), word);
+                                 word1("[opis6]", "", word);
+                              }
+
+                           if ((opis.Length > 1530) && (opis.Length <= 1785))
+                           {
+                               word1("[opis]", opis.Substring(0, 255), word);
+                               int stroka = opis.Length - 1530; ;
+                               word1("[opis1]", opis.Substring(255, 255), word);
+                               word1("[opis2]", opis.Substring(510, 255), word);
+                               word1("[opis3]", opis.Substring(765, 255), word);
+                               word1("[opis4]", opis.Substring(1020, 255), word);
+                               word1("[opis5]", opis.Substring(1275, 255), word);
+                               word1("[opis6]", opis.Substring(1530, stroka), word);
+
+                           }
+
+
+                         }
                       
                    }
                    
@@ -3932,8 +4026,11 @@ namespace Preventorium
             //  }
             //}
 
-
+               GC.Collect();
+               GC.Collect();
             App.Visible = true;
+            GC.Collect();
+            GC.Collect();
 
             //string fileName = String.Empty;
 
@@ -3967,9 +4064,12 @@ namespace Preventorium
         {
             var range = word.Content;
 
-            range.Find.ClearFormatting();
+           range.Find.ClearFormatting();
 
-            range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
+         
+                     
+               range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
+            
 
         }
 
@@ -4164,7 +4264,7 @@ namespace Preventorium
             class_book[] book = new class_book[512];
             string query = "select *  from Book where IDBook='";
 
-            //  for (int t = 1; t < this._id_book.Count(); t++)
+             //for (int t = 1; t < this._id_book.Count(); t++)
 
             if (this._id_book[1] != null)
             {
@@ -4290,10 +4390,10 @@ namespace Preventorium
                         i = i + 1;
                         book[i] = new class_book();
                         book[i].result = "OK";
-                        book[i].author = rd.GetString(1).ToString();
+                        book[i].author = rd.GetString(1);
 
-                        book[i].year = rd.GetString(2).ToString();
-                        book[i].name = rd.GetString(3).ToString();
+                        book[i].year = rd.GetInt32(2).ToString();
+                        book[i].name = rd.GetString(3);
 
 
                     }
@@ -4343,8 +4443,8 @@ namespace Preventorium
                         book[i].result = "OK";
                         book[i].author = rd.GetString(1).ToString();
 
-                        book[i].year = rd.GetString(2).ToString();
-                        book[i].name = rd.GetString(3).ToString();
+                        book[i].year = rd.GetInt32(2).ToString();
+                        book[i].name = rd.GetString(3);
 
 
                     }
@@ -4392,7 +4492,7 @@ namespace Preventorium
                         book[i].author = rd.GetString(1).ToString();
 
                         book[i].year = rd.GetInt32(2).ToString();
-                        book[i].name = rd.GetString(3).ToString();
+                        book[i].name = rd.GetString(3);
 
 
                     }
@@ -4421,49 +4521,55 @@ namespace Preventorium
                       {
 
                           string g1 = this._food_list1[t].food_id + "'";
-                          string query2 = query + g1 + " and  FIB.ID_food='";
-                          
-                           if (this._food_list1[t] != null)
-                           {
-                               string g2 = _food_list2[t].id;
-                               string query3 = query2 + g2 +"'";
-                               
-                          try
+                          string query2 = query + g1;/* + " and  FIB.ID_Cards='";
+                          for (int v = 1; v < this._food_list2.Count(); v++)
                           {
-                              SqlCommand com = Program.data_module._conn.CreateCommand();
-                              com.CommandText = query3;
-
-                              SqlDataReader rd = com.ExecuteReader();
-                              int i = 0;
-                              while (rd.Read())
+                              if (this._food_list2[v] != null)
                               {
-                                  i = i + 1;
-                                  book[i] = new class_book();
-                                  book[i].result = "OK";
-                                  if (rd.IsDBNull(0))
+                                  string g2 = _food_list2[v].id;
+                                  string query3 = query2 + g2 + "'";*/
+
+                                  try
                                   {
-                                      book[i].year = "";
+                                      SqlCommand com = Program.data_module._conn.CreateCommand();
+                                      com.CommandText = query2;
+
+                                      SqlDataReader rd = com.ExecuteReader();
+                                      int i = 0;
+                                      while (rd.Read())
+                                      {
+                                          i = i + 1;
+                                          book[i] = new class_book();
+                                          book[i].result = "OK";
+                                          if (rd.IsDBNull(0))
+                                          {
+                                              book[i].year = "";
+                                          }
+                                          else
+                                          {
+                                              book[i].year = rd.GetInt32(0).ToString();
+                                          }
+
+                                      }
+                                      rd.Close();
+                                      rd.Dispose();
+                                      com.Dispose();
                                   }
-                                  else
+
+                                  catch (Exception ex)
                                   {
-                                      book[i].year = rd.GetInt32(0).ToString();
+                                      MessageBox.Show(ex.Message + " " + ex.Data);
+                                      return null;
                                   }
- 
                               }
-                              rd.Close();
-                              rd.Dispose();
-                              com.Dispose();
-                          }
-
-                          catch (Exception ex)
-                          {
-                              MessageBox.Show(ex.Message + " " + ex.Data);
-                              return null;
-                          }
-                      }}
-                          return book;
+                          
                       
+                          return book;                   
+        }
 
+        private void b_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 

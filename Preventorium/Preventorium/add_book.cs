@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -73,13 +73,13 @@ namespace Preventorium
                    case "OLD":
                        this._state = "OLD";
                        this.Text = "Справочники - Просмотр";
-                       this.b_save.Enabled = false;
+                       this.b_save.Enabled = true;
                        break;
 
                    case "NEW":
                        this._state = "NEW";
                        this.Text = "Справочники - Добавление";
-                       this.b_save.Enabled = false;
+                       this.b_save.Enabled = true;
                        break;
 
                    case "MOD":
@@ -136,12 +136,7 @@ namespace Preventorium
                         this.set_state("OLD");
                     }
             }
-            else
-            {
-                MessageBox.Show(result);
-            }
-
-        
+            this.Dispose();
            }
 
            private void b_abolition_Click(object sender, EventArgs e)
@@ -193,9 +188,9 @@ namespace Preventorium
            /// <summary>
            /// Блюда в кулинарный справочник
            /// </summary>
-           private void add_new_food_in_book(int id_book)
+           private void add_new_food_in_book(int id_book, string author)
            {
-               add_food_in_book food_in_book = new add_food_in_book(Program.data_module, id_book);
+               add_food_in_book food_in_book = new add_food_in_book(Program.data_module, id_book, author);
                food_in_book.book = this.tb_name.Text;
                food_in_book.ShowDialog();
            }
@@ -205,7 +200,8 @@ namespace Preventorium
                switch (this._current_state)
                {
                    case "FoodInBook":
-                       this.add_new_food_in_book(Convert.ToInt32(_id));
+                       string author = tb_author.Text;
+                       this.add_new_food_in_book(Convert.ToInt32(_id), author);
 
                        break;
                }

@@ -33,25 +33,35 @@
             this.frmMDI_MainMenu = new System.Windows.Forms.MenuStrip();
             this.frmMDI_MainMenu_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Food = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.b_diet_in_food = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Queue = new System.Windows.Forms.ToolStripMenuItem();
             this.b_queue = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.b_add_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Digest = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Digest_Ingridients = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.Diets_menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.Cooking_book_menu = new System.Windows.Forms.ToolStripMenuItem();
-            this.Cards_Menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.Cards_Menu = new System.Windows.Forms.ToolStripSeparator();
             this.Person = new System.Windows.Forms.ToolStripMenuItem();
-            this.frmMDI_MainMenu_Service = new System.Windows.Forms.ToolStripMenuItem();
-            this.frmMDI_MainMenu_Service_Parameters = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.Cards = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Reports = new System.Windows.Forms.ToolStripMenuItem();
             this.ingr_Excel = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.b_report = new System.Windows.Forms.ToolStripMenuItem();
+            this.frmMDI_MainMenu_Service = new System.Windows.Forms.ToolStripMenuItem();
+            this.frmMDI_MainMenu_Service_Parameters = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Windiw = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Windiw_Сascade = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.frmMDI_MainMenu_Windiw_Vertical = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.frmMDI_MainMenu_Windiw_Horizontal = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.frmMDI_MainMenu_Windiw_СloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Help_Help = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,8 +80,8 @@
             this.frmMDI_MainMenu_Menu,
             this.frmMDI_MainMenu_Queue,
             this.frmMDI_MainMenu_Digest,
-            this.frmMDI_MainMenu_Service,
             this.frmMDI_MainMenu_Reports,
+            this.frmMDI_MainMenu_Service,
             this.frmMDI_MainMenu_Windiw,
             this.frmMDI_MainMenu_Help});
             this.frmMDI_MainMenu.Location = new System.Drawing.Point(0, 0);
@@ -85,6 +95,7 @@
             // 
             this.frmMDI_MainMenu_Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Food,
+            this.toolStripSeparator2,
             this.b_diet_in_food});
             this.frmMDI_MainMenu_Menu.Name = "frmMDI_MainMenu_Menu";
             this.frmMDI_MainMenu_Menu.Size = new System.Drawing.Size(53, 20);
@@ -97,6 +108,11 @@
             this.Food.Text = "Блюда";
             this.Food.Click += new System.EventHandler(this.Food_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(154, 6);
+            // 
             // b_diet_in_food
             // 
             this.b_diet_in_food.Name = "b_diet_in_food";
@@ -108,6 +124,7 @@
             // 
             this.frmMDI_MainMenu_Queue.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.b_queue,
+            this.toolStripSeparator4,
             this.b_add_menu});
             this.frmMDI_MainMenu_Queue.Name = "frmMDI_MainMenu_Queue";
             this.frmMDI_MainMenu_Queue.Size = new System.Drawing.Size(66, 20);
@@ -116,9 +133,14 @@
             // b_queue
             // 
             this.b_queue.Name = "b_queue";
-            this.b_queue.Size = new System.Drawing.Size(223, 22);
+            this.b_queue.Size = new System.Drawing.Size(197, 22);
             this.b_queue.Text = "Просмотреть очереди";
             this.b_queue.Click += new System.EventHandler(this.b_queue_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(194, 6);
             // 
             // b_add_menu
             // 
@@ -131,10 +153,14 @@
             // 
             this.frmMDI_MainMenu_Digest.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.frmMDI_MainMenu_Digest_Ingridients,
+            this.toolStripSeparator6,
             this.Diets_menu,
+            this.toolStripSeparator7,
             this.Cooking_book_menu,
             this.Cards_Menu,
-            this.Person});
+            this.Person,
+            this.toolStripSeparator1,
+            this.Cards});
             this.frmMDI_MainMenu_Digest.Name = "frmMDI_MainMenu_Digest";
             this.frmMDI_MainMenu_Digest.Size = new System.Drawing.Size(94, 20);
             this.frmMDI_MainMenu_Digest.Text = "Справочники";
@@ -147,12 +173,22 @@
             this.frmMDI_MainMenu_Digest_Ingridients.Text = "Ингредиенты";
             this.frmMDI_MainMenu_Digest_Ingridients.Click += new System.EventHandler(this.frmMDI_MainMenu_Digest_Ingridients_Click);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(210, 6);
+            // 
             // Diets_menu
             // 
             this.Diets_menu.Name = "Diets_menu";
             this.Diets_menu.Size = new System.Drawing.Size(213, 22);
             this.Diets_menu.Text = "Диеты";
             this.Diets_menu.Click += new System.EventHandler(this.Diet_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(210, 6);
             // 
             // Cooking_book_menu
             // 
@@ -164,8 +200,7 @@
             // Cards_Menu
             // 
             this.Cards_Menu.Name = "Cards_Menu";
-            this.Cards_Menu.Size = new System.Drawing.Size(213, 22);
-            this.Cards_Menu.Text = "Карта-раскладка";
+            this.Cards_Menu.Size = new System.Drawing.Size(210, 6);
             this.Cards_Menu.Click += new System.EventHandler(this.Cards_Click);
             // 
             // Person
@@ -174,6 +209,49 @@
             this.Person.Size = new System.Drawing.Size(213, 22);
             this.Person.Text = "Персонал";
             this.Person.Click += new System.EventHandler(this.Person_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
+            // 
+            // Cards
+            // 
+            this.Cards.Name = "Cards";
+            this.Cards.Size = new System.Drawing.Size(213, 22);
+            this.Cards.Text = "Карточка - раскладка";
+            this.Cards.Click += new System.EventHandler(this.Cards_Click);
+            // 
+            // frmMDI_MainMenu_Reports
+            // 
+            this.frmMDI_MainMenu_Reports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ingr_Excel,
+            this.toolStripSeparator11,
+            this.b_report});
+            this.frmMDI_MainMenu_Reports.Name = "frmMDI_MainMenu_Reports";
+            this.frmMDI_MainMenu_Reports.Size = new System.Drawing.Size(60, 20);
+            this.frmMDI_MainMenu_Reports.Text = "Отчеты";
+            // 
+            // ingr_Excel
+            // 
+            this.ingr_Excel.Image = ((System.Drawing.Image)(resources.GetObject("ingr_Excel.Image")));
+            this.ingr_Excel.Name = "ingr_Excel";
+            this.ingr_Excel.Size = new System.Drawing.Size(278, 22);
+            this.ingr_Excel.Text = "Отчет по ингредиентам";
+            this.ingr_Excel.Click += new System.EventHandler(this.Report_ingr_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(275, 6);
+            // 
+            // b_report
+            // 
+            this.b_report.Image = ((System.Drawing.Image)(resources.GetObject("b_report.Image")));
+            this.b_report.Name = "b_report";
+            this.b_report.Size = new System.Drawing.Size(278, 22);
+            this.b_report.Text = "Сформировать карточку - раскладку";
+            this.b_report.Click += new System.EventHandler(this.b_report_Click);
             // 
             // frmMDI_MainMenu_Service
             // 
@@ -190,37 +268,15 @@
             this.frmMDI_MainMenu_Service_Parameters.Text = "&Параметры";
             this.frmMDI_MainMenu_Service_Parameters.Click += new System.EventHandler(this.frmMDI_MainMenu_Service_Parameters_Click);
             // 
-            // frmMDI_MainMenu_Reports
-            // 
-            this.frmMDI_MainMenu_Reports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ingr_Excel,
-            this.b_report});
-            this.frmMDI_MainMenu_Reports.Name = "frmMDI_MainMenu_Reports";
-            this.frmMDI_MainMenu_Reports.Size = new System.Drawing.Size(60, 20);
-            this.frmMDI_MainMenu_Reports.Text = "Отчеты";
-            // 
-            // ingr_Excel
-            // 
-            this.ingr_Excel.Image = ((System.Drawing.Image)(resources.GetObject("ingr_Excel.Image")));
-            this.ingr_Excel.Name = "ingr_Excel";
-            this.ingr_Excel.Size = new System.Drawing.Size(278, 22);
-            this.ingr_Excel.Text = "Отчет по ингридиентам";
-            this.ingr_Excel.Click += new System.EventHandler(this.Report_ingr_Click);
-            // 
-            // b_report
-            // 
-            this.b_report.Image = ((System.Drawing.Image)(resources.GetObject("b_report.Image")));
-            this.b_report.Name = "b_report";
-            this.b_report.Size = new System.Drawing.Size(278, 22);
-            this.b_report.Text = "Сформировать карточку - раскладку";
-            this.b_report.Click += new System.EventHandler(this.b_report_Click);
-            // 
             // frmMDI_MainMenu_Windiw
             // 
             this.frmMDI_MainMenu_Windiw.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.frmMDI_MainMenu_Windiw_Сascade,
+            this.toolStripSeparator14,
             this.frmMDI_MainMenu_Windiw_Vertical,
+            this.toolStripSeparator15,
             this.frmMDI_MainMenu_Windiw_Horizontal,
+            this.toolStripSeparator16,
             this.frmMDI_MainMenu_Windiw_СloseAll});
             this.frmMDI_MainMenu_Windiw.Name = "frmMDI_MainMenu_Windiw";
             this.frmMDI_MainMenu_Windiw.Size = new System.Drawing.Size(48, 20);
@@ -233,6 +289,11 @@
             this.frmMDI_MainMenu_Windiw_Сascade.Text = "Каскадом";
             this.frmMDI_MainMenu_Windiw_Сascade.Click += new System.EventHandler(this.frmMDI_MainMenu_Windiw_Сascade_Click);
             // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(153, 6);
+            // 
             // frmMDI_MainMenu_Windiw_Vertical
             // 
             this.frmMDI_MainMenu_Windiw_Vertical.Name = "frmMDI_MainMenu_Windiw_Vertical";
@@ -240,12 +301,22 @@
             this.frmMDI_MainMenu_Windiw_Vertical.Text = "Слева направо";
             this.frmMDI_MainMenu_Windiw_Vertical.Click += new System.EventHandler(this.frmMDI_MainMenu_Windiw_Vertical_Click);
             // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            this.toolStripSeparator15.Size = new System.Drawing.Size(153, 6);
+            // 
             // frmMDI_MainMenu_Windiw_Horizontal
             // 
             this.frmMDI_MainMenu_Windiw_Horizontal.Name = "frmMDI_MainMenu_Windiw_Horizontal";
             this.frmMDI_MainMenu_Windiw_Horizontal.Size = new System.Drawing.Size(156, 22);
             this.frmMDI_MainMenu_Windiw_Horizontal.Text = "Сверху вниз";
             this.frmMDI_MainMenu_Windiw_Horizontal.Click += new System.EventHandler(this.frmMDI_MainMenu_Windiw_Horizontal_Click);
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(153, 6);
             // 
             // frmMDI_MainMenu_Windiw_СloseAll
             // 
@@ -344,7 +415,6 @@
         public System.Windows.Forms.ToolStripStatusLabel status;
         private System.Windows.Forms.ToolStripMenuItem b_queue;
         private System.Windows.Forms.ToolStripMenuItem b_diet_in_food;
-        private System.Windows.Forms.ToolStripMenuItem Cards_Menu;
         private System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Digest_Ingridients;
         public System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Menu;
         public System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Reports;
@@ -354,6 +424,17 @@
         private System.Windows.Forms.ToolStripMenuItem Person;
         private System.Windows.Forms.ToolStripMenuItem b_add_menu;
         private System.Windows.Forms.ToolStripMenuItem b_report;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator Cards_Menu;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem Cards;
     }
 }
 

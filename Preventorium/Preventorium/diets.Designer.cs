@@ -57,12 +57,12 @@
             // tb_desc
             // 
             this.tb_desc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_desc.Location = new System.Drawing.Point(0, 209);
+            this.tb_desc.Location = new System.Drawing.Point(314, 28);
             this.tb_desc.Multiline = true;
             this.tb_desc.Name = "tb_desc";
             this.tb_desc.ReadOnly = true;
             this.tb_desc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_desc.Size = new System.Drawing.Size(308, 81);
+            this.tb_desc.Size = new System.Drawing.Size(308, 265);
             this.tb_desc.TabIndex = 3;
             // 
             // Menu_diets
@@ -78,7 +78,7 @@
             this.toolStripSeparator2});
             this.Menu_diets.Location = new System.Drawing.Point(0, 0);
             this.Menu_diets.Name = "Menu_diets";
-            this.Menu_diets.Size = new System.Drawing.Size(308, 25);
+            this.Menu_diets.Size = new System.Drawing.Size(623, 25);
             this.Menu_diets.TabIndex = 4;
             this.Menu_diets.Text = "toolStrip1";
             // 
@@ -181,7 +181,7 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(308, 175);
+            this.gw.Size = new System.Drawing.Size(308, 265);
             this.gw.TabIndex = 5;
             this.gw.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellClick);
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
@@ -215,11 +215,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 291);
+            this.ClientSize = new System.Drawing.Size(623, 291);
             this.Controls.Add(this.gw);
             this.Controls.Add(this.Menu_diets);
             this.Controls.Add(this.tb_desc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "diets";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Диеты";

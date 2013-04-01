@@ -26,11 +26,11 @@ namespace Preventorium
             lUser.Enabled = lPass.Enabled = t_user.Enabled = t_pass.Enabled = !cb_win_auth.Checked;
             this.t_user.Text = Program.user_set._login;
             this.t_pass.Text = Program.user_set._password;
-           this.b_apply.Enabled = false;
-           this.b_abolition.Enabled = true;
           
+                   
          }
 
+      
         /// <summary>
         /// Происходит при нажатии на кнопку Применить.
         /// </summary>
@@ -68,12 +68,18 @@ namespace Preventorium
             // Активируем или деактивируем элменты управления
             lUser.Enabled = lPass.Enabled = t_user.Enabled = t_pass.Enabled = !cb_win_auth.Checked;
 
-            if ((t_user.Text != ""))
-            {
-                this.b_apply.Enabled = true;
-                this.b_abolition.Enabled = false;
-                Program.data_module.disconnect_db();
-            }
+                  if (t_user.Text != "")
+                  {
+                      if ((Program.data_module.ConnStatus == ConnectionStatus.CONNECTED))
+                      {
+                          b_apply.Enabled = false;                         
+                      }
+                      else
+                      {
+                          b_apply.Enabled = true;
+                          
+                      }
+               }
           }
         /// <summary>
         /// Метод вызывается при изменении настроек, при изменении настроек происходит переподключение БД        /// </summary>
@@ -95,7 +101,7 @@ namespace Preventorium
 
             if ((t_user.Text != ""))
             {
-                if ((t_pass.Text != ""))
+                if ((t_pass.Text != "")) 
 
                     if ((Program.user_set._password != t_pass.Text) || (Program.user_set._login != t_user.Text))
                     {
@@ -110,10 +116,16 @@ namespace Preventorium
 
        private void db_settings_Load(object sender, EventArgs e)
        {
-
+           if ((Program.data_module.ConnStatus == ConnectionStatus.CONNECTED))
+           {
+               b_apply.Enabled = false;
+           }
+           else
+           {
+               b_apply.Enabled = true;
+           }
        }
 
      
-
-    }
+      }
 }

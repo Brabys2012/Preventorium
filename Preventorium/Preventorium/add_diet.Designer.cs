@@ -39,9 +39,10 @@
             // l_diet
             // 
             this.l_diet.AutoSize = true;
-            this.l_diet.Location = new System.Drawing.Point(13, 13);
+            this.l_diet.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_diet.Location = new System.Drawing.Point(13, 9);
             this.l_diet.Name = "l_diet";
-            this.l_diet.Size = new System.Drawing.Size(78, 13);
+            this.l_diet.Size = new System.Drawing.Size(92, 18);
             this.l_diet.TabIndex = 0;
             this.l_diet.Text = "Номер диеты:";
             // 
@@ -55,7 +56,8 @@
             // 
             // b_save
             // 
-            this.b_save.Location = new System.Drawing.Point(13, 227);
+            this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.b_save.Location = new System.Drawing.Point(16, 226);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
             this.b_save.TabIndex = 4;
@@ -66,15 +68,17 @@
             // l_description
             // 
             this.l_description.AutoSize = true;
-            this.l_description.Location = new System.Drawing.Point(13, 57);
+            this.l_description.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.l_description.Location = new System.Drawing.Point(13, 53);
             this.l_description.Name = "l_description";
-            this.l_description.Size = new System.Drawing.Size(94, 13);
+            this.l_description.Size = new System.Drawing.Size(112, 18);
             this.l_description.TabIndex = 2;
             this.l_description.Text = "Описание диеты:";
             // 
             // b_abolition
             // 
             this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.b_abolition.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b_abolition.Location = new System.Drawing.Point(166, 226);
             this.b_abolition.Name = "b_abolition";
             this.b_abolition.Size = new System.Drawing.Size(75, 23);

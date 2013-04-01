@@ -344,7 +344,8 @@ namespace Preventorium
         private void b_report_Click(object sender, EventArgs e)
         {
             Cards_layout form = new Cards_layout();
-            form.ShowDialog();
+            form.MdiParent = this;
+            form.Show();
         }
               
     }

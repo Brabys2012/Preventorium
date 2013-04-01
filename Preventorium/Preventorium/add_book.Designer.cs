@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.l_author = new System.Windows.Forms.Label();
             this.gb_book = new System.Windows.Forms.GroupBox();
             this.tb_name = new System.Windows.Forms.TextBox();
@@ -64,9 +64,9 @@
             // l_author
             // 
             this.l_author.AutoSize = true;
-            this.l_author.Location = new System.Drawing.Point(6, 25);
+            this.l_author.Location = new System.Drawing.Point(6, 16);
             this.l_author.Name = "l_author";
-            this.l_author.Size = new System.Drawing.Size(40, 13);
+            this.l_author.Size = new System.Drawing.Size(48, 18);
             this.l_author.TabIndex = 0;
             this.l_author.Text = "Автор:";
             // 
@@ -78,58 +78,60 @@
             this.gb_book.Controls.Add(this.l_year);
             this.gb_book.Controls.Add(this.tb_author);
             this.gb_book.Controls.Add(this.l_author);
+            this.gb_book.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gb_book.Location = new System.Drawing.Point(12, 12);
             this.gb_book.Name = "gb_book";
-            this.gb_book.Size = new System.Drawing.Size(260, 150);
+            this.gb_book.Size = new System.Drawing.Size(260, 157);
             this.gb_book.TabIndex = 0;
             this.gb_book.TabStop = false;
             this.gb_book.Text = "Введите сведения о справочнике:";
             // 
             // tb_name
             // 
-            this.tb_name.Location = new System.Drawing.Point(9, 81);
+            this.tb_name.Location = new System.Drawing.Point(6, 81);
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(245, 20);
+            this.tb_name.Size = new System.Drawing.Size(245, 25);
             this.tb_name.TabIndex = 3;
             this.tb_name.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // tb_year
             // 
-            this.tb_year.Location = new System.Drawing.Point(9, 120);
+            this.tb_year.Location = new System.Drawing.Point(9, 126);
             this.tb_year.Name = "tb_year";
-            this.tb_year.Size = new System.Drawing.Size(114, 20);
+            this.tb_year.Size = new System.Drawing.Size(114, 25);
             this.tb_year.TabIndex = 5;
             this.tb_year.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // l_name
             // 
             this.l_name.AutoSize = true;
-            this.l_name.Location = new System.Drawing.Point(6, 65);
+            this.l_name.Location = new System.Drawing.Point(6, 60);
             this.l_name.Name = "l_name";
-            this.l_name.Size = new System.Drawing.Size(60, 13);
+            this.l_name.Size = new System.Drawing.Size(69, 18);
             this.l_name.TabIndex = 2;
             this.l_name.Text = "Название:";
             // 
             // l_year
             // 
             this.l_year.AutoSize = true;
-            this.l_year.Location = new System.Drawing.Point(6, 104);
+            this.l_year.Location = new System.Drawing.Point(6, 105);
             this.l_year.Name = "l_year";
-            this.l_year.Size = new System.Drawing.Size(74, 13);
+            this.l_year.Size = new System.Drawing.Size(86, 18);
             this.l_year.TabIndex = 4;
             this.l_year.Text = "Год выпуска:";
             // 
             // tb_author
             // 
-            this.tb_author.Location = new System.Drawing.Point(9, 42);
+            this.tb_author.Location = new System.Drawing.Point(6, 37);
             this.tb_author.Name = "tb_author";
-            this.tb_author.Size = new System.Drawing.Size(245, 20);
+            this.tb_author.Size = new System.Drawing.Size(245, 25);
             this.tb_author.TabIndex = 1;
             this.tb_author.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // b_save
             // 
-            this.b_save.Location = new System.Drawing.Point(38, 168);
+            this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.b_save.Location = new System.Drawing.Point(38, 175);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
             this.b_save.TabIndex = 1;
@@ -140,7 +142,8 @@
             // b_abolition
             // 
             this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.b_abolition.Location = new System.Drawing.Point(169, 168);
+            this.b_abolition.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.b_abolition.Location = new System.Drawing.Point(165, 175);
             this.b_abolition.Name = "b_abolition";
             this.b_abolition.Size = new System.Drawing.Size(75, 23);
             this.b_abolition.TabIndex = 2;
@@ -163,44 +166,44 @@
             this.gw.AllowUserToAddRows = false;
             this.gw.AllowUserToDeleteRows = false;
             this.gw.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gw.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gw.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gw.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gw.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gw.ContextMenuStrip = this.context;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gw.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gw.DefaultCellStyle = dataGridViewCellStyle3;
             this.gw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gw.Location = new System.Drawing.Point(3, 41);
             this.gw.MultiSelect = false;
             this.gw.Name = "gw";
             this.gw.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gw.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gw.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.gw.RowHeadersVisible = false;
             this.gw.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gw.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -284,9 +287,9 @@
             this.CancelButton = this.b_abolition;
             this.ClientSize = new System.Drawing.Size(653, 200);
             this.Controls.Add(this.gb_data);
+            this.Controls.Add(this.gb_book);
             this.Controls.Add(this.b_abolition);
             this.Controls.Add(this.b_save);
-            this.Controls.Add(this.gb_book);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

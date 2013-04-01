@@ -237,6 +237,7 @@
             this.ClientSize = new System.Drawing.Size(643, 341);
             this.Controls.Add(this.gw);
             this.Controls.Add(this.Menu_ingr);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ingr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
