@@ -66,9 +66,8 @@ namespace Preventorium
            public class_food[] _food_list_support7;
            public class_food[] _food_list_support8;
 
-           private readonly string File = @"\1.docx";
-           private readonly string File1 = @"\2.docx";
-           private readonly string File3 = @"\3.docx";
+           private readonly string File = @"\Меню на день.docx";
+          
         
 
            public food_in_menu(int id, int day_id,int queue)
@@ -3348,7 +3347,7 @@ namespace Preventorium
                  // Report_MEnu_Layout();
                #endregion
 
-                 Menu_layout Menu_layout = new Menu_layout(AddDayID, queue_id);
+                 Menu_layout Menu_layout = new Menu_layout("Завтрак",AddDayID, queue_id);
                  Menu_layout.ShowDialog();
              
              }
@@ -3392,7 +3391,18 @@ namespace Preventorium
                  del_supper_Click(sender,e);
              }
 
-              }
+             private void Menu_layout_dinner_Click(object sender, EventArgs e)
+             {
+                 Menu_Strip_din_Click(sender,e);
+             }
+
+             private void Menu_Strip_din_Click(object sender, EventArgs e)
+             {
+                 Menu_layout Menu_layout = new Menu_layout("Обед",AddDayID, queue_id);
+                 Menu_layout.ShowDialog();
+             }
+
+         }
     }
 
 

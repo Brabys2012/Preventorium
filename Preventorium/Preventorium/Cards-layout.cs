@@ -104,7 +104,7 @@ namespace Preventorium
         /// <summary>
         /// Шаблон карточки раскладки в Word , который будем заполнять
         /// </summary>
-        private readonly string File = @"\Санаторий.docx";
+        private readonly string File = @"\Карточка-раскладка.docx";
 
 
         public Cards_layout()
