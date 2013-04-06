@@ -104,7 +104,7 @@ namespace Preventorium
         /// <summary>
         /// Шаблон карточки раскладки в Word , который будем заполнять
         /// </summary>
-        private readonly string File = @"\Карточка-раскладка.docx";
+        private readonly string File = @"\Reports\Карточка-раскладка.docx";
 
 
         public Cards_layout()
@@ -118,6 +118,7 @@ namespace Preventorium
         {
             foods = food;
             InitializeComponent();
+            this.Text = "Формирование карточки-раскладки для блюда: " + foods;
             
         }
         /// <summary>
@@ -2091,8 +2092,7 @@ namespace Preventorium
             }
            
         }
-
-   
+           
         public void bt_ok_Click(object sender, EventArgs e)
         {
             if ((cb_food.Text == "") || (cb_ok.Text=="") || (cb_diets_vrach.Text == "") && (Cb_diet_vrach2.Text == ""))
@@ -2151,9 +2151,7 @@ namespace Preventorium
 
                 }
             
-                    
-                    
-
+                 
             if (_book1[1] == null)
             {
                 var name = "";
@@ -2226,9 +2224,7 @@ namespace Preventorium
                 word1("[book5]", name, word);
             }
 
-
-
-
+            
             if (_ingr_list[1] == null)
             {
                 var name = "";
