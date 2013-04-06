@@ -58,6 +58,7 @@ namespace Preventorium
         private readonly string File6 = @"\Reports\Меню-раскладка_обед_47 ингр.docx";
         private readonly string File7 = @"\Reports\Меню-раскладка_ужин_22 ингр.docx";
         private readonly string File8 = @"\Reports\Меню-раскладка_ужин_47 ингр.docx";
+        private readonly string File9 = @"\Menu_layout\Меню_раскладка_весь_день_22_ингр.docx";
         
         public class_food[] _food;
         public class_food[] dinner_food;
@@ -71,16 +72,12 @@ namespace Preventorium
         public class_ingridients[] _ingr_list_all_day;
        
         public Menu_layout(int day, int queue)
-        {
-            
-            AddDayID = day;
+        {   AddDayID = day;
             queue_id = queue;
             InitializeComponent();
-        
         }
        
-
-        public Menu_layout(string serves,int day, int queue)
+          public Menu_layout(string serves,int day, int queue)
         {
             serve = serves;
             AddDayID = day;
@@ -199,8 +196,6 @@ namespace Preventorium
             _obshves_dinner = get_sum_dinner(AddDayID);
             _obshves_supper = get_sum_supper(AddDayID);
             _obshves_all_day = get_sum_all_day(AddDayID);
-
-
             _menu_in_day = this.menu_in_day();
             _count_serv = this.get_count_serv(queue_id);
             this._person = this.get_person_list();
@@ -302,7 +297,7 @@ namespace Preventorium
 
             string query = "select distinct F.ID_food,Fim.count_serve,Name_food, F.Finish_weight_of_food from Food_in_menu FIM" +
                      " join Foods F on F.ID_food = FIM.ID_food " +
-                 " where FIM.Serve_time_of_food ='" + serve+"'" + "  and day_id='" + date + "'";
+                 " where FIM.Serve_time_of_food ='обед'" + "  and day_id='" + date + "'";
 
             try
             {
@@ -351,7 +346,7 @@ namespace Preventorium
 
             string query = "select distinct F.ID_food,Fim.count_serve,Name_food, F.Finish_weight_of_food from Food_in_menu FIM" +
                      " join Foods F on F.ID_food = FIM.ID_food " +
-                 " where FIM.Serve_time_of_food ='" + serve + "'" + "  and day_id='" + date + "'";
+                 " where FIM.Serve_time_of_food ='ужин'" + "  and day_id='" + date + "'";
 
             try
             {
@@ -442,7 +437,7 @@ namespace Preventorium
              " join Foods F on F.ID_food = FIM.ID_food" +
              " join Ingridients_in_food IIF on IIF.ID_food = F.ID_food" +
              " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-             " where FIM.Serve_time_of_food ='"+serve+"'"+" and day_id = '" + date + "'";
+             " where FIM.Serve_time_of_food ='обед'"+" and day_id = '" + date + "'";
 
             try
             {
@@ -482,7 +477,7 @@ namespace Preventorium
              " join Foods F on F.ID_food = FIM.ID_food" +
              " join Ingridients_in_food IIF on IIF.ID_food = F.ID_food" +
              " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-             " where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id = '" + date + "'";
+             " where FIM.Serve_time_of_food ='ужин'" + " and day_id = '" + date + "'";
 
             try
             {
@@ -682,7 +677,7 @@ namespace Preventorium
             class_food[] food = new class_food[512];
             class_ingr_in_food[] foods = new class_ingr_in_food[512];
 
-            string query = "select Sum( count_serve * Net_weight /1000 ) from Ingridients_in_food join Food_in_menu on Ingridients_in_food.ID_food = Food_in_menu.ID_food " + "  where Food_in_menu.day_id='" + day + "'" + "and Food_in_menu.Serve_time_of_food='"+ serve+"'" + " group by Ingridients_in_food.Id_ingridients";
+            string query = "select Sum( count_serve * Net_weight /1000 ) from Ingridients_in_food join Food_in_menu on Ingridients_in_food.ID_food = Food_in_menu.ID_food " + "  where Food_in_menu.day_id='" + day + "'" + "and Food_in_menu.Serve_time_of_food='обед'" + " group by Ingridients_in_food.Id_ingridients";
 
             try
             {
@@ -729,7 +724,7 @@ namespace Preventorium
             class_food[] food = new class_food[512];
             class_ingr_in_food[] foods = new class_ingr_in_food[512];
 
-            string query = "select Sum( count_serve * Net_weight /1000 ) from Ingridients_in_food join Food_in_menu on Ingridients_in_food.ID_food = Food_in_menu.ID_food " + "  where Food_in_menu.day_id='" + day + "'" + "and Food_in_menu.Serve_time_of_food='" + serve + "'" + " group by Ingridients_in_food.Id_ingridients";
+            string query = "select Sum( count_serve * Net_weight /1000 ) from Ingridients_in_food join Food_in_menu on Ingridients_in_food.ID_food = Food_in_menu.ID_food " + "  where Food_in_menu.day_id='" + day + "'" + "and Food_in_menu.Serve_time_of_food='ужин'" + " group by Ingridients_in_food.Id_ingridients";
 
             try
             {
@@ -826,7 +821,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food = 'завтрак' and day_id ='"+ AddDayID+"'" + " and IIF.ID_food='" + _food[2].food_id + "'"; ;
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food = 'завтрак' and day_id ='"+ AddDayID+"'" + " and IIF.ID_food='" + _food[2].food_id + "'"; 
 
 
                 if (_ingr_list_breakfast == null) { _ingr_list_breakfast = null; }
@@ -1220,7 +1215,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID +"'"+" and IIF.ID_food='" + dinner_food[1].food_id + "'"; 
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='обед'" + " and day_id ='" + AddDayID +"'"+" and IIF.ID_food='" + dinner_food[1].food_id + "'"; 
 
 
 
@@ -1284,7 +1279,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[2].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='обед'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[2].food_id + "'";
 
 
 
@@ -1346,7 +1341,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[3].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='обед'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[3].food_id + "'";
 
 
 
@@ -1408,7 +1403,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[4].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='обед'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[4].food_id + "'";
 
 
 
@@ -1470,7 +1465,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[5].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='обед'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[5].food_id + "'";
 
 
 
@@ -1532,7 +1527,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[6].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='обед'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[6].food_id + "'";
 
 
 
@@ -1594,7 +1589,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[7].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='обед" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[7].food_id + "'";
 
 
 
@@ -1656,7 +1651,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[8].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='обед'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + dinner_food[8].food_id + "'";
 
 
 
@@ -1718,7 +1713,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[1].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='ужин'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[1].food_id + "'";
 
 
                 if (_ingr_list_supper == null) { _ingr_list_supper = null; }
@@ -1779,7 +1774,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[2].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='ужин'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[2].food_id + "'";
 
 
                 if (_ingr_list_supper == null) { _ingr_list_supper = null; }
@@ -1840,7 +1835,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[3].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='ужин'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[3].food_id + "'";
 
 
                 if (_ingr_list_supper == null) { _ingr_list_supper = null; }
@@ -1901,7 +1896,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[4].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='ужин'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[4].food_id + "'";
 
 
                 if (_ingr_list_supper == null) { _ingr_list_supper = null; }
@@ -1962,7 +1957,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[5].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='ужин'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[5].food_id + "'";
 
 
                 if (_ingr_list_supper == null) { _ingr_list_supper = null; }
@@ -2023,7 +2018,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[6].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='ужин'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[6].food_id + "'";
 
 
                 if (_ingr_list_supper == null) { _ingr_list_supper = null; }
@@ -2084,7 +2079,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[7].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='ужин'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[7].food_id + "'";
 
 
                 if (_ingr_list_supper == null) { _ingr_list_supper = null; }
@@ -2145,7 +2140,7 @@ namespace Preventorium
                 string query = "select IIF.Net_weight from Foods F " +
       " join Ingridients_in_food IIF on F.ID_food = IIF.ID_food" +
       " join Ingridients I on I.Id_ingridients = IIF.Id_ingridients" +
-      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='" + serve + "'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[8].food_id + "'";
+      " join Food_in_menu FIM on FIM.ID_food = F.ID_food where FIM.Serve_time_of_food ='ужин'" + " and day_id ='" + AddDayID + "'" + " and IIF.ID_food='" + supper_food[8].food_id + "'";
 
 
                 if (_ingr_list_supper == null) { _ingr_list_supper = null; }
@@ -2257,6 +2252,7 @@ namespace Preventorium
 
                         word1("[блюдо" + i + "]", name, word);
                         word1("[Вес" + i + ":]", name, word);
+                        word1("[kol" + i + "]", name, word);
 
                     }
 
@@ -2264,22 +2260,24 @@ namespace Preventorium
                     {
 
                         var name = _food[i].name;
-
+                        var name2 = _food[i].count_portc;
                         var name1 = "Вес:" + " " + _food[i].weight;
 
                         word1("[Вес" + i + ":]", name1, word);
 
                         word1("[блюдо" + i + "]", name, word);
 
+                        word1("[kol" + i + "]", name2, word);
+
                     }
                 }
-           
-                for (int i = 1; i < 51; i++)
+
+                for (int i = 1; i <= 50; i++)
                 {
+
                     if (_ingr_list_breakfast[i] == null)
                     {
                         var name = "";
-
 
                         word1("[" + i + "]", name, word);
                     }
@@ -2289,12 +2287,12 @@ namespace Preventorium
 
                         var name = _ingr_list_breakfast[i].name;
 
-
                         word1("[" + i + "]", name, word);
                     }
 
                     if (_ves_breakfast[i] == null)
                     {
+
                         var name6 = "";
                         word1("[v" + i + "]", name6, word);
                     }
@@ -2304,7 +2302,7 @@ namespace Preventorium
                         if (this._ves_breakfast[i] != null)
                         {
                             var name5 = Convert.ToDouble(_ves_breakfast[i].net);
-                            var nsme6 = (name5 * Convert.ToDouble(_food[1].count_portc));
+                            var nsme6 = (name5 * Convert.ToDouble(_food[1].count_portc) / 1000);
                             word1("[v" + i + "]", nsme6.ToString(), word);
                         }
                         else
@@ -2325,9 +2323,9 @@ namespace Preventorium
 
                         if (this._ves2_breakfast[i] != null)
                         {
-                            var name5 = _ves2_breakfast[i].net;
-                            word1("[k" + i + "]", name5, word);
-
+                            var name5 = Convert.ToDouble(_ves2_breakfast[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(_food[2].count_portc) / 1000);
+                            word1("[k" + i + "]", nsme6.ToString(), word);
                         }
                         else
                         {
@@ -2347,9 +2345,10 @@ namespace Preventorium
                     {
                         if (this._ves3_breakfast[i] != null)
                         {
-                            var name5 = _ves3_breakfast[i].net;
-                            word1("[i" + i + "]", name5, word);
 
+                            var name5 = Convert.ToDouble(_ves3_breakfast[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(_food[3].count_portc) / 1000);
+                            word1("[i" + i + "]", nsme6.ToString(), word);
                         }
                         else
                         {
@@ -2362,15 +2361,18 @@ namespace Preventorium
 
                         var name6 = "";
                         word1("[z" + i + "]", name6, word);
+
                     }
 
                     else
                     {
                         if (this._ves4_breakfast[i] != null)
                         {
-                            var name5 = _ves4_breakfast[i].net;
-                            word1("[z" + i + "]", name5, word);
 
+                            var name5 = Convert.ToDouble(_ves4_breakfast[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(_food[4].count_portc) / 1000);
+
+                            word1("[z" + i + "]", nsme6.ToString(), word);
                         }
                         else
                         {
@@ -2380,7 +2382,6 @@ namespace Preventorium
                     }
                     if (_ves5_breakfast[i] == null)
                     {
-
                         var name6 = "";
                         word1("[x" + i + "]", name6, word);
                     }
@@ -2389,8 +2390,9 @@ namespace Preventorium
                     {
                         if (this._ves5_breakfast[i] != null)
                         {
-                            var name5 = _ves5_breakfast[i].net;
-                            word1("[x" + i + "]", name5, word);
+                            var name5 = Convert.ToDouble(_ves5_breakfast[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(_food[5].count_portc) / 1000);
+                            word1("[x" + i + "]", nsme6.ToString(), word);
 
                         }
                         else
@@ -2400,27 +2402,6 @@ namespace Preventorium
                         }
                     }
 
-                    if (_ves5_breakfast[i] == null)
-                    {
-
-                        var name6 = "";
-                        word1("[x" + i + "]", name6, word);
-                    }
-
-                    else
-                    {
-                        if (this._ves5_breakfast[i] != null)
-                        {
-                            var name5 = _ves5_breakfast[i].net;
-                            word1("[x" + i + "]", name5, word);
-
-                        }
-                        else
-                        {
-                            var name6 = "";
-                            word1("[x" + i + "]", name6, word);
-                        }
-                    }
 
                     if (_ves6_breakfast[i] == null)
                     {
@@ -2433,8 +2414,10 @@ namespace Preventorium
                     {
                         if (this._ves6_breakfast[i] != null)
                         {
-                            var name5 = _ves6_breakfast[i].net;
-                            word1("[y" + i + "]", name5, word);
+
+                            var name5 = Convert.ToDouble(_ves6_breakfast[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(_food[6].count_portc) / 1000);
+                            word1("[y" + i + "]", nsme6.ToString(), word);
 
                         }
                         else
@@ -2455,8 +2438,10 @@ namespace Preventorium
                     {
                         if (this._ves7_breakfast[i] != null)
                         {
-                            var name5 = _ves7_breakfast[i].net;
-                            word1("[q" + i + "]", name5, word);
+
+                            var name5 = Convert.ToDouble(_ves7_breakfast[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(_food[7].count_portc) / 1000);
+                            word1("[q" + i + "]", nsme6.ToString(), word);
 
                         }
                         else
@@ -2477,8 +2462,11 @@ namespace Preventorium
                     {
                         if (this._ves8_breakfast[i] != null)
                         {
-                            var name5 = _ves8_breakfast[i].net;
-                            word1("[n" + i + "]", name5, word);
+
+                            var name5 = Convert.ToDouble(_ves8_breakfast[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(_food[8].count_portc) / 1000);
+
+                            word1("[n" + i + "]", nsme6.ToString(), word);
 
                         }
                         else
@@ -2486,7 +2474,10 @@ namespace Preventorium
                             var name6 = "";
                             word1("[n" + i + "]", name6, word);
                         }
+
                     }
+
+
                     if (_obshves_breakfast[i] != null)
                     {
                         var name5 = _obshves_breakfast[i].net;
@@ -2508,7 +2499,6 @@ namespace Preventorium
                     }
                     else
                     {
-
                         if (this._menu_in_day[1] != null)
                         {
                             var name2 = _menu_in_day[1].service;
@@ -2518,25 +2508,18 @@ namespace Preventorium
                     }
                     if (_count_serv == null)
                     {
-
                         var name2 = "";
-
                         word1("[kol]", name2, word);
                     }
                     else
                     {
-
                         if (this._count_serv != null)
                         {
                             var name2 = _count_serv.numb_men;
-
                             word1("[kol]", name2, word);
-
                         }
-
                     }
                 }
-
                 App.Visible = true;
                 GC.Collect();
             }
@@ -4060,6 +4043,826 @@ namespace Preventorium
         
         }
 
+        public void Report_MEnu_Layout_all_day()
+        {
+            var App = new word.Application(Visible = false);
+            if ((_ingr_list_breakfast[23] != null) && (_ingr_list_dinner[23] != null) && (_ingr_list_supper[23] != null))
+            {
+
+
+
+            }
+            else
+            {
+                var word = App.Documents.Add(Application.StartupPath + File9);
+                var namevr2 = cb_diets_vrach.Text;
+                var namevr1 = this.cb_ok.Text;
+                word1("[diet_vrach]", namevr2, word);
+                word1("[diet_vrach1]", namevr2, word);
+                word1("[diet_vrach2]", namevr2, word);
+                word1("[head_vrach]", namevr1, word);
+                word1("[head_vrach1]", namevr1, word);
+                word1("[head_vrach2]", namevr1, word);
+               
+                for (int i = 1; i <= 8; i++)
+                  {
+                     if (_food[i] == null)
+                    {
+                        var name = "";
+
+                        word1("[блюдо" + i + "]", name, word);
+                        word1("[Вес" + i + ":]", name, word);
+                        word1("[kol" + i + "]", name, word);
+
+                    }
+
+                     if (this._food[i] != null)
+                     {
+
+                         var name = _food[i].name;
+
+                         var name1 = "Вес:" + " " + _food[i].weight;
+                         var name2 = _food[i].count_portc;
+                         word1("[kol" + i + "]", name2, word);
+
+                         word1("[Вес" + i + ":]", name1, word);
+
+                         word1("[блюдо" + i + "]", name, word);
+                     }
+                }
+                    for (int i = 1; i <= 50; i++)
+                {
+                        if (_ingr_list_breakfast[i] == null)
+                     {
+                         var name = "";
+
+                         word1("[" + i + "]", name, word);
+                     }
+
+                     if (this._ingr_list_breakfast[i] != null)
+                     {
+
+                         var name = _ingr_list_breakfast[i].name;
+
+                         word1("[" + i + "]", name, word);
+                     }
+
+                     if (_ves_breakfast[i] == null)
+                     {
+
+                         var name6 = "";
+                         word1("[v" + i + "]", name6, word);
+                     }
+                     else
+                     {
+
+                         if (this._ves_breakfast[i] != null)
+                         {
+                             var name5 = Convert.ToDouble(_ves_breakfast[i].net);
+                             var nsme6 = (name5 * Convert.ToDouble(_food[1].count_portc) / 1000);
+                             word1("[v" + i + "]", nsme6.ToString(), word);
+                         }
+                         else
+                         {
+                             var name6 = "";
+                             word1("[v" + i + "]", name6, word);
+                         }
+                     }
+                     if (_ves2_breakfast[i] == null)
+                     {
+
+                         var name6 = "";
+                         word1("[k" + i + "]", name6, word);
+                     }
+
+                     else
+                     {
+
+                         if (this._ves2_breakfast[i] != null)
+                         {
+                             var name5 = Convert.ToDouble(_ves2_breakfast[i].net);
+                             var nsme6 = (name5 * Convert.ToDouble(_food[2].count_portc) / 1000);
+                             word1("[k" + i + "]", nsme6.ToString(), word);
+                         }
+                         else
+                         {
+                             var name6 = "";
+                             word1("[k" + i + "]", name6, word);
+                         }
+                     }
+
+                     if (_ves3_breakfast[i] == null)
+                     {
+
+                         var name6 = "";
+                         word1("[i" + i + "]", name6, word);
+                     }
+
+                     else
+                     {
+                         if (this._ves3_breakfast[i] != null)
+                         {
+
+                             var name5 = Convert.ToDouble(_ves3_breakfast[i].net);
+                             var nsme6 = (name5 * Convert.ToDouble(_food[3].count_portc) / 1000);
+                             word1("[i" + i + "]", nsme6.ToString(), word);
+                         }
+                         else
+                         {
+                             var name6 = "";
+                             word1("[k" + i + "]", name6, word);
+                         }
+                     }
+                     if (_ves4_breakfast[i] == null)
+                     {
+
+                         var name6 = "";
+                         word1("[z" + i + "]", name6, word);
+
+                     }
+
+                     else
+                     {
+                         if (this._ves4_breakfast[i] != null)
+                         {
+
+                             var name5 = Convert.ToDouble(_ves4_breakfast[i].net);
+                             var nsme6 = (name5 * Convert.ToDouble(_food[4].count_portc) / 1000);
+
+                             word1("[z" + i + "]", nsme6.ToString(), word);
+                         }
+                         else
+                         {
+                             var name6 = "";
+                             word1("[z" + i + "]", name6, word);
+                         }
+                     }
+                     if (_ves5_breakfast[i] == null)
+                     {
+                         var name6 = "";
+                         word1("[x" + i + "]", name6, word);
+                     }
+
+                     else
+                     {
+                         if (this._ves5_breakfast[i] != null)
+                         {
+                             var name5 = Convert.ToDouble(_ves5_breakfast[i].net);
+                             var nsme6 = (name5 * Convert.ToDouble(_food[5].count_portc) / 1000);
+                             word1("[x" + i + "]", nsme6.ToString(), word);
+
+                         }
+                         else
+                         {
+                             var name6 = "";
+                             word1("[x" + i + "]", name6, word);
+                         }
+                     }
+
+
+                     if (_ves6_breakfast[i] == null)
+                     {
+
+                         var name6 = "";
+                         word1("[y" + i + "]", name6, word);
+                     }
+
+                     else
+                     {
+                         if (this._ves6_breakfast[i] != null)
+                         {
+
+                             var name5 = Convert.ToDouble(_ves6_breakfast[i].net);
+                             var nsme6 = (name5 * Convert.ToDouble(_food[6].count_portc) / 1000);
+                             word1("[y" + i + "]", nsme6.ToString(), word);
+
+                         }
+                         else
+                         {
+                             var name6 = "";
+                             word1("[y" + i + "]", name6, word);
+                         }
+                     }
+
+                     if (_ves7_breakfast[i] == null)
+                     {
+
+                         var name6 = "";
+                         word1("[q" + i + "]", name6, word);
+                     }
+
+                     else
+                     {
+                         if (this._ves7_breakfast[i] != null)
+                         {
+
+                             var name5 = Convert.ToDouble(_ves7_breakfast[i].net);
+                             var nsme6 = (name5 * Convert.ToDouble(_food[7].count_portc) / 1000);
+                             word1("[q" + i + "]", nsme6.ToString(), word);
+
+                         }
+                         else
+                         {
+                             var name6 = "";
+                             word1("[q" + i + "]", name6, word);
+                         }
+                     }
+
+                     if (_ves8_breakfast[i] == null)
+                     {
+
+                         var name6 = "";
+                         word1("[n" + i + "]", name6, word);
+                     }
+
+                     else
+                     {
+                         if (this._ves8_breakfast[i] != null)
+                         {
+
+                             var name5 = Convert.ToDouble(_ves8_breakfast[i].net);
+                             var nsme6 = (name5 * Convert.ToDouble(_food[8].count_portc) / 1000);
+
+                             word1("[n" + i + "]", nsme6.ToString(), word);
+
+                         }
+                         else
+                         {
+                             var name6 = "";
+                             word1("[n" + i + "]", name6, word);
+                         }
+
+                     }
+
+
+                     if (_obshves_breakfast[i] != null)
+                     {
+                         var name5 = _obshves_breakfast[i].net;
+                         word1("[u" + i + "]", name5.ToString(), word);
+
+                     }
+                     else
+                     {
+                         var name5 = "";
+                         word1("[u" + i + "]", name5, word);
+                     }
+
+                     
+                    if (dinner_food[i] == null)
+                    {
+                        var name = "";
+
+                        word1("[oбедБлюдо" + i + "]", name, word);
+                        word1("[oбедВес" + i + ":]", name, word);
+                        word1("[ob" + i + "]", name, word);
+
+                    }
+
+                    if (this.dinner_food[i] != null)
+                    {   var name = dinner_food[i].name;
+                        var name2 = dinner_food[i].count_portc;
+                        word1("[ob" + i + "]", name2, word);
+                        var name1 = "Вес:" + " " + dinner_food[i].weight;
+                        word1("[oбедВес" + i + ":]", name1, word);
+                        word1("[oбедБлюдо" + i + "]", name, word);
+                       
+                    }
+                
+                    if (_ingr_list_dinner[i] == null)
+                    {
+                        var name = "";
+
+                        word1("[obed" + i + "]", name, word);
+                    }
+
+                    if (this._ingr_list_dinner[i] != null)
+                    {
+
+                        var name = _ingr_list_dinner[i].name;
+
+
+                        word1("[obed" + i + "]", name, word);
+                    }
+
+
+                    if (_ves_dinner[i] == null)
+                    {
+
+                        var name6 = "";
+                        word1("[a" + i + "]", name6, word);
+                    }
+                    else
+                    {
+
+                        if (this._ves_dinner[i] != null)
+                        {
+                            var name5 = Convert.ToDouble(_ves_dinner[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(dinner_food[1].count_portc) / 1000);
+                            word1("[a" + i + "]", nsme6.ToString(), word);
+                        }
+                        else
+                        {
+                            var name6 = "";
+                            word1("[a" + i + "]", name6, word);
+                        }
+                    }
+                    if (_ves_dinner2[i] == null)
+                    {
+
+                        var name6 = "";
+                        word1("[b" + i + "]", name6, word);
+                    }
+
+                    else
+                    {
+
+                        if (this._ves_dinner2[i] != null)
+                        {
+                            var name5 = Convert.ToDouble(_ves_dinner2[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(dinner_food[2].count_portc) / 1000);
+                            word1("[b" + i + "]", nsme6.ToString(), word);
+
+                        }
+                        else
+                        {
+                            var name6 = "";
+                            word1("[b" + i + "]", name6, word);
+                        }
+                    }
+
+                    if (_ves_dinner3[i] == null)
+                    {
+
+                        var name6 = "";
+                        word1("[c" + i + "]", name6, word);
+                    }
+
+                    else
+                    {
+                        if (this._ves_dinner3[i] != null)
+                        {
+
+                            var name5 = Convert.ToDouble(_ves_dinner3[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(dinner_food[3].count_portc) / 1000);
+
+                            word1("[c" + i + "]", nsme6.ToString(), word);
+
+                        }
+                        else
+                        {
+                            var name6 = "";
+                            word1("[c" + i + "]", name6, word);
+                        }
+                    }
+                    if (_ves_dinner4[i] == null)
+                    {
+
+                        var name6 = "";
+                        word1("[d" + i + "]", name6, word);
+
+                    }
+
+                    else
+                    {
+                        if (this._ves_dinner4[i] != null)
+                        {
+
+                            var name5 = Convert.ToDouble(_ves_dinner4[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(dinner_food[4].count_portc) / 1000);
+
+                            word1("[d" + i + "]", nsme6.ToString(), word);
+
+                        }
+                        else
+                        {
+                            var name6 = "";
+                            word1("[d" + i + "]", name6, word);
+                        }
+                    }
+                    if (_ves_dinner5[i] == null)
+                    {
+
+                        var name6 = "";
+                        word1("[e" + i + "]", name6, word);
+                    }
+
+                    else
+                    {
+                        if (this._ves_dinner5[i] != null)
+                        {
+                            var name5 = Convert.ToDouble(_ves_dinner5[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(dinner_food[5].count_portc) / 1000);
+                            word1("[e" + i + "]", nsme6.ToString(), word);
+
+                        }
+                        else
+                        {
+                            var name6 = "";
+                            word1("[e" + i + "]", name6, word);
+                        }
+                    }
+
+
+                    if (_ves_dinner6[i] == null)
+                    {
+
+                        var name6 = "";
+                        word1("[f" + i + "]", name6, word);
+                    }
+
+                    else
+                    {
+                        if (this._ves_dinner6[i] != null)
+                        {
+
+                            var name5 = Convert.ToDouble(_ves_dinner6[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(dinner_food[6].count_portc) / 1000);
+                            word1("[f" + i + "]", nsme6.ToString(), word);
+
+                        }
+                        else
+                        {
+                            var name6 = "";
+                            word1("[f" + i + "]", name6, word);
+                        }
+                    }
+
+                    if (_ves_dinner7[i] == null)
+                    {
+
+                        var name6 = "";
+                        word1("[g" + i + "]", name6, word);
+                    }
+
+                    else
+                    {
+                        if (this._ves_dinner7[i] != null)
+                        {
+
+                            var name5 = Convert.ToDouble(_ves_dinner7[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(dinner_food[7].count_portc) / 1000);
+                            word1("[g" + i + "]", nsme6.ToString(), word);
+
+                        }
+                        else
+                        {
+                            var name6 = "";
+                            word1("[g" + i + "]", name6, word);
+                        }
+                    }
+
+                    if (_ves_dinner8[i] == null)
+                    {
+
+                        var name6 = "";
+                        word1("[h" + i + "]", name6, word);
+                    }
+
+                    else
+                    {
+                        if (this._ves_dinner8[i] != null)
+                        {
+
+                            var name5 = Convert.ToDouble(_ves_dinner8[i].net);
+                            var nsme6 = (name5 * Convert.ToDouble(dinner_food[8].count_portc) / 1000);
+
+                            word1("[h" + i + "]", nsme6.ToString(), word);
+
+                        }
+                        else
+                        {
+                            var name6 = "";
+                            word1("[h" + i + "]", name6, word);
+                        }
+
+                    }
+
+                  
+                    if (_obshves_dinner[i] != null)
+                    {
+                        var name5 = _obshves_dinner[i].net;
+                        word1("[и" + i + "]", name5.ToString(), word);
+
+                    }
+                    else
+                    {
+                        var name5 = "";
+                        word1("[и" + i + "]", name5, word);
+                    }
+
+                    if (supper_food[i] == null)
+                    {
+                        var name = "";
+
+                        word1("[уБлюдо" + i + "]", name, word);
+                        word1("[уВес" + i + ":]", name, word);
+                        word1("[yz" + i + "]", name, word);
+
+                    }
+                         if (this.supper_food[i] != null)
+                    {
+
+                        var name = supper_food[i].name;
+                        var name2 = supper_food[i].count_portc;
+                        var name1 = "Вес:" + " " + supper_food[i].weight;
+
+                        word1("[уВес" + i + ":]", name1, word);
+
+                        word1("[уБлюдо" + i + "]", name, word);
+
+                        word1("[yz" + i + "]", name2, word);
+
+                    }
+                }
+
+                    for (int i = 1; i <= 50; i++)
+                    {
+
+                        if (_ingr_list_supper[i] == null)
+                        {
+                            var name = "";
+
+                            word1("[sup" + i + "]", name, word);
+                        }
+
+                        if (this._ingr_list_supper[i] != null)
+                        {
+
+                            var name = _ingr_list_supper[i].name;
+
+
+                            word1("[sup" + i + "]", name, word);
+                        }
+
+
+                        if (_ves_supper[i] == null)
+                        {
+
+                            var name6 = "";
+                            word1("[j" + i + "]", name6, word);
+                        }
+                        else
+                        {
+
+                            if (this._ves_supper[i] != null)
+                            {
+                                var name5 = Convert.ToDouble(_ves_supper[i].net);
+                                var nsme6 = (name5 * Convert.ToDouble(supper_food[1].count_portc) / 1000);
+                                word1("[j" + i + "]", nsme6.ToString(), word);
+                            }
+                            else
+                            {
+                                var name6 = "";
+                                word1("[j" + i + "]", name6, word);
+                            }
+                        }
+                        if (_ves_supper2[i] == null)
+                        {
+
+                            var name6 = "";
+                            word1("[l" + i + "]", name6, word);
+                        }
+
+                        else
+                        {
+                            if (this._ves_supper2[i] != null)
+                            {
+                                var name5 = Convert.ToDouble(_ves_supper2[i].net);
+                                var nsme6 = (name5 * Convert.ToDouble(supper_food[2].count_portc) / 1000);
+                                word1("[l" + i + "]", nsme6.ToString(), word);
+
+                            }
+                            else
+                            {
+                                var name6 = "";
+                                word1("[l" + i + "]", name6, word);
+                            }
+                        }
+
+                        if (_ves_supper3[i] == null)
+                        {
+
+                            var name6 = "";
+                            word1("[p" + i + "]", name6, word);
+                        }
+
+                        else
+                        {
+                            if (this._ves_supper3[i] != null)
+                            {
+
+                                var name5 = Convert.ToDouble(_ves_supper3[i].net);
+                                var nsme6 = (name5 * Convert.ToDouble(supper_food[3].count_portc) / 1000);
+                                word1("[p" + i + "]", nsme6.ToString(), word);
+                            }
+                            else
+                            {
+                                var name6 = "";
+                                word1("[p" + i + "]", name6, word);
+                            }
+                        }
+                        if (_ves_supper4[i] == null)
+                        {
+
+                            var name6 = "";
+                            word1("[r" + i + "]", name6, word);
+
+                        }
+
+                        else
+                        {
+                            if (this._ves_supper4[i] != null)
+                            {
+
+                                var name5 = Convert.ToDouble(_ves_supper4[i].net);
+                                var nsme6 = (name5 * Convert.ToDouble(supper_food[4].count_portc) / 1000);
+
+                                word1("[r" + i + "]", nsme6.ToString(), word);
+
+                            }
+                            else
+                            {
+                                var name6 = "";
+                                word1("[r" + i + "]", name6, word);
+                            }
+                        }
+                        if (_ves_supper5[i] == null)
+                        {
+
+                            var name6 = "";
+                            word1("[s" + i + "]", name6, word);
+                        }
+
+                        else
+                        {
+                            if (this._ves_supper5[i] != null)
+                            {
+                                var name5 = Convert.ToDouble(_ves_supper5[i].net);
+                                var nsme6 = (name5 * Convert.ToDouble(supper_food[5].count_portc) / 1000);
+                                word1("[s" + i + "]", nsme6.ToString(), word);
+
+                            }
+                            else
+                            {
+                                var name6 = "";
+                                word1("[s" + i + "]", name6, word);
+                            }
+                        }
+
+
+                        if (_ves_supper6[i] == null)
+                        {
+
+                            var name6 = "";
+                            word1("[б" + i + "]", name6, word);
+                        }
+
+                        else
+                        {
+                            if (this._ves_supper6[i] != null)
+                            {
+
+                                var name5 = Convert.ToDouble(_ves_supper6[i].net);
+                                var nsme6 = (name5 * Convert.ToDouble(supper_food[6].count_portc) / 1000);
+                                word1("[б" + i + "]", nsme6.ToString(), word);
+
+                            }
+
+                            else
+                            {
+                                var name6 = "";
+                                word1("[б" + i + "]", name6, word);
+                            }
+                        }
+
+                        if (_ves_supper7[i] == null)
+                        {
+
+                            var name6 = "";
+                            word1("[в" + i + "]", name6, word);
+                        }
+
+                        else
+                        {
+                            if (this._ves_supper7[i] != null)
+                            {
+
+                                var name5 = Convert.ToDouble(_ves_supper7[i].net);
+                                var nsme6 = (name5 * Convert.ToDouble(supper_food[7].count_portc) / 1000);
+                                word1("[в" + i + "]", nsme6.ToString(), word);
+
+                            }
+                            else
+                            {
+                                var name6 = "";
+                                word1("[в" + i + "]", name6, word);
+                            }
+                        }
+
+                        if (_ves_supper8[i] == null)
+                        {
+
+                            var name6 = "";
+                            word1("[г" + i + "]", name6, word);
+                        }
+
+                        else
+                        {
+                            if (this._ves_supper8[i] != null)
+                            {
+
+                                var name5 = Convert.ToDouble(_ves_supper8[i].net);
+                                var nsme6 = (name5 * Convert.ToDouble(supper_food[8].count_portc) / 1000);
+                                word1("[г" + i + "]", nsme6.ToString(), word);
+                            }
+                            else
+                            {
+                                var name6 = "";
+                                word1("[г" + i + "]", name6, word);
+                            }
+
+                        }
+
+                        if (_obshves_supper[i] != null)
+                        {
+                            var name5 = _obshves_supper[i].net;
+                            word1("[д" + i + "]", name5.ToString(), word);
+
+                        }
+                        else
+                        {
+                            var name5 = "";
+                            word1("[д" + i + "]", name5, word);
+                        }
+                        
+
+                    if (_menu_in_day == null)
+                    {
+
+                        var name2 = "";
+
+                        word1("[date]", name2, word);
+                    }
+                    else
+                    {
+
+                        if (this._menu_in_day[1] != null)
+                        {
+                            var name2 = _menu_in_day[1].service;
+
+                            word1("[date]", name2, word);
+                        }
+                    }
+                    if (_count_serv == null)
+                    {
+
+                        var name2 = "";
+
+                        word1("[kol]", name2, word);
+                    }
+                    else
+                    {
+
+                        if (this._count_serv != null)
+                        {
+                            var name2 = _count_serv.numb_men;
+
+                            word1("[kol]", name2, word);
+
+                        }
+
+                    }
+                    if (_ingr_list_all_day[i] != null)
+                    {
+                        var name5 = _ingr_list_all_day[i].name;
+                        word1("[q" + i + "]", name5.ToString(), word);
+
+                    }
+                    else
+                    {
+                        var name5 = "";
+                        word1("[q" + i + "]", name5, word);
+                    }
+
+                    if (_obshves_all_day[i] != null)
+                    {
+                        var name5 = _obshves_all_day[i].net + " " + "кг";
+                        word1("[t" + i + "]", name5.ToString(), word);
+                    }
+                    else
+                    {
+                        var name5 = "";
+                        word1("[t" + i + "]", name5.ToString(), word);
+                    }
+                }
+ 
+                App.Visible = true;
+                GC.Collect();
+            }
+    
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             if ((cb_ok.Text == "") || (cb_diets_vrach.Text == ""))
@@ -4075,13 +4878,19 @@ namespace Preventorium
             {
                 Report_MEnu_Layout_breakfast();
             }
-              if (serve == "ужин")
-              {
-                  Report_MEnu_Layout_supper();
-              }
-                        
-            GC.Collect();
+             
+            if (serve == "ужин")
+            {
+                Report_MEnu_Layout_supper();
+            }
+
+            if (serve == "весь день")
+            {
+                Report_MEnu_Layout_all_day();
+            }
+           GC.Collect();
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();

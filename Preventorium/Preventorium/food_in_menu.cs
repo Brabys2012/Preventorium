@@ -3415,7 +3415,7 @@ namespace Preventorium
 
              private void Menu_all_day_Click(object sender, EventArgs e)
              {
-                 Menu_layout Menu_layout = new Menu_layout(AddDayID, queue_id);
+                 Menu_layout Menu_layout = new Menu_layout("весь день",AddDayID, queue_id);
                  Menu_layout.ShowDialog();
 
              }
