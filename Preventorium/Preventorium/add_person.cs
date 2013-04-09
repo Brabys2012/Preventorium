@@ -13,8 +13,13 @@ namespace Preventorium
         private string post_id;
 
         private void enabled_b_save(object sender, EventArgs e)
+        {  
+            if ((tb_name.Text !="") && (tb_surname.Text !="") && ( tb_sec_name.Text!="") &&(tb_post.Text !=""))
+       
         {
             this.b_save.Enabled = true;
+        }
+            
             if (this._state == "OLD") { this.set_state("MOD"); };
         }
 
@@ -91,8 +96,7 @@ namespace Preventorium
 
         private void b_save_Click(object sender, EventArgs e)
         {
-
-            string result; //Результат попытки сохранения/добавления
+                        string result; //Результат попытки сохранения/добавления
             switch (this._state)
             {
                 //Если добавляется новая запись...

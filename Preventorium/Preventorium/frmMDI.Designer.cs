@@ -264,7 +264,7 @@
             // frmMDI_MainMenu_Service_Parameters
             // 
             this.frmMDI_MainMenu_Service_Parameters.Name = "frmMDI_MainMenu_Service_Parameters";
-            this.frmMDI_MainMenu_Service_Parameters.Size = new System.Drawing.Size(152, 22);
+            this.frmMDI_MainMenu_Service_Parameters.Size = new System.Drawing.Size(138, 22);
             this.frmMDI_MainMenu_Service_Parameters.Text = "&Параметры";
             this.frmMDI_MainMenu_Service_Parameters.Click += new System.EventHandler(this.frmMDI_MainMenu_Service_Parameters_Click);
             // 

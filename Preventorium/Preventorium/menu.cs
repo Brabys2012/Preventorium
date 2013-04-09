@@ -93,7 +93,7 @@ namespace Preventorium
 
                gw.ClearSelection();
                gw.Rows[rowIndex].Selected = true;
-               gw.CurrentCell = gw[1, rowIndex];
+               gw.CurrentCell = gw[3, rowIndex];
            }
 
            private void b_edit_Click(object sender, EventArgs e)

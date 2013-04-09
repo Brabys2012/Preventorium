@@ -544,7 +544,7 @@ namespace Preventorium
                     }
                     else
                     {
-                        card.cost = rd.GetDecimal(2).ToString();
+                        card.cost = rd.GetSqlMoney(2).ToString();
                     }
                     if (rd.IsDBNull(3))
                     {

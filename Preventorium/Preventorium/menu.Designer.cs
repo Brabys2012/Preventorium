@@ -172,6 +172,7 @@
             this.gw.Size = new System.Drawing.Size(351, 118);
             this.gw.TabIndex = 1;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
+            this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // contextMenuStrip1
             // 

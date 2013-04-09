@@ -2123,7 +2123,7 @@ namespace Preventorium
             if (_book[1] == null)
             {
                 var name = "";
-                var name1 = "";
+            
                                 word1("[book]",name, word);
               //  word1("[year]", name1, word);
             }
@@ -4170,9 +4170,7 @@ namespace Preventorium
             this._person = this.get_person_list();
             fill_person_list();
            // this._post = this.get_post_list();
-            
-
-        }
+          }
 
     /*    public class_post[] get_post_list()
         {
@@ -4568,8 +4566,7 @@ namespace Preventorium
             this.Close();
         }
 
-
-        
+               
         
     }
 }
