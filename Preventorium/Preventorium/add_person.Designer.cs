@@ -55,7 +55,7 @@
             // tb_surname
             // 
             this.tb_surname.Location = new System.Drawing.Point(11, 44);
-            this.tb_surname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_surname.Margin = new System.Windows.Forms.Padding(4);
             this.tb_surname.Name = "tb_surname";
             this.tb_surname.Size = new System.Drawing.Size(185, 25);
             this.tb_surname.TabIndex = 1;
@@ -74,7 +74,7 @@
             // tb_name
             // 
             this.tb_name.Location = new System.Drawing.Point(11, 95);
-            this.tb_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_name.Margin = new System.Windows.Forms.Padding(4);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(185, 25);
             this.tb_name.TabIndex = 3;
@@ -93,7 +93,7 @@
             // tb_sec_name
             // 
             this.tb_sec_name.Location = new System.Drawing.Point(11, 146);
-            this.tb_sec_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_sec_name.Margin = new System.Windows.Forms.Padding(4);
             this.tb_sec_name.Name = "tb_sec_name";
             this.tb_sec_name.Size = new System.Drawing.Size(185, 25);
             this.tb_sec_name.TabIndex = 5;
@@ -108,9 +108,9 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tb_sec_name);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(206, 179);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -119,7 +119,7 @@
             // b_save
             // 
             this.b_save.Location = new System.Drawing.Point(13, 251);
-            this.b_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.b_save.Margin = new System.Windows.Forms.Padding(4);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(100, 32);
             this.b_save.TabIndex = 0;
@@ -131,7 +131,7 @@
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_cancel.Location = new System.Drawing.Point(119, 251);
-            this.b_cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.b_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Size = new System.Drawing.Size(100, 32);
             this.b_cancel.TabIndex = 1;
@@ -152,10 +152,11 @@
             // tb_post
             // 
             this.tb_post.Location = new System.Drawing.Point(24, 218);
-            this.tb_post.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_post.Margin = new System.Windows.Forms.Padding(4);
             this.tb_post.Name = "tb_post";
             this.tb_post.Size = new System.Drawing.Size(185, 25);
             this.tb_post.TabIndex = 3;
+            this.tb_post.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // add_person
             // 
@@ -171,7 +172,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_person";

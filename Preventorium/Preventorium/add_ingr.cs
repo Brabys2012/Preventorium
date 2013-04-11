@@ -37,9 +37,9 @@ namespace Preventorium
            public add_ingr(db_connect data_module)
         {
             InitializeComponent();
-            this.Size = new Size(225, 239);
-            this.b_save.Location = new Point(10,172);
-            this.b_abolition.Location = new Point(130,172);
+            this.Size = new Size(295, 295);
+            this.b_save.Location = new Point(30,220);
+            this.b_abolition.Location = new Point(150,220);
             tb_calories.Enabled = false;
             tb_calories.Visible = false;
             label2.Enabled = false;

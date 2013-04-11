@@ -69,6 +69,7 @@
             // 
             // cb_food
             // 
+            this.cb_food.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_food.FormattingEnabled = true;
             this.cb_food.Location = new System.Drawing.Point(8, 27);
             this.cb_food.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -79,6 +80,7 @@
             // 
             // cb_ok
             // 
+            this.cb_ok.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_ok.FormattingEnabled = true;
             this.cb_ok.Location = new System.Drawing.Point(8, 27);
             this.cb_ok.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -101,6 +103,7 @@
             // 
             // Cb_diet_vrach2
             // 
+            this.Cb_diet_vrach2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cb_diet_vrach2.FormattingEnabled = true;
             this.Cb_diet_vrach2.Location = new System.Drawing.Point(307, 27);
             this.Cb_diet_vrach2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -110,12 +113,14 @@
             // 
             // cb_diets_vrach
             // 
+            this.cb_diets_vrach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_diets_vrach.FormattingEnabled = true;
             this.cb_diets_vrach.Location = new System.Drawing.Point(8, 27);
             this.cb_diets_vrach.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cb_diets_vrach.Name = "cb_diets_vrach";
             this.cb_diets_vrach.Size = new System.Drawing.Size(260, 26);
             this.cb_diets_vrach.TabIndex = 0;
+           
             // 
             // gbcards
             // 

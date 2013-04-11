@@ -64,6 +64,7 @@ namespace Preventorium
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.del_dinner = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.Menu_layout_dinner = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gw_supper = new System.Windows.Forms.DataGridView();
             this.context_supper = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -74,14 +75,23 @@ namespace Preventorium
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.del_supper = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.Menu_supper = new System.Windows.Forms.ToolStripButton();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.Menu_Strip = new System.Windows.Forms.ToolStripMenuItem();
             this.менюНаДеньToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.менюРаскладкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Strip_breakfast = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Strip_din = new System.Windows.Forms.ToolStripMenuItem();
+            this.supper = new System.Windows.Forms.ToolStripMenuItem();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.bs_dinner = new System.Windows.Forms.BindingSource(this.components);
             this.bs_supper = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.Menu_all_day = new System.Windows.Forms.ToolStripMenuItem();
             this.gb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw_breakfast)).BeginInit();
             this.context.SuspendLayout();
@@ -237,8 +247,8 @@ namespace Preventorium
             this.Menu_layout_break.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
             this.Menu_layout_break.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_layout_break.Name = "Menu_layout_break";
-            this.Menu_layout_break.Size = new System.Drawing.Size(122, 22);
-            this.Menu_layout_break.Text = "Меню-раскладка";
+            this.Menu_layout_break.Size = new System.Drawing.Size(182, 22);
+            this.Menu_layout_break.Text = "Меню-раскладка на завтрак";
             this.Menu_layout_break.Click += new System.EventHandler(this.Menu_Strip_breakfast_Click);
             // 
             // toolStripSeparator10
@@ -333,7 +343,9 @@ namespace Preventorium
             this.add_dinner,
             this.toolStripSeparator5,
             this.del_dinner,
-            this.toolStripSeparator6});
+            this.toolStripSeparator6,
+            this.Menu_layout_dinner,
+            this.toolStripSeparator14});
             this.Menu_Strip_dinner.Location = new System.Drawing.Point(3, 16);
             this.Menu_Strip_dinner.Name = "Menu_Strip_dinner";
             this.Menu_Strip_dinner.Size = new System.Drawing.Size(340, 25);
@@ -374,6 +386,15 @@ namespace Preventorium
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // Menu_layout_dinner
+            // 
+            this.Menu_layout_dinner.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_layout_dinner.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Menu_layout_dinner.Name = "Menu_layout_dinner";
+            this.Menu_layout_dinner.Size = new System.Drawing.Size(167, 22);
+            this.Menu_layout_dinner.Text = "Меню-раскладка на обед";
+            this.Menu_layout_dinner.Click += new System.EventHandler(this.Menu_layout_dinner_Click);
             // 
             // groupBox2
             // 
@@ -462,7 +483,9 @@ namespace Preventorium
             this.add_supper,
             this.toolStripSeparator8,
             this.del_supper,
-            this.toolStripSeparator7});
+            this.toolStripSeparator7,
+            this.Menu_supper,
+            this.toolStripSeparator15});
             this.Menu_Strip_supper.Location = new System.Drawing.Point(3, 16);
             this.Menu_Strip_supper.Name = "Menu_Strip_supper";
             this.Menu_Strip_supper.Size = new System.Drawing.Size(340, 25);
@@ -504,6 +527,15 @@ namespace Preventorium
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
+            // Menu_supper
+            // 
+            this.Menu_supper.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_supper.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Menu_supper.Name = "Menu_supper";
+            this.Menu_supper.Size = new System.Drawing.Size(170, 22);
+            this.Menu_supper.Text = "Меню-раскладка на ужин";
+            this.Menu_supper.Click += new System.EventHandler(this.Menu_supper_Click);
+            // 
             // menu
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -518,6 +550,7 @@ namespace Preventorium
             // 
             this.Menu_Strip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюНаДеньToolStripMenuItem,
+            this.toolStripSeparator11,
             this.менюРаскладкиToolStripMenuItem});
             this.Menu_Strip.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Strip.Image")));
             this.Menu_Strip.Name = "Menu_Strip";
@@ -526,26 +559,81 @@ namespace Preventorium
             // 
             // менюНаДеньToolStripMenuItem
             // 
-            this.менюНаДеньToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("менюНаДеньToolStripMenuItem.Image")));
+            this.менюНаДеньToolStripMenuItem.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
             this.менюНаДеньToolStripMenuItem.Name = "менюНаДеньToolStripMenuItem";
-            this.менюНаДеньToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.менюНаДеньToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.менюНаДеньToolStripMenuItem.Text = "Меню на день";
             this.менюНаДеньToolStripMenuItem.Click += new System.EventHandler(this.Menu_in_day_Click);
             // 
             // менюРаскладкиToolStripMenuItem
             // 
             this.менюРаскладкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Strip_breakfast});
+            this.Menu_Strip_breakfast,
+            this.toolStripSeparator12,
+            this.Menu_Strip_din,
+            this.toolStripSeparator13,
+            this.supper,
+            this.Menu_all_day});
+            this.менюРаскладкиToolStripMenuItem.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
             this.менюРаскладкиToolStripMenuItem.Name = "менюРаскладкиToolStripMenuItem";
-            this.менюРаскладкиToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.менюРаскладкиToolStripMenuItem.Text = "Меню раскладка";
+            this.менюРаскладкиToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.менюРаскладкиToolStripMenuItem.Text = "Меню раскладка на ";
             // 
             // Menu_Strip_breakfast
             // 
+            this.Menu_Strip_breakfast.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
             this.Menu_Strip_breakfast.Name = "Menu_Strip_breakfast";
-            this.Menu_Strip_breakfast.Size = new System.Drawing.Size(117, 22);
+            this.Menu_Strip_breakfast.Size = new System.Drawing.Size(152, 22);
             this.Menu_Strip_breakfast.Text = "Завтрак";
             this.Menu_Strip_breakfast.Click += new System.EventHandler(this.Menu_Strip_breakfast_Click);
+            // 
+            // Menu_Strip_din
+            // 
+            this.Menu_Strip_din.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_Strip_din.Name = "Menu_Strip_din";
+            this.Menu_Strip_din.Size = new System.Drawing.Size(152, 22);
+            this.Menu_Strip_din.Text = "Обед";
+            this.Menu_Strip_din.Click += new System.EventHandler(this.Menu_Strip_din_Click);
+            // 
+            // supper
+            // 
+            this.supper.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.supper.Name = "supper";
+            this.supper.Size = new System.Drawing.Size(152, 22);
+            this.supper.Text = "Ужин";
+            this.supper.Click += new System.EventHandler(this.supper_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(183, 6);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(149, 6);
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(149, 6);
+            // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            this.toolStripSeparator15.Size = new System.Drawing.Size(6, 25);
+            // 
+            // Menu_all_day
+            // 
+            this.Menu_all_day.Name = "Menu_all_day";
+            this.Menu_all_day.Size = new System.Drawing.Size(152, 22);
+            this.Menu_all_day.Text = "Весь-день";
+            this.Menu_all_day.Click += new System.EventHandler(this.Menu_all_day_Click);
             // 
             // food_in_menu
             // 
@@ -634,5 +722,15 @@ namespace Preventorium
         private System.Windows.Forms.ToolStripMenuItem del_context_dinner;
         private System.Windows.Forms.ContextMenuStrip context_supper;
         private System.Windows.Forms.ToolStripMenuItem del_context_supper;
+        private System.Windows.Forms.ToolStripButton Menu_layout_dinner;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Strip_din;
+        private System.Windows.Forms.ToolStripButton Menu_supper;
+        private System.Windows.Forms.ToolStripMenuItem supper;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripMenuItem Menu_all_day;
     }
 }

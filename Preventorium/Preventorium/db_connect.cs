@@ -41,9 +41,6 @@ namespace Preventorium
         /// Возвращает результат выполнения последней операции с БД.
         /// </summary>
         public ConnectionStatus ConnStatus { private set; get; }
-
-        
-        
         public SqlConnection _conn;
         public string _connection_string;
         public DataSet _ds;

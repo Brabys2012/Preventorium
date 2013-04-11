@@ -208,6 +208,11 @@ public class class_menu_in_food
     public string result;
     public string service;
     public string food_id;
-    
+}
 
+public class class_user
+{
+  public string result;
+  public string password;
+  public string user;
 }

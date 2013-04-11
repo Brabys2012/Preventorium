@@ -108,5 +108,12 @@ namespace Preventorium.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap t_92843 {
+            get {
+                object obj = ResourceManager.GetObject("t-92843", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

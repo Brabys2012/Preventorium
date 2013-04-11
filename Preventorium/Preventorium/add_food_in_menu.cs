@@ -103,43 +103,49 @@ namespace Preventorium
 
         private void b_save_Click(object sender, EventArgs e)
         {
-
-            string result; //Результат попытки сохранения/добавления
-            switch (this._state)
+            if (tb_serve.Text == "")
             {
-                //Если добавляется новая запись...
-                case "NEW":
-                    result = Program.add_read_module.add_food_in_menu(serve, id, AddDayID, this.lb_food.Text, this.tb_serve.Text);
-                    this.Close();
-                    break;
-
-                default:
-                    result = "NDF";
-                    // не используется, однако mvs не позволяет 
-                    // дальше работать переменной, которой в одной
-                    // из веток кода не присваивается значение
-                    break;
-            }
-
-            if (result == "OK")
-            {
-                if (this._state == "NEW")
-                {
-                    this.set_state("OLD");
-                    this.Dispose();
-                }
-                else
-                    if (this._state == "MOD")
-                    {
-                        this.set_state("OLD");
-                    }
+                MessageBox.Show("Вы не ввели количество порций", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(result);
-            }
+                string result; //Результат попытки сохранения/добавления
+                switch (this._state)
+                {
+                    //Если добавляется новая запись...
+                    case "NEW":
+                        result = Program.add_read_module.add_food_in_menu(serve, id, AddDayID, this.lb_food.Text, this.tb_serve.Text);
+                        this.Close();
+                        break;
 
-            this.Update();
+                    default:
+                        result = "NDF";
+                        // не используется, однако mvs не позволяет 
+                        // дальше работать переменной, которой в одной
+                        // из веток кода не присваивается значение
+                        break;
+                }
+
+                if (result == "OK")
+                {
+                    if (this._state == "NEW")
+                    {
+                        this.set_state("OLD");
+                        this.Dispose();
+                    }
+                    else
+                        if (this._state == "MOD")
+                        {
+                            this.set_state("OLD");
+                        }
+                }
+                else
+                {
+                    MessageBox.Show(result);
+                }
+
+                this.Update();
+            }
         }
 
         private void b_cancel_Click(object sender, EventArgs e)

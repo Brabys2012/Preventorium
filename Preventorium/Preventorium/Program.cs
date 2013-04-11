@@ -89,6 +89,10 @@ namespace Preventorium
         /// </summary>
         static public get_table add_read_module;
 
+       
+     
+
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -113,10 +117,27 @@ namespace Preventorium
             data_module = new db_connect();
             user_set = new user_settings();
             add_read_module = new get_table();
+            string users;
+       
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMDI());
-            GC.KeepAlive(M);
+
+
+            DialogResult dResult = DialogResult.OK;
+
+            using (Autorisation frmLogining = new Autorisation())
+            {
+                dResult = frmLogining.ShowDialog();
+                users = frmLogining.user;
+                
+            }
+    
+           if (dResult == DialogResult.OK)
+           {
+               
+                Application.Run(new frmMDI(users));
+                GC.KeepAlive(M);
+            }
         }
 
     }

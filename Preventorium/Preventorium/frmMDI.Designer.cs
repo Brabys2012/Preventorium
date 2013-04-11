@@ -247,7 +247,7 @@
             // 
             // b_report
             // 
-            this.b_report.Image = ((System.Drawing.Image)(resources.GetObject("b_report.Image")));
+            this.b_report.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
             this.b_report.Name = "b_report";
             this.b_report.Size = new System.Drawing.Size(278, 22);
             this.b_report.Text = "Сформировать карточку - раскладку";
@@ -377,6 +377,7 @@
             this.ClientSize = new System.Drawing.Size(675, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.frmMDI_MainMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.frmMDI_MainMenu;
             this.Name = "frmMDI";

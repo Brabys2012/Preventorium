@@ -258,6 +258,7 @@
     <Compile Include="Menu_layout.Designer.cs">
       <DependentUpon>Menu_layout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu_layout_all_day.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="queue.cs">
@@ -265,6 +266,12 @@
     </Compile>
     <Compile Include="queue.designer.cs">
       <DependentUpon>queue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="autorisation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="autorisation.Designer.cs">
+      <DependentUpon>autorisation.cs</DependentUpon>
     </Compile>
     <Compile Include="user_settings.cs" />
     <EmbeddedResource Include="add_book.resx">
@@ -384,6 +391,9 @@
       <DependentUpon>queue.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="autorisation.resx">
+      <DependentUpon>autorisation.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -409,6 +419,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Image\Microsoft Office Word.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Image\t-92843.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

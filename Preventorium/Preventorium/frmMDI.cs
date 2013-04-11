@@ -22,109 +22,58 @@ namespace Preventorium
     public partial class frmMDI : Form
     {
                 #region Форма MDI.
+        string profis;
+        string prof;
 
         /// <summary>
         /// Инициализирует главную MDI форму программы.
         /// </summary>
         public frmMDI()
         {
-            InitializeComponent();     
+            InitializeComponent();  
+            
+        } 
+        public frmMDI(string professia )
+        {
+            prof = professia;
+            InitializeComponent();
         }
-               
-         
-         /// <summary>
+
+        /// <summary>
         /// Происходит при закгрузке формы.
         /// </summary>
         private void MainForm_Load(object sender, EventArgs e)
-        {
-              // Инициализируем настройки подключения к БД
-            db_settings db_set = new db_settings();
-
-            // Преверяем если конфигурационнго файла нету,то выводим форму настроек для измения настроек
-            if (( Program.user_set.NOT_FILE=="OK"))
+        { 
+            if ((prof == "Диет-сестра") || (prof == "Диет.сестра"))
             {
-                if (db_set.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                      if ((Program.data_module.ConnStatus == ConnectionStatus.DISCONNECTED) || (Program.data_module.ConnStatus == ConnectionStatus.CONNECT_ERROR))
-                    {
-                        this.status.Text = "Подключение к базе данных ...";
-                        this.Update();
-                        if (Program.data_module.connect_to_db() != ConnectionStatus.CONNECTED)
-                        {
-                            // Не удалось подключиться к базе данных
-                           
-                            this.status.Text = "Отключен от базы данных.";
-                            this.frmMDI_MainMenu_Menu.Enabled = false;
-                            this.frmMDI_MainMenu_Queue.Enabled = false;
-                            this.frmMDI_MainMenu_Digest.Enabled= false;
-                            this.frmMDI_MainMenu_Reports.Enabled = false;
-                            this.frmMDI_MainMenu_Windiw.Enabled = false;
-
-                            return;
-                        }
-                        this.status.Text = "Подключен к базе данных";
-                        this.frmMDI_MainMenu_Menu.Enabled = true;
-                        this.frmMDI_MainMenu_Queue.Enabled = true;
-                        this.frmMDI_MainMenu_Digest.Enabled = true;
-                        this.frmMDI_MainMenu_Reports.Enabled = true;
-                        this.frmMDI_MainMenu_Windiw.Enabled = true;
-
-                    }
-                    else
-                    {
-                        // Подключаемся к БД
-                        status.Text = "Подключение к базе данных ...";
-
-                        // Если не удалось подключиться к БД, то выводим сообщение пользователю
-                        if (Program.data_module.connect_to_db() != ConnectionStatus.CONNECTED)
-                        {
-                            status.Text = "Ошибка подключения к базе данных.";
-                            // Выключяем не нужные пункты меню ,если подключиться не удалось
-                             this.frmMDI_MainMenu_Menu.Enabled = false;
-                            this.frmMDI_MainMenu_Queue.Enabled = false;
-                            this.frmMDI_MainMenu_Digest.Enabled= false;
-                            this.frmMDI_MainMenu_Reports.Enabled = false;
-                            this.frmMDI_MainMenu_Windiw.Enabled = false;
-                            return;
-                        }
-                        // Если успешно подключились, то изменяем статус программы
-                        status.Text = "Подключен к базе данных.";
-                        // Включяем  пункты меню ,если подключиться  удалось
-                        this.frmMDI_MainMenu_Menu.Enabled = true;
-                        this.frmMDI_MainMenu_Queue.Enabled = true;
-                        this.frmMDI_MainMenu_Digest.Enabled = true;
-                        this.frmMDI_MainMenu_Reports.Enabled = true;
-                        this.frmMDI_MainMenu_Windiw.Enabled = true;
-
-                    }
-                }
+                 this.Person.Enabled = false; 
             }
 
-            else
-            {
-                status.Text = "Подключение к базе данных ...";
-                                // Если не удалось подключиться к БД, то выводим сообщение пользователю
-                if (Program.data_module.connect_to_db() != ConnectionStatus.CONNECTED)
-                {
-                    status.Text = "Ошибка подключения к базе данных.";
-                    // Выключяем не нужные пункты меню ,если подключиться не удалось
-                    this.frmMDI_MainMenu_Menu.Enabled = false;
-                    this.frmMDI_MainMenu_Queue.Enabled = false;
-                    this.frmMDI_MainMenu_Digest.Enabled = false;
-                    this.frmMDI_MainMenu_Reports.Enabled = false;
-                    this.frmMDI_MainMenu_Windiw.Enabled = false;
-                    return;
-                }
-                // Если успешно подключились, то изменяем статус программы
-                status.Text = "Подключен к базе данных.";
-                this.frmMDI_MainMenu_Menu.Enabled = true;
-                // Включяем  пункты меню ,если подключиться  удалось
-                this.frmMDI_MainMenu_Queue.Enabled = true;
-                this.frmMDI_MainMenu_Digest.Enabled = true;
-                this.frmMDI_MainMenu_Reports.Enabled = true;
-                this.frmMDI_MainMenu_Windiw.Enabled = true;
-            }
-        }
+                         // Подключаемся к БД
+                    status.Text = "Подключение к базе данных ...";
+                      // Если не удалось подключиться к БД, то выводим сообщение пользователю
+                    if (Program.data_module.ConnStatus!= ConnectionStatus.CONNECTED)
+                    {
+                        status.Text = "Ошибка подключения к базе данных.";
+                        // Выключяем не нужные пункты меню ,если подключиться не удалось
+                        this.frmMDI_MainMenu_Menu.Enabled = false;
+                        this.frmMDI_MainMenu_Queue.Enabled = false;
+                        this.frmMDI_MainMenu_Digest.Enabled = false;
+                        this.frmMDI_MainMenu_Reports.Enabled = false;
+                        this.frmMDI_MainMenu_Windiw.Enabled = false;
+                        return;
+                    }
+                    // Если успешно подключились, то изменяем статус программы
+                    status.Text = "Подключен к базе данных.";
+                    // Включяем  пункты меню ,если подключиться  удалось
+                    this.frmMDI_MainMenu_Menu.Enabled = true;
+                    this.frmMDI_MainMenu_Queue.Enabled = true;
+                    this.frmMDI_MainMenu_Digest.Enabled = true;
+                    this.frmMDI_MainMenu_Reports.Enabled = true;
+                    this.frmMDI_MainMenu_Windiw.Enabled = true;
+                 }
+      
+                    
         
         /// <summary>
         /// Происходит при закрытии формы.

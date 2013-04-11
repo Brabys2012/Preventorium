@@ -40,9 +40,9 @@
             this.lb_food.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lb_food.FormattingEnabled = true;
             this.lb_food.ItemHeight = 18;
-            this.lb_food.Location = new System.Drawing.Point(13, 13);
+            this.lb_food.Location = new System.Drawing.Point(12, 12);
             this.lb_food.Name = "lb_food";
-            this.lb_food.Size = new System.Drawing.Size(192, 184);
+            this.lb_food.Size = new System.Drawing.Size(250, 184);
             this.lb_food.TabIndex = 0;
             // 
             // b_save
@@ -72,17 +72,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(212, 13);
+            this.label1.Location = new System.Drawing.Point(265, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 36);
+            this.label1.Size = new System.Drawing.Size(78, 36);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Количество \r\nпорций:";
+            this.label1.Text = "Количество\r\nпорций:";
             // 
             // tb_serve
             // 
-            this.tb_serve.Location = new System.Drawing.Point(215, 52);
+            this.tb_serve.Location = new System.Drawing.Point(268, 51);
             this.tb_serve.Name = "tb_serve";
-            this.tb_serve.Size = new System.Drawing.Size(78, 20);
+            this.tb_serve.Size = new System.Drawing.Size(75, 20);
             this.tb_serve.TabIndex = 4;
             // 
             // add_food_in_menu
@@ -91,7 +91,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_cancel;
-            this.ClientSize = new System.Drawing.Size(298, 233);
+            this.ClientSize = new System.Drawing.Size(350, 233);
             this.Controls.Add(this.tb_serve);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.b_cancel);
