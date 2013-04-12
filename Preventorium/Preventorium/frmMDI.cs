@@ -22,8 +22,8 @@ namespace Preventorium
     public partial class frmMDI : Form
     {
                 #region Форма MDI.
-        string profis;
-        string prof;
+        class_person profis;
+        class_person prof;
 
         /// <summary>
         /// Инициализирует главную MDI форму программы.
@@ -33,7 +33,7 @@ namespace Preventorium
             InitializeComponent();  
             
         } 
-        public frmMDI(string professia )
+        public frmMDI(class_person professia )
         {
             prof = professia;
             InitializeComponent();
@@ -43,26 +43,31 @@ namespace Preventorium
         /// Происходит при закгрузке формы.
         /// </summary>
         private void MainForm_Load(object sender, EventArgs e)
-        { 
-            if ((prof == "Диет-сестра") || (prof == "Диет.сестра"))
+        {
+            if (prof.post == "Пользователь-диет_сестра") 
             {
-                 this.Person.Enabled = false; 
+                 this.Person.Visible = false;
+                 toolStripSeparator1.Visible = false;
+            }
+            
+            if (prof.post == "Администратор-глав_врач")
+            {
+                usersToolStripMenuItem.Text = "Назначение прав пользователям";
             }
 
-                         // Подключаемся к БД
-                    status.Text = "Подключение к базе данных ...";
+          status.Text = "Подключение к базе данных ...";
                       // Если не удалось подключиться к БД, то выводим сообщение пользователю
-                    if (Program.data_module.ConnStatus!= ConnectionStatus.CONNECTED)
-                    {
-                        status.Text = "Ошибка подключения к базе данных.";
-                        // Выключяем не нужные пункты меню ,если подключиться не удалось
-                        this.frmMDI_MainMenu_Menu.Enabled = false;
-                        this.frmMDI_MainMenu_Queue.Enabled = false;
-                        this.frmMDI_MainMenu_Digest.Enabled = false;
-                        this.frmMDI_MainMenu_Reports.Enabled = false;
-                        this.frmMDI_MainMenu_Windiw.Enabled = false;
-                        return;
-                    }
+          if (Program.data_module.ConnStatus!= ConnectionStatus.CONNECTED)
+                {
+                    status.Text = "Ошибка подключения к базе данных.";
+                     // Выключяем не нужные пункты меню ,если подключиться не удалось
+                     this.frmMDI_MainMenu_Menu.Enabled = false;
+                     this.frmMDI_MainMenu_Queue.Enabled = false;
+                     this.frmMDI_MainMenu_Digest.Enabled = false;
+                     this.frmMDI_MainMenu_Reports.Enabled = false;
+                     this.frmMDI_MainMenu_Windiw.Enabled = false;
+                      return;
+                }
                     // Если успешно подключились, то изменяем статус программы
                     status.Text = "Подключен к базе данных.";
                     // Включяем  пункты меню ,если подключиться  удалось
@@ -71,9 +76,8 @@ namespace Preventorium
                     this.frmMDI_MainMenu_Digest.Enabled = true;
                     this.frmMDI_MainMenu_Reports.Enabled = true;
                     this.frmMDI_MainMenu_Windiw.Enabled = true;
-                 }
-      
-                    
+           }    
+                          
         
         /// <summary>
         /// Происходит при закрытии формы.
@@ -295,6 +299,14 @@ namespace Preventorium
             Cards_layout form = new Cards_layout();
             form.MdiParent = this;
             form.Show();
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            users form = new users(prof);
+            form.MdiParent = this;
+            form.Show();
+
         }
               
     }

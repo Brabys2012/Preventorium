@@ -102,9 +102,30 @@ namespace Preventorium.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap edu {
+            get {
+                object obj = ResourceManager.GetObject("edu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap edu1 {
+            get {
+                object obj = ResourceManager.GetObject("edu1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Microsoft_Office_Word {
             get {
                 object obj = ResourceManager.GetObject("Microsoft Office Word", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pic_s_731839282 {
+            get {
+                object obj = ResourceManager.GetObject("pic_s_731839282", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
