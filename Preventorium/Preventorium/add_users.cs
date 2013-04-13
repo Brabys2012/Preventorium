@@ -60,97 +60,101 @@ namespace Preventorium
 
         }
         private void add_users_Load(object sender, EventArgs e)
-        {         
-             
-              if  ((proff.post == "Администратор-глав_врач") && (read == "MOD"))
-              {
-                  this.Size = new Size(230, 240);
-                  this.label3.Visible = true;
-                  this.textBox1.Location = new System.Drawing.Point(7, 80);
-                  this.textBox1.Size = new System.Drawing.Size(205, 210);
-                  this.textBox2.Location = new System.Drawing.Point(7, 130);
-                  this.textBox2.Size = new System.Drawing.Size(205, 210);
-                  this.b_save.Location = new System.Drawing.Point(7, 170);
-                  this.cancel.Location = new System.Drawing.Point(125, 170);
-                  person = get_post_role();
-                  
-                   comboBox2.Items.Add(person[1].role);
-                   comboBox2.Items.Add("Администратор-глав_врач");
-                   comboBox2.Items.Add("Пользователь-диет_сестра");
-                   if (person[1].role == "Администратор-глав_врач")
-                   { 
-                       comboBox2.Items.Remove("Администратор-глав_врач");
-                       comboBox2.SelectedItem = "Администратор-глав_врач";
-                       
-                   }
-                   if (person[1].role == "Пользователь-диет_сестра")
-                   {
-                       comboBox2.Items.Remove("Пользователь-диет_сестра");
-                       comboBox2.SelectedItem = "Пользователь-диет_сестра";
-
-                   }
-                
-                  b_save.Enabled = true;
-                  textBox1.Text = person[1].login;
-                  textBox2.Text = person[1].pass;
-                  comboBox1.Visible = false;
-                  comboBox2.Visible = true;
-                  this.comboBox2.Location = new System.Drawing.Point(7, 30);
-                  this.comboBox2.Size = new System.Drawing.Size(205, 205);
-                  label3.Location = new System.Drawing.Point(7, 10);
-                  label4.Visible = false;
-                  label2.Location = new System.Drawing.Point(7, 60);
-                  label1.Location = new System.Drawing.Point(7, 110);
-                           
-              }
-
-              if (proff.post == "Администратор-глав_врач")
-              {
-                 _person = get_user();
-                 fill_person_list();
-                 comboBox1.SelectedIndex = 0;
-                 comboBox2.Items.Add("Администратор-глав_врач");
-                 comboBox2.Items.Add("Пользователь-диет_сестра");                              
-             }
-
-         
-            if (proff.post == "Пользователь-диет_сестра")
+        {
+            try
             {
-                this.Size = new Size(230,180);
-                this.label3.Visible = false;
-                this.textBox1.Location = new System.Drawing.Point(7, 30);
-                this.textBox1.Size = new System.Drawing.Size(205, 210);
-                this.textBox2.Location = new System.Drawing.Point(7, 80);
-                this.textBox2.Size = new System.Drawing.Size(205, 210);
-                this.b_save.Location = new System.Drawing.Point(7, 110);
-                this.cancel.Location = new System.Drawing.Point(125, 110);
-               
-              person= get_post_role();
-              this.comboBox2.Items.Add(proff.post);
-              comboBox2.SelectedIndex = 0;
-              b_save.Enabled = true;
-              textBox1.Text = person[1].login;
-              textBox2.Text = person[1].pass;
-              comboBox1.Visible = false;
-              comboBox2.Visible = false;
-              label4.Visible = false;
-              label2.Location = new System.Drawing.Point(7,10);
-              label1.Location = new System.Drawing.Point(7, 60);
+                if ((proff.post == "Администратор-глав_врач") && (read == "MOD"))
+                {
+                    this.Size = new Size(230, 240);
+                    this.label3.Visible = true;
+                    this.textBox1.Location = new System.Drawing.Point(7, 80);
+                    this.textBox1.Size = new System.Drawing.Size(205, 210);
+                    this.textBox2.Location = new System.Drawing.Point(7, 130);
+                    this.textBox2.Size = new System.Drawing.Size(205, 210);
+                    this.b_save.Location = new System.Drawing.Point(7, 170);
+                    this.cancel.Location = new System.Drawing.Point(125, 170);
+                    person = get_post_role();
+
+                    comboBox2.Items.Add(person[1].role);
+                    comboBox2.Items.Add("Администратор-глав_врач");
+                    comboBox2.Items.Add("Пользователь-диет_сестра");
+                    if (person[1].role == "Администратор-глав_врач")
+                    {
+                        comboBox2.Items.Remove("Администратор-глав_врач");
+                        comboBox2.SelectedItem = ("Администратор-глав_врач");
+
+                    }
+                    if (person[1].role == "Пользователь-диет_сестра")
+                    {
+                        comboBox2.Items.Remove("Пользователь-диет_сестра");
+                        comboBox2.SelectedItem = "Пользователь-диет_сестра";
+
+                    }
+
+                    b_save.Enabled = true;
+                    textBox1.Text = person[1].login;
+                    textBox2.Text = person[1].pass;
+                    comboBox1.Visible = false;
+                    comboBox2.Visible = true;
+                    this.comboBox2.Location = new System.Drawing.Point(7, 30);
+                    this.comboBox2.Size = new System.Drawing.Size(205, 205);
+                    label3.Location = new System.Drawing.Point(7, 10);
+                    label4.Visible = false;
+                    label2.Location = new System.Drawing.Point(7, 60);
+                    label1.Location = new System.Drawing.Point(7, 110);
+
+                }
+                if (read != "MOD")
+
+                    if ((proff.post == "Администратор-глав_врач"))
+                    {
+                        _person = get_user();
+                        fill_person_list();
+                        comboBox2.Items.Add("Администратор-глав_врач");
+                        comboBox2.Items.Add("Пользователь-диет_сестра");
+                        comboBox1.SelectedIndex = 0;
+                    }
+
+                if (proff.post == "Пользователь-диет_сестра")
+                {
+                    this.Size = new Size(230, 180);
+                    this.label3.Visible = false;
+                    this.textBox1.Location = new System.Drawing.Point(7, 30);
+                    this.textBox1.Size = new System.Drawing.Size(205, 210);
+                    this.textBox2.Location = new System.Drawing.Point(7, 80);
+                    this.textBox2.Size = new System.Drawing.Size(205, 210);
+                    this.b_save.Location = new System.Drawing.Point(7, 110);
+                    this.cancel.Location = new System.Drawing.Point(125, 110);
+
+                    person = get_post_role();
+                    this.comboBox2.Items.Add(proff.post);
+                    comboBox2.SelectedIndex = 0;
+                    b_save.Enabled = true;
+                    textBox1.Text = person[1].login;
+                    textBox2.Text = person[1].pass;
+                    comboBox1.Visible = false;
+                    comboBox2.Visible = false;
+                    label4.Visible = false;
+                    label2.Location = new System.Drawing.Point(7, 10);
+                    label1.Location = new System.Drawing.Point(7, 60);
+                }
             }
+
+            catch { }
         }
         private void fill_person_list()
         {
-
+           
             for (int i = 1; i < this._person.Count(); i++)
             {
                 if (this._person[i] != null)
                 {
-
                     this.comboBox1.Items.Add(this._person[i].post.Trim());
                     comboBox1.Text = _person[i].post;
                 }
                 else
                 {
+                    
                     break;
                 }
             }

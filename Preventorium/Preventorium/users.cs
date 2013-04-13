@@ -45,11 +45,11 @@ namespace Preventorium
                 gw.Columns[1].HeaderText = "Пользователь";
                 gw.Columns[1].Width = 100;
                 gw.Columns[2].HeaderText = "Логин";
-                gw.Columns[2].Width = 90;
+               gw.Columns[2].Width = 90;
                 gw.Columns[3].HeaderText = "Пароль";
                 gw.Columns[3].Width = 100;
                 gw.Columns[4].HeaderText = "Роль пользователя";
-                gw.Columns[5].Width = 150;
+                gw.Columns[4].Width = 150;
             }
        }
         public void load_data_table(string state, string prof)
