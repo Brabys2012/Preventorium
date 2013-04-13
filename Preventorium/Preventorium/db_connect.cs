@@ -272,7 +272,7 @@ namespace Preventorium
         public DataSet get_data_table_password_head_vrach(string table_name)
         {
             string query = "";
-            query += "select Person.IDPost, Post,login,Password from " + table_name + " join Person on Users.IDPost=Person.IDPost";
+            query += "select Person.IDPost, Post,login,Password,role from " + table_name + " join Person on Users.IDPost=Person.IDPost";
             try
             {
                 this._ds = new DataSet();

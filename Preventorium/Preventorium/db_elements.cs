@@ -100,6 +100,7 @@ public class class_person
     public string login;
     public string pass;
     public string id;
+    public string role;
 }
 
 /// <summary>

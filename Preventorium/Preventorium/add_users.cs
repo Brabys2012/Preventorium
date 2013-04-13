@@ -18,6 +18,7 @@ namespace Preventorium
         private string _state;
         private db_connect _data_module;
         class_person[] person;
+        string read;
         
         public class_person[] _person;
 
@@ -27,9 +28,17 @@ namespace Preventorium
             InitializeComponent();
             this._data_module = data_module;
             proff = prof;
-            
-            this.set_state("NEW");
-           
+             this.set_state("NEW");        
+        }
+
+        public add_users(db_connect data_module, class_person prof,int id,string red)
+        {
+            InitializeComponent();
+            this._data_module = data_module;
+            proff = prof;
+            id_person = id;
+            read = red;
+            this.set_state(red);
         }
 
         public add_users(db_connect data_module,class_person prof,int id)
@@ -43,27 +52,68 @@ namespace Preventorium
 
         public void enabled(object sender, EventArgs e)
         {
-        
-        if ((textBox1.Text !="") && (textBox2.Text !="") && (comboBox2.Text !="") && (comboBox1.Text !=""))
-        {
-         b_save.Enabled = true;
-        }
-        
-        
-        }
 
+            if ((textBox1.Text != "") && (textBox2.Text != "") && (comboBox2.Text != "") && (comboBox1.Text != ""))
+            {
+                b_save.Enabled = true;
+            }
+
+        }
         private void add_users_Load(object sender, EventArgs e)
         {         
+             
+              if  ((proff.post == "Администратор-глав_врач") && (read == "MOD"))
+              {
+                  this.Size = new Size(230, 240);
+                  this.label3.Visible = true;
+                  this.textBox1.Location = new System.Drawing.Point(7, 80);
+                  this.textBox1.Size = new System.Drawing.Size(205, 210);
+                  this.textBox2.Location = new System.Drawing.Point(7, 130);
+                  this.textBox2.Size = new System.Drawing.Size(205, 210);
+                  this.b_save.Location = new System.Drawing.Point(7, 170);
+                  this.cancel.Location = new System.Drawing.Point(125, 170);
+                  person = get_post_role();
+                  
+                   comboBox2.Items.Add(person[1].role);
+                   comboBox2.Items.Add("Администратор-глав_врач");
+                   comboBox2.Items.Add("Пользователь-диет_сестра");
+                   if (person[1].role == "Администратор-глав_врач")
+                   { 
+                       comboBox2.Items.Remove("Администратор-глав_врач");
+                       comboBox2.SelectedItem = "Администратор-глав_врач";
+                       
+                   }
+                   if (person[1].role == "Пользователь-диет_сестра")
+                   {
+                       comboBox2.Items.Remove("Пользователь-диет_сестра");
+                       comboBox2.SelectedItem = "Пользователь-диет_сестра";
 
-            if (proff.post == "Администратор-глав_врач")
-             {
-                _person = get_user();
-                fill_person_list();
-                comboBox1.SelectedIndex = 0;
-                comboBox2.Items.Add("Администратор-глав_врач");
-                comboBox2.Items.Add("Пользователь-диет_сестра");
-                 
-            }
+                   }
+                
+                  b_save.Enabled = true;
+                  textBox1.Text = person[1].login;
+                  textBox2.Text = person[1].pass;
+                  comboBox1.Visible = false;
+                  comboBox2.Visible = true;
+                  this.comboBox2.Location = new System.Drawing.Point(7, 30);
+                  this.comboBox2.Size = new System.Drawing.Size(205, 205);
+                  label3.Location = new System.Drawing.Point(7, 10);
+                  label4.Visible = false;
+                  label2.Location = new System.Drawing.Point(7, 60);
+                  label1.Location = new System.Drawing.Point(7, 110);
+                           
+              }
+
+              if (proff.post == "Администратор-глав_врач")
+              {
+                 _person = get_user();
+                 fill_person_list();
+                 comboBox1.SelectedIndex = 0;
+                 comboBox2.Items.Add("Администратор-глав_врач");
+                 comboBox2.Items.Add("Пользователь-диет_сестра");                              
+             }
+
+         
             if (proff.post == "Пользователь-диет_сестра")
             {
                 this.Size = new Size(230,180);
@@ -77,6 +127,7 @@ namespace Preventorium
                
               person= get_post_role();
               this.comboBox2.Items.Add(proff.post);
+              comboBox2.SelectedIndex = 0;
               b_save.Enabled = true;
               textBox1.Text = person[1].login;
               textBox2.Text = person[1].pass;
@@ -97,13 +148,11 @@ namespace Preventorium
 
                     this.comboBox1.Items.Add(this._person[i].post.Trim());
                     comboBox1.Text = _person[i].post;
-                   
                 }
                 else
                 {
                     break;
                 }
-
             }
 
         }
@@ -128,14 +177,14 @@ namespace Preventorium
 
                     if (proff.post == "Администратор-глав_врач")
                     {
-                        this.Text = "Добавление логина и пароля пользователям";
+                        this.Text = "Добавление логина и/или пароля пользователям";
                     }
 
                     break;
 
                 case "MOD":
                     this._state = "MOD";
-                    this.Text = "Редактирование";
+                    this.Text = "Редактирование логина и/или пароля пользователя";
                     this.b_save.Enabled = true;
                     break;
             }
@@ -229,6 +278,7 @@ namespace Preventorium
                     user[i].post_id = rd.GetInt32(0).ToString();
                     user[i].login = rd.GetString(1);
                     user[i].pass = rd.GetString(2);
+                    user[i].role = rd.GetString(3);
                 }
 
                 rd.Close();
@@ -251,43 +301,43 @@ namespace Preventorium
 
         private void b_save_Click(object sender, EventArgs e)
         {
-            if ((textBox1.Text == "") || textBox2.Text == ""  )
+            if ((textBox1.Text == "") || textBox2.Text == "" || comboBox2.Text =="")
             {
-                MessageBox.Show("Поля: Логин,пароль,роль пользователя, не могут быть пустыми");
+                MessageBox.Show("Поля: Логин,пароль,роль пользователя, не могут быть пустыми","Внимание!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             else
             {
-                string result; //Результат попытки сохранения/добавления ингредиента
+                string result=""; //Результат попытки сохранения/добавления ингредиента
 
                 switch (this._state)
                 {
                     //Если добавляется новая запись...
                     case "NEW":
-                        if (proff.post == "Пользователь-диет_сестра")
-                        {
-
-                            result = Program.add_read_module.upd_password(id_person, this.textBox1.Text, (this.textBox2.Text), (this.proff.post));
+                          if (proff.post == "Пользователь-диет_сестра") 
+                          {
+                              result = Program.add_read_module.upd_password(id_person, this.textBox1.Text, (this.textBox2.Text), (this.proff.post));
                             this.Close();
-
-
-                        }
+                         }
                         else
-                        {
+                        {  
                             result = Program.add_read_module.add_password(_id, this.textBox1.Text, (this.textBox2.Text), (this.comboBox2.Text));
-                            this.Close();
                         }
                         break;
 
+                   
+                    case "MOD":
+                        if (proff.post == "Администратор-глав_врач")
+                        {
 
-                    default:
-                        result = "NDF";
-                        // не используется, однако mvs не позволяет 
-                        // дальше работать переменной, которой в одной
-                        // из веток кода не присваивается значение
+                            result = Program.add_read_module.upd_password(id_person, this.textBox1.Text, (this.textBox2.Text), (this.comboBox2.Text));
+                            
+                          
+                            this.Close();
+                        }
+
                         break;
-
-                }
-
+                  }
+                               
                 if (result == "OK")
                 {
                     if (this._state == "NEW")

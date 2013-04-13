@@ -20,7 +20,7 @@ namespace Preventorium
             professia = prof;
         }
 
-           private void users_Load(object sender, EventArgs e)
+        private void users_Load(object sender, EventArgs e)
         {
             if (professia.post == "Пользователь-диет_сестра")
             {
@@ -32,8 +32,10 @@ namespace Preventorium
                 this.FormBorderStyle = FormBorderStyle.Fixed3D;
                 this.b_delete.Visible = false;
                 toolStripSeparator3.Visible = false;
+                toolStripSeparator4.Visible = false;
                 this.b_add.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
                 this.b_add.Text = "Изменить пароль";
+                this.b_read.Visible = false;
             }
             if (professia.post == "Администратор-глав_врач")
             {
@@ -41,12 +43,16 @@ namespace Preventorium
                 load_data_table_head("Users");
                 gw.Columns[0].Visible = false;
                 gw.Columns[1].HeaderText = "Пользователь";
+                gw.Columns[1].Width = 100;
                 gw.Columns[2].HeaderText = "Логин";
+                gw.Columns[2].Width = 90;
                 gw.Columns[3].HeaderText = "Пароль";
+                gw.Columns[3].Width = 100;
+                gw.Columns[4].HeaderText = "Роль пользователя";
+                gw.Columns[5].Width = 150;
             }
-
-        }
-          public void load_data_table(string state, string prof)
+       }
+        public void load_data_table(string state, string prof)
         {
             bs.DataSource = Program.data_module.get_data_table_password(state, prof).Tables[state];
             gw.DataSource = bs;
@@ -62,13 +68,7 @@ namespace Preventorium
             gw.Show();
             this._current_state = state;
         }
-
-        private void add_new_adm()
-        {
-            
-         /*add_users ingr = new add_users(Program.data_module);
-            ingr.ShowDialog();*/
-        }
+      
         private void add_new_users(class_person profess,int id)
         {
             add_users ingr = new add_users(Program.data_module, profess,id);
@@ -83,8 +83,7 @@ namespace Preventorium
                     switch (this._current_state)
                     {
                         case "Users":
-
-                           add_users ingr = new add_users(Program.data_module, professia);
+                          add_users ingr = new add_users(Program.data_module, professia);
                           ingr.ShowDialog();
                             break;
                     }
@@ -146,5 +145,28 @@ namespace Preventorium
                 }
 
             }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if ((professia.post == "Администратор-глав_врач"))
+                {
+                    switch (this._current_state)
+                    {
+                        case "Users":
+                            int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
+                            add_users user_settings = new add_users(Program.data_module, professia, id, "MOD");
+                            user_settings.ShowDialog();
+                            break;
+                    }
+                    load_data_table_head("Users");
+                }
+            }
+            catch { }
+        }
+
+       
+       
     }
 }
