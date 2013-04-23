@@ -2529,5 +2529,119 @@ namespace Preventorium
             return food_in_menu;
         }
 
+        public string add_password(class_person  ID, string login, string password, string role)
+        {
+            this._command_text = "insert into Users";
+            this._command_text += "(IDPost,login,password,role) ";
+            this._command_text += "values(";
+
+            if (ID.post_id == "")
+            { this._command_text += ""; this._command_text += ", "; }
+            else
+            {
+                this._command_text += " '";
+                this._command_text += ID.post_id;
+                this._command_text += "',";
+            }
+
+            if (login == "null")
+            {
+                { this._command_text += "null"; this._command_text += ", "; }
+            }
+            else
+            {
+                this._command_text += " '";
+                this._command_text += login;
+                this._command_text += "',";
+            }
+
+           
+
+            if (password == "")
+            { this._command_text += ""; this._command_text += ", "; }
+            else
+            {
+                this._command_text += " '";
+                this._command_text += password;
+                this._command_text += "',";
+            }
+
+            if (role == "")
+            { this._command_text += ""; this._command_text += ", "; }
+            else
+            {
+                this._command_text += " '";
+                this._command_text += role;
+                this._command_text += "')";
+            }
+
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = this._command_text;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch
+            {
+                MessageBox.Show(" Указанный вами логин уже занят", "Внимание !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+
+            return "OK";
+
+        }
+        public string upd_password(int ID, string login, string password, string role)
+        {
+            this._command_text = "update Users set ";
+            string query = "";
+             _command_text += "Login= ";
+            if (login == ""){ query += "null, "; }
+            {
+                
+                this._command_text += " '";
+                this._command_text += login;
+                this._command_text += "',";
+            }
+
+
+            _command_text += "Password= ";
+            if (password == "") { query += "null, "; }
+            
+            else
+            {
+                this._command_text += " '";
+                this._command_text += password;
+                this._command_text += "',";
+            }
+
+            _command_text += "role= ";
+              if (role == "") { query += "null, ";  }
+
+              else
+              {
+                  this._command_text += " '";
+                  this._command_text += role;
+                  this._command_text += "'";
+              }
+            _command_text += " where IDPost= " +  ID.ToString();
+
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = this._command_text;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch
+            {
+                MessageBox.Show(" Указанный вами логин уже занят", "Внимание !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return "OK";
+
+        }
+
     }
 }

@@ -116,9 +116,9 @@
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(9, 128);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 18);
+            this.label1.Size = new System.Drawing.Size(139, 18);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Прогресс расчета:";
+            this.label1.Text = "Прогресс расчета 0 %";
             // 
             // Menu_layout
             // 

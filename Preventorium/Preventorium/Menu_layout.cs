@@ -2283,6 +2283,11 @@ namespace Preventorium
 
                 for (int i = 1; i <= 50; i++)
                 {
+                    pb.Minimum = 0;
+                    pb.Maximum = 50;
+                    pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
 
                     if (_ingr_list_breakfast[i] == null)
                     {
@@ -2529,9 +2534,7 @@ namespace Preventorium
                         }
                     }
 
-                    pb.Minimum = 0;
-                    pb.Maximum = 50;
-                    pb.Value = i;
+                  
                 }
                 App.Visible = true;
                 GC.Collect();
@@ -2578,6 +2581,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                   int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
 
                     if (_ingr_list_breakfast[i] == null)
                     {
@@ -2868,6 +2873,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
                     if (_ingr_list_dinner[i] == null)
                     {
                         var name = "";
@@ -3160,6 +3167,9 @@ namespace Preventorium
                      pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                  
+                    label1.Text = "Прогресс расчета " + k + "%";
 
                     if (_ingr_list_dinner[i] == null)
                     {
@@ -3744,6 +3754,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
                 }
                 App.Visible = true;
                 GC.Collect();
@@ -4065,6 +4077,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
 
                 }
                 App.Visible = true;
@@ -4885,6 +4899,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
                 }
  
                 App.Visible = true;
@@ -5701,6 +5717,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
                 }
 
                 App.Visible = true;
@@ -6516,6 +6534,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
                 }
 
                 App.Visible = true;
@@ -7331,6 +7351,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
                 }
 
                 App.Visible = true;
@@ -8147,6 +8169,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k+ "%";
                 }
 
                 App.Visible = true;
@@ -8963,6 +8987,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
                 }
 
                 App.Visible = true;
@@ -9779,6 +9805,8 @@ namespace Preventorium
                     pb.Minimum = 0;
                     pb.Maximum = 50;
                     pb.Value = i;
+                    int k = i * 2;
+                    label1.Text = "Прогресс расчета " + k + "%";
                 }
 
                 App.Visible = true;
@@ -9830,6 +9858,10 @@ namespace Preventorium
                         pb.Minimum = 0;
                         pb.Maximum = 50;
                         pb.Value = i;
+                       
+                        int k = i * 2;
+                        label1.Text = "Прогресс расчета " + k + "%";
+                      
                         if (_ingr_list_breakfast[i] == null)
                      {
                          var name = "";

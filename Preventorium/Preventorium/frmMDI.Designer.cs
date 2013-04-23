@@ -55,6 +55,7 @@
             this.b_report = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Service = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Service_Parameters = new System.Windows.Forms.ToolStripMenuItem();
+            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Windiw = new System.Windows.Forms.ToolStripMenuItem();
             this.frmMDI_MainMenu_Windiw_Сascade = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
@@ -256,7 +257,8 @@
             // frmMDI_MainMenu_Service
             // 
             this.frmMDI_MainMenu_Service.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.frmMDI_MainMenu_Service_Parameters});
+            this.frmMDI_MainMenu_Service_Parameters,
+            this.usersToolStripMenuItem});
             this.frmMDI_MainMenu_Service.Name = "frmMDI_MainMenu_Service";
             this.frmMDI_MainMenu_Service.Size = new System.Drawing.Size(59, 20);
             this.frmMDI_MainMenu_Service.Text = "&Сервис";
@@ -264,9 +266,16 @@
             // frmMDI_MainMenu_Service_Parameters
             // 
             this.frmMDI_MainMenu_Service_Parameters.Name = "frmMDI_MainMenu_Service_Parameters";
-            this.frmMDI_MainMenu_Service_Parameters.Size = new System.Drawing.Size(138, 22);
-            this.frmMDI_MainMenu_Service_Parameters.Text = "&Параметры";
+            this.frmMDI_MainMenu_Service_Parameters.Size = new System.Drawing.Size(217, 22);
+            this.frmMDI_MainMenu_Service_Parameters.Text = "Параметры подключения";
             this.frmMDI_MainMenu_Service_Parameters.Click += new System.EventHandler(this.frmMDI_MainMenu_Service_Parameters_Click);
+            // 
+            // usersToolStripMenuItem
+            // 
+            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.usersToolStripMenuItem.Text = "Сменить пароль";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // frmMDI_MainMenu_Windiw
             // 
@@ -436,6 +445,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem Cards;
+        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
     }
 }
 

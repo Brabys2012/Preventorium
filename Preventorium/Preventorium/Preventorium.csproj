@@ -135,6 +135,12 @@
     <Compile Include="add_queue.designer.cs">
       <DependentUpon>add_queue.cs</DependentUpon>
     </Compile>
+    <Compile Include="add_users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_users.Designer.cs">
+      <DependentUpon>add_users.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cards.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +279,12 @@
     <Compile Include="autorisation.Designer.cs">
       <DependentUpon>autorisation.cs</DependentUpon>
     </Compile>
+    <Compile Include="users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="users.Designer.cs">
+      <DependentUpon>users.cs</DependentUpon>
+    </Compile>
     <Compile Include="user_settings.cs" />
     <EmbeddedResource Include="add_book.resx">
       <DependentUpon>add_book.cs</DependentUpon>
@@ -316,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="add_queue.resx">
       <DependentUpon>add_queue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_users.resx">
+      <DependentUpon>add_users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cards.resx">
       <DependentUpon>Cards.cs</DependentUpon>
@@ -394,6 +409,9 @@
     <EmbeddedResource Include="autorisation.resx">
       <DependentUpon>autorisation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="users.resx">
+      <DependentUpon>users.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -422,6 +440,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Image\t-92843.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Image\edu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Image\pic_s_731839282.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

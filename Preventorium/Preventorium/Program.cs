@@ -117,7 +117,7 @@ namespace Preventorium
             data_module = new db_connect();
             user_set = new user_settings();
             add_read_module = new get_table();
-            string users;
+            class_person users;
        
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

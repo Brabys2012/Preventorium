@@ -248,6 +248,47 @@ namespace Preventorium
             }
         }
 //------------------------------------------------------
+
+        public DataSet get_data_table_password(string table_name,string prof)
+        {
+            string query = "";
+            query += "select Person.IDPost,login, Password from " + table_name + " join Person on Users.IDPost=Person.IDPost where Users.role='" + prof + "'"; 
+            try
+            {
+                this._ds = new DataSet();
+                this._da = new SqlDataAdapter(query, this._conn);
+                this._cb = new SqlCommandBuilder(this._da);
+
+                this._da.Fill(this._ds, table_name);
+                this._active_table = table_name;
+                return this._ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Data + " " + ex.Message);
+                return null;
+            }
+        }
+        public DataSet get_data_table_password_head_vrach(string table_name)
+        {
+            string query = "";
+            query += "select Person.IDPost, Post,login,Password,role from " + table_name + " join Person on Users.IDPost=Person.IDPost";
+            try
+            {
+                this._ds = new DataSet();
+                this._da = new SqlDataAdapter(query, this._conn);
+                this._cb = new SqlCommandBuilder(this._da);
+
+                this._da.Fill(this._ds, table_name);
+                this._active_table = table_name;
+                return this._ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Data + " " + ex.Message);
+                return null;
+            }
+        }
         public DataSet get_data_table(string table_name)
         {
             string query = "";

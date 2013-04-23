@@ -171,6 +171,7 @@
             this.gw.ShowRowErrors = false;
             this.gw.Size = new System.Drawing.Size(832, 271);
             this.gw.TabIndex = 3;
+           
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
