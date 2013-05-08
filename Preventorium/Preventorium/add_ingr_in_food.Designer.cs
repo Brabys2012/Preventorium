@@ -64,7 +64,7 @@
             // tb_gross
             // 
             this.tb_gross.Location = new System.Drawing.Point(312, 31);
-            this.tb_gross.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_gross.Margin = new System.Windows.Forms.Padding(4);
             this.tb_gross.Name = "tb_gross";
             this.tb_gross.Size = new System.Drawing.Size(201, 25);
             this.tb_gross.TabIndex = 3;
@@ -83,7 +83,7 @@
             // tb_net
             // 
             this.tb_net.Location = new System.Drawing.Point(312, 82);
-            this.tb_net.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_net.Margin = new System.Windows.Forms.Padding(4);
             this.tb_net.Name = "tb_net";
             this.tb_net.Size = new System.Drawing.Size(201, 25);
             this.tb_net.TabIndex = 5;
@@ -91,8 +91,9 @@
             // 
             // b_save
             // 
+            this.b_save.Enabled = false;
             this.b_save.Location = new System.Drawing.Point(312, 417);
-            this.b_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.b_save.Margin = new System.Windows.Forms.Padding(4);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(100, 32);
             this.b_save.TabIndex = 6;
@@ -104,7 +105,7 @@
             // 
             this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_abolition.Location = new System.Drawing.Point(420, 417);
-            this.b_abolition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.b_abolition.Margin = new System.Windows.Forms.Padding(4);
             this.b_abolition.Name = "b_abolition";
             this.b_abolition.Size = new System.Drawing.Size(100, 32);
             this.b_abolition.TabIndex = 7;
@@ -119,7 +120,7 @@
             this.lb_ingr.HorizontalScrollbar = true;
             this.lb_ingr.ItemHeight = 18;
             this.lb_ingr.Location = new System.Drawing.Point(16, 31);
-            this.lb_ingr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lb_ingr.Margin = new System.Windows.Forms.Padding(4);
             this.lb_ingr.Name = "lb_ingr";
             this.lb_ingr.Size = new System.Drawing.Size(288, 418);
             this.lb_ingr.TabIndex = 8;
@@ -141,7 +142,7 @@
             this.Controls.Add(this.l_ingr);
             this.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_ingr_in_food";

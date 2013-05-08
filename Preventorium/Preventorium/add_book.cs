@@ -18,8 +18,7 @@ namespace Preventorium
 
           private void enabled_b_save(object sender, EventArgs e)
           {
-              this.b_save.Enabled = true;
-              if (this._state == "OLD") { this.set_state("MOD"); };
+                if (this._state == "OLD") { this.set_state("MOD"); };
               // Включается кнопка "Сохранить" если текстбоксы не пустые
               if ((tb_author.Text != "") && (tb_name.Text != "") && (tb_year.Text != "")) { b_save.Enabled = true; }
           }
@@ -73,13 +72,11 @@ namespace Preventorium
                    case "OLD":
                        this._state = "OLD";
                        this.Text = "Справочники - Просмотр";
-                       this.b_save.Enabled = true;
                        break;
 
                    case "NEW":
                        this._state = "NEW";
                        this.Text = "Справочники - Добавление";
-                       this.b_save.Enabled = true;
                        break;
 
                    case "MOD":
@@ -92,8 +89,7 @@ namespace Preventorium
 
            private void b_save_Click(object sender, EventArgs e)
            {   
-
-            string result; //Результат попытки сохранения/добавления справочника
+             string result; //Результат попытки сохранения/добавления справочника
             switch (this._state)
             {
                 //Если добавляется новая запись...
@@ -164,9 +160,10 @@ namespace Preventorium
                gw.Columns[3].HeaderText = "Номер карты";
            }
 
-           //Удаление ингредиента из блюда
+           //Удаление блюда из справочника
            private void b_delete_Click(object sender, EventArgs e)
            {
+               this.load_data_table(this._current_state);
                switch (this._current_state)
                {
                    case "FoodInBook":
@@ -188,9 +185,9 @@ namespace Preventorium
            /// <summary>
            /// Блюда в кулинарный справочник
            /// </summary>
-           private void add_new_food_in_book(int id_book, string author)
+           private void add_new_food_in_book(int id_book, string author, string year)
            {
-               add_food_in_book food_in_book = new add_food_in_book(Program.data_module, id_book, author);
+               add_food_in_book food_in_book = new add_food_in_book(Program.data_module, id_book, author, year);
                food_in_book.book = this.tb_name.Text;
                food_in_book.ShowDialog();
            }
@@ -201,7 +198,8 @@ namespace Preventorium
                {
                    case "FoodInBook":
                        string author = tb_author.Text;
-                       this.add_new_food_in_book(Convert.ToInt32(_id), author);
+                       string year = tb_year.Text;
+                       this.add_new_food_in_book(Convert.ToInt32(_id), author, year);
 
                        break;
                }
@@ -221,6 +219,25 @@ namespace Preventorium
                gw.ClearSelection();
                gw.Rows[rowIndex].Selected = true;
                gw.CurrentCell = gw[3, rowIndex];
+           }
+
+           private void gw_KeyDown(object sender, KeyEventArgs e)
+           {
+               try
+               {                  
+                   if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                   {
+                       b_add_Click(sender, e);
+                   }
+
+                   if (e.KeyCode == Keys.Delete)
+                   {
+
+                       bDelete_Click(sender, e);
+                   }
+               }
+               catch
+               { }
            }
 
     }

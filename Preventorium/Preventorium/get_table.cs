@@ -1048,8 +1048,8 @@ namespace Preventorium
             }
 
             catch (Exception ex)
-            {
-                return (ex.Message + " " + ex.Data);
+            {                
+                MessageBox.Show("Поле:'Год выпуска' должно содержать только цифры","Внимание",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
 
             return "OK";
@@ -1288,8 +1288,28 @@ namespace Preventorium
         {
 
             string query = "update Foods set Name_food ='" + food_name + "'" + " from Foods where   ID_food ='" + food_ID + "'";
-            
-            
+                        
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                return ("ERROR_" + ex.Message + " " + ex.Data);
+            }
+
+            return "OK";
+        }
+
+        public string upd_login(string login, int ID)
+        {
+
+            string query = "update Users set Login ='" + login + "'" + " from Users  where  IDPost ='" + ID + "'";
+
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -1699,7 +1719,7 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                MessageBox.Show("Выберите блюдо!","Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Выберите блюдо!","Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return "OK";
@@ -2015,7 +2035,7 @@ namespace Preventorium
         }
 
         //добавляет блюдо в справочник
-        public string add_food_in_book(string card_numb, string food, string book, string author)
+        public string add_food_in_book(string card_numb, string food, string book, string author, string year)
         {
             this._command_text = "insert into FoodInBook";
             this._command_text += "(Id_Cards, ID_food, IDBook) ";
@@ -2042,7 +2062,7 @@ namespace Preventorium
             { this._command_text += "null"; this._command_text += ")"; }
             else
             {
-                this._command_text += "(select IDBook from Book where Name ='" + book + "' and Author = '" + author;
+                this._command_text += "(select IDBook from Book where Name ='" + book + "' and Author = '" + author + "' and Year = '" + year;
                 this._command_text += "'))";
             }
 
@@ -2056,7 +2076,7 @@ namespace Preventorium
 
             catch (Exception ex)
             {
-                MessageBox.Show("Блюдо уже содержится в этом справочнике!");
+                MessageBox.Show("Блюдо уже содержится в этом справочнике!","Внимание",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
 
             return "OK";

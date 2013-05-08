@@ -100,6 +100,10 @@ namespace Preventorium
         public class_book[] _book4;
         public string foods;
 
+        public class_person _namevrach;
+        public class_person _namevrach2;
+        public class_person _namevrach3;
+
 
         /// <summary>
         /// Шаблон карточки раскладки в Word , который будем заполнять
@@ -127,11 +131,7 @@ namespace Preventorium
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
-        {
-            // this._ingr_list = this.get_ingr_list();
-
-            //  fill_ingr_list();
-            
+        {                       
             // Метод который содержит sql запрос ,который возвращает по имени блюда значения: наименование блюда и т.д
             this._food_list = this.food();
             // Метод заполняет комбобокс блюдами
@@ -150,17 +150,15 @@ namespace Preventorium
                 this.cb_ok.Items.Clear();
                 this.cb_diets_vrach.Items.Clear();
                 Cb_diet_vrach2.Items.Clear();
-
-
             }
             for (int i = 1; i < this._person.Count(); i++)
             {
                 if (this._person[i] != null)
                 {
 
-                    this.cb_ok.Items.Add(this._person[i].name.Trim() + " " + this._person[i].surname + " " + this._person[i].secondname);
-                    this.cb_diets_vrach.Items.Add(this._person[i].name.Trim() + " " + this._person[i].surname + " " + this._person[i].secondname);
-                    this.Cb_diet_vrach2.Items.Add(this._person[i].name.Trim() + " " + this._person[i].surname + " " + this._person[i].secondname);
+                    this.cb_ok.Items.Add(this._person[i].post);
+                    this.cb_diets_vrach.Items.Add(this._person[i].post);
+                    this.Cb_diet_vrach2.Items.Add(this._person[i].post);
                 }
                 else
                 {
@@ -175,9 +173,8 @@ namespace Preventorium
         public class_person[] get_person_list()
         {
             class_person[] person = new class_person[512];
-            string query = "select *  from Person ";
-
-
+            string query = "select IDPost,post  from Person ";
+            
             string query2 = query;
             try
             {
@@ -192,11 +189,127 @@ namespace Preventorium
                     i = i + 1;
                     person[i] = new class_person();
                     person[i].result = "OK";
-                    person[i].name = rd.GetString(1).ToString();
-                    person[i].surname = rd.GetString(2).ToString();
-                    person[i].secondname = rd.GetString(3).ToString();
+                   
+                    person[i].post = rd.GetString(1).ToString();
                     person[i].id = rd.GetInt32(0).ToString();
+                    
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.Data);
+                return null;
+            }
+              return person;
+
+        }
+
+        /// <summary>
+        /// Метод содержит sql запрос,который возвращает имена работающих в профике
+        /// </summary>
+        /// <returns>имена,фамилии и т.д</returns>
+        public class_person get_person_name_vrach1()
+        {
+            class_person person = new class_person();
+            string query = "select *  from Person where Post='"+ cb_ok.Text+"'";
+            string query2 = query;
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query2;
+                int i = 0;
+
+                SqlDataReader rd = com.ExecuteReader();
+
+                while (rd.Read())
+                {
+                 
+                    person = new class_person();
+                    person.result = "OK";
+                    person.surname = rd.GetString(1).ToString();
+                    person.name = rd.GetString(2).ToString();
+                    person.secondname = rd.GetString(3).ToString();
+
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.Data);
+                return null;
+            }
+
+
+            return person;
+
+        }
+
+        public class_person get_person_name_vrach2()
+        {
+            class_person person = new class_person();
+            string query = "select *  from Person where Post='" + cb_diets_vrach.Text + "'";
+            string query2 = query;
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query2;
+                int i = 0;
+
+                SqlDataReader rd = com.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    person = new class_person();
+                    person.result = "OK";
+                    person.surname = rd.GetString(1).ToString();
+                    person.name = rd.GetString(2).ToString();
+                    person.secondname = rd.GetString(3).ToString();
+
+                }
+                rd.Close();
+                rd.Dispose();
+                com.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.Data);
+                return null;
+            }
+
+
+            return person;
+
+        }
+        public class_person get_person_name_vrach3()
+        {
+            class_person person = new class_person();
+            string query = "select *  from Person where Post='" + Cb_diet_vrach2.Text + "'";
+            string query2 = query;
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = query2;
+                int i = 0;
+
+                SqlDataReader rd = com.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    person = new class_person();
+                    person.result = "OK";
+                    person.surname = rd.GetString(1).ToString();
+                    person.name = rd.GetString(2).ToString();
+                    person.secondname = rd.GetString(3).ToString();
 
                 }
                 rd.Close();
@@ -220,7 +333,6 @@ namespace Preventorium
         /// <returns> имя блюда </returns>
         public class_food[] food()
         {
-
             class_food[] foods_list = new class_food[512];
 
             string query = "select *  from Foods ";
@@ -311,8 +423,6 @@ namespace Preventorium
             return foods_list1;
 
         }
-
-
         public class_ingridients[] get_ingr_list()
         {
 
@@ -357,9 +467,7 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list1()
-        {
-
-            class_ingridients[] ingr_list = new class_ingridients[512];
+        {   class_ingridients[] ingr_list = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
             // string query1 = cb_ingr1.Text + "'";
             // for (int k = 1; k < this._ingr_list.Count(); k++)
@@ -405,12 +513,9 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list2()
-        {
-
-            class_ingridients[] get_ingr2 = new class_ingridients[512];
+        {   class_ingridients[] get_ingr2 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-            // string query1 = cb_ingr2.Text + "'";
-
+         
             if (this._ingr_list[2] != null)
             {
                
@@ -452,11 +557,9 @@ namespace Preventorium
         }
         public class_ingridients[] get_ingr_list3()
         {
-
             class_ingridients[] ingr_list3 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //string query1 = cb_ingr3.Text + "'";
+                   
             if (this._ingr_list[3] != null)
             {
                 string query1 = _ingr_list[3].name + "'";
@@ -501,12 +604,9 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list4()
-        {
-
-            class_ingridients[] ingr_list4 = new class_ingridients[512];
+        {  class_ingridients[] ingr_list4 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //string query1 = cb_ingr4.Text + "'";
+                        
             if (this._ingr_list[4] != null)
             {
                 string query1 = _ingr_list[4].name + "'";
@@ -550,11 +650,9 @@ namespace Preventorium
         }
         public class_ingridients[] get_ingr_list5()
         {
-
             class_ingridients[] ingr_list5 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //  string query1 = cb_ingr5.Text + "'";
+                   
             if (this._ingr_list[5] != null)
             {
                 string query1 = _ingr_list[5].name + "'";
@@ -597,12 +695,9 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list6()
-        {
-
-            class_ingridients[] ingr_list6 = new class_ingridients[512];
+        {   class_ingridients[] ingr_list6 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            // string query1 = cb_ingr6.Text + "'";
+                       
             if (this._ingr_list[6] != null)
             {
                 string query1 = _ingr_list[6].name + "'";
@@ -644,12 +739,9 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list7()
-        {
-
-            class_ingridients[] ingr_list7 = new class_ingridients[512];
+        {   class_ingridients[] ingr_list7 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //string query1 = cb_ingr7.Text + "'";
+                   
             if (this._ingr_list[7] != null)
             {
                 string query1 = _ingr_list[7].name + "'";
@@ -692,12 +784,9 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list8()
-        {
-
-            class_ingridients[] ingr_list8 = new class_ingridients[512];
+        {   class_ingridients[] ingr_list8 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //   string query1 = cb_ingr8.Text + "'";
+                     
             if (this._ingr_list[8] != null)
             {
                 string query1 = _ingr_list[8].name + "'";
@@ -742,20 +831,15 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list9()
-        {
-
-            class_ingridients[] ingr_list9 = new class_ingridients[512];
+        {   class_ingridients[] ingr_list9 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //string query1 = cb_ingr9.Text + "'";
+                     
             if (this._ingr_list[9] != null)
             {
                 string query1 = _ingr_list[9].name + "'";
 
                 string query2 = query + query1;
-
-
-                try
+                      try
                 {
                     SqlCommand com = Program.data_module._conn.CreateCommand();
                     com.CommandText = query2;
@@ -796,8 +880,7 @@ namespace Preventorium
 
             class_ingridients[] ingr_list10 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //  string query1 = cb_ingr10.Text + "'";
+                     
             if (this._ingr_list[10] != null)
             {
                 string query1 = _ingr_list[10].name + "'";
@@ -842,12 +925,9 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list11()
-        {
-
-            class_ingridients[] ingr_list11 = new class_ingridients[512];
+        {   class_ingridients[] ingr_list11 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //  string query1 = cb_ingr11.Text + "'";
+                     
             if (this._ingr_list[11] != null)
             {
                 string query1 = _ingr_list[11].name + "'";
@@ -891,12 +971,9 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list12()
-        {
-
-            class_ingridients[] ingr_list12 = new class_ingridients[512];
+        {  class_ingridients[] ingr_list12 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            // string query1 = cb_ingr12.Text + "'";
+                      
             if (this._ingr_list[12] != null)
             {
                 string query1 = _ingr_list[12].name + "'";
@@ -940,12 +1017,9 @@ namespace Preventorium
 
         }
         public class_ingridients[] get_ingr_list13()
-        {
-
-            class_ingridients[] ingr_list13 = new class_ingridients[512];
+        {   class_ingridients[] ingr_list13 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
-
-            //string query1 = cb_ingr13.Text + "'";
+                      
             if (this._ingr_list[13] != null)
             {
                 string query1 = _ingr_list[13].name + "'";
@@ -991,12 +1065,9 @@ namespace Preventorium
         }
 
         public class_ingridients[] get_ingr_list14()
-        {
-
-            class_ingridients[] ingr_list14 = new class_ingridients[512];
+        {  class_ingridients[] ingr_list14 = new class_ingridients[512];
             string query = "select *  from Ingridients where ingridient_name='";
 
-            //  string query1 = cb_ingr14.Text + "'";
             if (this._ingr_list[14] != null)
             {
                 string query1 = _ingr_list[14].name + "'";
@@ -1053,13 +1124,12 @@ namespace Preventorium
                 if (this._food_list1[t] != null)
                 {
 
-                    string g1 = this._food_list1[t].food_id;
+                    string guer1 = this._food_list1[t].food_id;
 
-                    string query4 = g1 + "'";
+                    string query4 = guer1 + "'";
 
                     string query2 = query + query4;
-
-
+                    
                     try
                     {
                         SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -1097,28 +1167,22 @@ namespace Preventorium
         }
 
         public class_ingr_food[] ves_list()
-        {
-
-            class_ingr_food[] ves_list = new class_ingr_food[512];
-
-
+        {  class_ingr_food[] ves_list = new class_ingr_food[512];
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
 
-
-            if (_ingr_list1 == null)
+                if (_ingr_list1 == null)
             {
                 _ingr_list1 = null;
 
             }
             else
-            {           //                for (int k = 1; k < this._ingr_list.Count(); k++)
-
+            {           
                 if (this._ingr_list[1] != null)
                 {
 
-                    string g = this._ingr_list[1].ingr_id;
+                    string guer = this._ingr_list[1].ingr_id;
 
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
 
@@ -1128,9 +1192,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer2 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer2 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -1177,10 +1241,8 @@ namespace Preventorium
         }
         public class_ingr_food[] ves_list1()
         {
-
             class_ingr_food[] ves_list2 = new class_ingr_food[512];
-
-
+            
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
 
 
@@ -1189,9 +1251,9 @@ namespace Preventorium
             if (this._ingr_list[2] != null)
             {
 
-                string g = this._ingr_list[2].ingr_id;
+                string guer = this._ingr_list[2].ingr_id;
 
-                string query1 = g + "'";
+                string query1 = guer + "'";
 
                 string query3 = "and ID_food='";
 
@@ -1201,9 +1263,9 @@ namespace Preventorium
                     if (this._food_list1[t] != null)
                     {
 
-                        string g1 = this._food_list1[t].food_id;
+                        string guer1 = this._food_list1[t].food_id;
 
-                        string query4 = g1 + "'";
+                        string query4 = guer1 + "'";
 
                         string query2 = query + query1 + query3 + query4;
 
@@ -1222,10 +1284,7 @@ namespace Preventorium
 
                                 ves_list2[i].net = rd.GetDouble(2).ToString();
                                 ves_list2[i].bruto = rd.GetDouble(1).ToString();
-                                // customers_list1[i].name = rd.GetString(0).ToString();
-                                // customers_list1[i].ingr_id = rd.GetInt32(1).ToString();
-
-                            }
+                              }
 
                             rd.Close();
                             rd.Dispose();
@@ -1244,12 +1303,8 @@ namespace Preventorium
 
         }
         public class_ingr_food[] ves_list2()
-        {
-
-            class_ingr_food[] ves_list2 = new class_ingr_food[512];
-
-
-            string query = "select *  from Ingridients_in_food where Id_ingridients='";
+        {class_ingr_food[] ves_list2 = new class_ingr_food[512];
+              string query = "select *  from Ingridients_in_food where Id_ingridients='";
 
             if (_ingr_list3 == null)
             {
@@ -1275,9 +1330,9 @@ namespace Preventorium
                             if (this._food_list1[t] != null)
                             {
 
-                                string g1 = this._food_list1[t].food_id;
+                                string guer1 = this._food_list1[t].food_id;
 
-                                string query4 = g1 + "'";
+                                string query4 = guer1 + "'";
 
                                 string query2 = query + query1 + query3 + query4;
 
@@ -1320,9 +1375,7 @@ namespace Preventorium
 
         }
         public class_ingr_food[] ves_list3()
-        {
-
-            class_ingr_food[] ves_list3 = new class_ingr_food[512];
+        {    class_ingr_food[] ves_list3 = new class_ingr_food[512];
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
 
             if (_ingr_list4 == null)
@@ -1332,15 +1385,14 @@ namespace Preventorium
             }
             else
             {
-
                 for (int k = 1; k < this._ingr_list4.Count(); k++)
 
                     if (this._ingr_list4[k] != null)
                     {
 
-                        string g = this._ingr_list4[k].ingr_id;
+                        string guer = this._ingr_list4[k].ingr_id;
 
-                        string query1 = g + "'";
+                        string query1 = guer + "'";
 
                         string query3 = "and ID_food='";
 
@@ -1349,9 +1401,9 @@ namespace Preventorium
                             if (this._food_list1[t] != null)
                             {
 
-                                string g1 = this._food_list1[t].food_id;
+                                string guer1 = this._food_list1[t].food_id;
 
-                                string query4 = g1 + "'";
+                                string query4 = guer1 + "'";
 
                                 string query2 = query + query1 + query3 + query4;
 
@@ -1403,15 +1455,13 @@ namespace Preventorium
             }
             else
             {
-
                 for (int k = 1; k < this._ingr_list5.Count(); k++)
 
                     if (this._ingr_list5[k] != null)
                     {
+                        string guer = this._ingr_list5[k].ingr_id;
 
-                        string g = this._ingr_list5[k].ingr_id;
-
-                        string query1 = g + "'";
+                        string query1 = guer + "'";
 
                         string query3 = "and ID_food='";
 
@@ -1421,9 +1471,9 @@ namespace Preventorium
                             if (this._food_list1[t] != null)
                             {
 
-                                string g1 = this._food_list1[t].food_id;
+                                string guer1 = this._food_list1[t].food_id;
 
-                                string query4 = g1 + "'";
+                                string query4 = guer1 + "'";
 
                                 string query2 = query + query1 + query3 + query4;
 
@@ -1464,21 +1514,15 @@ namespace Preventorium
 
         }
         public class_ingr_food[] ves_list5()
-        {
-
-            class_ingr_food[] ves_list5 = new class_ingr_food[512];
-
-
-            string query = "select *  from Ingridients_in_food where Id_ingridients='";
-
-            for (int k = 1; k < this._ingr_list6.Count(); k++)
+        {  class_ingr_food[] ves_list5 = new class_ingr_food[512];
+             string query = "select *  from Ingridients_in_food where Id_ingridients='";
+              for (int k = 1; k < this._ingr_list6.Count(); k++)
 
                 if (this._ingr_list6[k] != null)
                 {
+                    string guer = this._ingr_list6[k].ingr_id;
 
-                    string g = this._ingr_list6[k].ingr_id;
-
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
 
@@ -1488,9 +1532,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -1532,9 +1576,7 @@ namespace Preventorium
         }
         public class_ingr_food[] ves_list6()
         {
-
             class_ingr_food[] ves_list6 = new class_ingr_food[512];
-
 
             string query = "select *  from Ingridients_in_food where Id_ingridients='";
 
@@ -1543,9 +1585,9 @@ namespace Preventorium
                 if (this._ingr_list7[k] != null)
                 {
 
-                    string g = this._ingr_list7[k].ingr_id;
+                    string guer = this._ingr_list7[k].ingr_id;
 
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
 
@@ -1554,9 +1596,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -1621,9 +1663,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -1676,21 +1718,21 @@ namespace Preventorium
                 if (this._ingr_list9[k] != null)
                 {
 
-                    string g = this._ingr_list9[k].ingr_id;
+                    string guer = this._ingr_list9[k].ingr_id;
 
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
-
+                    
 
                     for (int t = 1; t < this._food_list1.Count(); t++)
 
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -1743,9 +1785,9 @@ namespace Preventorium
                 if (this._ingr_list10[k] != null)
                 {
 
-                    string g = this._ingr_list10[k].ingr_id;
+                    string guer = this._ingr_list10[k].ingr_id;
 
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
 
@@ -1755,9 +1797,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -1811,9 +1853,9 @@ namespace Preventorium
                 if (this._ingr_list11[k] != null)
                 {
 
-                    string g = this._ingr_list11[k].ingr_id;
+                    string guer = this._ingr_list11[k].ingr_id;
 
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
 
@@ -1823,9 +1865,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -1879,9 +1921,9 @@ namespace Preventorium
                 if (this._ingr_list12[k] != null)
                 {
 
-                    string g = this._ingr_list12[k].ingr_id;
+                    string guer = this._ingr_list12[k].ingr_id;
 
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
 
@@ -1891,9 +1933,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -1948,9 +1990,9 @@ namespace Preventorium
                 if (this._ingr_list13[k] != null)
                 {
 
-                    string g = this._ingr_list13[k].ingr_id;
+                    string guer = this._ingr_list13[k].ingr_id;
 
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
 
@@ -1960,9 +2002,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -2016,9 +2058,9 @@ namespace Preventorium
                 if (this._ingr_list14[k] != null)
                 {
 
-                    string g = this._ingr_list14[k].ingr_id;
+                    string guer = this._ingr_list14[k].ingr_id;
 
-                    string query1 = g + "'";
+                    string query1 = guer + "'";
 
                     string query3 = "and ID_food='";
 
@@ -2028,9 +2070,9 @@ namespace Preventorium
                         if (this._food_list1[t] != null)
                         {
 
-                            string g1 = this._food_list1[t].food_id;
+                            string guer1 = this._food_list1[t].food_id;
 
-                            string query4 = g1 + "'";
+                            string query4 = guer1 + "'";
 
                             string query2 = query + query1 + query3 + query4;
 
@@ -2069,8 +2111,7 @@ namespace Preventorium
             return ves_list14;
             
         }
-
-      
+              
         /// <summary>
         /// Метод заполняет комбобокс блюдами
         /// </summary>
@@ -2101,10 +2142,7 @@ namespace Preventorium
                 return;
             }
             
-            var namevr2 = cb_diets_vrach.Text;
-            var namevr3 = this.Cb_diet_vrach2.Text;
-            var namevr1 = this.cb_ok.Text;
-            
+                    
             var App = new word.Application();
             App.Visible = false;
 
@@ -2112,20 +2150,57 @@ namespace Preventorium
 
             var bludo = this.cb_food.Text;
 
-
-            word1("{bludo}", bludo, word);
-            word1("{namevrach}", namevr1, word);
-            word1("[sister]", namevr2, word);
-            word1("[doctor]", namevr3, word);
-
-
+             word1("{bludo}", bludo, word);
+             
           
+
+            if (_namevrach == null)
+            {
+                var name = "";
+
+                word1("{namevrach}", name, word);
+              
+            }
+
+            if (this._namevrach != null)
+            {
+                word1("{namevrach}", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+             }
+
+
+            if (_namevrach2 == null)
+            {
+                var name = "";
+
+                word1("[sister]", name, word);
+
+            }
+
+            if (this._namevrach2 != null)
+            {
+                word1("[sister]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+            }
+
+            if (_namevrach3 == null)
+            {
+                var name = "";
+
+                word1("[doctor]2", name, word);
+
+            }
+
+            if (this._namevrach3 != null)
+            {
+
+                word1("[doctor]", _namevrach3.surname + " " + _namevrach3.name + " " + _namevrach3.secondname, word);
+            }
+             
             if (_book[1] == null)
             {
                 var name = "";
             
-                                word1("[book]",name, word);
-              //  word1("[year]", name1, word);
+                word1("[book]",name, word);
+              
             }
 
             if (this._book[1] != null)
@@ -2134,24 +2209,21 @@ namespace Preventorium
 
                 var name1 = _book[1].year;
                 word1("[book]", name, word);
-               // word1("[year]", name1, word);
-
+               
             }
-
-           
+                       
                 if (_foodyear[1] == null)
-                { }
-
-                if (this._foodyear[1] != null)
                 {
-
+                    var name = "";
+                    word1("[year]", name, word);
+                }
+                   if (this._foodyear[1] != null)
+                {
                       var name1 = _foodyear[1].year;
-
                     word1("[year]", name1, word);
 
                 }
-            
-                 
+                             
             if (_book1[1] == null)
             {
                 var name = "";
@@ -2168,8 +2240,7 @@ namespace Preventorium
 
                 var name1 = _book1[1].year;
 
-                //word1("[year2]", name1, word);
-                word1("[book2]", name, word);
+                   word1("[book2]", name, word);
             }
            
 
@@ -2186,35 +2257,28 @@ namespace Preventorium
             {
 
                 var name = "Автор:" + _book2[1].author + "  " + " Название: " + _book2[1].name + "  " + "Год: " + _book2[1].year;
-                var name1 = _book2[1].year;
-
-                word1("[year3]", name1, word);
+                        
                 word1("[book3]", name, word);
             }
 
             if (_book3[1] == null)
             {
                 var name = "";
-
-
-                word1("[year4]", name, word);
+                                
                 word1("[book4]", name, word);
             }
 
             if (this._book3[1] != null)
             {
                 var name = "Автор: " + _book3[1].author + "  " + " Название: " + _book3[1].name + "  " + "Год: " + _book3[1].year;
-
-
+                
                 word1("[book4]", name, word);
             }
 
             if (_book4[1] == null)
             {
                 var name = "";
-                word1("[year5]", name, word);
-
-                word1("[book5]", name, word);
+                  word1("[book5]", name, word);
             }
 
             if (this._book4[1] != null)
@@ -2224,314 +2288,47 @@ namespace Preventorium
                 word1("[book5]", name, word);
             }
 
-            
+           
             if (_ingr_list[1] == null)
             {
                 var name = "";
-
-
+                
                 word1("[i]", name, word);
             }
 
             if (this._ingr_list[1] != null)
-            {
-
-                var name = _ingr_list[1].name;
-
-
-                word1("[i]", name, word);
+            { var name = _ingr_list[1].name;
+                   word1("[i]", name, word);
             }
 
 
-
-            if (_ingr_list[2] == null)
+            for (int i = 2; i <= 14; i++)
             {
 
-                var name2 = "";
-
-
-                word1("[i2]", name2, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[2] != null)
+                if (_ingr_list[i] == null)
                 {
 
-                    var name2 = _ingr_list[2].name;
+                    var name2 = "";
 
 
-                    word1("[i2]", name2, word);
+                    word1("[i"+i+"]", name2, word);
                 }
-
-            }
-
-
-            if (_ingr_list[3] == null)
-            {
-                var name3 = "";
-
-
-                word1("[i3]", name3, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[3] != null)
+                else
                 {
 
-                    var name3 = _ingr_list[3].name;
+                    if (this._ingr_list[i] != null)
+                    {
+
+                        var name2 = _ingr_list[i].name;
 
 
-                    word1("[i3]", name3, word);
-                }
+                        word1("[i" + i + "]", name2, word);
+                    }
 
-            }
-
-            if (_ingr_list[4] == null)
-            {
-                var name4 = "";
-
-
-                word1("[i4]", name4, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[4] != null)
-                {
-
-                    var name4 = _ingr_list[4].name;
-
-
-                    word1("[i4]", name4, word);
-                }
-
-            }
-
-
-
-
-            if (_ingr_list[5] == null)
-            {
-                var name5 = "";
-
-
-                word1("[i5]", name5, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[5] != null)
-                {
-
-                    var name5 = _ingr_list[5].name;
-
-
-                    word1("[i5]", name5, word);
-                }
-
-            }
-
-            if (_ingr_list[6] == null)
-            {
-                var name6 = "";
-
-
-                word1("[i6]", name6, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[6] != null)
-                {
-
-                    var name6 = _ingr_list[6].name;
-
-
-                    word1("[i6]", name6, word);
-                }
-
-            }
-
-
-            if (_ingr_list[7] == null)
-            {
-                var name7 = "";
-
-
-                word1("[i7]", name7, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[7] != null)
-                {
-
-                    var name7 = _ingr_list[7].name;
-
-
-                    word1("[i7]", name7, word);
                 }
             }
-
-
-
-            if (_ingr_list[8] == null)
-            {
-                var name8 = "";
-
-
-                word1("[i8]", name8, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[8] != null)
-                {
-
-                    var name8 = _ingr_list[8].name;
-
-
-                    word1("[i8]", name8, word);
-                }
-
-            }
-
-
-
-
-            if (_ingr_list[9] == null)
-            {
-                var name9 = "";
-
-
-                word1("[i9]", name9, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[9] != null)
-                {
-
-                    var name9 = _ingr_list[9].name;
-
-
-                    word1("[i9]", name9, word);
-                }
-
-            }
-
-
-            if (_ingr_list[10] == null)
-            {
-                var name10 = "";
-
-
-                word1("[i10]", name10, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[10] != null)
-                {
-
-                    var name10 = _ingr_list[10].name;
-
-
-                    word1("[i10]", name10, word);
-                }
-
-            }
-
-
-            if (_ingr_list[11] == null)
-            {
-                var name11 = "";
-
-
-                word1("[i11]", name11, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[11] != null)
-                {
-
-                    var name11 = _ingr_list[11].name;
-
-
-                    word1("[i11]", name11, word);
-                }
-
-            }
-
-
-            if (_ingr_list[12] == null)
-            {
-                var name12 = "";
-
-
-                word1("[i12]", name12, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[12] != null)
-                {
-
-                    var name12 = _ingr_list[12].name;
-
-
-                    word1("[i12]", name12, word);
-                }
-
-            }
-
-            if (_ingr_list[13] == null)
-            {
-                var name13 = "";
-
-
-                word1("[i13]", name13, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[13] != null)
-                {
-
-                    var name13 = _ingr_list[13].name;
-
-
-                    word1("[i13]", name13, word);
-                }
-
-            }
-
-            if (_ingr_list[14] == null)
-            {
-                var name14 = "";
-
-
-                word1("[i14]", name14, word);
-            }
-            else
-            {
-
-                if (this._ingr_list[14] != null)
-                {
-
-                    var name14 = _ingr_list[14].name;
-
-
-                    word1("[i14]", name14, word);
-                }
-
-            }
-
-
-                        // ---- ---- -- -- - - - - - -- - - - 
+            
+                                  
 
             if (_Diet[1] == null)
             {
@@ -2549,28 +2346,26 @@ namespace Preventorium
 
                 word1("[d]", diet1, word);
             }
-
-
-
-
-            if (_Diet[2] == null)
-            {
-                var name = "";
-
-
-                word1("[d1]", name, word);
-            }
-
-            else
-                if (this._Diet[2] != null)
+                      
+           
+                if (_Diet[2] == null)
                 {
+                    var name = "";
 
-                    var diet2 = _Diet[2].numbDiet;
 
-
-                    word1("[d1]", diet2, word);
+                    word1("[d1]", name, word);
                 }
 
+                else
+                    if (this._Diet[2] != null)
+                    {
+
+                        var diet2 = _Diet[2].numbDiet;
+
+
+                        word1("[d1]", diet2, word);
+                    }
+           
 
             if (_Diet[3] == null)
             {
@@ -3003,8 +2798,7 @@ namespace Preventorium
 
                 }
             }
-
-
+            
             if (_ingr_list3[1] == null)
             {
                 var cal3 = "";
@@ -3993,60 +3787,8 @@ namespace Preventorium
                 }
             }
 
-
-            /* if (this._food_list1 == null)
-             {
-                 var net1 = "";
-                 var br1 = "";
-
-
-                 word1("[n1]", net1, word);
-                 word1("[br1]", br1, word);
-
-             }
-             else
-             {*/
-
-            /*for (int i = 1; i < this._diet.Count(); i++)
-            {
-                if (this._diet[i] != null)
-                {
-
-                    var diet = this._diet[i].numbDiet;
-                    var opis = this._diet[i].description;
-                        
-                    word1("[d]", diet, word);
-                    word1("[opis]", opis, word);*/
-
-            //    }
-            //  }
-            //}
-
-               GC.Collect();
-               GC.Collect();
-            App.Visible = true;
-            GC.Collect();
-            GC.Collect();
-
-            //string fileName = String.Empty;
-
-         /*   SaveFileDialog saveFileExcel = new SaveFileDialog();
-            saveFileExcel.Filter = "Excel files |*.docx|All files (*.*)|*.*";
-            saveFileExcel.FilterIndex = 2;
-            saveFileExcel.RestoreDirectory = true;
-
-            if (saveFileExcel.ShowDialog() == DialogResult.OK)
-            {
-                fileName = saveFileExcel.FileName;
-                //Fixed-old code :11 para->add 1:Type.Missing
-                word.SaveAs(fileName);
-                GC.Collect();
-
-            }
-            else
-                return;*/
-            //word.SaveAs(@"D:\1-86.docx");
-            GC.Collect();
+             App.Visible = true;
+              
             GC.Collect();
 
         }
@@ -4061,16 +3803,12 @@ namespace Preventorium
             var range = word.Content;
 
            range.Find.ClearFormatting();
-
-         
-                     
-               range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
-            
+                             
+           range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);          
 
         }
 
-
-        public class_diet[] diet()
+                public class_diet[] diet()
         {
 
             class_diet[] id_diet = new class_diet[512];
@@ -4083,9 +3821,9 @@ namespace Preventorium
                 if (this._food_list1[t] != null)
                 {
 
-                    string g1 = this._food_list1[t].food_id;
+                    string guer1 = this._food_list1[t].food_id;
 
-                    string query4 = query + g1 + "'";
+                    string query4 = query + guer1 + "'";
 
 
                     try
@@ -4161,49 +3899,13 @@ namespace Preventorium
             this._book2 = get_book_list2();
             this._book3 = get_book_list3();
             this._book4 = get_book_list4();
-            
-              this._foodyear = get_book_year();
-
-            //fill_book_list();
+            this._foodyear = get_book_year();
             this.bt_ok.Enabled = true;
-
             this._person = this.get_person_list();
-            fill_person_list();
-           // this._post = this.get_post_list();
+            fill_person_list();          
           }
 
-    /*    public class_post[] get_post_list()
-        {
-            class_post[] post = new class_post[512];
-            string query = "select *  from Post where IDPost='" + this._person[1].id + "'";
-            
-            try
-            {
-                SqlCommand com = Program.data_module._conn.CreateCommand();
-                        com.CommandText = query;
-
-                        SqlDataReader rd = com.ExecuteReader();
-                        int i = 0;
-                        while (rd.Read())
-                        {
-                            i = i + 1;
-                            post[i] = new class_post();
-                            post[i].result = "OK";
-                            post[i].position = rd.GetString(3).ToString();
-
-                        }
-                        rd.Close();
-                        rd.Dispose();
-                        com.Dispose();
-        }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message + " " + ex.Data);
-                        return null;
-                    }
-                 return post;
-        }*/
+    
         public class_book[] get_id_book_list()
         {
 
@@ -4214,12 +3916,8 @@ namespace Preventorium
 
                 if (this._food_list1[t] != null)
                 {
-
-                    string g1 = this._food_list1[t].food_id + "'";
-
-
-
-                    string query2 = query + g1;
+                    string guery1 = this._food_list1[t].food_id + "'";
+                    string query2 = query + guery1;
 
                     try
                     {
@@ -4234,8 +3932,6 @@ namespace Preventorium
                             book[i] = new class_book();
                             book[i].result = "OK";
                             book[i].book_id = rd.GetInt32(2).ToString();
-
-
                         }
                         rd.Close();
                         rd.Dispose();
@@ -4258,22 +3954,13 @@ namespace Preventorium
             class_book[] book = new class_book[512];
             string query = "select *  from Book where IDBook='";
 
-             //for (int t = 1; t < this._id_book.Count(); t++)
-
             if (this._id_book[1] != null)
-            {
-
-                string g1 = this._id_book[1].book_id + "'";
-
-
-
-                string query2 = query + g1;
-
-                try
+            {   string guer1 = this._id_book[1].book_id + "'";
+                string query2 = query + guer1;
+                  try
                 {
                     SqlCommand com = Program.data_module._conn.CreateCommand();
                     com.CommandText = query2;
-
                     SqlDataReader rd = com.ExecuteReader();
                     int i = 0;
                     while (rd.Read())
@@ -4282,10 +3969,8 @@ namespace Preventorium
                         book[i] = new class_book();
                         book[i].result = "OK";
                         book[i].author = rd.GetString(1).ToString();
-
                         book[i].year = rd.GetInt32(2).ToString();
                         book[i].name = rd.GetString(3).ToString();
-
 
                     }
                     rd.Close();
@@ -4300,26 +3985,22 @@ namespace Preventorium
                 }
             }
             return book;
-
-
-
-        }
+             }
 
         public class_book[] get_book_list1()
         {
             class_book[] book = new class_book[512];
             string query = "select *  from Book where IDBook='";
-
-            //  for (int t = 1; t < this._id_book.Count(); t++)
+                    
 
             if (this._id_book[2] != null)
             {
 
-                string g1 = this._id_book[2].book_id + "'";
+                string guer1 = this._id_book[2].book_id + "'";
 
 
 
-                string query2 = query + g1;
+                string query2 = query + guer1;
 
                 try
                 {
@@ -4360,17 +4041,12 @@ namespace Preventorium
         {
             class_book[] book = new class_book[512];
             string query = "select *  from Book where IDBook='";
-
-            //  for (int t = 1; t < this._id_book.Count(); t++)
-
+                     
             if (this._id_book[3] != null)
             {
 
-                string g1 = this._id_book[3].book_id + "'";
-
-
-
-                string query2 = query + g1;
+                string guer1 = this._id_book[3].book_id + "'";
+                 string query2 = query + guer1;
 
                 try
                 {
@@ -4412,16 +4088,10 @@ namespace Preventorium
             class_book[] book = new class_book[512];
             string query = "select *  from Book where IDBook='";
 
-           
-
             if (this._id_book[4] != null)
             {
-
-                string g1 = this._id_book[4].book_id + "'";
-
-
-
-                string query2 = query + g1;
+                string guer1 = this._id_book[4].book_id + "'";
+                 string query2 = query + guer1;
 
                 try
                 {
@@ -4456,20 +4126,12 @@ namespace Preventorium
             return book;
           }
         public class_book[] get_book_list4()
-        {
-            class_book[] book = new class_book[512];
+        {   class_book[] book = new class_book[512];
             string query = "select *  from Book where IDBook='";
-
-         
-
+              
             if (this._id_book[5] != null)
-            {
-
-                string g1 = this._id_book[5].book_id + "'";
-
-
-
-                string query2 = query + g1;
+            {   string guery1 = this._id_book[5].book_id + "'";
+            string query2 = query + guery1;
 
                 try
                 {
@@ -4514,15 +4176,9 @@ namespace Preventorium
                       if (this._food_list1[t] != null)
                       {
 
-                          string g1 = this._food_list1[t].food_id + "'";
-                          string query2 = query + g1;/* + " and  FIB.ID_Cards='";
-                          for (int v = 1; v < this._food_list2.Count(); v++)
-                          {
-                              if (this._food_list2[v] != null)
-                              {
-                                  string g2 = _food_list2[v].id;
-                                  string query3 = query2 + g2 + "'";*/
-
+                          string guery1 = this._food_list1[t].food_id + "'";
+                          string query2 = query + guery1;
+                         
                                   try
                                   {
                                       SqlCommand com = Program.data_module._conn.CreateCommand();
@@ -4564,6 +4220,22 @@ namespace Preventorium
         private void b_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cb_ok_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _namevrach = get_person_name_vrach1();
+        }
+
+        private void cb_diets_vrach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _namevrach2 = get_person_name_vrach2();
+        }
+
+        private void Cb_diet_vrach2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _namevrach3 = get_person_name_vrach3();
+
         }
 
                

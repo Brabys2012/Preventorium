@@ -185,6 +185,7 @@
             this.gw.TabIndex = 5;
             this.gw.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellClick);
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
+            this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // Menu_Strip_diets

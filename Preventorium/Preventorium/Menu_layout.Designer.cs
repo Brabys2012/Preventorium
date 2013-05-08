@@ -58,6 +58,7 @@
             this.cb_ok.Name = "cb_ok";
             this.cb_ok.Size = new System.Drawing.Size(260, 21);
             this.cb_ok.TabIndex = 0;
+            this.cb_ok.SelectedIndexChanged += new System.EventHandler(this.cb_ok_SelectedIndexChanged);
             // 
             // cb_diets_vrach
             // 
@@ -68,6 +69,7 @@
             this.cb_diets_vrach.Name = "cb_diets_vrach";
             this.cb_diets_vrach.Size = new System.Drawing.Size(260, 21);
             this.cb_diets_vrach.TabIndex = 1;
+            this.cb_diets_vrach.SelectedIndexChanged += new System.EventHandler(this.cb_diets_vrach_SelectedIndexChanged);
             // 
             // lb_head_vrach
             // 

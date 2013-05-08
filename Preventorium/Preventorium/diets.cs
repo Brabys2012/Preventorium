@@ -173,6 +173,37 @@ namespace Preventorium
             this.bDelete_Click(sender,e);
         }
 
+        private void gw_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    int rowIndex = (gw.CurrentRow.Index - 1);
+
+                    if (rowIndex < 0)
+                    {
+                        rowIndex = 0;
+                    }
+                     bEditDiet_Click(sender, e);
+                     gw.CurrentCell = gw[1, rowIndex];
+                }
+
+                if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                {
+                    bAddDiet_Click(sender, e);
+                }
+
+                if (e.KeyCode == Keys.Delete)
+                {
+
+                    bDelete_Click(sender, e);
+                }
+            }
+            catch
+            { }
+        }
+
         
     }
 }

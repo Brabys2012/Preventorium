@@ -20,6 +20,16 @@ namespace Preventorium
         private int id;
         private int AddDayID;
 
+
+        private void enabled_b_save(object sender, EventArgs e)
+        {
+            if (this._state == "OLD") { this.set_state("MOD"); };
+            // Включается кнопка "Сохранить" если текстбоксы не пустые
+            if (tb_serve.Text != "") 
+            {   b_save.Enabled = true;
+                // MessageBox.Show("Вы не ввели количество порций или не выбрали блюдо", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         // Конструктор, вызываемый при нажатии "Добавить"
         public add_food_in_menu(db_connect data_module, string serve_time, int menu_id, int day_id)
         {
@@ -84,28 +94,25 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Просмотр";
-                    this.b_save.Enabled = false;
-                    break;
+                     break;
 
                 case "NEW":
                     this._state = "NEW";
                     this.Text = "Добавление";
-                    this.b_save.Enabled = true;
                     break;
 
                 case "MOD":
                     this._state = "MOD";
                     this.Text = "Редактирование";
-                    this.b_save.Enabled = true;
-                    break;
+                     break;
             }
         }
 
         private void b_save_Click(object sender, EventArgs e)
         {
-            if (tb_serve.Text == "")
+            if (lb_food.Text == "")
             {
-                MessageBox.Show("Вы не ввели количество порций", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Вы не выбрали блюдо !","Внимание",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
@@ -146,12 +153,12 @@ namespace Preventorium
 
                 this.Update();
             }
-        }
+           }
 
         private void b_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-    }
+      }
 }

@@ -224,6 +224,7 @@
             // 
             // b_save
             // 
+            this.b_save.Enabled = false;
             this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b_save.Location = new System.Drawing.Point(12, 307);
             this.b_save.Name = "b_save";
@@ -307,6 +308,7 @@
             this.gw.Size = new System.Drawing.Size(667, 301);
             this.gw.TabIndex = 5;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
+            this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // Menu_food
@@ -443,7 +445,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2MinSize = 1;
             this.splitContainer1.Size = new System.Drawing.Size(900, 345);
-            this.splitContainer1.SplitterDistance = 193;
+            this.splitContainer1.SplitterDistance = 316;
             this.splitContainer1.TabIndex = 7;
             // 
             // label1
@@ -532,6 +534,7 @@
             this.Name = "add_food";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сведения о блюде";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.add_food_FormClosed);
             this.Load += new System.EventHandler(this.add_food_Load);
             this.gb_food_data.ResumeLayout(false);
             this.gb_food_data.PerformLayout();

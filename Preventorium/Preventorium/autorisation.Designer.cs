@@ -110,9 +110,9 @@
             // 
             this.pictureBox2.Image = global::Preventorium.Properties.Resources.edu;
             this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(80, 104);
+            this.pictureBox2.Location = new System.Drawing.Point(96, 104);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(86, 51);
+            this.pictureBox2.Size = new System.Drawing.Size(87, 51);
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
@@ -154,7 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CancelButton = this.cancel;
-            this.ClientSize = new System.Drawing.Size(401, 164);
+            this.ClientSize = new System.Drawing.Size(395, 159);
             this.Controls.Add(this.linkLabel);
             this.Controls.Add(this.tb_log);
             this.Controls.Add(this.pictureBox2);

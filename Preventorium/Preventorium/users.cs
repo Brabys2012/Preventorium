@@ -27,15 +27,21 @@ namespace Preventorium
                 this.Size = new Size(222, 115);
                 load_data_table("Users", professia.post);
                 gw.Columns[1].HeaderText = "Логин";
-                gw.Columns[2].HeaderText = "Пароль";
+                gw.Columns[2].Visible = false;
                 gw.Columns[0].Visible = false;
                 this.FormBorderStyle = FormBorderStyle.Fixed3D;
                 this.b_delete.Visible = false;
                 toolStripSeparator3.Visible = false;
                 toolStripSeparator4.Visible = false;
+                b_add_menu_strip.Visible = false;
+                this.toolStripSeparator5.Visible = false;
+                this.toolStripSeparator6.Visible = false;
+                delete_menu_strip.Visible = false;
                 this.b_add.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
                 this.b_add.Text = "Изменить пароль";
                 this.b_read.Visible = false;
+                read_menu_strip.Click += new System.EventHandler(this.b_add_Click);
+                
             }
             if (professia.post == "Администратор-глав_врач")
             {
@@ -45,9 +51,9 @@ namespace Preventorium
                 gw.Columns[1].HeaderText = "Пользователь";
                 gw.Columns[1].Width = 100;
                 gw.Columns[2].HeaderText = "Логин";
-               gw.Columns[2].Width = 90;
-                gw.Columns[3].HeaderText = "Пароль";
-                gw.Columns[3].Width = 100;
+                gw.Columns[2].Width = 90;
+                gw.Columns[3].Visible = false;
+                //gw.Columns[3].Width = 100;
                 gw.Columns[4].HeaderText = "Роль пользователя";
                 gw.Columns[4].Width = 150;
             }
@@ -107,7 +113,6 @@ namespace Preventorium
             catch
             { }
         }
-
         private void b_delete_Click(object sender, EventArgs e)
         {
             switch (this._current_state)
@@ -146,7 +151,7 @@ namespace Preventorium
 
             }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void b_read_Click(object sender, EventArgs e)
         {
             try
             {
@@ -166,7 +171,84 @@ namespace Preventorium
             catch { }
         }
 
-       
+        private void gw_MouseDown(object sender, MouseEventArgs e)
+        {
+            int rowIndex = gw.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndex == -1) return;
+            gw.ClearSelection();
+            gw.Rows[rowIndex].Selected = true;
+            gw.CurrentCell = gw[1, rowIndex];// 3  - это номер столбца
+        }
+
+        private void gw_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            if (professia.post == "Пользователь-диет_сестра")
+            {
+                b_add_Click(sender, e);
+            }
+            else
+            {
+                b_read_Click(sender, e);
+            }
+        }
+
+        private void gw_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (professia.post == "Пользователь-диет_сестра")
+                {
+                    if (e.KeyCode == Keys.Enter)
+                    {
+                        int rowIndex = (gw.CurrentRow.Index - 1);
+
+                        if (rowIndex < 0)
+                        {
+                            rowIndex = 0;
+                        }
+
+                        b_add_Click(sender, e);
+
+                        gw.CurrentCell = gw[0, rowIndex];
+                    }
+
+                }
+
+                else
+                {
+                    if (e.KeyCode == Keys.Enter)
+                    {
+                        int rowIndex = (gw.CurrentRow.Index - 1);
+
+                        if (rowIndex < 0)
+                        {
+                            rowIndex = 0;
+                        }
+
+                        b_read_Click(sender, e);
+
+                        gw.CurrentCell = gw[0, rowIndex];
+                    }
+
+                    if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                    {
+                        b_add_Click(sender, e);
+                    }
+
+                    if (e.KeyCode == Keys.Delete)
+                    {
+                        b_delete_Click(sender, e);
+                    }
+                }
+            }
+            catch
+            { }
+        
+
+        }
+
+               
        
     }
 }

@@ -172,6 +172,7 @@
             this.gw.Size = new System.Drawing.Size(341, 237);
             this.gw.TabIndex = 4;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
+            this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // Menu_Strip_book

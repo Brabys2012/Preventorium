@@ -36,6 +36,7 @@
             // b_cancel
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.b_cancel.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b_cancel.Location = new System.Drawing.Point(119, 56);
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Size = new System.Drawing.Size(75, 23);
@@ -46,6 +47,7 @@
             // 
             // b_apply
             // 
+            this.b_apply.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b_apply.Location = new System.Drawing.Point(12, 56);
             this.b_apply.Name = "b_apply";
             this.b_apply.Size = new System.Drawing.Size(75, 23);
