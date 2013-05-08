@@ -94,7 +94,7 @@ namespace Preventorium
         public class_person get_password()
         {
 
-            class_person user = new class_person();
+            class_person user;
 
             string query = "select Password from Users join Person on Users.IDPost=Person.IDPost where  Users.Login='" + tb_log.Text + "'";
             try
@@ -104,7 +104,13 @@ namespace Preventorium
                 int i = 0;
 
                 SqlDataReader rd = com.ExecuteReader();
-
+                // Если есть строки, полученные из БД в результате запроса
+                if (rd.HasRows)
+                {
+                    // Зполняем поля пользователя
+                    user = new class_person();
+                    user.id = rd.GetBytes(...);
+                }
                 while (rd.Read())
                 {
                     i = i + 1;

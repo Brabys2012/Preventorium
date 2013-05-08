@@ -192,6 +192,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_users";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Назначить пароль";
             this.Load += new System.EventHandler(this.add_users_Load);

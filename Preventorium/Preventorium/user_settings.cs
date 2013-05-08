@@ -14,7 +14,7 @@ namespace Preventorium
         /// <summary>
         /// Имя конфигурационного файла с пользовательскими настройками.
         /// </summary>
-        private static string _FileName = Application.StartupPath + "settings.vrconf";
+        private static string _FileName = Application.StartupPath + "\\settings.vrconf";
 
         /// <summary>
         /// Имя сервера.

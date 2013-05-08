@@ -5,167 +5,57 @@ using System.Data.SqlClient;
 
 
 namespace Preventorium
-{     class get_table
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    class get_table
     {
         public DataSet _ds;
-        public SqlDataAdapter _da;     
-        public string _command_text;
+        public SqlDataAdapter _da;
 
         /// <summary>
-        /// Метод содержит sql запрос на добавление значений в таблицу Ingridients
+        /// Выполняет SQL запрос, который не возвращает никаких данных.
         /// </summary>
+        /// <param name="sql_query">SQL запрос для выполнения.</param>
+        /// <returns>Признак успешного выполнения запроса.</returns>
+        private string SQL_Exec(string sql_query)
+        {
+            try
+            {
+                SqlCommand com = Program.data_module._conn.CreateCommand();
+                com.CommandText = sql_query;
+                com.ExecuteNonQuery();
+                com.Dispose();
+            }
+            catch (Exception ex)
+            {
+                return string.Format("Error: {0}", ex.Message);
+            }
+            return "OK";
+        }
+
+        /// <summary>
+        /// Выполняет запрос на вставку данных в таблицу Ингредиенты.
+        /// </summary>
+        /// <returns>Признак успешного выполнения операции.</returns>
         public string add_ingr(string name, string callories, string carbohydrates, string fats, string proteins)
         {
-            this._command_text = "insert into Ingridients";
-            this._command_text += "(ingridient_name,calories,carbohydrates,fats,proteins ) ";
-            this._command_text += "values(";
-
-            if (name == "")
-              { this._command_text += ""; this._command_text += ", "; }
-            else
-            {
-                this._command_text += " '";
-                this._command_text += name;
-                this._command_text += "',";
-            }
-
-            if (Convert.ToString(callories) == "null")
-            {
-                { this._command_text += "null"; this._command_text += ", "; }
-            }
-            else
-            {
-                this._command_text += " '";
-                this._command_text += callories;
-                this._command_text += "',";
-            }
-
-            if (Convert.ToString(carbohydrates) == "")
-            { this._command_text += ""; this._command_text += ", "; }
-            else
-            {
-                this._command_text += " '";
-                this._command_text += carbohydrates;
-                this._command_text += "',";
-
-            }
-
-            if (Convert.ToString(fats) == "")
-            { this._command_text += ""; this._command_text += ", "; }
-            else
-            {
-                this._command_text += " '";
-                this._command_text += fats;
-                this._command_text += "',";
-            }
-
-            if (Convert.ToString(proteins) == "")
-            { this._command_text += ""; this._command_text += ", "; }
-            else
-            {
-                this._command_text += " '";
-                this._command_text += proteins;
-                this._command_text += "')";
-            }
-
-            try
-            {
-                SqlCommand com = Program.data_module._conn.CreateCommand();
-                com.CommandText = this._command_text;
-                com.ExecuteNonQuery();
-                com.Dispose();
-            }
-
-            catch (Exception ex)
-            {
-                return (ex.Message + " " + ex.Data);
-            }
-
-            return "OK";
-
+            return SQL_Exec(string.Format("insert into Ingridients (ingridient_name, calories, carbohydrates, fats, proteins) values ('{0}', {1}, {2}, {3}, {4}, {5})", name, callories, carbohydrates, fats, proteins));
         }
         /// <summary>
-        /// Метод содержит sql запрос на обновление значений в таблицу Ingridients
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="name"></param>
-    /// <param name="calories"></param>
-    /// <param name="uglevod"></param>
-    /// <param name="fats"></param>
-    /// <param name="proteins"></param>
-    /// <returns>id ингридиента,имя,калории и т.д</returns>
-        public string upd_ingr(int id, string name, string calories, string uglevod, string fats, string proteins)
+        /// Выполняет запрос на обновление данных в таблице Ингредиенты.
+        /// </summary>
+        /// <returns>Признак успешного выполнения операции.</returns>
+        public string upd_ingr(int id, string name, string callories, string carbohydrates, string fats, string proteins)
         {
-            string query = "update Ingridients set ";
-
-            query += "ingridient_name=";
-            if (name == "") { query += "null, "; }
-            else
-            {
-                query += "'";
-                query += name;
-                query += "' ,";
-            }
-
-            query += "calories=";
-            if (uglevod.ToString() == "") { query += "null, "; }
-            else
-            {
-                query += "'";
-                query += calories;
-                query += "', ";
-            }
-
-            query += "carbohydrates=";
-            if (uglevod.ToString() == "") { query += "null, "; }
-            else
-            {
-                query += "'";
-                query += uglevod;
-                query += "', ";
-            }
-
-            query += "fats=";
-            if (uglevod.ToString() == "") { query += "null, "; }
-            else
-            {
-                query += "'";
-                query += fats;
-                query += "', ";
-            }
-
-            query += "proteins=";
-            if (uglevod.ToString() == "") { query += "null, "; }
-            else
-            {
-                query += "'";
-                query += proteins;
-                query += "' ";
-            }
-
-            query += "where ID_ingridients=";
-            query += id.ToString();
-
-
-            try
-            {
-                SqlCommand com = Program.data_module._conn.CreateCommand();
-                com.CommandText = query;
-                com.ExecuteNonQuery();
-                com.Dispose();
-            }
-
-            catch (Exception ex)
-            {
-                return ("ERROR_" + ex.Message + " " + ex.Data);
-            }
-
-            return "OK";
+            return SQL_Exec(string.Format("update Ingridients set ingridient_name = '{1}', calories = {2}, carbohydrates = {3}, fats = {4}, proteins = {5} where ID_ingridients = {0}", id, ((name.Length == 0) ? "NULL" : name), callories, carbohydrates, fats, proteins));
         }
+
         /// <summary>
-    /// Метод ,возвращает значения о ингридиенте при редактировании на форму
-    /// </summary>
-    /// <param name="id"></param>
+        /// Метод ,возвращает значения о ингридиенте при редактировании на форму
+        /// </summary>
+        /// <param name="id"></param>
         /// <returns>id ингридиента,имя,калории и т.д</returns>
         public class_ingridients get_ingr(int id)
         {
