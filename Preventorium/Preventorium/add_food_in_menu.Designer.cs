@@ -47,6 +47,7 @@
             // 
             // b_save
             // 
+            this.b_save.Enabled = false;
             this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b_save.Location = new System.Drawing.Point(13, 205);
             this.b_save.Name = "b_save";
@@ -60,7 +61,7 @@
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_cancel.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_cancel.Location = new System.Drawing.Point(130, 205);
+            this.b_cancel.Location = new System.Drawing.Point(187, 205);
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Size = new System.Drawing.Size(75, 23);
             this.b_cancel.TabIndex = 2;
@@ -84,6 +85,7 @@
             this.tb_serve.Name = "tb_serve";
             this.tb_serve.Size = new System.Drawing.Size(75, 20);
             this.tb_serve.TabIndex = 4;
+            this.tb_serve.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
             // add_food_in_menu
             // 

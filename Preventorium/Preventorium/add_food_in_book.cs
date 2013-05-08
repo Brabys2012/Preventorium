@@ -19,18 +19,19 @@ namespace Preventorium
         public string food_id;
         public int book_id;
         public string author;
+        public string year;
 
         private void enabled_b_save(object sender, EventArgs e)
         {
             if (this._state == "OLD") { this.set_state("MOD"); }
-            if (lb_food.Text != "") { b_save.Enabled = true; }
-        }
+                    }
 
         // Конструктор, вызываемый при нажатии "Добавить"
-        public add_food_in_book(db_connect data_module, int book_id, string _author)
+        public add_food_in_book(db_connect data_module, int book_id, string _author, string _year)
         {
             InitializeComponent();
             author = _author;
+            year = _year;
             
             food_in_book[] food_in_book = new food_in_book[512];
             food_in_book = Program.add_read_module.get_list_food_in_book_id(book_id);
@@ -58,7 +59,7 @@ namespace Preventorium
         //Добавление блюда
         private void add_new_food_in_book()
         {
-            add_food_in_book add_food = new add_food_in_book(Program.data_module, book_id, author);
+            add_food_in_book add_food = new add_food_in_book(Program.data_module, book_id, author, year);
             add_food.ShowDialog();
         }
 
@@ -142,73 +143,76 @@ namespace Preventorium
 
         private void b_save_Click(object sender, EventArgs e)
         {
-
-            string result; //Результат попытки сохранения/добавления
-            switch (this._state)
-            {
-                //Если добавляется новая запись...
-                case "NEW":
-                    string query = "Select Number_Card from Cards "
-                            + "join Foods F on F.ID_food = Cards.ID_food "
-                            + "where F.Name_food = '" + lb_food.Text + "'";
-                      try
-            {
-                SqlCommand com = Program.data_module._conn.CreateCommand();
-                com.CommandText = query;
-                SqlDataReader rd = com.ExecuteReader();
-                if (rd.Read())
-                {
-                    if (rd.IsDBNull(0))
-                    {
-                        card_numb = "";
-                    }
-                    else
-                    {
-                        card_numb = rd.GetString(0);
-                    }
-                }
-                rd.Close();
-                rd.Dispose();
-                com.Dispose();
-            }
-
-               catch (Exception ex)
-               {
-                   result = "ERROR_" + ex.Data + " " + ex.Message;
-               }
-                    result = Program.add_read_module.add_food_in_book(card_numb,
-                        this.lb_food.Text,
-                        book, author);
-                    this.Close();
-                    break;
-
-                default:
-                    result = "NDF";
-                    // не используется, однако mvs не позволяет 
-                    // дальше работать переменной, которой в одной
-                    // из веток кода не присваивается значение
-                    break;
-            }
-
-            if (result == "OK")
-            {
-                if (this._state == "NEW")
-                {
-                    this.set_state("OLD");
-                    this.Dispose();
-                }
-                else
-                    if (this._state == "MOD")
-                    {
-                        this.set_state("OLD");
-                    }
-            }
+            if (lb_food.Text == "") { MessageBox.Show("Вы не выбрали блюдо!", "Внимaние !", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             else
             {
-                MessageBox.Show(result);
-            }
+                string result; //Результат попытки сохранения/добавления
+                switch (this._state)
+                {
+                    //Если добавляется новая запись..
+                    case "NEW":
+                        string query = "Select Number_Card from Cards "
+                                + "join Foods F on F.ID_food = Cards.ID_food "
+                                + "where F.Name_food = '" + lb_food.Text + "'";
+                        try
+                        {
+                            SqlCommand com = Program.data_module._conn.CreateCommand();
+                            com.CommandText = query;
+                            SqlDataReader rd = com.ExecuteReader();
+                            if (rd.Read())
+                            {
+                                if (rd.IsDBNull(0))
+                                {
+                                    card_numb = "";
+                                }
+                                else
+                                {
+                                    card_numb = rd.GetString(0);
+                                }
+                            }
+                            rd.Close();
+                            rd.Dispose();
+                            com.Dispose();
+                        }
 
-            this.Update();
+                        catch (Exception ex)
+                        {
+                            result = "ERROR_" + ex.Data + " " + ex.Message;
+                        }
+                        result = Program.add_read_module.add_food_in_book(card_numb,
+                            this.lb_food.Text,
+                            book, author, year);
+                        this.Close();
+                        break;
+
+                    default:
+                        result = "NDF";
+                        // не используется, однако mvs не позволяет 
+                        // дальше работать переменной, которой в одной
+                        // из веток кода не присваивается значение
+                        break;
+                }
+
+                if (result == "OK")
+                {
+                    if (this._state == "NEW")
+                    {
+                        this.set_state("OLD");
+                        this.Dispose();
+                    }
+                    else
+                        if (this._state == "MOD")
+                        {
+                            this.set_state("OLD");
+                        }
+                }
+                else
+                {
+                    MessageBox.Show(result);
+                }
+
+                this.Update();
+            }
         }
 
         private void b_abolition_Click(object sender, EventArgs e)

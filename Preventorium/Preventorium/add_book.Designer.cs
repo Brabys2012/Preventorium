@@ -130,8 +130,9 @@
             // 
             // b_save
             // 
+            this.b_save.Enabled = false;
             this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_save.Location = new System.Drawing.Point(38, 175);
+            this.b_save.Location = new System.Drawing.Point(29, 175);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
             this.b_save.TabIndex = 1;
@@ -143,7 +144,7 @@
             // 
             this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_abolition.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_abolition.Location = new System.Drawing.Point(165, 175);
+            this.b_abolition.Location = new System.Drawing.Point(188, 175);
             this.b_abolition.Name = "b_abolition";
             this.b_abolition.Size = new System.Drawing.Size(75, 23);
             this.b_abolition.TabIndex = 2;
@@ -212,6 +213,7 @@
             this.gw.ShowRowErrors = false;
             this.gw.Size = new System.Drawing.Size(368, 170);
             this.gw.TabIndex = 1;
+            this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // context
@@ -288,8 +290,8 @@
             this.ClientSize = new System.Drawing.Size(653, 200);
             this.Controls.Add(this.gb_data);
             this.Controls.Add(this.gb_book);
-            this.Controls.Add(this.b_abolition);
             this.Controls.Add(this.b_save);
+            this.Controls.Add(this.b_abolition);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

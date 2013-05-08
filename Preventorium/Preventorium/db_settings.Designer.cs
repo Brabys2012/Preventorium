@@ -44,7 +44,8 @@
             // b_abolition
             // 
             this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.b_abolition.Location = new System.Drawing.Point(176, 144);
+            this.b_abolition.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.b_abolition.Location = new System.Drawing.Point(176, 141);
             this.b_abolition.Name = "b_abolition";
             this.b_abolition.Size = new System.Drawing.Size(80, 23);
             this.b_abolition.TabIndex = 10;
@@ -54,7 +55,8 @@
             // 
             // b_apply
             // 
-            this.b_apply.Location = new System.Drawing.Point(12, 144);
+            this.b_apply.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.b_apply.Location = new System.Drawing.Point(12, 141);
             this.b_apply.Name = "b_apply";
             this.b_apply.Size = new System.Drawing.Size(80, 23);
             this.b_apply.TabIndex = 9;
@@ -65,9 +67,10 @@
             // cb_win_auth
             // 
             this.cb_win_auth.AutoSize = true;
+            this.cb_win_auth.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb_win_auth.Location = new System.Drawing.Point(15, 58);
             this.cb_win_auth.Name = "cb_win_auth";
-            this.cb_win_auth.Size = new System.Drawing.Size(191, 17);
+            this.cb_win_auth.Size = new System.Drawing.Size(204, 20);
             this.cb_win_auth.TabIndex = 4;
             this.cb_win_auth.Text = "Проверка подлинности Windows";
             this.cb_win_auth.UseVisualStyleBackColor = true;
@@ -75,6 +78,7 @@
             // 
             // t_pass
             // 
+            this.t_pass.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.t_pass.Location = new System.Drawing.Point(123, 107);
             this.t_pass.Multiline = true;
             this.t_pass.Name = "t_pass";
@@ -84,14 +88,16 @@
             // 
             // t_user
             // 
-            this.t_user.Location = new System.Drawing.Point(123, 81);
+            this.t_user.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.t_user.Location = new System.Drawing.Point(123, 79);
             this.t_user.Name = "t_user";
-            this.t_user.Size = new System.Drawing.Size(133, 20);
+            this.t_user.Size = new System.Drawing.Size(133, 22);
             this.t_user.TabIndex = 1;
             this.t_user.TextChanged += new System.EventHandler(this.off_connect);
             // 
             // t_server
             // 
+            this.t_server.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.t_server.Location = new System.Drawing.Point(123, 6);
             this.t_server.Multiline = true;
             this.t_server.Name = "t_server";
@@ -102,41 +108,46 @@
             // lPass
             // 
             this.lPass.AutoSize = true;
+            this.lPass.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lPass.Location = new System.Drawing.Point(12, 110);
             this.lPass.Name = "lPass";
-            this.lPass.Size = new System.Drawing.Size(45, 13);
+            this.lPass.Size = new System.Drawing.Size(52, 16);
             this.lPass.TabIndex = 7;
-            this.lPass.Text = "Пароль";
+            this.lPass.Text = "Пароль:";
             // 
             // tSchema
             // 
             this.tSchema.AutoSize = true;
+            this.tSchema.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tSchema.Location = new System.Drawing.Point(12, 35);
             this.tSchema.Name = "tSchema";
-            this.tSchema.Size = new System.Drawing.Size(98, 13);
+            this.tSchema.Size = new System.Drawing.Size(108, 16);
             this.tSchema.TabIndex = 2;
-            this.tSchema.Text = "Имя базы данных";
+            this.tSchema.Text = "Имя базы данных:";
             // 
             // lUser
             // 
             this.lUser.AutoSize = true;
+            this.lUser.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lUser.Location = new System.Drawing.Point(12, 84);
             this.lUser.Name = "lUser";
-            this.lUser.Size = new System.Drawing.Size(80, 13);
+            this.lUser.Size = new System.Drawing.Size(87, 16);
             this.lUser.TabIndex = 5;
-            this.lUser.Text = "Пользователь";
+            this.lUser.Text = "Пользователь:";
             // 
             // lServer
             // 
             this.lServer.AutoSize = true;
+            this.lServer.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lServer.Location = new System.Drawing.Point(12, 9);
             this.lServer.Name = "lServer";
-            this.lServer.Size = new System.Drawing.Size(44, 13);
+            this.lServer.Size = new System.Drawing.Size(51, 16);
             this.lServer.TabIndex = 0;
-            this.lServer.Text = "Cервер";
+            this.lServer.Text = "Cервер:";
             // 
             // t_schema
             // 
+            this.t_schema.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.t_schema.Location = new System.Drawing.Point(123, 32);
             this.t_schema.Multiline = true;
             this.t_schema.Name = "t_schema";
@@ -150,7 +161,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_abolition;
-            this.ClientSize = new System.Drawing.Size(270, 176);
+            this.ClientSize = new System.Drawing.Size(270, 173);
             this.Controls.Add(this.t_schema);
             this.Controls.Add(this.t_pass);
             this.Controls.Add(this.t_user);

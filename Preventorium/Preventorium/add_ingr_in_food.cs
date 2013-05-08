@@ -125,19 +125,16 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Просмотр";
-                    this.b_save.Enabled = false;
                     break;
 
                 case "NEW":
                     this._state = "NEW";
                     this.Text = "Добавление";
-                    this.b_save.Enabled = false;
                     break;
 
                 case "MOD":
                     this._state = "MOD";
                     this.Text = "Редактирование";
-                   
                     this.b_save.Enabled = true;
                     break;
             }
@@ -147,82 +144,87 @@ namespace Preventorium
         {
             try
             {
-                string brutto = tb_gross.Text;
-                string netto = tb_net.Text;
-                if (Convert.ToDouble(brutto) < Convert.ToDouble(netto))
-                {
-                    MessageBox.Show("Вес брутто не может быть меньше веса нетто!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                if (lb_ingr.Text == "") { MessageBox.Show("Выберите ингредиент!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                 else
                 {
-                    string result; //Результат попытки сохранения/добавления
-                    switch (this._state)
+                    string brutto = tb_gross.Text;
+                    string netto = tb_net.Text;
+                    if (Convert.ToDouble(brutto) < Convert.ToDouble(netto))
                     {
-                        //Если добавляется новая запись...
-                        case "NEW":
-
-                            result = Program.add_read_module.add_ingr_in_food(food_name,
-                             this.tb_gross.Text,
-                             this.tb_net.Text,
-                             this.lb_ingr.Text);
-                            this.Close();
-                            break;
-
-                        //Если модифицируется существующая...
-                        case "MOD":
-
-                            class_ingr_in_food ingr_in_food;
-                            ingr_in_food = Program.add_read_module.get_ingr_in_food(ingr_name, food_name);
-
-                            string ingr_old = ingr_in_food.ingr_name;
-                            string food_old = ingr_in_food.food_name;
-                            string food_ID = ingr_in_food.id_food;
-
-                            add_ingr_in_food ingr_in_foods = new add_ingr_in_food(Program.data_module, id);
-
-
-                            result = Program.add_read_module.upd_ingr_in_food(Convert.ToInt32(this.ingr_id),
-                              food_name,
-                                this.tb_gross.Text,
-                                 this.tb_net.Text,
-                                 this.lb_ingr.Text,
-                                 ingr_old, food_ID);
-                            this.Close();
-                            break;
-
-                        default:
-                            result = "NDF";
-                            // не используется, однако mvs не позволяет 
-                            // дальше работать переменной, которой в одной
-                            // из веток кода не присваивается значение
-                            break;
-                    }
-
-                    if (result == "OK")
-                    {
-                        if (this._state == "NEW")
-                        {
-                            this.set_state("OLD");
-                            this.Dispose();
-                        }
-                        else
-                            if (this._state == "MOD")
-                            {
-                                this.set_state("OLD");
-                            }
+                        MessageBox.Show("Вес брутто не может быть меньше веса нетто!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(result);
-                    }
+                        string result; //Результат попытки сохранения/добавления
+                        switch (this._state)
+                        {
+                            //Если добавляется новая запись...
+                            case "NEW":
 
-                    this.Update();
+                                result = Program.add_read_module.add_ingr_in_food(food_name,
+                                 this.tb_gross.Text,
+                                 this.tb_net.Text,
+                                 this.lb_ingr.Text);
+                                this.Close();
+                                break;
+
+                            //Если модифицируется существующая...
+                            case "MOD":
+
+                                class_ingr_in_food ingr_in_food;
+                                ingr_in_food = Program.add_read_module.get_ingr_in_food(ingr_name, food_name);
+
+                                string ingr_old = ingr_in_food.ingr_name;
+                                string food_old = ingr_in_food.food_name;
+                                string food_ID = ingr_in_food.id_food;
+
+                                add_ingr_in_food ingr_in_foods = new add_ingr_in_food(Program.data_module, id);
+
+
+                                result = Program.add_read_module.upd_ingr_in_food(Convert.ToInt32(this.ingr_id),
+                                  food_name,
+                                    this.tb_gross.Text,
+                                     this.tb_net.Text,
+                                     this.lb_ingr.Text,
+                                     ingr_old, food_ID);
+                                this.Close();
+                                break;
+
+                            default:
+                                result = "NDF";
+                                // не используется, однако mvs не позволяет 
+                                // дальше работать переменной, которой в одной
+                                // из веток кода не присваивается значение
+                                break;
+                        }
+
+                        if (result == "OK")
+                        {
+                            if (this._state == "NEW")
+                            {
+                                this.set_state("OLD");
+                                this.Dispose();
+                            }
+                            else
+                                if (this._state == "MOD")
+                                {
+                                    this.set_state("OLD");
+                                }
+                        }
+                        else
+                        {
+                            MessageBox.Show(result);
+                        }
+
+                        this.Update();
+                    }
                 }
             }
             catch
             {
                 MessageBox.Show("Вес не может содержать букв!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        
         }
 
         private void b_abolition_Click(object sender, EventArgs e)
@@ -230,7 +232,6 @@ namespace Preventorium
             this.Close();
         }
 
-       
-                  
+                         
     }
 }

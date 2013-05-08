@@ -151,6 +151,7 @@
             this.gw.ShowRowErrors = false;
             this.gw.Size = new System.Drawing.Size(548, 237);
             this.gw.TabIndex = 1;
+            this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // contextMenuStrip1

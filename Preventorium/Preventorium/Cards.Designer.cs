@@ -123,7 +123,7 @@
             this.gw.TabIndex = 1;
             this.gw.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellClick);
             this.gw.DoubleClick += new System.EventHandler(this.gw_DoubleClick);
-            this.gw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gw_KeyPress);
+            this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // Menu_Card

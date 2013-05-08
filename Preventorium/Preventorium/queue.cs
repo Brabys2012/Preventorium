@@ -123,11 +123,7 @@ namespace Preventorium
             this.bDelete_Click(sender,e);
         }
 
-        private void gw_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
+        
         private void gw_MouseDown(object sender, MouseEventArgs e)
         {
             int rowIndex = gw.HitTest(e.X, e.Y).RowIndex;

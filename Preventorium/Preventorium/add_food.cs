@@ -32,7 +32,7 @@ namespace Preventorium
             InitializeComponent();
             groupBox1.Visible = false;
             groupBox1.Enabled = false;
-            this.Size = new Size(240, 150);
+            this.Size = new Size(240, 135);
             this._data_module = data_module;
             this.b_save.Location = new Point(22,85);
             this.b_abolition.Location = new Point(132, 85);
@@ -45,7 +45,6 @@ namespace Preventorium
             tb_fats.Enabled = false;
             tb_proteins.Enabled = false;
             tb_weight.Enabled = false;
-           
             this.set_state("NEW");
             }
 
@@ -69,8 +68,7 @@ namespace Preventorium
 
         //Сохраняем/добавляем запись о блюде
         private void enabled_b_save(object sender, EventArgs e)
-        {
-                               
+        {                  
             Program.add_read_module.upd_food_(tb_name.Text, _id);
             
             if (this._state == "OLD") { this.set_state("MOD"); };
@@ -99,9 +97,7 @@ namespace Preventorium
                 //Не удалось получить сведений
                 _state = "NEW";
             }
-
-
-                        //Список диет
+                    //Список диет
             class_card[] diet_in_food = new class_card[512];
             diet_in_food = get_card_list();
             if (diet_in_food != null)
@@ -121,12 +117,9 @@ namespace Preventorium
                 }
             }
         }
-
-
-
-        private void b_save_Click(object sender, EventArgs e)
-        {
-            string result; //Результат попытки сохранения/добавления блюда
+               private void b_save_Click(object sender, EventArgs e)
+        {                   
+              string result; //Результат попытки сохранения/добавления блюда
             switch (this._state)
             {
                 //Если добавляется новая запись...
@@ -157,8 +150,7 @@ namespace Preventorium
                     // дальше работать переменной, которой в одной
                     // из веток кода не присваивается значение
                     break;
-                    
-                   
+               
             }
 
             if (result == "OK")
@@ -188,16 +180,13 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Блюдо - Просмотр";
-                    this.b_save.Enabled = true;
-                 
+                    b_save.Enabled = false;
+                                  
                     break;
 
                 case "NEW":
                     this._state = "NEW";
                     this.Text = "Блюдо - Добавление";
-                    if (tb_name.Text !="")
-            
-                    this.b_save.Enabled = false;
                     break;
 
                 case "MOD":
@@ -224,8 +213,7 @@ namespace Preventorium
                 this.Update();
             }
             else
-            {
-                //Не удалось получить сведений о текущем блюде
+            {    //Не удалось получить сведений о текущем блюде
                 MessageBox.Show(food.result);
                 this.Dispose();
             }
@@ -405,9 +393,7 @@ namespace Preventorium
             this.Update();
         }
 
-       
-
-        private void read_menu_food_Click(object sender, EventArgs e)
+           private void read_menu_food_Click(object sender, EventArgs e)
         {
             this.bEditIngr_Click(sender,e);
         }
@@ -433,8 +419,45 @@ namespace Preventorium
             form.ShowDialog();
         }
 
-       
+        private void gw_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    int rowIndex = (gw.CurrentRow.Index - 1);
 
-       
+                    if (rowIndex < 0)
+                    {
+                        rowIndex = 0;
+                    }
+
+                    bEditIngr_Click(sender, e);
+
+                    gw.CurrentCell = gw[0, rowIndex];
+                }
+
+                if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                {
+                    bAddIngr_Click(sender, e);
+                }
+
+                if (e.KeyCode == Keys.Delete)
+                {
+
+                    bDelete_Click(sender, e);
+                }
+            }
+            catch
+            { }
+        }
+
+        private void add_food_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            tb_name.Text = name_old;
+            this.Dispose();
+        }
+
+             
     }
 }

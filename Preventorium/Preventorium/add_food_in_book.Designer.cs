@@ -46,6 +46,7 @@
             // 
             // b_save
             // 
+            this.b_save.Enabled = false;
             this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.b_save.Location = new System.Drawing.Point(42, 205);
             this.b_save.Name = "b_save";

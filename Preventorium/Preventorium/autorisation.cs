@@ -16,6 +16,7 @@ namespace Preventorium
         public class_person[] _person;
         public class_person _pass;
         public class_person role;
+        string hash;
 
         public class_person user;
         public Autorisation()
@@ -23,18 +24,15 @@ namespace Preventorium
             InitializeComponent();
             linkLabel.Visible = false;
         }
-        
-               
-       
-        /*public string getMd5Hash(string input)
+          
+        public string getMd5Hash(string input)
         {
          // создаем объект этого класса. Отмечу, что он создается не через new, а вызовом метода Create
             MD5 md5Hasher = MD5.Create();
 
             // Преобразуем входную строку в массив байт и вычисляем хэш
-         byte [] data = md5Hasher.ComputeHash(Dec.GetBytes(input));
-
-
+         byte [] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
+        
             // Создаем новый Stringbuilder (Изменяемую строку) для набора байт
             StringBuilder sBuilder = new StringBuilder();
 
@@ -45,9 +43,8 @@ namespace Preventorium
                 sBuilder.Append(data[i].ToString("x2"));
                 sBuilder.ToString();
             }
-
-            return sBuilder.ToString();
-        }*/
+                    return sBuilder.ToString();
+        }
 
         private void Autorisation_Load(object sender, EventArgs e)
         {
@@ -59,8 +56,7 @@ namespace Preventorium
             }
             
         }
-               
-            
+           
         public class_person[] get_user()
         {
 
@@ -169,32 +165,10 @@ namespace Preventorium
             }
             return role;
         }
-    /*    private void fill_person_list()
-        {
-            if (this._person != null)
-            {
-                this.cb_login.Items.Clear();
-           }
-            for (int i = 1; i < this._person.Count(); i++)
-            {
-                if (this._person[i] != null)
-                {
-
-                    this.cb_login.Items.Add(this._person[i].post.Trim() );
-                   
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }*/
-
-        
-
+          
         private void ok_Click(object sender, EventArgs e)
         {
-         
+            hash = getMd5Hash(tb_pass.Text); 
             user= users();
         }
 
@@ -214,7 +188,7 @@ namespace Preventorium
                         _person = get_user();
                         _person = get_user();
                         _pass = get_password();
-                        if (_pass.pass == tb_pass.Text)
+                        if (_pass.pass == hash)
                         {
                             this.DialogResult = System.Windows.Forms.DialogResult.OK;
                             Close();
@@ -254,8 +228,8 @@ namespace Preventorium
                             _pass = get_password();
                             //fill_person_list();
                         }
-                        
-                        if (_pass.pass == tb_pass.Text)
+
+                        if (_pass.pass == hash)
                         {
                             this.DialogResult = System.Windows.Forms.DialogResult.OK;
                             Close();

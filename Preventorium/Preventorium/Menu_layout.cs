@@ -44,6 +44,9 @@ namespace Preventorium
         public class_ingr_in_food[] _obshves_dinner;
         public class_ingr_in_food[] _obshves_supper;
           public class_ingr_in_food[]   _obshves_all_day;
+
+          public class_person _namevrach;
+          public class_person _namevrach2;
         /// <summary>
         /// Это поле список людей работающих  в данной предметной области
         /// </summary>
@@ -93,6 +96,81 @@ namespace Preventorium
             label1.Visible = false;
             this.Size = new Size(290,162);
          }
+
+          public class_person get_person_name_vrach1()
+          {
+              class_person person = new class_person();
+              string query = "select *  from Person where Post='" + cb_ok.Text + "'";
+              string query2 = query;
+              try
+              {
+                  SqlCommand com = Program.data_module._conn.CreateCommand();
+                  com.CommandText = query2;
+                  int i = 0;
+
+                  SqlDataReader rd = com.ExecuteReader();
+
+                  while (rd.Read())
+                  {
+
+                      person = new class_person();
+                      person.result = "OK";
+                      person.surname = rd.GetString(1).ToString();
+                      person.name = rd.GetString(2).ToString();
+                      person.secondname = rd.GetString(3).ToString();
+
+                  }
+                  rd.Close();
+                  rd.Dispose();
+                  com.Dispose();
+              }
+
+              catch (Exception ex)
+              {
+                  MessageBox.Show(ex.Message + " " + ex.Data);
+                  return null;
+              }
+
+
+              return person;
+             }
+          public class_person get_person_name_vrach2()
+          {
+              class_person person = new class_person();
+              string query = "select *  from Person where Post='" + cb_diets_vrach.Text + "'";
+              string query2 = query;
+              try
+              {
+                  SqlCommand com = Program.data_module._conn.CreateCommand();
+                  com.CommandText = query2;
+                  int i = 0;
+
+                  SqlDataReader rd = com.ExecuteReader();
+
+                  while (rd.Read())
+                  {
+                      person = new class_person();
+                      person.result = "OK";
+                      person.surname = rd.GetString(1).ToString();
+                      person.name = rd.GetString(2).ToString();
+                      person.secondname = rd.GetString(3).ToString();
+
+                  }
+                  rd.Close();
+                  rd.Dispose();
+                  com.Dispose();
+              }
+
+              catch (Exception ex)
+              {
+                  MessageBox.Show(ex.Message + " " + ex.Data);
+                  return null;
+              }
+
+
+              return person;
+
+          }
         /// <summary>
         /// Заполняет комбобокс списком рабочих в профилактории
         /// </summary>
@@ -110,8 +188,8 @@ namespace Preventorium
                 if (this._person[i] != null)
                 {
 
-                    this.cb_ok.Items.Add(this._person[i].name.Trim() + " " + this._person[i].surname + " " + this._person[i].secondname);
-                    this.cb_diets_vrach.Items.Add(this._person[i].name.Trim() + " " + this._person[i].surname + " " + this._person[i].secondname);
+                    this.cb_ok.Items.Add(this._person[i].post);
+                    this.cb_diets_vrach.Items.Add(this._person[i].post);
                   
                 }
                 else
@@ -128,15 +206,12 @@ namespace Preventorium
         {
             class_person[] person = new class_person[512];
             string query = "select *  from Person ";
-
-
-            string query2 = query;
+             string query2 = query;
             try
             {
                 SqlCommand com = Program.data_module._conn.CreateCommand();
                 com.CommandText = query2;
                 int i = 0;
-
                 SqlDataReader rd = com.ExecuteReader();
 
                 while (rd.Read())
@@ -144,9 +219,8 @@ namespace Preventorium
                     i = i + 1;
                     person[i] = new class_person();
                     person[i].result = "OK";
-                    person[i].name = rd.GetString(1).ToString();
-                    person[i].surname = rd.GetString(2).ToString();
-                    person[i].secondname = rd.GetString(3).ToString();
+                    
+                    person[i].post = rd.GetString(4).ToString();
                     person[i].id = rd.GetInt32(0).ToString();
 
 
@@ -2253,6 +2327,39 @@ namespace Preventorium
             {
                 var word = App.Documents.Add(Application.StartupPath + File4);
 
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
                 for (int i = 1; i <= 8; i++)
                 {
                     if (_food[i] == null)
@@ -2543,10 +2650,40 @@ namespace Preventorium
             {
                 var word = App.Documents.Add(Application.StartupPath + File3);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -2842,11 +2979,40 @@ namespace Preventorium
             {
                 var word = App.Documents.Add(Application.StartupPath + File6);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
 
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
                 for (int i = 1; i <= 8; i++)
                 {
                     if (dinner_food[i] == null)
@@ -3129,10 +3295,40 @@ namespace Preventorium
             {
                 var word = App.Documents.Add(Application.StartupPath + File5);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -3444,11 +3640,40 @@ namespace Preventorium
             if (_ingr_list_supper[23] != null)
             {
                 var word = App.Documents.Add(Application.StartupPath + File8);
-                                
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -4097,14 +4322,42 @@ namespace Preventorium
                   var App = new word.Application(Visible = false);
                   var word = App.Documents.Add(Application.StartupPath + File10);
                 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[diet_vrach1]", namevr2, word);
-                word1("[diet_vrach2]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
-                word1("[head_vrach1]", namevr1, word);
-                word1("[head_vrach2]", namevr1, word);
+             
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
+                
                
                 for (int i = 1; i <= 8; i++)
                   {
@@ -4914,14 +5167,40 @@ namespace Preventorium
                 var App = new word.Application(Visible = false);
                 var word = App.Documents.Add(Application.StartupPath + File11);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[diet_vrach1]", namevr2, word);
-                word1("[diet_vrach2]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
-                word1("[head_vrach1]", namevr1, word);
-                word1("[head_vrach2]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -5731,14 +6010,40 @@ namespace Preventorium
                 var App = new word.Application(Visible = false);
                 var word = App.Documents.Add(Application.StartupPath + File12);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[diet_vrach1]", namevr2, word);
-                word1("[diet_vrach2]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
-                word1("[head_vrach1]", namevr1, word);
-                word1("[head_vrach2]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -6548,14 +6853,40 @@ namespace Preventorium
                 var App = new word.Application(Visible = false);
                 var word = App.Documents.Add(Application.StartupPath + File13);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[diet_vrach1]", namevr2, word);
-                word1("[diet_vrach2]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
-                word1("[head_vrach1]", namevr1, word);
-                word1("[head_vrach2]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -7366,14 +7697,40 @@ namespace Preventorium
                 var App = new word.Application(Visible = false);
                 var word = App.Documents.Add(Application.StartupPath + File14);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[diet_vrach1]", namevr2, word);
-                word1("[diet_vrach2]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
-                word1("[head_vrach1]", namevr1, word);
-                word1("[head_vrach2]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -8184,14 +8541,40 @@ namespace Preventorium
                  var App = new word.Application(Visible = false);
                  var word = App.Documents.Add(Application.StartupPath + File15);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[diet_vrach1]", namevr2, word);
-                word1("[diet_vrach2]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
-                word1("[head_vrach1]", namevr1, word);
-                word1("[head_vrach2]", namevr1, word);
+
+                 if (_namevrach == null)
+                 {
+                     var name = "";
+
+                     word1("[head_vrach]", name, word);
+                     word1("[head_vrach1]", name, word);
+                     word1("[head_vrach2]", name, word);
+
+                 }
+
+                 if (this._namevrach != null)
+                 {
+                     word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                     word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                     word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                 }
+
+                 if (_namevrach2 == null)
+                 {
+                     var name = "";
+
+                     word1("[diet_vrach]", name, word);
+                     word1("[diet_vrach1]", name, word);
+                     word1("[diet_vrach2]", name, word);
+
+                 }
+
+                 if (this._namevrach2 != null)
+                 {
+                     word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                     word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                     word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                 }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -9002,14 +9385,40 @@ namespace Preventorium
                 var App = new word.Application(Visible = false);
                 var word = App.Documents.Add(Application.StartupPath + File16);
 
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[diet_vrach1]", namevr2, word);
-                word1("[diet_vrach2]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
-                word1("[head_vrach1]", namevr1, word);
-                word1("[head_vrach2]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -9818,14 +10227,40 @@ namespace Preventorium
             {
                 var App = new word.Application(Visible = false);
                 var word = App.Documents.Add(Application.StartupPath + File9);
-                var namevr2 = cb_diets_vrach.Text;
-                var namevr1 = this.cb_ok.Text;
-                word1("[diet_vrach]", namevr2, word);
-                word1("[diet_vrach1]", namevr2, word);
-                word1("[diet_vrach2]", namevr2, word);
-                word1("[head_vrach]", namevr1, word);
-                word1("[head_vrach1]", namevr1, word);
-                word1("[head_vrach2]", namevr1, word);
+
+                if (_namevrach == null)
+                {
+                    var name = "";
+
+                    word1("[head_vrach]", name, word);
+                    word1("[head_vrach1]", name, word);
+                    word1("[head_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach != null)
+                {
+                    word1("[head_vrach]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach1]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                    word1("[head_vrach2]", _namevrach.surname + " " + _namevrach.name + " " + _namevrach.secondname, word);
+                }
+
+                if (_namevrach2 == null)
+                {
+                    var name = "";
+
+                    word1("[diet_vrach]", name, word);
+                    word1("[diet_vrach1]", name, word);
+                    word1("[diet_vrach2]", name, word);
+
+                }
+
+                if (this._namevrach2 != null)
+                {
+                    word1("[diet_vrach]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach1]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                    word1("[diet_vrach2]", _namevrach2.surname + " " + _namevrach2.name + " " + _namevrach2.secondname, word);
+                }
                
                 for (int i = 1; i <= 8; i++)
                   {
@@ -10678,6 +11113,19 @@ namespace Preventorium
         {
             this.Close();
         }
+
+        private void cb_ok_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _namevrach = get_person_name_vrach1();
+        }
+
+        private void cb_diets_vrach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _namevrach2 = get_person_name_vrach2();
+        }
+
+
+
 
             }
 }

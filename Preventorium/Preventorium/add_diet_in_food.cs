@@ -63,46 +63,52 @@ namespace Preventorium
                 case "OLD":
                     this._state = "OLD";
                     this.Text = "Просмотр";
-                    this.b_save.Enabled = true;
+
                     break;
 
                 case "NEW":
                     this._state = "NEW";
                     this.Text = "Добавление";
-                    this.b_save.Enabled = true;
+            
                     break;
             }
         }
 
         private void b_save_Click(object sender, EventArgs e)
         {
-            string result = ""; //Результат попытки сохранения/добавления
-            switch (this._state)
-            {
-                //Если добавляется новая запись...
-                case "NEW":
 
-                    result = Program.add_read_module.add_diet_in_food(this.tb_card_numb.Text,
-                        this.lb_food_name.Text,
-                        this.lb_diet_numb.Text);
-                    this.Close();
-                    break;
-
-            }
-
-            if (result == "OK")
-            {
-                if (this._state == "NEW")
-                {
-                    this.set_state("OLD");
-                    this.Dispose();
-                }
-            }
+            if (lb_food_name.Text == "") { MessageBox.Show("Вы не выбрали блюдо", "Внимание! ", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            else
+            if (lb_diet_numb.Text == "") { MessageBox.Show("Вы не выбрали диету", "Внимание! ", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             else
             {
-                MessageBox.Show(result);
+                string result = ""; //Результат попытки сохранения/добавления
+                switch (this._state)
+                {
+                    //Если добавляется новая запись...
+                    case "NEW":
+
+                        result = Program.add_read_module.add_diet_in_food(this.tb_card_numb.Text,
+                            this.lb_food_name.Text,
+                            this.lb_diet_numb.Text);
+                        this.Close();
+                        break;
+                }
+
+                if (result == "OK")
+                {
+                    if (this._state == "NEW")
+                    {
+                        this.set_state("OLD");
+                        this.Dispose();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(result);
+                }
+                this.Dispose();
             }
-            this.Dispose();
         }
 
         private void b_cancel_Click(object sender, EventArgs e)
