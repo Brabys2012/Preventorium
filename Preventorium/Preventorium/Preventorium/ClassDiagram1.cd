@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Preventorium.add_book" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAACAC0IIGAgEACAAEDICBBHAFgBAIAEBAkgAggBCAA=</HashCode>
+      <FileName>add_book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.add_diet" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAIIGAAEAAAAADACARCAAgAgAAAAAAgAAAAEAA=</HashCode>
+      <FileName>add_diet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.add_food" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEj1IIGgg0oAIkETACABHAHAEACADBGlgQAAFCQo=</HashCode>
+      <FileName>add_food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.add_ingr" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAMIGACMhAAAADACAJCAAAAAAAAIIEgAAAAAAg=</HashCode>
+      <FileName>add_ingr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.add_ingr_in_food" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAgAAKIGAAEBRAAACACAhCAAAAAAAAAgmgAACAAgI=</HashCode>
+      <FileName>add_ingr_in_food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.add_queue" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAAgAAIIGAAEBAAAADACABCAAAAAAgAAAAgAACAgAI=</HashCode>
+      <FileName>add_queue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.cooking_book" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAQC0AADAgAoBAAkCAAgQGAFAEAAAABEggAAAAAEA=</HashCode>
+      <FileName>cooking_book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.db_connect" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AggAgAAAAAAAAEAAAACCAAAAAICIKAIIEAAAWAABQAA=</HashCode>
+      <FileName>db_connect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.db_settings" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAAAAAEIDAAAAABBACACABCAABIKIAAAAAAAAACAAA=</HashCode>
+      <FileName>db_settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.del_ingr_from_food" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQCAAAAAACAAABAAAADACAACAAAACAAABAAgAAAAAAA=</HashCode>
+      <FileName>del_ingr_from_food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.delete" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAACAAABBAAADACAACAAAACAAABAAgAAAAAAA=</HashCode>
+      <FileName>delete.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.diets" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIC0IACAgAqAAAEDQBAAGAFAAAAAAJEoAAAEGAAA=</HashCode>
+      <FileName>diets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.food" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAAAC0AACAgApBAAECAAAQGAFAAAgAABEgAAAAAAIA=</HashCode>
+      <FileName>food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.frmMDI" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BMxECOkUSCwIIBwACESQMABKABFJCEAEIRoGlkAAECk=</HashCode>
+      <FileName>frmMDI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.get_table" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QBABgADABEBbAIEQASPpAIASCIAASDJIAAAABYZgIUA=</HashCode>
+      <FileName>get_table.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.ingr">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACQD0gIGAgAIBGAEGAAIAGAHAAAAEARAgAAAAAAAE=</HashCode>
+      <FileName>ingr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.Program" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAABAAgAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.queue" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAC0AACAlAqQAAECAACCmAFAAAAAABEgAAAABABg=</HashCode>
+      <FileName>queue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.user_settings">
+    <Position X="2.5" Y="5.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAQACABAAAAAAAAAQAAACAAAgAAAAAQAAAAAIAAACAA=</HashCode>
+      <FileName>user_settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABQAEAAAAAAAAAAAAAJFACAAQBAAAAAAAAAQCIQAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.Properties.Settings" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.Cards_layout">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>lPqfggTCUqAFQKDBCDTAG7ReBAoUBQoqBAQIAmkEAR4=</HashCode>
+      <FileName>Cards-layout.cs</FileName>
+      <NewMemberFileName>Cards.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="class_ingridients" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAABABgAAAAAAAAAEAAAAAACAACAAAAA=</HashCode>
+      <FileName>db_elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="class_food" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAABAAAAAAAEAAUAAAgABAACCAAAAQ=</HashCode>
+      <FileName>db_elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="class_diet" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAQAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>db_elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="class_book" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAgAAABAAAAIAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>db_elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="class_ingr_food" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>db_elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="class_cards" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAgAAAQAAAAQAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>db_elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="class_diet_in_food" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEUAAAAAABAAAAAAAAAAAAAAAAAAAAAAkAAg=</HashCode>
+      <FileName>db_elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="class_queue" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAACAAAAAAAgBEAAIACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>db_elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.food_in_menu">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ayCOi//AMHQgNwbzEZDAYIhHGDQEEWowUiolzgQkGgA=</HashCode>
+      <FileName>food_in_menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.Menu_layout">
+    <Position X="6.25" Y="5.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EEDBIBYuxCAL8TihChiAIVQLQAxEJ0ogCAAwgmAEM0I=</HashCode>
+      <FileName>Menu_layout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.Autorisation" Collapsed="true">
+    <Position X="8" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABBAAACACgAABECAAGAAyACAACAAAAAAAABIBBAAQA=</HashCode>
+      <FileName>autorisation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.users" Collapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAL0AACAgAIAQAECAIgEmAFABAgAAAgwUAgABEAA=</HashCode>
+      <FileName>users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Preventorium.add_users" Collapsed="true">
+    <Position X="2.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAhBAAAAAGQEEBACACGACQADABCAAAAAAAAgAACAAAI=</HashCode>
+      <FileName>add_users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
