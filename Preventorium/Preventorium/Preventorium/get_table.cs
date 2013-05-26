@@ -16,7 +16,7 @@ namespace Preventorium
         /// </summary>
         /// <param name="sql_query">SQL запрос для выполнения.</param>
         /// <returns>Признак успешного выполнения запроса.</returns>
-        private string SQL_Exec(string sql_query)
+        public string SQL_Exec(string sql_query)
         {
             try
             {

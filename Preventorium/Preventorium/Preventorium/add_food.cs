@@ -35,8 +35,8 @@ namespace Preventorium
             groupBox1.Enabled = false;
             this.Size = new Size(240, 135);
             this._data_module = data_module;
-            this.b_save.Location = new Point(22,85);
-            this.b_abolition.Location = new Point(132, 85);
+            this.b_save.Location = new Point(10,75);
+            this.b_abolition.Location = new Point(140, 75);
             l_weight.Visible = false;
             gb_food_data.Size = new Size(205, 65);
             gb_food_data.Text = "";
@@ -76,15 +76,14 @@ namespace Preventorium
             if (tb_name.Text != "")
             {
                 this.b_save.Enabled = true;
-                return;
+              
             }
             else
                 b_save.Enabled = false;
         }
 
                private void b_save_Click(object sender, EventArgs e)
-        {
-           
+        {           
                 string result; //Результат попытки сохранения/добавления блюда
                 switch (this._state)
                 {
@@ -383,6 +382,8 @@ namespace Preventorium
             catch
             { }
         }
+
+    
      
     }
 }

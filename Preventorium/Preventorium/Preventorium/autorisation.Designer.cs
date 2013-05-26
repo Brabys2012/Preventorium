@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Autorisation));
             this.ok = new System.Windows.Forms.Button();
             this.tb_pass = new System.Windows.Forms.TextBox();
             this.cancel = new System.Windows.Forms.Button();
@@ -118,7 +119,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Preventorium.Properties.Resources.pic_s_731839282;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(8, 5);
             this.pictureBox1.Name = "pictureBox1";
@@ -133,7 +134,6 @@
             this.tb_log.Name = "tb_log";
             this.tb_log.Size = new System.Drawing.Size(200, 21);
             this.tb_log.TabIndex = 0;
-         
             // 
             // linkLabel
             // 
@@ -167,6 +167,7 @@
             this.Controls.Add(this.tb_pass);
             this.Controls.Add(this.ok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Autorisation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

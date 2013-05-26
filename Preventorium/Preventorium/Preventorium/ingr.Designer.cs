@@ -29,26 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ingr));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ingr));
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.Menu_ingr = new System.Windows.Forms.ToolStrip();
-            this.add_butt = new System.Windows.Forms.ToolStripButton();
-            this.read_but = new System.Windows.Forms.ToolStripButton();
-            this.bDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.Report_Excel = new System.Windows.Forms.ToolStripDropDownButton();
-            this.Excel_Exp = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.gw = new System.Windows.Forms.DataGridView();
             this.Menu_ingr_strip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.read_butt = new System.Windows.Forms.ToolStripMenuItem();
             this.delete_butt = new System.Windows.Forms.ToolStripMenuItem();
+            this.add_butt = new System.Windows.Forms.ToolStripButton();
+            this.read_but = new System.Windows.Forms.ToolStripButton();
+            this.bDelete = new System.Windows.Forms.ToolStripButton();
             this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.Menu_ingr.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
@@ -82,74 +79,17 @@
             this.read_but,
             this.toolStripSeparator1,
             this.bDelete,
-            this.toolStripSeparator4,
-            this.Report_Excel,
-            this.toolStripSeparator5});
+            this.toolStripSeparator4});
             this.Menu_ingr.Location = new System.Drawing.Point(0, 0);
             this.Menu_ingr.Name = "Menu_ingr";
             this.Menu_ingr.Size = new System.Drawing.Size(643, 25);
             this.Menu_ingr.TabIndex = 7;
             this.Menu_ingr.Text = "toolStrip1";
             // 
-            // add_butt
-            // 
-            this.add_butt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.add_butt.Image = ((System.Drawing.Image)(resources.GetObject("add_butt.Image")));
-            this.add_butt.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.add_butt.Name = "add_butt";
-            this.add_butt.Size = new System.Drawing.Size(23, 22);
-            this.add_butt.Text = "Добавить ингридиент";
-            this.add_butt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.add_butt.Click += new System.EventHandler(this.add_but_Click);
-            // 
-            // read_but
-            // 
-            this.read_but.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.read_but.Image = ((System.Drawing.Image)(resources.GetObject("read_but.Image")));
-            this.read_but.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.read_but.Name = "read_but";
-            this.read_but.Size = new System.Drawing.Size(23, 22);
-            this.read_but.Text = "Редактировать ингридиент";
-            this.read_but.Click += new System.EventHandler(this.read_but_Click);
-            // 
-            // bDelete
-            // 
-            this.bDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bDelete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
-            this.bDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bDelete.Name = "bDelete";
-            this.bDelete.Size = new System.Drawing.Size(23, 22);
-            this.bDelete.Text = "Удалить";
-            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // Report_Excel
-            // 
-            this.Report_Excel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Report_Excel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Excel_Exp});
-            this.Report_Excel.Image = ((System.Drawing.Image)(resources.GetObject("Report_Excel.Image")));
-            this.Report_Excel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Report_Excel.Name = "Report_Excel";
-            this.Report_Excel.Size = new System.Drawing.Size(29, 22);
-            this.Report_Excel.Text = "Отчет";
-            // 
-            // Excel_Exp
-            // 
-            this.Excel_Exp.Image = ((System.Drawing.Image)(resources.GetObject("Excel_Exp.Image")));
-            this.Excel_Exp.Name = "Excel_Exp";
-            this.Excel_Exp.Size = new System.Drawing.Size(157, 22);
-            this.Excel_Exp.Text = "Экспорт в Excel";
-            this.Excel_Exp.Click += new System.EventHandler(this.Export_Excel_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // gw
             // 
@@ -230,6 +170,37 @@
             this.delete_butt.Text = "Удалить";
             this.delete_butt.Click += new System.EventHandler(this.delete_butt_Click);
             // 
+            // add_butt
+            // 
+            this.add_butt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.add_butt.Image = ((System.Drawing.Image)(resources.GetObject("add_butt.Image")));
+            this.add_butt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.add_butt.Name = "add_butt";
+            this.add_butt.Size = new System.Drawing.Size(23, 22);
+            this.add_butt.Text = "Добавить ингридиент";
+            this.add_butt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.add_butt.Click += new System.EventHandler(this.add_but_Click);
+            // 
+            // read_but
+            // 
+            this.read_but.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.read_but.Image = ((System.Drawing.Image)(resources.GetObject("read_but.Image")));
+            this.read_but.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.read_but.Name = "read_but";
+            this.read_but.Size = new System.Drawing.Size(23, 22);
+            this.read_but.Text = "Редактировать ингридиент";
+            this.read_but.Click += new System.EventHandler(this.read_but_Click);
+            // 
+            // bDelete
+            // 
+            this.bDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bDelete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.bDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(23, 22);
+            this.bDelete.Text = "Удалить";
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
             // ingr
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -262,8 +233,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton read_but;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripDropDownButton Report_Excel;
-        private System.Windows.Forms.ToolStripMenuItem Excel_Exp;
         private System.Windows.Forms.ToolStripButton bDelete;
         public System.Windows.Forms.DataGridView gw;
         public System.Windows.Forms.ToolStrip Menu_ingr;
@@ -271,6 +240,5 @@
         private System.Windows.Forms.ToolStripMenuItem read_butt;
         private System.Windows.Forms.ToolStripMenuItem delete_butt;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

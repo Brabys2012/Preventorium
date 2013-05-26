@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_layout));
             this.ok = new System.Windows.Forms.Button();
             this.cb_ok = new System.Windows.Forms.ComboBox();
             this.cb_diets_vrach = new System.Windows.Forms.ComboBox();
@@ -123,7 +124,6 @@
             this.label1.Size = new System.Drawing.Size(139, 18);
             this.label1.TabIndex = 7;
             this.label1.Text = "Прогресс расчета 0 %";
-       
             // 
             // Menu_layout
             // 
@@ -141,6 +141,7 @@
             this.Controls.Add(this.cb_diets_vrach);
             this.Controls.Add(this.ok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Menu_layout";

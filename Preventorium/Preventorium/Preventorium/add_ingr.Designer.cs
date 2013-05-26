@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(add_ingr));
             this.b_save = new System.Windows.Forms.Button();
             this.b_abolition = new System.Windows.Forms.Button();
             this.tb_zhiri = new System.Windows.Forms.TextBox();
@@ -177,7 +178,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_abolition;
-            this.ClientSize = new System.Drawing.Size(287, 309);
+            this.ClientSize = new System.Drawing.Size(282, 309);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.b_abolition);
             this.Controls.Add(this.label4);
@@ -192,6 +193,7 @@
             this.Controls.Add(this.tb_belki);
             this.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -199,6 +201,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сведения о ингредиенте";
+           
             this.ResumeLayout(false);
             this.PerformLayout();
 

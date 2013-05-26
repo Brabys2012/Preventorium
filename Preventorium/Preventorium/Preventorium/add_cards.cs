@@ -2,6 +2,9 @@
 using System.Linq;
 using System.Windows.Forms;
 
+using System.Drawing;
+
+
 namespace Preventorium
 {
     public partial class add_cards : Form
@@ -25,9 +28,7 @@ namespace Preventorium
             if (this._state == "OLD") { this.set_state("MOD"); }
             //если блюдо выбрано и номер карты не пустой то кнопка "Созранить" активируется
             if ((cb_food.Text != "") && (tb_card_numb.Text != "")) { b_save.Enabled = true; }
-            else
-                b_save.Enabled = false;
-        }
+         }
 
         /// <summary>
         /// Конструктор, вызываемый при нажатии "Добавить"
@@ -79,6 +80,16 @@ namespace Preventorium
         public add_cards(db_connect data_module, int card_id, string food_name, int food_id)
         {
             InitializeComponent();
+            cb_food.Visible = false;
+            label1.Visible = false;
+            this.b_save.Location = new System.Drawing.Point(10, 130);
+            this.b_cancel.Location = new System.Drawing.Point(160, 130);
+            this.Size = new Size(520, 195);
+          label2.Location= new System.Drawing.Point(5, 10);
+          tb_cost.Location = new System.Drawing.Point(10, 30);
+          label4.Location = new System.Drawing.Point(5, 55);
+
+          tb_card_numb.Location = new System.Drawing.Point(10, 75);
             //получаем список блюд
             class_card[] card = new class_card[512];
             card = Program.add_read_module.get_list_food_name_in_card();
@@ -102,6 +113,7 @@ namespace Preventorium
             this.food_id = food_id.ToString();  
             this.set_state("OLD");
             this.food_name = food_name.ToString();
+            
             this.fill_card_data();
             this._data_module = data_module;
            
@@ -184,7 +196,7 @@ namespace Preventorium
 
                 result = Program.add_read_module.upd_card(Convert.ToInt32(this.card_id),
                 Convert.ToInt32(this.food_id),
-                this.cb_food.Text, this.tb_cost.Text,
+                this.food_name, this.tb_cost.Text,
                      this.tb_method.Text,
                      this.tb_card_numb.Text);
                     this.Close();
@@ -228,6 +240,12 @@ namespace Preventorium
         private void b_abolition_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tb_cost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+                e.Handled = true; 
         }
 
              

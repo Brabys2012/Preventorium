@@ -235,12 +235,7 @@ namespace Preventorium
             frm.Show();  
         }
 
-        private void Report_ingr_Click(object sender, EventArgs e)
-        {
-            ingr frm = new ingr();
-            frm.ingr_Load(sender, e);
-            frm.Excel(frm.gw);
-        }
+       
 
         /// <summary>
         ///  Нажатие на меню отчет карта раскладка

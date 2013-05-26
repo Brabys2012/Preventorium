@@ -95,6 +95,13 @@ namespace Preventorium.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap d93c3a53f75f27c9ad7804885b3a34d5 {
+            get {
+                object obj = ResourceManager.GetObject("d93c3a53f75f27c9ad7804885b3a34d5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap doc {
             get {
                 object obj = ResourceManager.GetObject("doc", resourceCulture);
@@ -116,16 +123,30 @@ namespace Preventorium.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap Microsoft_Office_Word {
+        internal static System.Drawing.Bitmap food_001 {
             get {
-                object obj = ResourceManager.GetObject("Microsoft Office Word", resourceCulture);
+                object obj = ResourceManager.GetObject("food 001", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap pic_s_731839282 {
+        internal static System.Drawing.Bitmap food_026 {
             get {
-                object obj = ResourceManager.GetObject("pic_s_731839282", resourceCulture);
+                object obj = ResourceManager.GetObject("food 026", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap food_027 {
+            get {
+                object obj = ResourceManager.GetObject("food 027", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Microsoft_Office_Word {
+            get {
+                object obj = ResourceManager.GetObject("Microsoft Office Word", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

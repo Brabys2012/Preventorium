@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(add_diet));
             this.l_diet = new System.Windows.Forms.Label();
             this.tb_numbDiet = new System.Windows.Forms.TextBox();
             this.b_save = new System.Windows.Forms.Button();
@@ -112,13 +113,13 @@
             this.Controls.Add(this.tb_numbDiet);
             this.Controls.Add(this.l_diet);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_diet";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сведения о диете";
-            
             this.ResumeLayout(false);
             this.PerformLayout();
 

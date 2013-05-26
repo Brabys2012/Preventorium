@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Data.OleDb;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.Odbc;
+using System.Data.Common;
 
 namespace Preventorium
 {
@@ -20,7 +25,6 @@ namespace Preventorium
         /// <param name="state"></param>
         public void load_data_table(string state)
         {
-
             bs.DataSource = Program.data_module.get_data_table(state).Tables[state];
             gw.DataSource = bs;
             gw.Columns[5].Visible = false;// скрываем не нужный столбец
@@ -38,104 +42,7 @@ namespace Preventorium
             ingr.ShowDialog();
         }
 
-        /// <summary>
-        ///  экспорт в ексель
-        /// </summary>
-        /// <param name="gw"></param>
-
-        public void Excel(DataGridView gw)
-        {  // 
-            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-            // creating new WorkBook within Excel application
-            app.Visible = false;
-            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-            // creating new Excelsheet in workbook
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-            // see the excel sheet behind the program
-            //Funny
-            app.Visible = false;
-
-            // get the reference of first sheet. By default its name is Sheet1.
-            // store its reference to worksheet
-            try
-            {
-
-                //Fixed:(Microsoft.Office.Interop.Excel.Worksheet)
-                worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets["Лист1"];
-                worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.ActiveSheet;
-                // changing the name of active sheet
-                worksheet.Name = "Лист1";
-                // storing header part in Excel
-                for (int i = 0; i < gw.Columns.Count - 1; i++)
-                {
-                    worksheet.Cells[1 + 3, i + 1] = gw.Columns[i].HeaderText;
-                    worksheet.Cells[1, 8] = " Отчет по ингредиентам ";
-                    worksheet.Cells[1, 8].Font.Bold = 1;
-                    worksheet.Cells[1, 8].Font.Size = 20;
-                    worksheet.get_Range("G1:K1").MergeCells = true;
-
-                    var range = worksheet.Cells[1 + 3, i + 1];
-                    range.Font.Bold = 1;
-                    range.Font.Color = -16777024;
-                    range.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-                    range.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
-                    range.Borders.LineStyle = 1;
-                    range.EntireColumn.AutoFit();
-
-                }
-                // storing Each row and column value to excel sheet
-                for (int i = 0; i < gw.Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j < gw.Columns.Count - 1; j++)
-                    {
-                        worksheet.Cells[i + 5, j + 1] = gw.Rows[i].Cells[j].Value.ToString();
-
-                        var range = worksheet.Cells[i + 5, j + 1];
-                        range.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-                        range.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
-                        range.Borders.LineStyle = 1;
-                        range.EntireColumn.AutoFit();
-                    }
-                }
-
-                // save the application
-                app.Visible = true;
-
-                string fileName = String.Empty;
-
-                SaveFileDialog saveFileExcel = new SaveFileDialog();
-                saveFileExcel.Filter = "Excel files |*.xls|All files (*.*)|*.*";
-                saveFileExcel.FilterIndex = 2;
-                saveFileExcel.RestoreDirectory = true;
-
-                if (saveFileExcel.ShowDialog() == DialogResult.OK)
-                {
-                    fileName = saveFileExcel.FileName;
-                    //Fixed-old code :11 para->add 1:Type.Missing
-                    workbook.SaveAs(fileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                    GC.Collect();
-
-                }
-                else
-                    return;
-
-                // Exit from the application
-                GC.Collect();
-
-                app.Quit();
-                app.Workbooks.Close();
-
-            }
-            catch (System.Exception ex)
-            {
-
-            }
-            finally
-            {
-                GC.Collect();
-                app.Quit();
-            }
-        }
+   
 
         public void ingr_Load(object sender, EventArgs e)
         {
@@ -220,11 +127,7 @@ namespace Preventorium
 
         }
 
-        private void Export_Excel_Click(object sender, EventArgs e)
-        {
-            this.Excel(gw);
-            GC.Collect();
-        }
+       
         /// <summary>
         /// удаление 
         /// </summary>
@@ -285,12 +188,12 @@ namespace Preventorium
             this.bDelete_Click(sender, e);
         }
 
-              private void gw_KeyDown(object sender, KeyEventArgs e)
+        private void gw_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
 
-                  if (e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Enter)
                 {
                     int rowIndex = (gw.CurrentRow.Index - 1);
 
@@ -317,10 +220,12 @@ namespace Preventorium
             }
             catch
             { }
-  
+
         }
+
+      
+
 
     }
 }
-    
 

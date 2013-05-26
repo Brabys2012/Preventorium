@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(add_food_in_book));
             this.label1 = new System.Windows.Forms.Label();
             this.b_save = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
@@ -75,7 +76,6 @@
             this.lb_food.Name = "lb_food";
             this.lb_food.Size = new System.Drawing.Size(265, 173);
             this.lb_food.TabIndex = 4;
-
             // 
             // add_food_in_book
             // 
@@ -89,6 +89,7 @@
             this.Controls.Add(this.b_save);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_food_in_book";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(db_settings));
             this.b_abolition = new System.Windows.Forms.Button();
             this.b_apply = new System.Windows.Forms.Button();
             this.cb_win_auth = new System.Windows.Forms.CheckBox();
@@ -174,6 +175,7 @@
             this.Controls.Add(this.b_apply);
             this.Controls.Add(this.cb_win_auth);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "db_settings";

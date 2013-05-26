@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(add_cards));
             this.cb_food = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,10 +43,12 @@
             // 
             // cb_food
             // 
+            this.cb_food.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_food.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb_food.FormattingEnabled = true;
-            this.cb_food.Location = new System.Drawing.Point(12, 24);
+            this.cb_food.Location = new System.Drawing.Point(15, 23);
             this.cb_food.Name = "cb_food";
-            this.cb_food.Size = new System.Drawing.Size(230, 21);
+            this.cb_food.Size = new System.Drawing.Size(230, 24);
             this.cb_food.TabIndex = 1;
             this.cb_food.TextChanged += new System.EventHandler(this.enabled_b_save);
             // 
@@ -53,7 +56,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 3);
+            this.label1.Location = new System.Drawing.Point(17, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 18);
             this.label1.TabIndex = 0;
@@ -77,6 +80,7 @@
             this.tb_cost.Size = new System.Drawing.Size(227, 24);
             this.tb_cost.TabIndex = 3;
             this.tb_cost.TextChanged += new System.EventHandler(this.enabled_b_save);
+            this.tb_cost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_cost_KeyPress);
             // 
             // label3
             // 
@@ -159,16 +163,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_food);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_cards";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить карточку-раскладку";
-          
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

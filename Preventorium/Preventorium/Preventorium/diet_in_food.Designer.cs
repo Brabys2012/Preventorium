@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(diet_in_food));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.b_add = new System.Windows.Forms.ToolStripButton();
@@ -151,6 +152,7 @@
             this.gw.ShowRowErrors = false;
             this.gw.Size = new System.Drawing.Size(548, 237);
             this.gw.TabIndex = 1;
+        
             this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
@@ -159,13 +161,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.del});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 26);
             // 
             // del
             // 
             this.del.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
             this.del.Name = "del";
-            this.del.Size = new System.Drawing.Size(152, 22);
+            this.del.Size = new System.Drawing.Size(118, 22);
             this.del.Text = "Удалить";
             this.del.Click += new System.EventHandler(this.del_Click);
             // 
@@ -176,6 +178,7 @@
             this.ClientSize = new System.Drawing.Size(548, 262);
             this.Controls.Add(this.gw);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "diet_in_food";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Просмотр диет";
