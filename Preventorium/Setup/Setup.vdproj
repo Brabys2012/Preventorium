@@ -206,16 +206,6 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
-                    {
-                    "Name" = "8:Клиентский профиль Microsoft .NET Framework 4 (x86 и x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
-                    {
-                    "Name" = "8:Установщик Windows 3.1"
-                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
-                    }
                 }
             }
         }
@@ -666,7 +656,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Preventorium"
         "ProductCode" = "8:{416D8458-0CEC-4F5D-85BD-240DC8F4CB88}"
-        "PackageCode" = "8:{30B3A5D5-B2D5-47FC-9468-082C61D7832C}"
+        "PackageCode" = "8:{B0930E05-96AC-4598-99D2-275A9B7DB1E6}"
         "UpgradeCode" = "8:{ADB6511F-9E15-43CA-AEEA-3033CBA6458E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1215,7 +1205,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_95E9D6C6D82D4306A487D57D0FA51278"
             {
-            "SourcePath" = "8:..\\Preventorium\\obj\\x86\\Debug\\Санаторий-профилакторий ИГХТУ.exe"
+            "SourcePath" = "8:..\\Preventorium\\obj\\x86\\Release\\Санаторий-профилакторий ИГХТУ.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C1C0C28CEB4444568EADC29CB8105644"
