@@ -2827,7 +2827,8 @@ namespace Preventorium
         /// </summary>
         public void Report_MEnu_Layout_breakfast()
         {
-            var App = new word.Application(Visible = false);
+            var App = new word.Application();
+            App.Visible = false;
 
             if (_ingr_list_breakfast[22] != null)
             {
@@ -3387,7 +3388,8 @@ namespace Preventorium
         /// </summary>
         public void Report_Menu_dinner()
         {
-            var App = new word.Application(Visible = false);
+            var App = new word.Application();
+            App.Visible = false;
             
             if (_ingr_list_dinner[22] != null)
             {
@@ -3995,7 +3997,8 @@ namespace Preventorium
         /// </summary>
         public void Report_MEnu_Layout_supper()
         {
-            var App = new word.Application(Visible = false);
+            var App = new word.Application();
+            App.Visible = false;
 
             if (_ingr_list_supper[22] != null && _ingr_list_supper[51] != null)
             {
@@ -5372,7 +5375,8 @@ namespace Preventorium
         {   // Если на завтрак больше 21,то грузится шаблон File10
             if ((_ingr_list_breakfast[22] != null) && (_ingr_list_dinner[22] == null) && (_ingr_list_supper[22] == null) && (_obshves_all_day[51] == null))
             {
-                var App = new word.Application(Visible = false);
+                var App = new word.Application();
+                App.Visible = false;
                 var word = App.Documents.Add(Application.StartupPath + File10);
 
                 if (_namevrach == null)
@@ -6101,7 +6105,8 @@ namespace Preventorium
             { // Если на завтрак больше 21 и общее количество ингредиентов больше 50,то грузим File20 шаблон
                 if ((_ingr_list_breakfast[22] != null) && (_ingr_list_dinner[22] == null) && (_ingr_list_supper[22] == null) && (_obshves_all_day[51] != null))
                 {
-                    var App = new word.Application(Visible = false);
+                    var App = new word.Application();
+                    App.Visible = false;
                     var word = App.Documents.Add(Application.StartupPath + File20);
 
                     if (_namevrach == null)
@@ -6837,7 +6842,8 @@ namespace Preventorium
             // Если на обед больше 21 ингредиента и общее количество ингредиентов меньше 51,то грузим File11 файл
             if ((_ingr_list_breakfast[22] == null) && (_ingr_list_dinner[22] != null) && (_ingr_list_supper[22] == null) && (_obshves_all_day[51] == null))
             {
-                var App = new word.Application(Visible = false);
+                var App = new word.Application();
+                App.Visible = false;
                 var word = App.Documents.Add(Application.StartupPath + File11);
                 if (_namevrach == null)
                 {
@@ -7593,7 +7599,8 @@ namespace Preventorium
             {   // Если на обед больше 21 ингредиента и общее количество ингредиентов больше 50,то грузим File24 файл
                 if ((_ingr_list_breakfast[22] == null) && (_ingr_list_dinner[22] != null) && (_ingr_list_supper[22] == null) && (_obshves_all_day[51] != null))
                 {
-                    var App = new word.Application(Visible = false);
+                    var App = new word.Application();
+                    App.Visible = false;
                     var word = App.Documents.Add(Application.StartupPath + File24);
                     
                     if (_namevrach == null)
@@ -8365,7 +8372,8 @@ namespace Preventorium
             // Если на обед ужин 21 ингредиента и общее количество ингредиентов не больше 50,то грузим File12 файл
             if ((_ingr_list_breakfast[22] == null) && (_ingr_list_dinner[22] == null) && (_ingr_list_supper[22] != null) && (_obshves_all_day[51] == null))
             {
-                var App = new word.Application(Visible = false);
+                var App = new word.Application();
+                App.Visible = false;
                 var word = App.Documents.Add(Application.StartupPath + File12);
                    if (_namevrach == null)
                 {   var name = "";
@@ -9176,7 +9184,8 @@ namespace Preventorium
             {     // Если на  ужин больше 21 ингредиента и общее количество ингредиентов  больше 50,то грузим File26 файл
                 if ((_ingr_list_breakfast[22] == null) && (_ingr_list_dinner[22] == null) && (_ingr_list_supper[22] != null) && (_obshves_all_day[51] != null))
                 {
-                    var App = new word.Application(Visible = false);
+                    var App = new word.Application();
+                    App.Visible = false;
                     var word = App.Documents.Add(Application.StartupPath + File26);
 
                     if (_namevrach == null)
@@ -10020,7 +10029,8 @@ namespace Preventorium
             // Если на  завтрак и обед  больше 21 ингредиента и общее количество ингредиентов не  больше 50,то грузим File13 файл
             if ((_ingr_list_breakfast[22] != null) && (_ingr_list_dinner[22] != null) && (_ingr_list_supper[22] == null) && (_obshves_all_day[51] == null))
             {
-                var App = new word.Application(Visible = false);
+                var App = new word.Application();
+                App.Visible = false;
                 var word = App.Documents.Add(Application.StartupPath + File13);
                 
                 if (_namevrach == null)
@@ -10832,7 +10842,8 @@ namespace Preventorium
             {   // Если на  завтрак и обед  больше 21 ингредиента и общее количество ингредиентов  больше 50,то грузим File21 файл
                 if ((_ingr_list_breakfast[22] != null) && (_ingr_list_dinner[22] != null) && (_ingr_list_supper[22] == null) && (_obshves_all_day[51] != null))
                 {
-                    var App = new word.Application(Visible = false);
+                    var App = new word.Application();
+                    App.Visible = false;
                     var word = App.Documents.Add(Application.StartupPath + File21);
                     
                     if (_namevrach == null)
@@ -11658,7 +11669,8 @@ namespace Preventorium
             // Если на  завтрак и ужин  больше 21 ингредиента и общее количество ингредиентов не  больше 50,то грузим File14 файл
             if ((_ingr_list_breakfast[22] != null) && (_ingr_list_dinner[22] == null) && (_ingr_list_supper[22] != null) && (_obshves_all_day[51] == null))
             {
-                var App = new word.Application(Visible = false);
+                var App = new word.Application();
+                App.Visible = false;
                 var word = App.Documents.Add(Application.StartupPath + File14);
                 if (_namevrach == null)
                 {
@@ -12469,7 +12481,8 @@ namespace Preventorium
             {    // Если на  завтрак и ужин  больше 21 ингредиента и общее количество ингредиентов   больше 50,то грузим File23 файл
                 if ((_ingr_list_breakfast[22] != null) && (_ingr_list_dinner[22] == null) && (_ingr_list_supper[22] != null) && (_obshves_all_day[51] != null))
                 {
-                    var App = new word.Application(Visible = false);
+                    var App = new word.Application();
+                    App.Visible = false;
                     var word = App.Documents.Add(Application.StartupPath + File23);
                     if (_namevrach == null)
                     {
@@ -13299,7 +13312,8 @@ namespace Preventorium
             // Если на  обед и ужин  больше 21 ингредиента и общее количество ингредиентов не  больше 50,то грузим File15 файл
             if ((_ingr_list_breakfast[22] == null) && (_ingr_list_dinner[22] != null) && (_ingr_list_supper[22] != null) && (_obshves_all_day[51] == null))
             {
-                var App = new word.Application(Visible = false);
+                var App = new word.Application();
+                App.Visible = false;
                 var word = App.Documents.Add(Application.StartupPath + File15);
 
                 if (_namevrach == null)
@@ -14082,7 +14096,8 @@ namespace Preventorium
             {
                 if ((_ingr_list_breakfast[22] == null) && (_ingr_list_dinner[22] != null) && (_ingr_list_supper[22] != null) && (_ingr_list_supper[51] != null))
                 {
-                    var App = new word.Application(Visible = false);
+                    var App = new word.Application();
+                    App.Visible = false;
                     var word = App.Documents.Add(Application.StartupPath + File25);
 
                     if (_namevrach == null)
@@ -14878,7 +14893,8 @@ namespace Preventorium
             // Если на  завтрак,обед и ужин  больше 21 ингредиента и общее количество ингредиентов не  больше 50,то грузим File16 файл
             if ((_ingr_list_breakfast[22] != null) && (_ingr_list_dinner[22] != null) && (_ingr_list_supper[22] != null) && (_obshves_all_day[51] == null))
             {
-                var App = new word.Application(Visible = false);
+                var App = new word.Application();
+                App.Visible = false;
                 var word = App.Documents.Add(Application.StartupPath + File16);
 
                 if (_namevrach == null)
@@ -15678,7 +15694,8 @@ namespace Preventorium
             {   // Если на  завтрак,обед и ужин  больше 21 ингредиента и общее количество ингредиентов   больше 50,то грузим File22 файл
                 if ((_ingr_list_breakfast[22] != null) && (_ingr_list_dinner[22] != null) && (_ingr_list_supper[22] != null) && (_obshves_all_day[51] != null))
                 {
-                    var App = new word.Application(Visible = false);
+                    var App = new word.Application();
+                    App.Visible = false;
                     var word = App.Documents.Add(Application.StartupPath + File22);
 
                     if (_namevrach == null)
@@ -16488,7 +16505,8 @@ namespace Preventorium
             // Если на  завтрак,обед и ужин не больше 21 ингредиента и общее количество ингредиентов не  больше 50,то грузим File9 файл
             if ((_ingr_list_breakfast[22] == null) && (_ingr_list_dinner[22] == null) && (_ingr_list_supper[22] == null) && (_obshves_all_day[51] == null))
             {
-                var App = new word.Application(Visible = false);
+                var App = new word.Application();
+                App.Visible = false;
                 var word = App.Documents.Add(Application.StartupPath + File9);
 
                 if (_namevrach == null)
@@ -17262,7 +17280,8 @@ namespace Preventorium
             {   // Если на  завтрак,обед и ужин не больше 21 ингредиента и общее количество ингредиентов   больше 50,то грузим File19 файл
                 if ((_ingr_list_breakfast[22] == null) && (_ingr_list_dinner[22] == null) && (_ingr_list_supper[22] == null) && (_obshves_all_day[51] != null))
                 {
-                    var App = new word.Application(Visible = false);
+                    var App = new word.Application();
+                    App.Visible = false;
                     var word = App.Documents.Add(Application.StartupPath + File19);
 
                     if (_namevrach == null)

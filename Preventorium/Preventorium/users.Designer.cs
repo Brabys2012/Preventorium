@@ -81,7 +81,7 @@
             // b_add
             // 
             this.b_add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_add.Image = global::Preventorium.Properties.Resources.add_button1;
+            this.b_add.Image = global::Preventorium.Properties.Resources.add_btn;
             this.b_add.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_add.Name = "b_add";
             this.b_add.Size = new System.Drawing.Size(23, 22);
@@ -96,7 +96,7 @@
             // b_read
             // 
             this.b_read.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_read.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.b_read.Image = global::Preventorium.Properties.Resources.kwrite;
             this.b_read.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_read.Name = "b_read";
             this.b_read.Size = new System.Drawing.Size(23, 22);
@@ -111,7 +111,7 @@
             // cancel_password
             // 
             this.cancel_password.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cancel_password.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.cancel_password.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.cancel_password.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cancel_password.Name = "cancel_password";
             this.cancel_password.Size = new System.Drawing.Size(23, 22);
@@ -186,11 +186,11 @@
             this.toolStripSeparator6,
             this.delete_menu_strip});
             this.c_menu_strip.Name = "c_menu_strip";
-            this.c_menu_strip.Size = new System.Drawing.Size(155, 82);
+            this.c_menu_strip.Size = new System.Drawing.Size(155, 104);
             // 
             // b_add_menu_strip
             // 
-            this.b_add_menu_strip.Image = global::Preventorium.Properties.Resources.add_button;
+            this.b_add_menu_strip.Image = global::Preventorium.Properties.Resources.add_btn;
             this.b_add_menu_strip.Name = "b_add_menu_strip";
             this.b_add_menu_strip.Size = new System.Drawing.Size(154, 22);
             this.b_add_menu_strip.Text = "Добавить";
@@ -203,7 +203,7 @@
             // 
             // read_menu_strip
             // 
-            this.read_menu_strip.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.read_menu_strip.Image = global::Preventorium.Properties.Resources.kwrite;
             this.read_menu_strip.Name = "read_menu_strip";
             this.read_menu_strip.Size = new System.Drawing.Size(154, 22);
             this.read_menu_strip.Text = "Редактировать";
@@ -216,7 +216,7 @@
             // 
             // delete_menu_strip
             // 
-            this.delete_menu_strip.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.delete_menu_strip.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.delete_menu_strip.Name = "delete_menu_strip";
             this.delete_menu_strip.Size = new System.Drawing.Size(154, 22);
             this.delete_menu_strip.Text = "Удалить";

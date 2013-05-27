@@ -78,7 +78,7 @@
             // b_add
             // 
             this.b_add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_add.Image = global::Preventorium.Properties.Resources.add_button1;
+            this.b_add.Image = global::Preventorium.Properties.Resources.add_btn;
             this.b_add.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_add.Name = "b_add";
             this.b_add.Size = new System.Drawing.Size(23, 22);
@@ -93,7 +93,7 @@
             // b_edit
             // 
             this.b_edit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_edit.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.b_edit.Image = global::Preventorium.Properties.Resources.kwrite;
             this.b_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_edit.Name = "b_edit";
             this.b_edit.Size = new System.Drawing.Size(23, 22);
@@ -108,7 +108,7 @@
             // b_delete
             // 
             this.b_delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.b_delete.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.b_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_delete.Name = "b_delete";
             this.b_delete.Size = new System.Drawing.Size(23, 22);
@@ -182,11 +182,11 @@
             this.Read,
             this.delete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 70);
             // 
             // Read
             // 
-            this.Read.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.Read.Image = global::Preventorium.Properties.Resources.kwrite;
             this.Read.Name = "Read";
             this.Read.Size = new System.Drawing.Size(154, 22);
             this.Read.Text = "Редактировать";
@@ -194,7 +194,7 @@
             // 
             // delete
             // 
-            this.delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.delete.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(154, 22);
             this.delete.Text = "Удалить";

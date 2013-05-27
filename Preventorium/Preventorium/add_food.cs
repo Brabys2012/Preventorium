@@ -233,7 +233,7 @@ namespace Preventorium
                                                                                  Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
                         ingr_in_food.ShowDialog();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Выберите ингридиент!");
                     }

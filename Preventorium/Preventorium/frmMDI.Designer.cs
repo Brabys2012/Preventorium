@@ -117,7 +117,7 @@
             // 
             // b_diet_in_food
             // 
-            this.b_diet_in_food.Image = global::Preventorium.Properties.Resources.food_027;
+            this.b_diet_in_food.Image = global::Preventorium.Properties.Resources.food_015;
             this.b_diet_in_food.Name = "b_diet_in_food";
             this.b_diet_in_food.Size = new System.Drawing.Size(164, 22);
             this.b_diet_in_food.Text = "Диеты в блюде";
@@ -188,7 +188,7 @@
             // 
             // Diets_menu
             // 
-            this.Diets_menu.Image = global::Preventorium.Properties.Resources.food_026;
+            this.Diets_menu.Image = global::Preventorium.Properties.Resources.food_011;
             this.Diets_menu.Name = "Diets_menu";
             this.Diets_menu.Size = new System.Drawing.Size(221, 22);
             this.Diets_menu.Text = "Диеты";
@@ -245,7 +245,7 @@
             // 
             // b_report
             // 
-            this.b_report.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.b_report.Image = global::Preventorium.Properties.Resources.ms_word;
             this.b_report.Name = "b_report";
             this.b_report.Size = new System.Drawing.Size(295, 22);
             this.b_report.Text = "Сформировать карточку - раскладку";

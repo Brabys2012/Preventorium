@@ -108,7 +108,7 @@ namespace Preventorium
             
             this.load_data_table("Cards");
             gw.Columns[1].HeaderText = "Блюдо";
-            gw.Columns[2].DefaultCellStyle.Format = "##.00 руб.";
+            gw.Columns[2].DefaultCellStyle.Format = "0.00 руб.";
             gw.Columns[2].HeaderText = "Ориентировочная стоимость";
             gw.Columns[4].HeaderText = "Номер карты";
 

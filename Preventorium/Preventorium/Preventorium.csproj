@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Preventorium</RootNamespace>
     <AssemblyName>Санаторий-профилакторий ИГХТУ</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -74,7 +74,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="add_book.cs">
@@ -183,12 +183,6 @@
     </Compile>
     <Compile Include="delete.Designer.cs">
       <DependentUpon>delete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="delete_password.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="delete_password.Designer.cs">
-      <DependentUpon>delete_password.cs</DependentUpon>
     </Compile>
     <Compile Include="del_diet_from_food.cs">
       <SubType>Form</SubType>
@@ -379,9 +373,6 @@
     <EmbeddedResource Include="delete.resx">
       <DependentUpon>delete.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="delete_password.resx">
-      <DependentUpon>delete_password.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="del_diet_from_food.resx">
       <DependentUpon>del_diet_from_food.cs</DependentUpon>
     </EmbeddedResource>
@@ -459,42 +450,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Image\add_button.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Image\50px-Exquisite-kwrite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Image\1305828351_psd-delete-icon800215600-px.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Image\doc.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Image\Microsoft Office Word.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Image\t-92843.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Image\edu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Image\pic_s_731839282.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\d93c3a53f75f27c9ad7804885b3a34d5.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\food 001.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\food 026.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\food 027.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 %28x86 и x64%29</ProductName>
@@ -515,6 +470,75 @@
       <ProductName>Установщик Windows 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\isuct_logo_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\isuct_logo_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\add_btn.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\apple.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\appointment.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\book.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\cherries.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\connections.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\delete_btn.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\food_001.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\food_010.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\food_011.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\food_015.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\food_025.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\food_026.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\isuct_logo_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\kwrite.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\ms_excel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\ms_word.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\people.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\restaurant.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\user.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\img\usercard.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

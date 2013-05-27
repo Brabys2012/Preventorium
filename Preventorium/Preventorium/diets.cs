@@ -182,7 +182,7 @@ namespace Preventorium
                         del = new delete(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), _current_state);
                         del.ShowDialog();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Выберите диету!");
                     }

@@ -77,7 +77,7 @@
             // b_add
             // 
             this.b_add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_add.Image = global::Preventorium.Properties.Resources.add_button;
+            this.b_add.Image = global::Preventorium.Properties.Resources.add_btn;
             this.b_add.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_add.Name = "b_add";
             this.b_add.Size = new System.Drawing.Size(23, 22);
@@ -92,7 +92,7 @@
             // b_edit
             // 
             this.b_edit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_edit.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.b_edit.Image = global::Preventorium.Properties.Resources.kwrite;
             this.b_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_edit.Name = "b_edit";
             this.b_edit.Size = new System.Drawing.Size(23, 22);
@@ -107,7 +107,7 @@
             // b_delete
             // 
             this.b_delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.b_delete.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.b_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_delete.Name = "b_delete";
             this.b_delete.Size = new System.Drawing.Size(23, 22);
@@ -176,7 +176,7 @@
             // 
             // but_edit
             // 
-            this.but_edit.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.but_edit.Image = global::Preventorium.Properties.Resources.kwrite;
             this.but_edit.Name = "but_edit";
             this.but_edit.Size = new System.Drawing.Size(154, 22);
             this.but_edit.Text = "Редактировать";
@@ -184,7 +184,7 @@
             // 
             // but_delete
             // 
-            this.but_delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.but_delete.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.but_delete.Name = "but_delete";
             this.but_delete.Size = new System.Drawing.Size(154, 22);
             this.but_delete.Text = "Удалить";

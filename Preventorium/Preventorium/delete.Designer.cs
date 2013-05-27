@@ -64,7 +64,6 @@
             this.b_cancel.TabIndex = 2;
             this.b_cancel.Text = "Отмена";
             this.b_cancel.UseVisualStyleBackColor = true;
-            this.b_cancel.Click += new System.EventHandler(this.b_cancel_Click);
             // 
             // delete
             // 

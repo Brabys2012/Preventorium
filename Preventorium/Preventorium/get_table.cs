@@ -1673,7 +1673,7 @@ namespace Preventorium
                 com.Dispose();
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

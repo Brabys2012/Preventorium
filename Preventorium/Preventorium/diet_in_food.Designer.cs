@@ -73,7 +73,7 @@
             // b_add
             // 
             this.b_add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_add.Image = global::Preventorium.Properties.Resources.add_button;
+            this.b_add.Image = global::Preventorium.Properties.Resources.add_btn;
             this.b_add.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_add.Name = "b_add";
             this.b_add.Size = new System.Drawing.Size(23, 22);
@@ -88,7 +88,7 @@
             // b_delete
             // 
             this.b_delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.b_delete.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.b_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_delete.Name = "b_delete";
             this.b_delete.Size = new System.Drawing.Size(23, 22);
@@ -152,7 +152,6 @@
             this.gw.ShowRowErrors = false;
             this.gw.Size = new System.Drawing.Size(548, 237);
             this.gw.TabIndex = 1;
-        
             this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
             this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
@@ -161,13 +160,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.del});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
             // 
             // del
             // 
-            this.del.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.del.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.del.Name = "del";
-            this.del.Size = new System.Drawing.Size(118, 22);
+            this.del.Size = new System.Drawing.Size(152, 22);
             this.del.Text = "Удалить";
             this.del.Click += new System.EventHandler(this.del_Click);
             // 

@@ -213,7 +213,7 @@ namespace Preventorium
                            del = new del_food_from_book(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString()));
                            del.ShowDialog();
                        }
-                       catch (Exception ex)
+                       catch (Exception)
                        {
                            MessageBox.Show("Выберите блюдо!");
                        }

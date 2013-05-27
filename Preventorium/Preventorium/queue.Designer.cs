@@ -78,7 +78,7 @@
             // bAdd
             // 
             this.bAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bAdd.Image = global::Preventorium.Properties.Resources.add_button1;
+            this.bAdd.Image = global::Preventorium.Properties.Resources.add_btn;
             this.bAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bAdd.Name = "bAdd";
             this.bAdd.Size = new System.Drawing.Size(23, 22);
@@ -93,7 +93,7 @@
             // bEdit
             // 
             this.bEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bEdit.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.bEdit.Image = global::Preventorium.Properties.Resources.kwrite;
             this.bEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bEdit.Name = "bEdit";
             this.bEdit.Size = new System.Drawing.Size(23, 22);
@@ -186,7 +186,7 @@
             // 
             // Read_queue
             // 
-            this.Read_queue.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.Read_queue.Image = global::Preventorium.Properties.Resources.kwrite;
             this.Read_queue.Name = "Read_queue";
             this.Read_queue.Size = new System.Drawing.Size(154, 22);
             this.Read_queue.Text = "Редактировать";
@@ -194,7 +194,7 @@
             // 
             // delete_queue
             // 
-            this.delete_queue.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.delete_queue.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.delete_queue.Name = "delete_queue";
             this.delete_queue.Size = new System.Drawing.Size(154, 22);
             this.delete_queue.Text = "Удалить";

@@ -161,7 +161,7 @@ namespace Preventorium
                 form.ShowDialog();
             }
 
-            catch (Exception ex)
+            catch (Exception)
             { 
             
             }

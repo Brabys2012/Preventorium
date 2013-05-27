@@ -81,11 +81,11 @@
             this.read_menu_food,
             this.b_del_menu});
             this.Menu_food.Name = "Menu_food";
-            this.Menu_food.Size = new System.Drawing.Size(155, 48);
+            this.Menu_food.Size = new System.Drawing.Size(155, 70);
             // 
             // read_menu_food
             // 
-            this.read_menu_food.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.read_menu_food.Image = global::Preventorium.Properties.Resources.kwrite;
             this.read_menu_food.Name = "read_menu_food";
             this.read_menu_food.Size = new System.Drawing.Size(154, 22);
             this.read_menu_food.Text = "Редактировать";
@@ -93,7 +93,7 @@
             // 
             // b_del_menu
             // 
-            this.b_del_menu.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.b_del_menu.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.b_del_menu.Name = "b_del_menu";
             this.b_del_menu.Size = new System.Drawing.Size(154, 22);
             this.b_del_menu.Text = "Удалить";
@@ -361,7 +361,7 @@
             // bDelete
             // 
             this.bDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bDelete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.bDelete.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.bDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bDelete.Name = "bDelete";
             this.bDelete.Size = new System.Drawing.Size(23, 22);

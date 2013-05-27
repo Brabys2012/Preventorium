@@ -33,7 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(add_book));
             this.l_author = new System.Windows.Forms.Label();
             this.gb_book = new System.Windows.Forms.GroupBox();
             this.tb_name = new System.Windows.Forms.TextBox();
@@ -227,7 +226,6 @@
             // 
             // bDelete
             // 
-            this.bDelete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
             this.bDelete.Name = "bDelete";
             this.bDelete.Size = new System.Drawing.Size(118, 22);
             this.bDelete.Text = "Удалить";
@@ -256,7 +254,6 @@
             // b_add
             // 
             this.b_add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_add.Image = global::Preventorium.Properties.Resources.add_button;
             this.b_add.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_add.Name = "b_add";
             this.b_add.Size = new System.Drawing.Size(23, 22);
@@ -271,7 +268,6 @@
             // b_delete
             // 
             this.b_delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.b_delete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
             this.b_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.b_delete.Name = "b_delete";
             this.b_delete.Size = new System.Drawing.Size(23, 22);
@@ -295,7 +291,6 @@
             this.Controls.Add(this.b_save);
             this.Controls.Add(this.b_abolition);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "add_book";

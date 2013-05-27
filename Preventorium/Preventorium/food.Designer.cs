@@ -109,7 +109,7 @@
             // bDelete
             // 
             this.bDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bDelete.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px;
+            this.bDelete.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.bDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bDelete.Name = "bDelete";
             this.bDelete.Size = new System.Drawing.Size(23, 22);
@@ -181,23 +181,23 @@
             this.menu_strip_food_read,
             this.delete_menu_strip});
             this.Menu_Strip_food.Name = "Menu_Strip_food";
-            this.Menu_Strip_food.Size = new System.Drawing.Size(155, 48);
+            this.Menu_Strip_food.Size = new System.Drawing.Size(155, 70);
             // 
             // menu_strip_food_read
             // 
-            this.menu_strip_food_read.Image = global::Preventorium.Properties.Resources._50px_Exquisite_kwrite;
+            this.menu_strip_food_read.Image = global::Preventorium.Properties.Resources.kwrite;
             this.menu_strip_food_read.Name = "menu_strip_food_read";
             this.menu_strip_food_read.Size = new System.Drawing.Size(154, 22);
             this.menu_strip_food_read.Text = "Редактировать";
-            this.menu_strip_food_read.Click += new System.EventHandler(this.menu_strip_food_read_Click);
+            this.menu_strip_food_read.Click += new System.EventHandler(this.bEditFood_Click);
             // 
             // delete_menu_strip
             // 
-            this.delete_menu_strip.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.delete_menu_strip.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.delete_menu_strip.Name = "delete_menu_strip";
             this.delete_menu_strip.Size = new System.Drawing.Size(154, 22);
             this.delete_menu_strip.Text = "Удалить";
-            this.delete_menu_strip.Click += new System.EventHandler(this.delete_memu_strip_Click);
+            this.delete_menu_strip.Click += new System.EventHandler(this.bDelete_Click);
             // 
             // food
             // 

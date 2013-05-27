@@ -78,7 +78,7 @@ namespace Preventorium
                         book = new add_book(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
                         book.ShowDialog();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Выберите справочник!");
                     }
@@ -144,7 +144,7 @@ namespace Preventorium
                         del = new delete(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), _current_state);
                         del.ShowDialog();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Выберите справочник!");
                     }

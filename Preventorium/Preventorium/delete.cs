@@ -25,19 +25,6 @@ namespace Preventorium
             this.table = table_name;
             this._id = record_id.ToString();
             this._data_module = data_module;
-            this.set_state("OLD");
-        }
-
-        public void set_state(string state)
-        {
-            switch (state)
-            {
-                case "OLD":
-                    this._state = "OLD";
-                    this.b_apply.Enabled = true;
-                    this.b_cancel.Enabled = true;
-                    break;
-            }
         }
 
         /// <summary>
@@ -70,18 +57,6 @@ namespace Preventorium
                     else
                     {
                         MessageBox.Show(result1);
-                    }
-                    break;
-
-                case "Foods":
-                    string result2 = Program.add_read_module.del_record_by_id("Foods", "ID_Food", Convert.ToInt32(this._id));
-                    if (result2 == "OK")
-                    {
-                        this.Dispose();
-                    }
-                    else
-                    {
-                        MessageBox.Show(result2);
                     }
                     break;
 
@@ -155,15 +130,7 @@ namespace Preventorium
                
             }
         }
-        /// <summary>
-        /// Отмена - закрывает форму удаления
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void b_cancel_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
+
 
     }
 }

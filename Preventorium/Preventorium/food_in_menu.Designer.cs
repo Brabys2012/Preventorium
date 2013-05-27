@@ -184,7 +184,7 @@
             // 
             // context_menu_layout_breakfast
             // 
-            this.context_menu_layout_breakfast.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.context_menu_layout_breakfast.Image = global::Preventorium.Properties.Resources.ms_word;
             this.context_menu_layout_breakfast.Name = "context_menu_layout_breakfast";
             this.context_menu_layout_breakfast.Size = new System.Drawing.Size(229, 22);
             this.context_menu_layout_breakfast.Text = "Меню-раскладка на завтрак";
@@ -258,7 +258,7 @@
             // Menu_layout_break
             // 
             this.Menu_layout_break.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Menu_layout_break.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_layout_break.Image = global::Preventorium.Properties.Resources.ms_word;
             this.Menu_layout_break.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_layout_break.Name = "Menu_layout_break";
             this.Menu_layout_break.Size = new System.Drawing.Size(191, 22);
@@ -340,7 +340,7 @@
             // 
             // context_menu_layout_dinner
             // 
-            this.context_menu_layout_dinner.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.context_menu_layout_dinner.Image = global::Preventorium.Properties.Resources.ms_word;
             this.context_menu_layout_dinner.Name = "context_menu_layout_dinner";
             this.context_menu_layout_dinner.Size = new System.Drawing.Size(214, 22);
             this.context_menu_layout_dinner.Text = "Меню-раскладка на обед";
@@ -353,7 +353,7 @@
             // 
             // del_context_dinner
             // 
-            this.del_context_dinner.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.del_context_dinner.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.del_context_dinner.Name = "del_context_dinner";
             this.del_context_dinner.Size = new System.Drawing.Size(214, 22);
             this.del_context_dinner.Text = "Удалить";
@@ -413,7 +413,7 @@
             // Menu_layout_dinner
             // 
             this.Menu_layout_dinner.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Menu_layout_dinner.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_layout_dinner.Image = global::Preventorium.Properties.Resources.ms_word;
             this.Menu_layout_dinner.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_layout_dinner.Name = "Menu_layout_dinner";
             this.Menu_layout_dinner.Size = new System.Drawing.Size(173, 22);
@@ -495,7 +495,7 @@
             // 
             // context_menu_layout_supper
             // 
-            this.context_menu_layout_supper.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.context_menu_layout_supper.Image = global::Preventorium.Properties.Resources.ms_word;
             this.context_menu_layout_supper.Name = "context_menu_layout_supper";
             this.context_menu_layout_supper.Size = new System.Drawing.Size(217, 22);
             this.context_menu_layout_supper.Text = "Меню-раскладка на ужин";
@@ -508,7 +508,7 @@
             // 
             // del_context_supper
             // 
-            this.del_context_supper.Image = global::Preventorium.Properties.Resources._1305828351_psd_delete_icon800215600_px1;
+            this.del_context_supper.Image = global::Preventorium.Properties.Resources.delete_btn;
             this.del_context_supper.Name = "del_context_supper";
             this.del_context_supper.Size = new System.Drawing.Size(217, 22);
             this.del_context_supper.Text = "Удалить";
@@ -568,7 +568,7 @@
             // Menu_supper
             // 
             this.Menu_supper.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Menu_supper.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_supper.Image = global::Preventorium.Properties.Resources.ms_word;
             this.Menu_supper.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_supper.Name = "Menu_supper";
             this.Menu_supper.Size = new System.Drawing.Size(178, 22);
@@ -604,7 +604,7 @@
             // 
             // менюНаДеньToolStripMenuItem
             // 
-            this.менюНаДеньToolStripMenuItem.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.менюНаДеньToolStripMenuItem.Image = global::Preventorium.Properties.Resources.ms_word;
             this.менюНаДеньToolStripMenuItem.Name = "менюНаДеньToolStripMenuItem";
             this.менюНаДеньToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.менюНаДеньToolStripMenuItem.Text = "Меню на день";
@@ -625,14 +625,14 @@
             this.supper,
             this.toolStripSeparator19,
             this.Menu_all_day});
-            this.менюРаскладкиToolStripMenuItem.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.менюРаскладкиToolStripMenuItem.Image = global::Preventorium.Properties.Resources.ms_word;
             this.менюРаскладкиToolStripMenuItem.Name = "менюРаскладкиToolStripMenuItem";
             this.менюРаскладкиToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.менюРаскладкиToolStripMenuItem.Text = "Меню раскладка на ";
             // 
             // Menu_Strip_breakfast
             // 
-            this.Menu_Strip_breakfast.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_Strip_breakfast.Image = global::Preventorium.Properties.Resources.ms_word;
             this.Menu_Strip_breakfast.Name = "Menu_Strip_breakfast";
             this.Menu_Strip_breakfast.Size = new System.Drawing.Size(134, 22);
             this.Menu_Strip_breakfast.Text = "Завтрак";
@@ -645,7 +645,7 @@
             // 
             // Menu_Strip_din
             // 
-            this.Menu_Strip_din.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_Strip_din.Image = global::Preventorium.Properties.Resources.ms_word;
             this.Menu_Strip_din.Name = "Menu_Strip_din";
             this.Menu_Strip_din.Size = new System.Drawing.Size(134, 22);
             this.Menu_Strip_din.Text = "Обед";
@@ -658,7 +658,7 @@
             // 
             // supper
             // 
-            this.supper.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.supper.Image = global::Preventorium.Properties.Resources.ms_word;
             this.supper.Name = "supper";
             this.supper.Size = new System.Drawing.Size(134, 22);
             this.supper.Text = "Ужин";
@@ -666,7 +666,7 @@
             // 
             // Menu_all_day
             // 
-            this.Menu_all_day.Image = global::Preventorium.Properties.Resources.Microsoft_Office_Word;
+            this.Menu_all_day.Image = global::Preventorium.Properties.Resources.ms_word;
             this.Menu_all_day.Name = "Menu_all_day";
             this.Menu_all_day.Size = new System.Drawing.Size(152, 22);
             this.Menu_all_day.Text = "Весь-день";
