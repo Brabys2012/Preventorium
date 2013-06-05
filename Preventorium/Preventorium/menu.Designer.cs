@@ -126,7 +126,6 @@
             this.gw.AllowUserToDeleteRows = false;
             this.gw.AllowUserToResizeColumns = false;
             this.gw.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -135,7 +134,7 @@
             this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -190,7 +189,7 @@
             this.b_editMenu.Name = "b_editMenu";
             this.b_editMenu.Size = new System.Drawing.Size(154, 22);
             this.b_editMenu.Text = "Редактировать";
-            this.b_editMenu.Click += new System.EventHandler(this.b_editMenu_Click);
+            this.b_editMenu.Click += new System.EventHandler(this.b_edit_Click);
             // 
             // b_delMenu
             // 
@@ -198,7 +197,7 @@
             this.b_delMenu.Name = "b_delMenu";
             this.b_delMenu.Size = new System.Drawing.Size(154, 22);
             this.b_delMenu.Text = "Удалить";
-            this.b_delMenu.Click += new System.EventHandler(this.b_delMenu_Click);
+            this.b_delMenu.Click += new System.EventHandler(this.b_delete_Click);
             // 
             // menu
             // 

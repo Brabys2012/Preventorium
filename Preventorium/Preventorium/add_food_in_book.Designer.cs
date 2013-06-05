@@ -49,7 +49,7 @@
             // 
             this.b_save.Enabled = false;
             this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_save.Location = new System.Drawing.Point(42, 205);
+            this.b_save.Location = new System.Drawing.Point(41, 196);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
             this.b_save.TabIndex = 2;
@@ -61,7 +61,7 @@
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_cancel.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_cancel.Location = new System.Drawing.Point(167, 205);
+            this.b_cancel.Location = new System.Drawing.Point(168, 196);
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Size = new System.Drawing.Size(75, 23);
             this.b_cancel.TabIndex = 3;
@@ -71,10 +71,12 @@
             // 
             // lb_food
             // 
+            this.lb_food.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lb_food.FormattingEnabled = true;
+            this.lb_food.ItemHeight = 16;
             this.lb_food.Location = new System.Drawing.Point(12, 26);
             this.lb_food.Name = "lb_food";
-            this.lb_food.Size = new System.Drawing.Size(265, 173);
+            this.lb_food.Size = new System.Drawing.Size(265, 164);
             this.lb_food.TabIndex = 4;
             // 
             // add_food_in_book
@@ -83,7 +85,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_cancel;
-            this.ClientSize = new System.Drawing.Size(292, 231);
+            this.ClientSize = new System.Drawing.Size(292, 224);
             this.Controls.Add(this.lb_food);
             this.Controls.Add(this.b_cancel);
             this.Controls.Add(this.b_save);

@@ -81,7 +81,7 @@
             this.read_menu_food,
             this.b_del_menu});
             this.Menu_food.Name = "Menu_food";
-            this.Menu_food.Size = new System.Drawing.Size(155, 70);
+            this.Menu_food.Size = new System.Drawing.Size(155, 48);
             // 
             // read_menu_food
             // 
@@ -89,7 +89,7 @@
             this.read_menu_food.Name = "read_menu_food";
             this.read_menu_food.Size = new System.Drawing.Size(154, 22);
             this.read_menu_food.Text = "Редактировать";
-            this.read_menu_food.Click += new System.EventHandler(this.read_menu_food_Click);
+            this.read_menu_food.Click += new System.EventHandler(this.bEditIngr_Click);
             // 
             // b_del_menu
             // 
@@ -97,7 +97,7 @@
             this.b_del_menu.Name = "b_del_menu";
             this.b_del_menu.Size = new System.Drawing.Size(154, 22);
             this.b_del_menu.Text = "Удалить";
-            this.b_del_menu.Click += new System.EventHandler(this.b_del_menu_Click);
+            this.b_del_menu.Click += new System.EventHandler(this.bDelete_Click);
             // 
             // gb_food_data
             // 
@@ -109,7 +109,7 @@
             this.gb_food_data.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gb_food_data.Location = new System.Drawing.Point(8, 1);
             this.gb_food_data.Name = "gb_food_data";
-            this.gb_food_data.Size = new System.Drawing.Size(210, 306);
+            this.gb_food_data.Size = new System.Drawing.Size(210, 312);
             this.gb_food_data.TabIndex = 7;
             this.gb_food_data.TabStop = false;
             this.gb_food_data.Text = "Сведения о блюде:";
@@ -142,7 +142,7 @@
             this.gb_chem_contain.Controls.Add(this.tb_proteins);
             this.gb_chem_contain.Location = new System.Drawing.Point(10, 103);
             this.gb_chem_contain.Name = "gb_chem_contain";
-            this.gb_chem_contain.Size = new System.Drawing.Size(191, 197);
+            this.gb_chem_contain.Size = new System.Drawing.Size(191, 203);
             this.gb_chem_contain.TabIndex = 4;
             this.gb_chem_contain.TabStop = false;
             this.gb_chem_contain.Text = "Химический состав:";
@@ -156,7 +156,7 @@
             // 
             // tb_carbo
             // 
-            this.tb_carbo.Location = new System.Drawing.Point(6, 165);
+            this.tb_carbo.Location = new System.Drawing.Point(6, 173);
             this.tb_carbo.Name = "tb_carbo";
             this.tb_carbo.Size = new System.Drawing.Size(175, 24);
             this.tb_carbo.TabIndex = 7;
@@ -164,7 +164,7 @@
             // l_carbo
             // 
             this.l_carbo.AutoSize = true;
-            this.l_carbo.Location = new System.Drawing.Point(6, 146);
+            this.l_carbo.Location = new System.Drawing.Point(6, 153);
             this.l_carbo.Name = "l_carbo";
             this.l_carbo.Size = new System.Drawing.Size(70, 17);
             this.l_carbo.TabIndex = 6;
@@ -181,7 +181,7 @@
             // 
             // tb_fats
             // 
-            this.tb_fats.Location = new System.Drawing.Point(6, 119);
+            this.tb_fats.Location = new System.Drawing.Point(6, 126);
             this.tb_fats.Name = "tb_fats";
             this.tb_fats.Size = new System.Drawing.Size(175, 24);
             this.tb_fats.TabIndex = 5;
@@ -189,7 +189,7 @@
             // l_fats
             // 
             this.l_fats.AutoSize = true;
-            this.l_fats.Location = new System.Drawing.Point(6, 99);
+            this.l_fats.Location = new System.Drawing.Point(6, 106);
             this.l_fats.Name = "l_fats";
             this.l_fats.Size = new System.Drawing.Size(52, 17);
             this.l_fats.TabIndex = 4;
@@ -198,7 +198,7 @@
             // l_proteins
             // 
             this.l_proteins.AutoSize = true;
-            this.l_proteins.Location = new System.Drawing.Point(3, 56);
+            this.l_proteins.Location = new System.Drawing.Point(3, 62);
             this.l_proteins.Name = "l_proteins";
             this.l_proteins.Size = new System.Drawing.Size(52, 17);
             this.l_proteins.TabIndex = 2;
@@ -206,7 +206,7 @@
             // 
             // tb_proteins
             // 
-            this.tb_proteins.Location = new System.Drawing.Point(6, 76);
+            this.tb_proteins.Location = new System.Drawing.Point(6, 79);
             this.tb_proteins.Name = "tb_proteins";
             this.tb_proteins.Size = new System.Drawing.Size(175, 24);
             this.tb_proteins.TabIndex = 3;
@@ -232,7 +232,7 @@
             // 
             this.b_save.Enabled = false;
             this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_save.Location = new System.Drawing.Point(8, 308);
+            this.b_save.Location = new System.Drawing.Point(8, 319);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
             this.b_save.TabIndex = 8;
@@ -246,7 +246,7 @@
             this.groupBox1.Controls.Add(this.menu_ingr_food);
             this.groupBox1.Location = new System.Drawing.Point(224, -14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(673, 345);
+            this.groupBox1.Size = new System.Drawing.Size(673, 356);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
@@ -255,7 +255,6 @@
             this.gw.AllowUserToAddRows = false;
             this.gw.AllowUserToDeleteRows = false;
             this.gw.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -264,7 +263,7 @@
             this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -299,9 +298,11 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(667, 301);
+            this.gw.Size = new System.Drawing.Size(667, 312);
             this.gw.TabIndex = 5;
+            this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
+            this.gw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gw_MouseDown);
             // 
             // menu_ingr_food
             // 
@@ -391,7 +392,7 @@
             // 
             this.b_abolition.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_abolition.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_abolition.Location = new System.Drawing.Point(143, 307);
+            this.b_abolition.Location = new System.Drawing.Point(143, 319);
             this.b_abolition.Name = "b_abolition";
             this.b_abolition.Size = new System.Drawing.Size(75, 23);
             this.b_abolition.TabIndex = 9;
@@ -405,7 +406,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_abolition;
-            this.ClientSize = new System.Drawing.Size(894, 337);
+            this.ClientSize = new System.Drawing.Size(894, 347);
             this.Controls.Add(this.gb_food_data);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.b_save);

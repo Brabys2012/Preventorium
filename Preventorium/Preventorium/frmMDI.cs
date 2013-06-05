@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Threading;
-using System.Net.Sockets;
-using System.Data.SqlClient;
-using word = Microsoft.Office.Interop.Word;
 
 namespace Preventorium
 {
@@ -50,6 +38,8 @@ namespace Preventorium
             if (prof.role == "Пользователь-диет_сестра")
             { // Если роль пользователь: Пользователь-диет_сестра то отключаем на главной форме меню персонал
                  this.Person.Visible = false;
+                 frmMDI_MainMenu_Service_Parameters.Visible = false;
+                 toolStripSeparator3.Visible = false;
                  toolStripSeparator1.Visible = false;
             }
             //Если роль пользователь: Администратор-глав_врач,то переименовываем меню сменить пароль
@@ -233,9 +223,7 @@ namespace Preventorium
             food frm = new food();
             frm.MdiParent = this;
             frm.Show();  
-        }
-
-       
+        }       
 
         /// <summary>
         ///  Нажатие на меню отчет карта раскладка

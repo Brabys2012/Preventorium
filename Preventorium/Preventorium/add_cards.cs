@@ -244,10 +244,9 @@ namespace Preventorium
 
         private void tb_cost_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+            if (e.KeyChar != 8 && (e.KeyChar < 46 || e.KeyChar > 57) || (e.KeyChar == 47))
                 e.Handled = true; 
         }
-
              
     }
 }

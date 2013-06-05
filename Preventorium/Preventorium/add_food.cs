@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Preventorium
 {
@@ -14,7 +12,6 @@ namespace Preventorium
         public string name_old;
         private string _current_state;
  
-
         /// <summary>
         /// модуль, через который работать с базой
         /// </summary>
@@ -25,7 +22,6 @@ namespace Preventorium
         private string _state;
         //ID блюда для загрузки данных (в режиме OLD)
         private int _id;
-        private string food_name;
         
         // Конструктор, вызываемый при нажатии "Добавить" 
         public add_food(db_connect data_module)
@@ -210,35 +206,32 @@ namespace Preventorium
         private void add_food_Load(object sender, EventArgs e)
         {
             this.load_data_table("Ingridients_in_food");
+            gw.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             gw.Columns[1].HeaderText = "Ингредиенты";
-            gw.Columns[2].DefaultCellStyle.Format = "##.00 г.";
+            gw.Columns[2].DefaultCellStyle.Format = "0.00 г.";
             gw.Columns[2].HeaderText = "Брутто вес";
-            gw.Columns[3].DefaultCellStyle.Format = "##.00 г.";
+            gw.Columns[3].DefaultCellStyle.Format = "0.00 г.";
             gw.Columns[3].HeaderText = "Нетто вес";
             name_old = tb_name.Text;                      
         }
 
         private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Ingridients_in_food":
-                    add_ingr_in_food ingr_in_food = null;
-                    try
-                    {
+            add_ingr_in_food ingr_in_food = null;
+                try
+                {
                       
-                        ingr_in_food = new add_ingr_in_food(Program.data_module, gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString(),
-                                                                                 gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString(),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
-                        ingr_in_food.ShowDialog();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Выберите ингридиент!");
-                    }
-                    break;
-            }
+                     ingr_in_food = new add_ingr_in_food(Program.data_module, gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString(),
+                                                                              gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString(),
+                                                                              Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()),
+                                                                              Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
+                     ingr_in_food.ShowDialog();
+                }
+                catch (Exception)
+                {
+                     MessageBox.Show("Выберите ингридиент!");
+                }
+
             this.load_data_table(this._current_state);
             this.fill_food_data();
             this.Update();
@@ -247,22 +240,18 @@ namespace Preventorium
         //Удаление ингредиента из блюда
         private void bDelete_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                return;
+            try
             {
-                case "Ingridients_in_food":
-                    del_ingr_from_food del = null;
-                    try
-                    {
-                        this.load_data_table(this._current_state);
-                        del = new del_ingr_from_food(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
-                        del.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите ингридиент!");
-                    }
-                    break;
+                 this.load_data_table(this._current_state);
+                 string result = Program.add_read_module.del_record_by_ingr_id(_current_state, "Id_ingridients", Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));      
             }
+            catch (Exception)
+            {
+                 MessageBox.Show("Выберите ингридиент!");
+            }
+
             this.load_data_table(this._current_state);
             this.fill_food_data();
             this.Update();
@@ -271,67 +260,35 @@ namespace Preventorium
         //Редактирование ингредиента в блюде
         private void bEditIngr_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
+            add_ingr_in_food ingr_in_food;
+            try
             {
-                case "Ingridients_in_food":
-
-                    add_ingr_in_food ingr_in_food = null;
-                    try
-                    {
-                        this.load_data_table(this._current_state);
-
-                        
-                        
-                        ingr_in_food = new add_ingr_in_food(Program.data_module, gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString(),
-                                                                                 gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString(),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()),
-                                                                                 Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
-                        ingr_in_food.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите ингридиент!");
-                    }
-                    break;
+                 this.load_data_table(this._current_state);        
+                 ingr_in_food = new add_ingr_in_food(Program.data_module, gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString(),
+                                                                          gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString(),
+                                                                          Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[4].Value.ToString()),
+                                                                          Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[5].Value.ToString()));
+                ingr_in_food.ShowDialog();
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите ингридиент!");
+            }
+
             this.load_data_table(this._current_state);
             this.fill_food_data();
             this.Update();
-        }
-
-        /// <summary>
-        /// Добавление нового ингридиента в блюдо.
-        /// </summary>
-        private void add_new_ingr_in_food(int id)
-        {
-            add_ingr_in_food ingr_in_food = new add_ingr_in_food(Program.data_module, id);
-            ingr_in_food.food_name = this.tb_name.Text;
-            ingr_in_food.ShowDialog();
         }
 
         private void bAddIngr_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Ingridients_in_food":
-                    this.add_new_ingr_in_food(_id);
-                    
-                    break;
-            }
+            add_ingr_in_food ingr_in_food = new add_ingr_in_food(Program.data_module, _id);
+            ingr_in_food.food_name = this.tb_name.Text;
+            ingr_in_food.ShowDialog();
 
             this.load_data_table(this._current_state);
             this.fill_food_data();
             this.Update();
-        }
-
-           private void read_menu_food_Click(object sender, EventArgs e)
-        {
-            this.bEditIngr_Click(sender,e);
-        }
-
-        private void b_del_menu_Click(object sender, EventArgs e)
-        {
-            this.bDelete_Click(sender,e);
         }
 
         private void gw_MouseDown(object sender, MouseEventArgs e)
@@ -382,8 +339,6 @@ namespace Preventorium
             catch
             { }
         }
-
-    
      
     }
 }

@@ -24,7 +24,6 @@ namespace Preventorium
         /// <param name="state"></param>
         public void load_data_table(string state)
         {
-
             bs.DataSource = Program.data_module.get_data_table(state).Tables[state];
             gw.DataSource = bs;
             gw.Columns[0].Visible = false;
@@ -34,16 +33,6 @@ namespace Preventorium
             this._current_state = state;
         }
 
-
-        /// <summary>
-        /// Добавление справочника
-        /// </summary>
-        private void add_new_book()
-        {
-            add_book book = new add_book(Program.data_module);
-            book.ShowDialog();
-        }
-
         /// <summary>
         /// Добавление нового справочника
         /// </summary>
@@ -51,14 +40,8 @@ namespace Preventorium
         /// <param name="e"></param>
         private void bAddBook_Click(object sender, EventArgs e)
         {
-
-            switch (this._current_state)
-            {
-                case "Book":
-                    this.add_new_book();
-                    break;
-            }
-
+            add_book book = new add_book(Program.data_module);
+            book.ShowDialog();
             this.load_data_table(this._current_state);//обновление дата грид
         }
 
@@ -69,21 +52,15 @@ namespace Preventorium
         /// <param name="e"></param>
         private void bEditBook_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
+            add_book book = null;
+            try
             {
-                case "Book":
-                    add_book book = null;
-                    try
-                    {
-                        book = new add_book(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
-                        book.ShowDialog();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Выберите справочник!");
-                    }
-                    break;
-
+                 book = new add_book(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+                 book.ShowDialog();
+            }
+            catch (Exception)
+            {
+                 MessageBox.Show("Выберите справочник!");
             }
             this.load_data_table(this._current_state);//обновляем дата грид
         }
@@ -96,9 +73,14 @@ namespace Preventorium
         public void book_Load(object sender, EventArgs e)
         {
             this.load_data_table("Book");
+            gw.Columns[1].Width = 180;
+            gw.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             gw.Columns[1].HeaderText = "Автор(ы)";
+            gw.Columns[2].Width = 100;
             gw.Columns[2].DefaultCellStyle.Format = "## год.";
             gw.Columns[2].HeaderText = "Год выпуска";
+            gw.Columns[3].Width = 250;
+            gw.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             gw.Columns[3].HeaderText = "Название";
         }
 
@@ -109,22 +91,16 @@ namespace Preventorium
         /// <param name="e"></param>
         private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Book":
-                    add_book book = null;
-                    try
-                    {
-                        book = new add_book(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
-                        book.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите справочник!");
-                    }
-                    break;
-
-            }
+             add_book book = null;
+             try
+             {
+                 book = new add_book(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+                 book.ShowDialog();
+             }
+             catch (Exception)
+             {
+                 MessageBox.Show("Выберите справочник!");
+             }
             this.load_data_table(this._current_state);//обновляем дата грид
         }
 
@@ -135,20 +111,15 @@ namespace Preventorium
         /// <param name="e"></param>
         private void bDelete_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                return;
+            try
             {
-                case "Book":
-                    delete del = null;
-                    try
-                    {
-                        del = new delete(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), _current_state);
-                        del.ShowDialog();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Выберите справочник!");
-                    }
-                    break;
+               string result4 = Program.add_read_module.del_record_by_id(_current_state, "IDBook", Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+            }
+            catch (Exception)
+            {
+               MessageBox.Show("Выберите справочник!");
             }
             this.load_data_table(this._current_state);//обновляем дата грид
         }
@@ -165,26 +136,6 @@ namespace Preventorium
             gw.ClearSelection();
             gw.Rows[rowIndex].Selected = true;
             gw.CurrentCell = gw[1, rowIndex];
-        }
-
-        /// <summary>
-        /// редактирование через контекстное меню
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Read_menu_book_Click(object sender, EventArgs e)
-        {
-            this.bEditBook_Click(sender,e);
-        }
-
-        /// <summary>
-        /// удаление через контекстное меню
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void delete_menu_book_Click(object sender, EventArgs e)
-        {
-            this.bDelete_Click(sender, e);
         }
 
         /// <summary>

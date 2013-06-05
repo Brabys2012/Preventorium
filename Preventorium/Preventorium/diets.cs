@@ -43,23 +43,9 @@ namespace Preventorium
         /// <param name="e"></param>
         private void bAddDiet_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Diets":
-                    this.add_new_diet();
-                    break;
-            }
-
-            this.load_data_table(this._current_state);//обновляем дата грид
-        }
-
-        /// <summary>
-        /// Добавление новой диеты
-        /// </summary>
-        private void add_new_diet()
-        {
             add_diet diet = new add_diet(Program.data_module);
             diet.ShowDialog();
+            this.load_data_table(this._current_state);//обновляем дата грид
         }
 
         /// <summary>
@@ -69,21 +55,16 @@ namespace Preventorium
         /// <param name="e"></param>
         public void bEditDiet_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Diets":
-                    add_diet diet = null;
-                    try
-                    {
-                        diet = new add_diet(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
-                        diet.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите диету!");
-                    }
-                    break;
-            }
+           add_diet diet = null;
+           try
+           {
+               diet = new add_diet(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+               diet.ShowDialog();
+           }
+           catch (Exception)
+           {
+               MessageBox.Show("Выберите диету!");
+           }
             this.load_data_table(this._current_state);//обновляем дата грид
         }
 
@@ -148,20 +129,15 @@ namespace Preventorium
         /// <param name="e"></param>
         private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (this._current_state)
+            add_diet diet = null;
+            try
             {
-                case "Diets":
-                    add_diet diet = null;
-                    try
-                    {
-                        diet = new add_diet(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
-                        diet.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите диету!");
-                    }
-                    break;
+                diet = new add_diet(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+                diet.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите диету!");
             }
             this.load_data_table(this._current_state);//обновляем дата грид
         }
@@ -173,22 +149,15 @@ namespace Preventorium
         /// <param name="e"></param>
         private void bDelete_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                return;
+            try
             {
-                case "Diets":
-                    delete del = null;
-                    try
-                    {
-                        del = new delete(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), _current_state);
-                        del.ShowDialog();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Выберите диету!");
-                    }
-                    break;
-
-
+                string result = Program.add_read_module.del_record_by_id(_current_state, "ID_Diets", Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));     
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите диету!");
             }
             this.load_data_table(this._current_state);//обновляем дата грид
         }
@@ -205,26 +174,6 @@ namespace Preventorium
             gw.ClearSelection();
             gw.Rows[rowIndex].Selected = true;
             gw.CurrentCell = gw[1, rowIndex];
-        }
-
-        /// <summary>
-        /// редактирование через контекстное меню
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void read_diets_Click(object sender, EventArgs e)
-        {
-            this.bEditDiet_Click(sender, e);
-        }
-
-        /// <summary>
-        /// удаление через контекстное меню
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void del_diets_Click(object sender, EventArgs e)
-        {
-            this.bDelete_Click(sender,e);
         }
 
         /// <summary>

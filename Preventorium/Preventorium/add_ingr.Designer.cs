@@ -135,9 +135,9 @@
             this.label2.Location = new System.Drawing.Point(11, 213);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.Size = new System.Drawing.Size(193, 18);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Калории:";
+            this.label2.Text = "Калории (на 100г. продукта):";
             // 
             // label3
             // 
@@ -146,9 +146,9 @@
             this.label3.Location = new System.Drawing.Point(11, 60);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 18);
+            this.label3.Size = new System.Drawing.Size(199, 18);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Углеводы:";
+            this.label3.Text = "Углеводы (на 100г. продукта):";
             // 
             // label4
             // 
@@ -157,9 +157,9 @@
             this.label4.Location = new System.Drawing.Point(11, 111);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 18);
+            this.label4.Size = new System.Drawing.Size(177, 18);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Жиры:";
+            this.label4.Text = "Жиры (на 100г. продукта):";
             // 
             // label5
             // 
@@ -168,9 +168,9 @@
             this.label5.Location = new System.Drawing.Point(11, 162);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 18);
+            this.label5.Size = new System.Drawing.Size(176, 18);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Белки:";
+            this.label5.Text = "Белки (на 100г. продукта):";
             // 
             // add_ingr
             // 
@@ -201,7 +201,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сведения о ингредиенте";
-           
             this.ResumeLayout(false);
             this.PerformLayout();
 

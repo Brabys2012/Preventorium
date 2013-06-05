@@ -172,26 +172,26 @@ namespace Preventorium
 
            private void tb_calories_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+               if (e.KeyChar != 8 && (e.KeyChar < 46 || e.KeyChar > 57) || (e.KeyChar == 47))
                    e.Handled = true; 
            }
 
            private void tb_belki_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
-                   e.Handled = true; 
+               if (e.KeyChar != 8 && (e.KeyChar < 46 || e.KeyChar > 57) || (e.KeyChar == 47))
+                   e.Handled = true;  
            }
 
            private void tb_zhiri_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+               if (e.KeyChar != 8 && (e.KeyChar < 46 || e.KeyChar > 57) || (e.KeyChar == 47))
                    e.Handled = true; 
            }
 
            private void tb_uglevod_KeyPress(object sender, KeyPressEventArgs e)
            {
-               if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
-                   e.Handled = true; 
+               if (e.KeyChar != 8 && (e.KeyChar < 46 || e.KeyChar > 57) || (e.KeyChar == 47))
+                   e.Handled = true;
            }
 
           

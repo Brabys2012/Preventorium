@@ -49,7 +49,8 @@ namespace Preventorium
             if (professia.role.Equals("Пользователь-диет_сестра"))
             {
                 this.Size = new Size(222, 115);
-                load_data_table();
+                load_data_table(_current_state, professia.role, login);
+                gw.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 gw.Columns[1].HeaderText = "Логин";
                 gw.Columns[2].Visible = false;
                 gw.Columns[0].Visible = false;
@@ -130,7 +131,7 @@ namespace Preventorium
                     int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
                     this.add_new_users(professia, id);
                     logins = Program.add_read_module.get_login(id);
-                    load_data_table();
+                    load_data_table(_current_state, professia.role, logins.login);
                 }
             }
             catch
@@ -140,9 +141,9 @@ namespace Preventorium
         /// <summary>
         /// Загружает данные пользователя.
         /// </summary>
-        private void load_data_table()
+        private void load_data_table(string state, string prof, string log)
         {
-            bs.DataSource = Program.data_module.get_data_table_password(_current_state, professia.role, logins.login).Tables[_current_state];
+            bs.DataSource = Program.data_module.get_data_table_password(state, prof, log).Tables[state];
             gw.DataSource = bs;
             gw.Update();
             gw.Show();

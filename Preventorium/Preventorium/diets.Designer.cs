@@ -57,12 +57,12 @@
             // tb_desc
             // 
             this.tb_desc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_desc.Location = new System.Drawing.Point(314, 28);
+            this.tb_desc.Location = new System.Drawing.Point(148, 28);
             this.tb_desc.Multiline = true;
             this.tb_desc.Name = "tb_desc";
             this.tb_desc.ReadOnly = true;
             this.tb_desc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_desc.Size = new System.Drawing.Size(308, 265);
+            this.tb_desc.Size = new System.Drawing.Size(324, 265);
             this.tb_desc.TabIndex = 3;
             // 
             // Menu_diets
@@ -78,7 +78,7 @@
             this.toolStripSeparator2});
             this.Menu_diets.Location = new System.Drawing.Point(0, 0);
             this.Menu_diets.Name = "Menu_diets";
-            this.Menu_diets.Size = new System.Drawing.Size(623, 25);
+            this.Menu_diets.Size = new System.Drawing.Size(470, 25);
             this.Menu_diets.TabIndex = 4;
             this.Menu_diets.Text = "toolStrip1";
             // 
@@ -138,7 +138,6 @@
             this.gw.AllowUserToDeleteRows = false;
             this.gw.AllowUserToResizeColumns = false;
             this.gw.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -147,7 +146,7 @@
             this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -181,7 +180,7 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(308, 265);
+            this.gw.Size = new System.Drawing.Size(148, 265);
             this.gw.TabIndex = 5;
             this.gw.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellClick);
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
@@ -194,7 +193,7 @@
             this.read_diets,
             this.del_diets});
             this.Menu_Strip_diets.Name = "Menu_Strip_diets";
-            this.Menu_Strip_diets.Size = new System.Drawing.Size(155, 70);
+            this.Menu_Strip_diets.Size = new System.Drawing.Size(155, 48);
             // 
             // read_diets
             // 
@@ -202,7 +201,7 @@
             this.read_diets.Name = "read_diets";
             this.read_diets.Size = new System.Drawing.Size(154, 22);
             this.read_diets.Text = "Редактировать";
-            this.read_diets.Click += new System.EventHandler(this.read_diets_Click);
+            this.read_diets.Click += new System.EventHandler(this.bEditDiet_Click);
             // 
             // del_diets
             // 
@@ -210,13 +209,13 @@
             this.del_diets.Name = "del_diets";
             this.del_diets.Size = new System.Drawing.Size(154, 22);
             this.del_diets.Text = "Удалить";
-            this.del_diets.Click += new System.EventHandler(this.del_diets_Click);
+            this.del_diets.Click += new System.EventHandler(this.bDelete_Click);
             // 
             // diets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 291);
+            this.ClientSize = new System.Drawing.Size(470, 291);
             this.Controls.Add(this.gw);
             this.Controls.Add(this.Menu_diets);
             this.Controls.Add(this.tb_desc);

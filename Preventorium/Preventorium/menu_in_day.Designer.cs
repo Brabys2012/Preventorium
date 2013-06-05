@@ -126,7 +126,6 @@
             this.gw.AllowUserToDeleteRows = false;
             this.gw.AllowUserToResizeColumns = false;
             this.gw.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -135,7 +134,7 @@
             this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -182,7 +181,7 @@
             this.Read,
             this.delete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 48);
             // 
             // Read
             // 
@@ -190,7 +189,7 @@
             this.Read.Name = "Read";
             this.Read.Size = new System.Drawing.Size(154, 22);
             this.Read.Text = "Редактировать";
-            this.Read.Click += new System.EventHandler(this.Read_Click);
+            this.Read.Click += new System.EventHandler(this.b_edit_Click);
             // 
             // delete
             // 
@@ -198,7 +197,7 @@
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(154, 22);
             this.delete.Text = "Удалить";
-            this.delete.Click += new System.EventHandler(this.delete_Click);
+            this.delete.Click += new System.EventHandler(this.b_delete_Click);
             // 
             // menu_in_day
             // 

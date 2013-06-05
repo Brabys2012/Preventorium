@@ -143,6 +143,12 @@ namespace Preventorium
             this.Dispose();
         }
 
+        private void tb_mens_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && (e.KeyChar < 46 || e.KeyChar > 57) )
+                e.Handled = true; 
+        }
+
        
     }
 }

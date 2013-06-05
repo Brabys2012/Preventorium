@@ -25,48 +25,33 @@ namespace Preventorium
             bs.DataSource = Program.data_module.get_data_table(state).Tables[state];
             gw.DataSource = bs;
             gw.Columns[0].Visible = false;//скрываем ненужный столбец
+            gw.Columns[4].Visible = false;
             gw.Update();
             gw.Show();
             this._current_state = state;
         }
 
-        //Добавление очереди
-        private void add_new_queue()
+        //Добавление новой записи
+        private void bAdd_Click(object sender, EventArgs e)
         {
             add_queue queue = new add_queue(Program.data_module);
             queue.ShowDialog();
-        }
-
-        private void bAdd_Click(object sender, EventArgs e)
-        {
-            switch (this._current_state)
-            {
-                case "Queue":
-                    this.add_new_queue();
-                    break;
-            }
-
             this.load_data_table(this._current_state);
         }
 
         //редактирование очереди
         private void bEdit_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Queue":
-                    add_queue queue = null;
-                    try
-                    {
-                        queue = new add_queue(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
-                        queue.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите очередь!");
-                    }
-                    break;
-            }
+               add_queue queue = null;
+               try
+               {
+                   queue = new add_queue(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+                   queue.ShowDialog();
+               }
+               catch (Exception)
+               {
+                   MessageBox.Show("Выберите очередь!");
+               }
             this.load_data_table(this._current_state);//обновляем дата грид
         }
 
@@ -77,64 +62,39 @@ namespace Preventorium
             gw.Columns[1].HeaderText = "Число человек";
             gw.Columns[2].HeaderText = "Дата начала очереди";
             gw.Columns[3].HeaderText = "Дата окончания очереди";
-            gw.Columns[4].HeaderText = "Продолжительность";
             gw.Columns[5].HeaderText = "Номер очереди";
         }
 
         //Событие обрабатывает двойной клик по записи и вызывет её на редактирование
         private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Queue":
-                    add_queue queue = null;
-                    try
-                    {
-                        queue = new add_queue(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
-                        queue.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите очередь!");
-                    }
-                    break;
-            }
-            this.load_data_table(this._current_state);//обновляем дата грид
+           add_queue queue = null;
+           try
+           {
+              queue = new add_queue(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+              queue.ShowDialog();
+           }
+              catch (Exception)
+           {
+               MessageBox.Show("Выберите очередь!");
+           }
+           this.load_data_table(this._current_state);//обновляем дата грид
         }
 
         //Удаление записи
         private void bDelete_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                return;
+            try
             {
-                case "Queue":
-                    delete del = null;
-                    try
-                    {
-                        del = new delete(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), _current_state);
-                        del.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите очередь!");
-                    }
-                    break;
-
-
+                string result = Program.add_read_module.del_record_by_id(_current_state, "ID_queue", Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
             }
-            this.load_data_table(this._current_state);//обновляем дата грид
-        }
-
-        //Контекстное меню
-        private void Read_queue_Click(object sender, EventArgs e)
-        {
-            this.bEdit_Click(sender,e); //Редактироание записи
-        }
-
-        //Контекстное меню
-        private void delete_queue_Click(object sender, EventArgs e)
-        {
-            this.bDelete_Click(sender,e);//Удаление записи
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите очередь!");
+            }
+            this.load_data_table(this._current_state); //обновляем дата грид
         }
 
         //Метод обрабатывает событие нажатия правой кнопкой мыши при вызове контекстного меню и вызывает его для нужной(выбранной) строки

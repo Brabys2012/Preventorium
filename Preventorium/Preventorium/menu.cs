@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Preventorium
 {
@@ -53,33 +52,20 @@ namespace Preventorium
            /// <param name="e"></param>
            private void b_delete_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
-               {
-                   case "Menu":
-                       delete del = null;
-                       try
-                       {   
-                           //вызываем форму удаления записи
-                           del = new delete(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), "Menu");
-                           del.ShowDialog();
-                       }
-                       catch (Exception ex)
-                       {
-                           MessageBox.Show("Выберите очередь!");
-                       }
-                       break;
-               }
+               if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                   return;
+                try
+                {   
+                     //вызываем форму удаления записи
+                    string result = Program.add_read_module.del_record_by_id(_current_state, "ID_menu", Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+                }
+                catch (Exception)
+                {
+                     MessageBox.Show("Выберите очередь!");
+                }
                this.load_data_table(this._current_state);//обновдяем дата грид
            }
 
-           /// <summary>
-           /// Добавление меню
-           /// </summary>
-           private void add_new_menu()
-           {
-               add_menu menu = new add_menu(Program.data_module);
-               menu.ShowDialog();
-           }
            /// <summary>
            /// Добавление нового меню
            /// </summary>
@@ -87,35 +73,10 @@ namespace Preventorium
            /// <param name="e"></param>
            private void b_add_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
-               {
-                   case "Menu":
-                       this.add_new_menu();//вызов формы добавления меню
-
-                       break;
-               }
+               add_menu menu = new add_menu(Program.data_module);
+               menu.ShowDialog();
                //обновляем дата грид
                this.load_data_table(this._current_state);
-           }
-
-           /// <summary>
-           /// редактирование вызываемое из контекстного меню
-           /// </summary>
-           /// <param name="sender"></param>
-           /// <param name="e"></param>
-           private void b_editMenu_Click(object sender, EventArgs e)
-           {
-               this.b_edit_Click(sender, e);
-           }
-
-           /// <summary>
-           /// удаление из контекстного меню
-           /// </summary>
-           /// <param name="sender"></param>
-           /// <param name="e"></param>
-           private void b_delMenu_Click(object sender, EventArgs e)
-           {
-               this.b_delete_Click(sender, e);
            }
 
            /// <summary>

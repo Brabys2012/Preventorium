@@ -44,7 +44,7 @@
             // cb_food
             // 
             this.cb_food.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_food.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cb_food.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb_food.FormattingEnabled = true;
             this.cb_food.Location = new System.Drawing.Point(15, 23);
             this.cb_food.Name = "cb_food";
@@ -172,6 +172,7 @@
             this.Text = "Добавить карточку-раскладку";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

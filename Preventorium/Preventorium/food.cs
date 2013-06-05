@@ -76,19 +76,20 @@ namespace Preventorium
         public void food_Load(object sender, EventArgs e)
         {
             this.load_data_table();
+            gw.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             gw.Columns[1].HeaderText = "Название блюда";
             gw.Columns[2].DefaultCellStyle.Format = "0.000";
             gw.Columns[2].Width = 50;
-            gw.Columns[2].HeaderText = "Калории";
+            gw.Columns[2].HeaderText = "Калорий в блюде";
             gw.Columns[3].DefaultCellStyle.Format = "0.00";
             gw.Columns[3].Width = 40;
-            gw.Columns[3].HeaderText = "Белки";
+            gw.Columns[3].HeaderText = "Белков в блюде";
             gw.Columns[4].DefaultCellStyle.Format = "0.00";
             gw.Columns[4].Width = 40;
-            gw.Columns[4].HeaderText = "Жиры";
+            gw.Columns[4].HeaderText = "Жиров в блюде";
             gw.Columns[5].DefaultCellStyle.Format = "0.00";
             gw.Columns[5].Width = 40;
-            gw.Columns[5].HeaderText = "Углеводы";
+            gw.Columns[5].HeaderText = "Углеводов в блюде";
             gw.Columns[6].DefaultCellStyle.Format = "0.00 г.";
             gw.Columns[6].Width = 90;
             gw.Columns[6].HeaderText = "Вес готового блюда";

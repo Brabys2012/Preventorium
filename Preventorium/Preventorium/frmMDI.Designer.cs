@@ -68,8 +68,8 @@
             this.frmMDI_MainMenu_Help_Sep1 = new System.Windows.Forms.ToolStripSeparator();
             this.frmMDI_MainMenu_Help_About = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.status = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.status = new System.Windows.Forms.ToolStripStatusLabel();
             this.frmMDI_MainMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -188,7 +188,7 @@
             // 
             // Diets_menu
             // 
-            this.Diets_menu.Image = global::Preventorium.Properties.Resources.food_011;
+            this.Diets_menu.Image = global::Preventorium.Properties.Resources.food_026;
             this.Diets_menu.Name = "Diets_menu";
             this.Diets_menu.Size = new System.Drawing.Size(221, 22);
             this.Diets_menu.Text = "Диеты";
@@ -373,6 +373,8 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.status});
             this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(675, 22);
@@ -382,8 +384,7 @@
             // status
             // 
             this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(66, 17);
-            this.status.Text = "Состояние";
+            this.status.Size = new System.Drawing.Size(0, 17);
             // 
             // frmMDI
             // 
@@ -428,7 +429,7 @@
         private System.Windows.Forms.ToolStripMenuItem Cooking_book_menu;
         private System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Help_Help;
         private System.Windows.Forms.ToolStripSeparator frmMDI_MainMenu_Help_Sep1;
-        public System.Windows.Forms.ToolStripStatusLabel status;
+      
         private System.Windows.Forms.ToolStripMenuItem b_queue;
         private System.Windows.Forms.ToolStripMenuItem b_diet_in_food;
         private System.Windows.Forms.ToolStripMenuItem frmMDI_MainMenu_Digest_Ingridients;
@@ -452,6 +453,7 @@
         private System.Windows.Forms.ToolStripMenuItem Cards;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripStatusLabel status;
     }
 }
 

@@ -24,72 +24,55 @@ namespace Preventorium
             this._current_state = state;
         }
 
-        //Добавление сотрудника
-        private void add_new_person()
-        {
-            add_person person = new add_person(Program.data_module);
-            person.ShowDialog();
-        }
-
         public void person_Load(object sender, EventArgs e)
         {
             this.load_data_table("Users");
             //перименование столбцов
+            gw.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             gw.Columns[4].HeaderText = "Фамилия";
+            gw.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             gw.Columns[5].HeaderText = "Имя";
+            gw.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             gw.Columns[6].HeaderText = "Отчество";
+            gw.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             gw.Columns[7].HeaderText = "Должность";
         }
 
         // редактирование по двойному клику 
         private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Users":
                     add_person person = null;
                     try
                     {
                         person = new add_person(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
                         person.ShowDialog();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Выберите сотрудника!");
                     }
-                    break;
-            }
             this.load_data_table(this._current_state);
         }
         // добавление сотрудника
         private void b_add_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Users":
-                    this.add_new_person();
-                    break;
-            }
-
+            add_person person = new add_person(Program.data_module);
+            person.ShowDialog();
             this.load_data_table(this._current_state);
         }
+
         // редактирование
         private void b_edit_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
+            add_person person = null;
+            try
             {
-                case "Users":
-                    add_person person = null;
-                    try
-                    {
-                        person = new add_person(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
-                        person.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите сотрудника!");
-                    }
-                    break;
+                person = new add_person(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+                person.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите сотрудника!");
             }
             this.load_data_table(this._current_state);
 
@@ -98,23 +81,19 @@ namespace Preventorium
         //удаление 
         private void b_delete_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                return;
+            try
             {
-                case "Users":
-                    delete del = null;
-                    try
-                    {
-                        del = new delete(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), _current_state);
-                        del.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите сотрудника!");
-                    }
-                    break;
+                string result = Program.add_read_module.del_record_by_id(_current_state, "IDUsers", Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите сотрудника!");
             }
             this.load_data_table(this._current_state);
         }
+
         // контексное меню в датагриде правой кнопкой , а также выделение строки правой кнопкой
         private void gw_MouseDown(object sender, MouseEventArgs e)
         {
@@ -123,18 +102,7 @@ namespace Preventorium
             gw.ClearSelection();
             gw.Rows[rowIndex].Selected = true;
             gw.CurrentCell = gw[4, rowIndex];
-        }
-
-        // редактирование ингридиента, событие для контекстного меню
-        private void but_edit_Click(object sender, EventArgs e)
-        {
-            this.b_edit_Click(sender, e);
-        }
-        // удаление ингридиента, событие для контекстного меню
-        private void but_delete_Click(object sender, EventArgs e)
-        {
-            this.b_delete_Click(sender, e);
-        }       
+        }     
 
         private void gw_KeyDown(object sender, KeyEventArgs e)
         {

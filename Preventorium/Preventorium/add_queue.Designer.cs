@@ -67,6 +67,7 @@
             this.tb_mens.Size = new System.Drawing.Size(145, 25);
             this.tb_mens.TabIndex = 1;
             this.tb_mens.TextChanged += new System.EventHandler(this.enabled_b_save);
+            this.tb_mens.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_mens_KeyPress);
             // 
             // label4
             // 

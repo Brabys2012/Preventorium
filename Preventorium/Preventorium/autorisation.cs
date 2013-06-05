@@ -274,7 +274,7 @@ namespace Preventorium
                 }
             }
 
-            catch(Exception ex)
+            catch(Exception)
             {
             }
             

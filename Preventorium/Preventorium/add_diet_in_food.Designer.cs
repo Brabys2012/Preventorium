@@ -53,7 +53,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(244, 4);
+            this.label2.Location = new System.Drawing.Point(253, 4);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 18);
             this.label2.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(368, 4);
+            this.label3.Location = new System.Drawing.Point(377, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 18);
             this.label3.TabIndex = 4;
@@ -73,7 +73,7 @@
             // 
             this.b_save.Enabled = false;
             this.b_save.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_save.Location = new System.Drawing.Point(350, 227);
+            this.b_save.Location = new System.Drawing.Point(351, 214);
             this.b_save.Name = "b_save";
             this.b_save.Size = new System.Drawing.Size(75, 23);
             this.b_save.TabIndex = 6;
@@ -85,7 +85,7 @@
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_cancel.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.b_cancel.Location = new System.Drawing.Point(431, 227);
+            this.b_cancel.Location = new System.Drawing.Point(432, 214);
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Size = new System.Drawing.Size(75, 23);
             this.b_cancel.TabIndex = 7;
@@ -96,27 +96,31 @@
             // tb_card_numb
             // 
             this.tb_card_numb.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_card_numb.Location = new System.Drawing.Point(342, 25);
+            this.tb_card_numb.Location = new System.Drawing.Point(351, 25);
             this.tb_card_numb.Name = "tb_card_numb";
-            this.tb_card_numb.Size = new System.Drawing.Size(150, 25);
+            this.tb_card_numb.Size = new System.Drawing.Size(156, 25);
             this.tb_card_numb.TabIndex = 8;
             // 
             // lb_food_name
             // 
+            this.lb_food_name.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lb_food_name.FormattingEnabled = true;
+            this.lb_food_name.ItemHeight = 16;
             this.lb_food_name.Location = new System.Drawing.Point(12, 25);
             this.lb_food_name.Name = "lb_food_name";
-            this.lb_food_name.Size = new System.Drawing.Size(229, 225);
+            this.lb_food_name.Size = new System.Drawing.Size(238, 212);
             this.lb_food_name.TabIndex = 9;
             this.lb_food_name.SelectedIndexChanged += new System.EventHandler(this.lb_food_name_SelectedIndexChanged);
             this.lb_food_name.SelectedValueChanged += new System.EventHandler(this.lb_food_name_SelectedValueChanged);
             // 
             // lb_diet_numb
             // 
+            this.lb_diet_numb.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lb_diet_numb.FormattingEnabled = true;
-            this.lb_diet_numb.Location = new System.Drawing.Point(247, 25);
+            this.lb_diet_numb.ItemHeight = 16;
+            this.lb_diet_numb.Location = new System.Drawing.Point(256, 25);
             this.lb_diet_numb.Name = "lb_diet_numb";
-            this.lb_diet_numb.Size = new System.Drawing.Size(89, 225);
+            this.lb_diet_numb.Size = new System.Drawing.Size(89, 212);
             this.lb_diet_numb.TabIndex = 10;
             // 
             // add_diet_in_food
@@ -125,7 +129,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.b_cancel;
-            this.ClientSize = new System.Drawing.Size(514, 257);
+            this.ClientSize = new System.Drawing.Size(513, 247);
             this.Controls.Add(this.lb_diet_numb);
             this.Controls.Add(this.lb_food_name);
             this.Controls.Add(this.tb_card_numb);

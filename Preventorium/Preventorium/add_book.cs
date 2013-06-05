@@ -192,6 +192,7 @@ namespace Preventorium
            private void add_food_Load(object sender, EventArgs e)
            {
                this.load_data_table("FoodInBook");
+               gw.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                gw.Columns[4].HeaderText = "Блюдо";
                gw.Columns[3].HeaderText = "Номер карты";
            }
@@ -204,20 +205,15 @@ namespace Preventorium
            private void b_delete_Click(object sender, EventArgs e)
            {
                this.load_data_table(this._current_state);
-               switch (this._current_state)
+               if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                   return;
+               try
                {
-                   case "FoodInBook":
-                       del_food_from_book del = null;
-                       try
-                       {
-                           del = new del_food_from_book(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString()));
-                           del.ShowDialog();
-                       }
-                       catch (Exception)
-                       {
-                           MessageBox.Show("Выберите блюдо!");
-                       }
-                       break;
+                  string result = Program.add_read_module.del_record_by_food_id(_current_state, "IDBook", Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[1].Value.ToString()), Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString()));
+               }
+               catch (Exception)
+               {
+                  MessageBox.Show("Выберите блюдо!");
                }
                this.load_data_table(this._current_state);//обновляем дата грид
            }
@@ -227,9 +223,7 @@ namespace Preventorium
            /// </summary>
            private void add_new_food_in_book(int id_book, string author, string year)
            {
-               add_food_in_book food_in_book = new add_food_in_book(Program.data_module, id_book, author, year);
-               food_in_book.book = this.tb_name.Text;
-               food_in_book.ShowDialog();
+               
            }
 
         /// <summary>
@@ -239,27 +233,13 @@ namespace Preventorium
         /// <param name="e"></param>
            private void b_add_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
-               {
-                   case "FoodInBook":
-                       string author = tb_author.Text;
-                       string year = tb_year.Text;
-                       this.add_new_food_in_book(Convert.ToInt32(_id), author, year);
-
-                       break;
-               }
-
+               string author = tb_author.Text;
+               string year = tb_year.Text;
+               this.add_new_food_in_book(Convert.ToInt32(_id), author, year);
+               add_food_in_book food_in_book = new add_food_in_book(Program.data_module, Convert.ToInt32(this._id), author, year);
+               food_in_book.book = this.tb_name.Text;
+               food_in_book.ShowDialog();
                this.load_data_table(this._current_state);//обновляем дата грид
-           }
-
-        /// <summary>
-        /// удаление блюда из справочника
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-           private void bDelete_Click(object sender, EventArgs e)
-           {
-               this.b_delete_Click(sender, e);
            }
 
         /// <summary>
@@ -294,7 +274,7 @@ namespace Preventorium
                    if (e.KeyCode == Keys.Delete)
                    {
 
-                       bDelete_Click(sender, e);
+                       b_delete_Click(sender, e);
                    }
                }
                catch

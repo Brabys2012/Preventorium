@@ -76,7 +76,6 @@
             // 
             this.gw.AllowUserToAddRows = false;
             this.gw.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
             this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gw.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -84,7 +83,7 @@
             this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -133,7 +132,7 @@
             this.Read_card,
             this.Del_card});
             this.Menu_Card.Name = "Menu_Card";
-            this.Menu_Card.Size = new System.Drawing.Size(155, 70);
+            this.Menu_Card.Size = new System.Drawing.Size(155, 48);
             // 
             // Read_card
             // 
@@ -141,7 +140,7 @@
             this.Read_card.Name = "Read_card";
             this.Read_card.Size = new System.Drawing.Size(154, 22);
             this.Read_card.Text = "Редактировать";
-            this.Read_card.Click += new System.EventHandler(this.Read_card_Click);
+            this.Read_card.Click += new System.EventHandler(this.b_edit_Click);
             // 
             // Del_card
             // 
@@ -149,7 +148,7 @@
             this.Del_card.Name = "Del_card";
             this.Del_card.Size = new System.Drawing.Size(154, 22);
             this.Del_card.Text = "Удалить";
-            this.Del_card.Click += new System.EventHandler(this.Del_card_Click);
+            this.Del_card.Click += new System.EventHandler(this.b_delete_Click);
             // 
             // tool_cards
             // 

@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Preventorium
 {
@@ -52,33 +45,19 @@ namespace Preventorium
         //Удаление меню
         private void b_delete_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)//получаем текущее состояние
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                return;
+            try
             {
-                case "Menu_in_day":
-                    delete del = null;
-                    try
-                    {
-                        //вызываем форму удаления
-                        del = new delete(Program.data_module, Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString()), "Menu_in_day");
-                        del.ShowDialog();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Выберите дату!");
-                    }
-                    break;
+                //вызываем форму удаления
+                string result = Program.add_read_module.del_record_by_id(_current_state, "day_id", Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString()));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите дату!");
             }
             //обновляем дата грид вызывая метод загрузки данных из БД
             this.load_data_table(this._current_state);
-        }
-        
-        /// <summary>
-        /// Добавление меню
-        /// </summary>
-        private void add_new_menu()
-        {
-            add_menu_in_day menu = new add_menu_in_day(Program.data_module, Convert.ToInt32(this.AddMenuID));
-            menu.ShowDialog();
         }
 
         /// <summary>
@@ -88,25 +67,10 @@ namespace Preventorium
         /// <param name="e"></param>
         private void b_add_Click(object sender, EventArgs e)
         {
-            switch (this._current_state)
-            {
-                case "Menu_in_day":
-                    this.add_new_menu();
-
-                    break;
-            }
+            add_menu_in_day menu = new add_menu_in_day(Program.data_module, Convert.ToInt32(this.AddMenuID));
+            menu.ShowDialog();
             //обновляем дата грид вызывая метод загрузки данных из БД
             this.load_data_table(this._current_state);
-        }
-
-        /// <summary>
-        /// Нажатие на кнопку удаления
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void delete_Click(object sender, EventArgs e)
-        {
-            this.b_delete_Click(sender, e);//вызываем метод удаления
         }
 
         /// <summary>
@@ -140,7 +104,7 @@ namespace Preventorium
                 form.ShowDialog();
            }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 GC.Collect();
             }
@@ -157,24 +121,14 @@ namespace Preventorium
             {
                 int day_id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[2].Value.ToString());
                 int id = Convert.ToInt32(gw.Rows[gw.CurrentRow.Index].Cells[0].Value.ToString());
-                food_in_menu form = new food_in_menu(id, day_id,queue);
+                food_in_menu form = new food_in_menu(id, day_id, queue);
                 form.ShowDialog();
             }
 
             catch (Exception)
-            { 
-            
-            }
-        }
+            {
 
-        /// <summary>
-        /// Вызов редактирования из контекстного меню
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Read_Click(object sender, EventArgs e)
-        {
-            this.b_edit_Click(sender, e);
+            }
         }
 
         /// <summary>

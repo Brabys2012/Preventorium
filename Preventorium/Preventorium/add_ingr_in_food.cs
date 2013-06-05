@@ -14,8 +14,7 @@ namespace Preventorium
         //ID для загрузки данных (в режиме OLD)
         private string ingr_name;
         public string food_name;
-        private string ingr_id;
-        private int id;
+        private int ingr_id;
 
         private void enabled_b_save(object sender, EventArgs e)
        {
@@ -33,7 +32,7 @@ namespace Preventorium
             InitializeComponent();
             this.lb_ingr.Items.Clear();
             class_ingr_in_food[] ingr_in_food = new class_ingr_in_food[512];
-            ingr_in_food = Program.add_read_module.get_list_ingr_id(food_id);
+            ingr_in_food = Program.add_read_module.get_list_ingr_name(food_id);
             if (ingr_in_food != null)
             {
                 for (int i = 1; i < ingr_in_food.Count(); i++)
@@ -57,7 +56,7 @@ namespace Preventorium
         //Добавление ингридиента
         private void add_new_ingr_in_food()
         {
-            add_ingr_in_food add_ingr = new add_ingr_in_food(Program.data_module, id);
+            add_ingr_in_food add_ingr = new add_ingr_in_food(Program.data_module, ingr_id);
             add_ingr.ShowDialog();
         }
 
@@ -68,7 +67,7 @@ namespace Preventorium
             InitializeComponent();
             this.lb_ingr.Items.Clear();
             class_ingr_in_food[] ingr_in_food = new class_ingr_in_food[512];
-            ingr_in_food = Program.add_read_module.get_list_ingr_id(food_id);
+            ingr_in_food = Program.add_read_module.get_list_ingr_id(food_id, ingr_id);
             if (ingr_in_food != null)
             {
                 this.lb_ingr.Items.Clear();
@@ -87,7 +86,7 @@ namespace Preventorium
             }
 
             
-            this.ingr_id = ingr_id.ToString();
+            this.ingr_id = ingr_id;
           
             this.set_state("OLD");
            
@@ -182,7 +181,7 @@ namespace Preventorium
                                 string food_old = ingr_in_food.food_name;
                                 string food_ID = ingr_in_food.id_food;
 
-                                add_ingr_in_food ingr_in_foods = new add_ingr_in_food(Program.data_module, id);
+                                add_ingr_in_food ingr_in_foods = new add_ingr_in_food(Program.data_module, ingr_id);
 
 
                                 result = Program.add_read_module.upd_ingr_in_food(Convert.ToInt32(this.ingr_id),
@@ -238,13 +237,14 @@ namespace Preventorium
 
         private void tb_gross_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+            if (e.KeyChar != 8 && (e.KeyChar < 46 || e.KeyChar > 57) || (e.KeyChar == 47))
                 e.Handled = true; 
+            
         }
 
         private void tb_net_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+            if (e.KeyChar != 8 && (e.KeyChar < 46 || e.KeyChar > 57) || (e.KeyChar == 47))
                 e.Handled = true; 
         }
 

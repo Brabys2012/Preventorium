@@ -96,7 +96,7 @@
             this.toolStripSeparator4});
             this.Menu_book.Location = new System.Drawing.Point(0, 0);
             this.Menu_book.Name = "Menu_book";
-            this.Menu_book.Size = new System.Drawing.Size(341, 25);
+            this.Menu_book.Size = new System.Drawing.Size(501, 25);
             this.Menu_book.TabIndex = 3;
             this.Menu_book.Text = "toolStrip1";
             // 
@@ -125,7 +125,6 @@
             this.gw.AllowUserToAddRows = false;
             this.gw.AllowUserToDeleteRows = false;
             this.gw.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gw.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -134,7 +133,7 @@
             this.gw.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -169,7 +168,7 @@
             this.gw.ShowCellErrors = false;
             this.gw.ShowEditingIcon = false;
             this.gw.ShowRowErrors = false;
-            this.gw.Size = new System.Drawing.Size(341, 237);
+            this.gw.Size = new System.Drawing.Size(501, 237);
             this.gw.TabIndex = 4;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             this.gw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gw_KeyDown);
@@ -181,7 +180,7 @@
             this.Read_menu_book,
             this.delete_menu_book});
             this.Menu_Strip_book.Name = "Menu_Strip_book";
-            this.Menu_Strip_book.Size = new System.Drawing.Size(155, 70);
+            this.Menu_Strip_book.Size = new System.Drawing.Size(155, 48);
             // 
             // Read_menu_book
             // 
@@ -189,7 +188,7 @@
             this.Read_menu_book.Name = "Read_menu_book";
             this.Read_menu_book.Size = new System.Drawing.Size(154, 22);
             this.Read_menu_book.Text = "Редактировать";
-            this.Read_menu_book.Click += new System.EventHandler(this.Read_menu_book_Click);
+            this.Read_menu_book.Click += new System.EventHandler(this.bEditBook_Click);
             // 
             // delete_menu_book
             // 
@@ -197,13 +196,13 @@
             this.delete_menu_book.Name = "delete_menu_book";
             this.delete_menu_book.Size = new System.Drawing.Size(154, 22);
             this.delete_menu_book.Text = "Удалить";
-            this.delete_menu_book.Click += new System.EventHandler(this.delete_menu_book_Click);
+            this.delete_menu_book.Click += new System.EventHandler(this.bDelete_Click);
             // 
             // cooking_book
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 262);
+            this.ClientSize = new System.Drawing.Size(501, 262);
             this.Controls.Add(this.gw);
             this.Controls.Add(this.Menu_book);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

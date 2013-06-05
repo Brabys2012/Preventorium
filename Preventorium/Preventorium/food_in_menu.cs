@@ -223,14 +223,17 @@ namespace Preventorium
            {                 
                this.load_data_table1("Food_in_menu");
                //переименование столбцов
+               gw_breakfast.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                gw_breakfast.Columns[3].HeaderText = "Блюдо";
                gw_breakfast.Columns[4].HeaderText = "Количество порций";
                gw_breakfast.Columns[4].Width = 80;
                this.load_data_table2("Food_in_menu");
+               gw_dinner.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                gw_dinner.Columns[3].HeaderText = "Блюдо";
                gw_dinner.Columns[4].HeaderText = "Количество порций";
                gw_dinner.Columns[4].Width = 80;
                this.load_data_table3("Food_in_menu");
+               gw_supper.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                gw_supper.Columns[3].HeaderText = "Блюдо";
                gw_supper.Columns[4].HeaderText = "Количество порций";
                gw_supper.Columns[4].Width = 110;
@@ -241,34 +244,19 @@ namespace Preventorium
            /// </summary>
            /// <param name="sender"></param>
            /// <param name="e"></param>
-
            private void del_breakfast_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
+               if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                   return;
+               try
                {
-                   case "Food_in_menu":
-                       del_food_from_menu del = null;
-                       try
-                       {
-                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
-                           del.ShowDialog();
-                       }
-                       catch (Exception)
-                       {
-                           MessageBox.Show("Выберите блюдо!");
-                       }
-                       break;
+                   string result = Program.add_read_module.del_food_menu("Food_in_menu",Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
+               }
+               catch (Exception)
+               {
+                   MessageBox.Show("Выберите блюдо!");
                }
                this.load_data_table1(this._current_state);
-           }
-
-           /// <summary>
-           /// Добавление блюда
-           /// </summary>
-           private void add_new_food_in_menu(string serve_time, int menu_id, int day_id)
-           {
-               add_food_in_menu food = new add_food_in_menu(Program.data_module, serve_time, menu_id, day_id);
-               food.ShowDialog();
            }
 
         /// <summary>
@@ -278,25 +266,10 @@ namespace Preventorium
         /// <param name="e"></param>
            private void add_breakfast_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
-               {
-                   case "Food_in_menu":
-                       string serve_time = "завтрак";
-                       this.add_new_food_in_menu(serve_time, menu_id, AddDayID);
-                       break;
-               }
-
+               string serve_time = "завтрак";
+               add_food_in_menu food = new add_food_in_menu(Program.data_module, serve_time, menu_id, AddDayID);
+               food.ShowDialog();
                this.load_data_table1(this._current_state);
-           }
-
-        /// <summary>
-        /// Удаление блюда на завтрак
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-           private void b_del_break_Click(object sender, EventArgs e)
-           {
-               this.del_breakfast_Click(sender, e);
            }
           
            /// <summary>
@@ -312,6 +285,7 @@ namespace Preventorium
                gw_breakfast.Rows[rowIndex].Selected = true;
                gw_breakfast.CurrentCell = gw_breakfast[1, rowIndex];
            }
+
         /// <summary>
         /// Добавить блюдо на обед 
         /// </summary>
@@ -319,14 +293,9 @@ namespace Preventorium
         /// <param name="e"></param>
            private void add_dinner_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
-               {
-                   case "Food_in_menu":
-                       string serve_time = "обед";
-                       this.add_new_food_in_menu(serve_time, menu_id, AddDayID);
-
-                       break;
-               }
+               string serve_time = "обед";
+               add_food_in_menu food = new add_food_in_menu(Program.data_module, serve_time, menu_id, AddDayID);
+               food.ShowDialog();
                this.load_data_table2(this._current_state);
            }
 
@@ -337,17 +306,12 @@ namespace Preventorium
         /// <param name="e"></param>
            private void add_supper_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
-               {
-                   case "Food_in_menu":
-                       string serve_time = "ужин";
-                       this.add_new_food_in_menu(serve_time, menu_id, AddDayID);
-
-                       break;
-               }
-               this.load_data_table3(this._current_state);
-
+              string serve_time = "ужин";
+              add_food_in_menu food = new add_food_in_menu(Program.data_module, serve_time, menu_id, AddDayID);
+              food.ShowDialog();
+              this.load_data_table3(this._current_state);
            }
+
         /// <summary>
         /// Удаление блюда на обед
         /// </summary>
@@ -355,24 +319,21 @@ namespace Preventorium
         /// <param name="e"></param>
            private void del_dinner_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
+               if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                   return;
+               try
                {
-                   case "Food_in_menu":
-                       del_food_from_menu del = null;
-                       try
-                       {
-                           this.load_data_table2(this._current_state);
-                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_dinner.Rows[gw_dinner.CurrentRow.Index].Cells[0].Value.ToString()), gw_dinner.Rows[gw_dinner.CurrentRow.Index].Cells[2].Value.ToString());
-                           del.ShowDialog();
-                       }
-                       catch (Exception ex)
-                       {
-                           MessageBox.Show("Выберите блюдо!");
-                       }
-                       break;
+                   this.load_data_table2(this._current_state);
+                   string result = Program.add_read_module.del_food_menu("Food_in_menu", Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
                }
+               catch (Exception)
+               {
+                   MessageBox.Show("Выберите блюдо!");
+               }
+               this.load_data_table1(this._current_state);
                this.load_data_table2(this._current_state);
            }
+
         /// <summary>
         /// Удаление блюда на ужин
         /// </summary>
@@ -381,26 +342,22 @@ namespace Preventorium
 
            private void del_supper_Click(object sender, EventArgs e)
            {
-               switch (this._current_state)
+               if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                   return;
+               try
                {
-                   case "Food_in_menu":
-                       del_food_from_menu del = null;
-                       try
-                       {
-                           this.load_data_table3(this._current_state);
-                           del = new del_food_from_menu(Program.data_module, Convert.ToInt32(gw_supper.Rows[gw_supper.CurrentRow.Index].Cells[0].Value.ToString()), gw_supper.Rows[gw_supper.CurrentRow.Index].Cells[2].Value.ToString());
-                           del.ShowDialog();
-                       }
-                       catch (Exception ex)
-                       {
-                           MessageBox.Show("Выберите блюдо!");
-                       }
-                       break;
+                   this.load_data_table3(this._current_state);
+                   string result = Program.add_read_module.del_food_menu("Food_in_menu", Convert.ToInt32(gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[0].Value.ToString()), gw_breakfast.Rows[gw_breakfast.CurrentRow.Index].Cells[2].Value.ToString());
+               }
+               catch (Exception)
+               {
+                   MessageBox.Show("Выберите блюдо!");
                }
                this.load_data_table3(this._current_state);
            }
+
         /// <summary>
-           /// Событие которое срабатывает при нажатии кнопки "Меню на день"
+        /// Событие которое срабатывает при нажатии кнопки "Меню на день"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -2283,7 +2240,7 @@ namespace Preventorium
            {
                if (e.KeyCode == Keys.F1 )
                {
-                   this.Menu_layout_break_Click(sender, e);
+                   this.Menu_Strip_breakfast_Click(sender, e);
                }
 
                if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
@@ -2305,7 +2262,7 @@ namespace Preventorium
            {
                if (e.KeyCode == Keys.F1)
                {
-                   this.Menu_layout_dinner_Click(sender, e);
+                   this.Menu_Strip_din_Click(sender, e);
                }
 
                if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
@@ -2327,7 +2284,7 @@ namespace Preventorium
            {
                if (e.KeyCode == Keys.F1)
                {
-                   this.Menu_supper_Click(sender, e);
+                   this.supper_Click(sender, e);
                }
                
                    if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
@@ -2343,13 +2300,6 @@ namespace Preventorium
                
            }        
 
-           /// <summary>
-           /// Событие которое срабатывает при нажатии кнопки "Меню на завтрак"
-           /// </summary>
-           private void Menu_layout_break_Click(object sender, EventArgs e)
-           {
-               Menu_Strip_breakfast_Click(sender,e);
-           }
            /// <summary>
            /// Событие которое срабатывает при нажатии кнопки "Меню на завтрак"
            /// </summary>
@@ -2412,14 +2362,6 @@ namespace Preventorium
              }
 
              /// <summary>
-             /// Событие которое срабатывает при нажатии кнопки "Меню на обед"
-             /// </summary>
-             private void Menu_layout_dinner_Click(object sender, EventArgs e)
-             {
-                 Menu_Strip_din_Click(sender,e);
-             }
-
-             /// <summary>
              /// Событие которое срабатывает при нажатии кнопки "Меню на обед
              /// </summary>
              private void Menu_Strip_din_Click(object sender, EventArgs e)
@@ -2427,14 +2369,6 @@ namespace Preventorium
                  // в конструктор формы MEnu-layout передается время падачи блюда:"Обед", а также id очереди и id дня
                  Menu_layout Menu_layout = new Menu_layout("обед",AddDayID, queue_id);
                  Menu_layout.ShowDialog();
-             }
-
-             /// <summary>
-             /// Событие которое срабатывает при нажатии кнопки "Меню на ужин
-             /// </summary>
-             private void Menu_supper_Click(object sender, EventArgs e)
-             {
-                 supper_Click(sender, e);
              }
 
              /// <summary>
@@ -2455,28 +2389,6 @@ namespace Preventorium
                  // в конструктор формы MEnu-layout передается строка "Весь день", а также id очереди и id дня
                  Menu_layout Menu_layout = new Menu_layout("весь день",AddDayID, queue_id);
                  Menu_layout.ShowDialog();
-             }
-             /// <summary>
-             /// Событие срабатывает при нажатии кнопки Меню на завтрак с контексного меню
-             /// </summary>
-             private void context_menu_layout_breakfast_Click(object sender, EventArgs e)
-             {
-                 Menu_layout_break_Click(sender,e);
-             }
-             /// <summary>
-             /// Событие срабатывает при нажатии кнопки Меню на обед с контексного меню
-             /// </summary>
-             private void context_menu_layout_dinner_Click(object sender, EventArgs e)
-             {
-                 Menu_layout_dinner_Click(sender, e);
-             }
-             /// <summary>
-             /// Событие срабатывает при нажатии кнопки Меню на ужин с контексного меню
-             /// </summary>
-
-             private void context_menu_layout_supper_Click(object sender, EventArgs e)
-             {
-                 Menu_supper_Click(sender, e);
              }
 
              /// <summary>

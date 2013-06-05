@@ -72,7 +72,7 @@ namespace Preventorium
             {               
                 this._conn.ConnectionString = this._connection_string;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
