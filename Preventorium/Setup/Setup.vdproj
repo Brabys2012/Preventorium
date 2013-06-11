@@ -605,6 +605,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C4E2D8762A334383B853E43AC117D599"
+                    {
+                    "Name" = "8:Санаторий-профилакторий ИГХТУ"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_74971A61B2AF4BBA973FD04524B9C9CB"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_C1C0C28CEB4444568EADC29CB8105644"
@@ -675,7 +686,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:SergeySSmirnov@mail.ru"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_B68D01846DBA4B7C91377AB7B07B7B5C"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -787,7 +798,7 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_95E9D6C6D82D4306A487D57D0FA51278"
-            "Folder" = "8:_A4F603E30D164E9B9724D4507452BCB9"
+            "Folder" = "8:_C4E2D8762A334383B853E43AC117D599"
             "WorkingFolder" = "8:_C1C0C28CEB4444568EADC29CB8105644"
             "Icon" = "8:_B68D01846DBA4B7C91377AB7B07B7B5C"
             "Feature" = "8:"
@@ -1238,7 +1249,7 @@
             "SourcePath" = "8:..\\Preventorium\\obj\\x86\\Release\\Санаторий-профилакторий ИГХТУ.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_A4F603E30D164E9B9724D4507452BCB9"
+            "Folder" = "8:_C4E2D8762A334383B853E43AC117D599"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
