@@ -236,9 +236,9 @@ namespace Preventorium
             // Метод заполняет комбобокс блюдами
             fill_foods_list();
             //В комбокс записывается имя блюда переданное через конструктор
-            cb_food.Text = foods;
+            //cb_food.Text = foods;
             // Имя блюда подсвечивается в комбоксе чтобы пользователь не выбирал блюдо из списка
-            cb_food.SelectedItem = 1;
+            cb_food.SelectedItem = foods;
         }
         /// <summary>
         /// Заполняет комбобокс списком рабочих в профилактории
